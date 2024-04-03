@@ -8,25 +8,18 @@ import {
   useLocation,
 } from "react-router-dom";
 import Entete from "../Entete/Entete";
-import Home from "../Home/Home";
-import './App.css';
+import './Home.css';
 
 
-function App() {
+function Home() {
 
 
   return (
-<div>
-      <Entete />
-      <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      
-      </Routes>
-    </Router>
-</div>
+
+   <p>halleluyah</p>
+
 
   );
 }
 
-export default App;
+export default Home;
