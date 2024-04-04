@@ -5,6 +5,17 @@ const { check, validationResult } = require("express-validator");
 
 //TODO: Authentification
 
+router.get("/initialize", async (req, res) => {
+     const donneesTest = require("../data/mockVoitures.js");
+     donneesTest.forEach(async (film) => {
+         console.log(film)
+         await db.collection("voitures").add(film);
+     });
+
+    res.statusCode = 200;
+     res.json({ message: "Données initialisées" });
+});
+
 
 /**
  * PREND TOUTE LES VOITURES
