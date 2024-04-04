@@ -3,19 +3,22 @@ const router = express.Router();
 const db = require("../config/db.js");
 const { check, validationResult } = require("express-validator");
 
+//TODO: Authentification
 
-// router.get("/initialize", async (req, res) => {
-//     const donneesTest = require("../data/mockVoitures.js");
-//     donneesTest.forEach(async (film) => {
-//         console.log(film)
-//         await db.collection("voitures").add(film);
-//     });
+router.get("/initialize", async (req, res) => {
+     const donneesTest = require("../data/mockVoitures.js");
+     donneesTest.forEach(async (film) => {
+         console.log(film)
+         await db.collection("voitures").add(film);
+     });
 
-//     res.statusCode = 200;
-//     res.json({ message: "Données initialisées" });
-// });
+    res.statusCode = 200;
+     res.json({ message: "Données initialisées" });
+});
+
 
 /**
+ * PREND TOUTE LES VOITURES
  * Cette route permet de récupérer la liste des films
  * @route GET /films
  */
@@ -43,6 +46,7 @@ router.get("/", async (req, res) => {
 
 
 /**
+ * PREND UNE VOITURE AVEC SON ID
  * Cette route permet de récupérer une voiture
  * @route GET /films/{id}
  */
@@ -64,25 +68,28 @@ router.get("/:id", async (req, res) => {
 
     }catch (error){
         res.statusCode = 500;
-        res.json({ message: "Vous êtes un pas bon, film non trouvé" });
+        res.json({ message: "Voiture non trouvé" });
     }
     
 });
 
 
 /**
+ * CRÉATION
  * Cette route permet de créer un film
  * @route POST /films
  */
+//TODO:Validation de Conditions_id
 router.post("/",
     [
+        //TODO: Refait la validation
         check("marque").escape().trim().notEmpty().isString(),
         check("annee").escape().trim().notEmpty().isNumeric(),
         check("modele").escape().trim().notEmpty().isString(),
         check("prix_achete").escape().trim().notEmpty().isString(),
-        check("description").escape().trim().notEmpty().isString(),
+        check("description_en").escape().trim().notEmpty().isString(),
+        check("description_fr").escape().trim().notEmpty().isString(),
         check("image").escape().trim().notEmpty().isString(),
-        check("annee").escape().trim().notEmpty().isString(),
     ],
     
     async (req, res) => {
@@ -117,7 +124,7 @@ router.post("/",
                 voiture.annee = req.body.annee;
                 voiture.modele = req.body.modele;
                 voiture.prix_achete = req.body.prix_achete;
-                voiture.description = req.body.description;
+                voiture.description = [req.body.description_en, req.body.description_fr];
                 voiture.image = req.body.image;
                 voiture.Conditions_id = req.body.Conditions_id;
 
@@ -137,5 +144,60 @@ router.post("/",
         }
     }
 );
+
+
+//MODIFICATION
+//TODO:Validation de Conditions_id
+router.put("/:id", [
+    check("marque").escape().trim().notEmpty().isString(),
+    check("annee").escape().trim().notEmpty().isNumeric(),
+    check("modele").escape().trim().notEmpty().isString(),
+    check("prix_achete").escape().trim().notEmpty().isString(),
+    check("description_en").escape().trim().notEmpty().isString(),
+    check("description_fr").escape().trim().notEmpty().isString(),
+    check("image").escape().trim().notEmpty().isString(),
+
+], async (req, res)=>{
+
+    const validation = validationResult(req);
+    const donneesConditions = await db.collection("conditions").get();
+    const tableauConditions = [];
+
+    donneesConditions.forEach((condition)=>{
+        tableauConditions.push(condition.data());
+    })
+
+
+    if (validation.errors.length > 0) {
+        res.statusCode = 400;
+        return res.json({message: "Données non comforme"})
+    }
+
+    const id = req.params.id;
+    const voiture = {};
+    voiture.id = id;
+    voiture.marque = req.body.marque;
+    voiture.annee = req.body.annee;
+    voiture.modele = req.body.modele;
+    voiture.prix_achete = req.body.prix_achete;
+    voiture.description = [req.body.description_en, req.body.description_fr];
+    voiture.image = req.body.image;
+    voiture.Conditions_id = req.body.Conditions_id;
+
+    await db.collection("voitures").doc(id).update(voiture);
+    
+    res.status = 200;
+    res.json({message: "Les données ont été modifiées"})
+});
+
+
+//SUPPRIMER
+router.delete("/:id", async (req, res)=>{
+    //params est tout les : dans ton url. Par exemple, :id, :user etc
+    const id = req.params.id;
+    const resultat = await db.collection("voitures").doc(id).delete();
+
+    res.json("La donnée a été supprimé");
+});
 
 module.exports = router;
