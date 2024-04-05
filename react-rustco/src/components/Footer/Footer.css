@@ -1,0 +1,16 @@
+.footer {
+    background-color: #000000; /* Light grey background */
+    text-align: center; /* Center-align the text */
+    padding: 20px 0; /* 20px top and bottom padding */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+  }
+  
+  .container {
+    max-width: 960px; /* Maximum width of the content */
+    margin: auto; /* Center the container */
+    padding: 0 20px; /* Padding on the sides */
+  }
+  
