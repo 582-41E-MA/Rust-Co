@@ -113,7 +113,7 @@ FrontEnd
 		Maquette CSS des pages principal,
 		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
 BackEnd
-		Finition DB Relationnelle
+		Finition DB 
 		Création mockVehicule.JSON/mockUser.JSON
 		Création de la structure de l'API
 		Création de la db sur Firebase
@@ -156,10 +156,6 @@ BackEnd
 
 Framework
 		Intégration Next.JS (Maybe)
-
-
-
-		
 
 
 ------------------------------------------------
