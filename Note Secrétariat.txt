@@ -113,11 +113,11 @@ FrontEnd
 		Maquette CSS des pages principal,
 		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
 BackEnd
-		Finition DB Relationnelle
-		Création mockVehicule.JSON/mockUser.JSON
-		Création de la structure de l'API
-		Création de la db sur Firebase
-		Implémenter sur Render
+		Finition DB Relationnelle - Gabriel (<1h)
+		Création mockVehicule.JSON/mockUser.JSON 
+		Création de la structure de l'API - Gabriel (<2h)
+		Création de la db sur Firebase - Gabriel (2h)
+		Implémenter sur Render - (<1h)
 Design: 
 		Moodboard
 		Maquette Graphique
