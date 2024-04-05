@@ -8,7 +8,7 @@ router.get("/initialize", async (req, res) => {
     const donneesTest = require("../data/mockUtilisateurs.js");
     donneesTest.forEach(async (utilisateur) => {
         console.log(utilisateur)
-        await db.collection("utilisateur").add(utilisateur);
+        await db.collection("utilisateurs").add(utilisateur);
     });
 
    res.statusCode = 200;
