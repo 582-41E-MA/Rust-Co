@@ -1,4 +1,4 @@
-const mockVoitures = [
+const mockUtilisateurs = [
     {
         id: "1",
         nom: "Gabriel",
@@ -6,13 +6,13 @@ const mockVoitures = [
         anniversaire: "2005/01/01",
         adresse: "1307 Hoshlaga",
         code_postal: "a4f 5j3",
-        ville: "Montréal",
-        province: "Québec",
         telephone: "514-454-7045",
         courriel: "gab2005@live.ca",
         username: "Volf",
         password: "abc",
-        Privilege_id: "1"
+        Privilege_id: 1,
+        Province_id: 1,
+        Ville_id: 31
     },
     {
         id: "2",
@@ -21,13 +21,13 @@ const mockVoitures = [
         anniversaire: "1998/11/25",
         adresse: "1363 Hoshlaga",
         code_postal: "a4f 5j3",
-        ville: "Montréal",
-        province: "Québec",
         telephone: "514-654-4567",
         courriel: "paul@live.ca",
         username: "Paul",
         password: "abc",
-        Privilege_id: "2",
+        Privilege_id: 2,
+        Province_id: 1,
+        Ville_id: 31
     },
     {
         id: "3",
@@ -36,14 +36,15 @@ const mockVoitures = [
         anniversaire: "1999/07/22",
         adresse: "1386 Hoshlaga",
         code_postal: "a4f 5j3",
-        ville: "Montréal",
-        province: "Québec",
+
         telephone: "514-764-3567",
         courriel: "fabien@live.ca",
         username: "Fabien",
         password: "abc",
-        Privilege_id: "2",
+        Privilege_id: 2,
+        Province_id: 1,
+        Ville_id: 31
     },
 ];
 
-module.exports = mockVoitures;
+module.exports = mockUtilisateurs;
