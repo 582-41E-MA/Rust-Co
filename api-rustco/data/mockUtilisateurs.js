@@ -1,4 +1,4 @@
-const mockVoitures = [
+const mockUtilisateurs = [
     {
         id: "1",
         nom: "Gabriel",
@@ -47,4 +47,4 @@ const mockVoitures = [
     },
 ];
 
-module.exports = mockVoitures;
+module.exports = mockUtilisateurs;
