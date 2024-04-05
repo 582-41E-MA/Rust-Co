@@ -27,3 +27,7 @@ a{
 button{
     cursor: pointer;
 }
+
+.header-logo{
+    width: 80px;
+}
