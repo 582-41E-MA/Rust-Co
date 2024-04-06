@@ -8,18 +8,18 @@ import {
   useLocation,
 } from "react-router-dom";
 import Entete from "../Entete/Entete";
-import './Home.css';
+import './Signup.css';
 
 
-function Home() {
+function Signup() {
 
 
   return (
 
-   <p>halleluyah</p>
+   <h1 className="text-xl">This is the Sign Up page</h1>
 
 
   );
 }
 
-export default Home;
+export default Signup;

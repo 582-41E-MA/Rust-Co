@@ -1,0 +1,33 @@
+.select-wrapper {
+    position: relative;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0px 10px 20px;
+    color: #fff;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 2px 10px;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: black;
+}
+
+.select-wrapper::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    font-size: 12px;
+    color: #aaa;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+
+}
+

@@ -1,0 +1,23 @@
+.tuile-voiture {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 300px;
+    background-color: rgb(240, 234, 234);
+    transition: transform 0.3s ease;
+    break-inside: avoid;
+    border: 1px solid grey;
+    margin-bottom: 40px;
+    color: black;
+}
+
+.tuile-voiture:hover{
+    border: 1px solid black;
+    transform: scale(1.03);
+    transition: ease-in 0.06s;
+}
+
+.info{
+    padding: 1vw;
+    text-decoration: none;
+}
