@@ -92,7 +92,7 @@ function ListeVoitures() {
 
   return (
 
-    <main>
+    <div>
       {/* <button onClick={() => setEtat(!etat)}>change etat</button>
       <p>{JSON.stringify(etat)}</p>
 
@@ -128,7 +128,7 @@ function ListeVoitures() {
         ""
       )}
       ;
-    </main>
+    </div>
 
 
   );

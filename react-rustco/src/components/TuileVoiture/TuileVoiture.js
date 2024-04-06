@@ -2,7 +2,7 @@
 import './TuileVoiture.css';
 
 function TuileVoiture(props) {
-  console.log(props.data);
+  //console.log(props.data);
 
   const prix = props.data.prix_achete;
   let nombreNettoye = prix.replace(/[^0-9.]/g, "");
@@ -16,7 +16,6 @@ function TuileVoiture(props) {
           <p>Annee : {props.data.annee}</p>
           <p className='whitespace-nowrap'>Marque : {props.data.marque}</p>
           <p>Prix : {prixVente} $</p>
-          <button>Ajouter Au panier</button>
         </div>
       </article>
   );

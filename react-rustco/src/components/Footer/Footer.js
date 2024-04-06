@@ -33,7 +33,7 @@ function Footer(props) {
                   <img src="/icons/envelope.png" alt="" className="w-8"/>
                 </div>
                 <div>
-                  <span className="block text-orange-50"><a href="mailto:rustco@yourdomain.com">rustco@yourdomain.com</a></span>
+                  <span className="block"><a href="mailto:rustco@yourdomain.com" className="inline-block text-white hover:text-orange-100">rustco@yourdomain.com</a></span>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@ function Footer(props) {
           <div className="pt-10 border-t-2 border-orange-400 border-opacity-50">
             <div className="sm:flex items-center justify-between">
               <span className="inline-block mb-4 sm:mb-0 text-gray-50">© All rights reserved</span>
-              <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-white hover:text-orange-100" href="#">Terms & Conditions</a><a className="inline-block text-white hover:text-orange-100" href="#">Privacy Policy</a></div>
+              <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-white hover:text-orange-100" href="/termes-et-conditions">Termes et Conditions</a><a className="inline-block text-white hover:text-orange-100" href="/politique">Politique de Confidentialité</a></div>
             </div>
           </div>
         </div>
