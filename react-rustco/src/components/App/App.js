@@ -9,7 +9,10 @@ import {
 } from "react-router-dom";
 import Entete from "../Entete/Entete";
 import Footer from "../Footer/Footer";
-import Home from "../Home/Home";
+import Home from "../Accueil/Accueil";
+import ListeVoitures from "../ListeVoitures/ListeVoitures";
+import Login from "../Login/Login";
+import Signup from "../Signup/Signup";
 import './App.css';
 
 
@@ -22,6 +25,9 @@ function App() {
   <Router>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/liste-voitures" element={<ListeVoitures />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
     
     </Routes>
   </Router>

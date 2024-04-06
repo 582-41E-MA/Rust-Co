@@ -3,18 +3,14 @@ header{
     background-color: rgb(0, 0, 0);
     color: white;
     margin-bottom: 40px;
-    padding: 10px ;
+    padding: 5px 20px;
     border-bottom: 1px solid black;
     align-items: center;
-    justify-content: space-around;
 }
 
-nav{
-    display: flex;
-    gap: 2vw;
-}
 
-nav a{
+
+a{
     text-decoration: none;
     color: white;
 } 
@@ -28,6 +24,6 @@ button{
     cursor: pointer;
 }
 
-.header-logo{
-    width: 80px;
+.logo{
+    width: 50px;
 }
