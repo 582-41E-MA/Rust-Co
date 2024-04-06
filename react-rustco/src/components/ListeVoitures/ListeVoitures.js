@@ -43,13 +43,10 @@ function ListeVoitures() {
     return (
       <Link to={`/voiture/${voiture.id}`} key={index}>
         <TuileVoiture data={voiture} />
-        <TuileVoiture data={voiture} />
-        <TuileVoiture data={voiture} />
-        <TuileVoiture data={voiture} />
+       
       </Link>
     ); 
   });
-
 
 
 
@@ -59,7 +56,7 @@ function ListeVoitures() {
     const valeurFiltre = e.target.value;
     const [champ, ordre] = valeurFiltre.split("-");
 
-    const urlAvecFiltre = `http://localhost:3301/api/films?tri=${champ}&order-direction=${ordre}`;
+    const urlAvecFiltre = `https://rustandco.onrender.com/api/voitures`;
 
     try {
       const response = await fetch(urlAvecFiltre);
@@ -79,8 +76,6 @@ function ListeVoitures() {
 
 
 
-
-
    /*framer-motion stuff*/
    const transition = { duration: 0.3, ease: "easeInOut" };
    const variants = {
@@ -92,7 +87,7 @@ function ListeVoitures() {
 
   return (
 
-    <main>
+    <div>
       {/* <button onClick={() => setEtat(!etat)}>change etat</button>
       <p>{JSON.stringify(etat)}</p>
 
@@ -128,7 +123,7 @@ function ListeVoitures() {
         ""
       )}
       ;
-    </main>
+    </div>
 
 
   );
