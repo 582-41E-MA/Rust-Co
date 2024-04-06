@@ -11,7 +11,7 @@ import Entete from "../Entete/Entete";
 import './Accueil.css';
 
 
-function Home() {
+function Accueil() {
 
 
   return (
@@ -22,4 +22,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Accueil;

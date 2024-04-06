@@ -21,8 +21,9 @@ function Entete(props) {
         </div>
 
         <div className="header-main-menu ml-40">
-          <ul className="header-ul-main">
+          <ul className="header-ul-main flex space-x-8">
             <li><a href="/liste-voitures">Liste des Autos</a></li>
+            <li><a href="/a-propos">À Propos</a></li>
           </ul>
         </div>
 
@@ -31,7 +32,7 @@ function Entete(props) {
       <nav className="header-nav flex justify-between">
 
         <div className="header-left">
-          <ul className="header-ul-left flex space-x-4">
+          <ul className="header-ul-left flex space-x-8">
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Sign Up</a></li>
           </ul>

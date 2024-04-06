@@ -43,6 +43,9 @@ function ListeVoitures() {
     return (
       <Link to={`/voiture/${voiture.id}`} key={index}>
         <TuileVoiture data={voiture} />
+        <TuileVoiture data={voiture} />
+        <TuileVoiture data={voiture} />
+        <TuileVoiture data={voiture} />
       </Link>
     ); 
   });
@@ -110,6 +113,7 @@ function ListeVoitures() {
       )}
       {/* ce conditionnel fait que lanimation load bien */}
       {estCharge ? (
+        
         <motion.div
           key="liste"
           initial="hidden"
