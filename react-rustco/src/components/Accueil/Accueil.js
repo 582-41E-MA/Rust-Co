@@ -16,7 +16,9 @@ function Accueil() {
 
   return (
 
-   <h1 className="text-xl">This is home page</h1>
+   <div className="cover absolute top-0 left-0 w-full z-[-1]">
+    <img src="/img/cover.jpg"></img>
+   </div>
 
 
   );

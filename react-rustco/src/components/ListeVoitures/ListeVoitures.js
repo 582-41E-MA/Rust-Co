@@ -43,13 +43,10 @@ function ListeVoitures() {
     return (
       <Link to={`/voiture/${voiture.id}`} key={index}>
         <TuileVoiture data={voiture} />
-        <TuileVoiture data={voiture} />
-        <TuileVoiture data={voiture} />
-        <TuileVoiture data={voiture} />
+       
       </Link>
     ); 
   });
-
 
 
 
@@ -59,7 +56,7 @@ function ListeVoitures() {
     const valeurFiltre = e.target.value;
     const [champ, ordre] = valeurFiltre.split("-");
 
-    const urlAvecFiltre = `http://localhost:3301/api/films?tri=${champ}&order-direction=${ordre}`;
+    const urlAvecFiltre = `https://rustandco.onrender.com/api/voitures`;
 
     try {
       const response = await fetch(urlAvecFiltre);
@@ -75,8 +72,6 @@ function ListeVoitures() {
       console.error("Erreur de filtres", error);
     }
   }
-
-
 
 
 

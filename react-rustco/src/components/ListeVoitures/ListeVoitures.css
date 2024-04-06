@@ -9,7 +9,7 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2vw;
-    border: 1px solid black;
+    
     border-radius: 5px;
     padding: 2vw;
     background-color: #FDBE84;

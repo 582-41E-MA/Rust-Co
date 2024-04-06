@@ -7,7 +7,7 @@ function Footer(props) {
   //const context = useContext(AppContext);
 
   return (
-    <footer className="footer">
+    <footer className="footer relative">
         <section className="relative pt-20 pb-8 overflow-hidden text-white">
         
         <div className="relative container px-4 mx-auto">
@@ -44,8 +44,8 @@ function Footer(props) {
               <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-white hover:text-orange-100" href="/termes-et-conditions">Termes et Conditions</a><a className="inline-block text-white hover:text-orange-100" href="/politique">Politique de Confidentialité</a></div>
             </div>
           </div>
-        </div>
-        <div className="footer-bend"></div>
+        </div> 
+       <div className="footer-bend"></div>
       </section>
     </footer>
   );

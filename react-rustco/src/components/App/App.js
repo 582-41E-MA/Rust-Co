@@ -11,6 +11,7 @@ import Entete from "../Entete/Entete";
 import Footer from "../Footer/Footer";
 import Accueil from "../Accueil/Accueil";
 import ListeVoitures from "../ListeVoitures/ListeVoitures";
+import Voiture from "../Voiture/Voiture";
 import Termes from "../Termes/Termes";
 import Politique from "../Politique/Politique";
 import APropos from "../APropos/APropos";
@@ -18,6 +19,8 @@ import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
 import './App.css';
 
+
+export const AppContext = React.createContext();
 
 function App() {
 
@@ -34,6 +37,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/termes-et-conditions" element={<Termes />} />
             <Route path="/politique" element={<Politique />} />
+            <Route path="/Voiture/:id" element={<Voiture />} />
           
           </Routes>
         </Router>
