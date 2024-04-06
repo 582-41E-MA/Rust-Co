@@ -21,7 +21,7 @@ function Footer(props) {
             <div className="sm:flex items-center">
               <div className="sm:flex mb-6 sm:mb-0 sm:mr-12 items-center">
                 <div className="flex mb-3 sm:mb-0 sm:mr-3 items-center justify-center w-12 h-12 bg-white rounded-full">
-                  <img src="/icons/placeholder.png" alt=""/>
+                  <img src="/icons/placeholder.png" alt="" className="w-8"/>
                 </div>
                 <div>
                   <span className="block text-orange-50">1929, Bancangan, Sambit,</span>
@@ -33,7 +33,7 @@ function Footer(props) {
                   <img src="/icons/envelope.png" alt="" className="w-8"/>
                 </div>
                 <div>
-                  <span className="block text-orange-50">rustco@yourdomain.com</span>
+                  <span className="block text-orange-50"><a href="mailto:rustco@yourdomain.com">rustco@yourdomain.com</a></span>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@ function Footer(props) {
           <div className="pt-10 border-t-2 border-orange-400 border-opacity-50">
             <div className="sm:flex items-center justify-between">
               <span className="inline-block mb-4 sm:mb-0 text-gray-50">© All rights reserved</span>
-              <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-orange-200 hover:text-orange-100" href="#">Terms & Conditions</a><a className="inline-block text-orange-200 hover:text-orange-100" href="#">Privacy Policy</a></div>
+              <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-white hover:text-orange-100" href="#">Terms & Conditions</a><a className="inline-block text-white hover:text-orange-100" href="#">Privacy Policy</a></div>
             </div>
           </div>
         </div>
