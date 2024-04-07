@@ -112,6 +112,7 @@ C.3: En tant qu'admin je veux que le site utilise un framework react moderne(nex
 FrontEnd 
 		Maquette CSS des pages principal,
 		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
+		langues
 BackEnd
 		Finition DB Relationnelle - Gabriel (<1h)
 		Création mockVehicule.JSON/mockUser.JSON 

@@ -3,20 +3,16 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import "./Entete.css";
 import { AppContext } from "../App/App";
-import LangBtn from "../LangBtn/LangBtn";
+
 
 
 function Entete(props) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, toggleLang } = useContext(AppContext);
 
 
-  /////LANGUAGE BUTTON//////
-
-  //Icon
-  let langIcon;
-  document.documentElement.lang == 'en' ? langIcon = "france" : langIcon = 'uk';
-
-
+  //icon
+      let langIcon = lang == 'fr' ? 'uk' : 'france';
 
 
   return (
@@ -47,7 +43,10 @@ function Entete(props) {
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Sign Up</a></li>
           </ul>
-          <LangBtn />
+          {/* <LangBtn lang={lang}/> */}
+          <div onClick={toggleLang} className='lang-btn w-6 hover:cursor-pointer'>
+            <img src={`/icons/${langIcon}.png`} />
+        </div>
         </div>
 
       </nav>

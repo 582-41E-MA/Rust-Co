@@ -27,6 +27,8 @@ function Voiture() {
       .then((response) => response.json())
       .then((data) => {
         setVoiture(data);
+
+
       })
       .catch((error) => {
         console.error('There has been a problem with your fetch operation:', error);
@@ -34,10 +36,23 @@ function Voiture() {
     }, [urlVoiture]);
 
 
-    let langDescription;
+    //language stufff
+  let langDescription;
+    useEffect(() => {
+      // Assuming your voiture object and its description are properly fetched
+      // Adjust the condition based on how you store languages (e.g., "en" or "fr")
+      if (Array.isArray(voiture.description)) {
+        langDescription = context.language == "en" ? voiture.description[0] : voiture.description[1];
+      }
+      // This effect should re-run not only when voiture changes but also when the language context changes
+    }, [voiture, context.language]);
 
-    console.log(document.documentElement.lang);
 
+  
+
+
+
+    //description lang toggle
     if (Array.isArray(voiture.description)) {
         document.documentElement.lang == "en" ? langDescription = voiture.description[0] : langDescription = voiture.description[1];
       }
