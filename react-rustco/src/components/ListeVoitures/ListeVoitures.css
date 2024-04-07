@@ -1,24 +1,34 @@
-main {
+.liste-voitures {
     display: flex;
     flex-direction: column;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
-  
+
+  .tuiles-container a{
+    align-items: center;
+  }
+
   .tuiles-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2vw;
-    
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1vw;
     border-radius: 5px;
     padding: 2vw;
     background-color: #FDBE84;
-  
+
+ 
+    @media screen and (min-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
     @media screen and (min-width: 768px) {
       grid-template-columns: repeat(4, 1fr);
     }
     @media screen and (min-width: 1024px) {
-      grid-template-columns: repeat(9, 1fr);
+      grid-template-columns: repeat(5, 1fr);
     }
   }
   

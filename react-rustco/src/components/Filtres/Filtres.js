@@ -53,7 +53,7 @@ function Filtres(props) {
    
   return (  
     
-      <form method='get' className='flex text-sm'>
+      <form method='get' className='flex text-sm form-filtres'>
         <div className='select-wrapper'>
           <select id="filtre-constructeur" defaultValue="" onChange={handleMarqueChange}>
             <option disabled value="">-- Marque --</option>

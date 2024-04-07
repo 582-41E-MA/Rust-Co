@@ -87,7 +87,7 @@ function ListeVoitures() {
 
   return (
 
-    <div>
+    <div className="liste-voitures">
       {/* <button onClick={() => setEtat(!etat)}>change etat</button>
       <p>{JSON.stringify(etat)}</p>
 

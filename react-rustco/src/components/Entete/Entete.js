@@ -3,10 +3,21 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import "./Entete.css";
 import { AppContext } from "../App/App";
+import LangBtn from "../LangBtn/LangBtn";
 
 
 function Entete(props) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+
+  /////LANGUAGE BUTTON//////
+
+  //Icon
+  let langIcon;
+  document.documentElement.lang == 'en' ? langIcon = "france" : langIcon = 'uk';
+
+
+
 
   return (
     <header className="justify-between">
@@ -31,11 +42,12 @@ function Entete(props) {
 
       <nav className="header-nav flex justify-between">
 
-        <div className="header-left">
+        <div className="header-left flex space-x-8">
           <ul className="header-ul-left flex space-x-8">
             <li><a href="/login">Login</a></li>
             <li><a href="/signup">Sign Up</a></li>
           </ul>
+          <LangBtn />
         </div>
 
       </nav>
