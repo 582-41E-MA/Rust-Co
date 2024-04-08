@@ -52,20 +52,20 @@ function Filtres(props) {
           </select>
         </div>
         <div className='select-wrapper'>
-          <select id='filtre-annee' defaultValue="">
-            <option disabled value="">-- {t('annee')} --</option>
-            <option value="tous">{t('tous')}</option>
-            {annees.map(annee => (
-              <option key={annee} value={annee}>{annee}</option>
-            ))}
-          </select>
-        </div>
-        <div className='select-wrapper'>
           <select id='filtre-modele' defaultValue="">
             <option disabled value="">-- {t('modele')} --</option>
             <option value="tous">{t('tous')}</option>
             {modeles.map(modele => (
               <option key={modele} value={modele}>{modele}</option>
+            ))}
+          </select>
+        </div>
+        <div className='select-wrapper'>
+          <select id='filtre-annee' defaultValue="">
+            <option disabled value="">-- {t('annee')} --</option>
+            <option value="tous">{t('tous')}</option>
+            {annees.map(annee => (
+              <option key={annee} value={annee}>{annee}</option>
             ))}
           </select>
         </div>

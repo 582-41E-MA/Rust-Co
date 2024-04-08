@@ -54,7 +54,7 @@ function ListeVoitures() {
     e.preventDefault();
 
     const valeurFiltre = e.target.value;
-    const [champ, ordre] = valeurFiltre.split("-");
+  
 
     const urlAvecFiltre = `https://rustandco.onrender.com/api/voitures`;
 
