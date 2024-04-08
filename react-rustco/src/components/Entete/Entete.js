@@ -11,12 +11,8 @@ function Entete(props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, toggleLang } = useContext(AppContext);
 
-
-
-console.log(lang);
   //icon
       let langIcon = lang == 'fr' ? 'uk' : 'france';
-
 
   return (
     <header className="justify-between">

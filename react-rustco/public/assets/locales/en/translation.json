@@ -10,6 +10,7 @@
     "annee": "Year",
     "marque": "Make",
     "modele": "Model",
+    "prix": "Price",
 
-    "tous": "All"
+    "tous": "ALL"
 }
