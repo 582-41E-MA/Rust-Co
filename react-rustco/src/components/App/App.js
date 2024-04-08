@@ -19,22 +19,27 @@ import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
 import './App.css';
 
+import { useTranslation} from 'react-i18next';
 
 export const AppContext = React.createContext();
 
 
+
+
 function App() {
+
+  const { t } = useTranslation();
+
   
-  ///// LANGUAGE STUFF/////
+  ///// LANGUAGE STUFF Custom/////
   const [lang, setLang] = useState(localStorage.getItem('siteLang') || 'fr'); // Default lang
-  const yo = "yo";
+  const toggleLang = () => {
+    setLang((current) => (current == 'fr' ? 'en' : 'fr'));
+  }; 
   useEffect(() => {
     localStorage.setItem('siteLang', lang);
     document.documentElement.lang = lang;
   }, [lang]); 
-  const toggleLang = () => {
-    setLang((current) => (current == 'fr' ? 'en' : 'fr'));
-  };
   document.documentElement.lang = lang;
   ////////////////////////////
 

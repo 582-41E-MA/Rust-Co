@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import "./Entete.css";
 import { AppContext } from "../App/App";
-
+import i18next from 'i18next';
+import { t } from "i18next";
 
 
 function Entete(props) {
@@ -11,6 +12,8 @@ function Entete(props) {
   const { lang, toggleLang } = useContext(AppContext);
 
 
+
+console.log(lang);
   //icon
       let langIcon = lang == 'fr' ? 'uk' : 'france';
 
@@ -28,9 +31,9 @@ function Entete(props) {
         </div>
 
         <div className="header-main-menu ml-40">
-          <ul className="header-ul-main flex space-x-8">
-            <li><a href="/liste-voitures">Liste des Autos</a></li>
-            <li><a href="/a-propos">À Propos</a></li>
+          <ul className="header-ul-main flex space-x-8 ">
+            <li><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
+            <li><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
           </ul>
         </div>
 
@@ -40,11 +43,10 @@ function Entete(props) {
 
         <div className="header-left flex space-x-8">
           <ul className="header-ul-left flex space-x-8">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/login" className="hover:text-orange-100">{t('connexion_menu')}</a></li>
           </ul>
           {/* <LangBtn lang={lang}/> */}
-          <div onClick={toggleLang} className='lang-btn w-6 hover:cursor-pointer'>
+          <div onClick={() => {toggleLang(); i18next.changeLanguage(lang == 'fr' ? 'en' : 'fr')}} className='lang-btn w-6 hover:cursor-pointer'>
             <img src={`/icons/${langIcon}.png`} />
         </div>
         </div>

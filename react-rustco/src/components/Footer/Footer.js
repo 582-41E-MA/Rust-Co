@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 import "./Footer.css";
 //import { useContext } from "react";
 //import { AppContext } from "../App/App";
+import i18next from 'i18next';
+import { t } from "i18next";
+
 
 function Footer(props) {
   //const context = useContext(AppContext);
@@ -40,8 +43,8 @@ function Footer(props) {
           </div>
           <div className="pt-10 border-t-2 border-orange-400 border-opacity-50">
             <div className="sm:flex items-center justify-between">
-              <span className="inline-block mb-4 sm:mb-0 text-gray-50">© All rights reserved</span>
-              <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-white hover:text-orange-100" href="/termes-et-conditions">Termes et Conditions</a><a className="inline-block text-white hover:text-orange-100" href="/politique">Politique de Confidentialité</a></div>
+              <span className="inline-block mb-4 sm:mb-0 text-gray-50">© {t('droits_reserves')}</span>
+              <div className="sm:flex mb-6 sm:mb-0 items-center"><a className="inline-block mr-6 sm:mr-12 text-white hover:text-orange-100" href="/termes-et-conditions">{t('termes_footer')}</a><a className="inline-block text-white hover:text-orange-100" href="/politique">{t('politique_footer')}</a></div>
             </div>
           </div>
         </div> 

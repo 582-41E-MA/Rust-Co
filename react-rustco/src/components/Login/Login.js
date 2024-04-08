@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,10 +14,9 @@ import './Login.css';
 
 function Login() {
 
-
   return (
 
-   <h1 className="text-xl">This is the LOGIN page</h1>
+   <h1 className="text-xl">This is the LOGIN page. (there will be a create account link here if inexistant user.)</h1>
 
 
   );

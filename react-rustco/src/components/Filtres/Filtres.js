@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import './Filtres.css';
+import i18next from 'i18next';
+import { t } from 'i18next';
 
 function Filtres(props) {
   //filtres par marque pour modeles
@@ -56,8 +58,8 @@ function Filtres(props) {
       <form method='get' className='flex text-sm form-filtres'>
         <div className='select-wrapper'>
           <select id="filtre-constructeur" defaultValue="" onChange={handleMarqueChange}>
-            <option disabled value="">-- Marque --</option>
-            <option value="tous">TOUS</option>
+            <option disabled value="">-- {t('marque')} --</option>
+            <option value="tous">{t('tous')}</option>
             <option value="audi">Audi</option>
             <option value="bmw">BMW</option>
             <option value="chevrolet">Chevrolet</option>

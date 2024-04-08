@@ -6,9 +6,12 @@ import "./Voiture.css";
 import * as React from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import i18next from "react-i18next";
 
 
 export const VoitureContext = React.createContext();
+
+
 
 function Voiture() {
 
@@ -27,16 +30,15 @@ function Voiture() {
       .then((response) => response.json())
       .then((data) => {
         setVoiture(data);
-
-
       })
       .catch((error) => {
-        console.error('There has been a problem with your fetch operation:', error);
+        console.error('erreur de fetch voiture:', error);
       });;
     }, [urlVoiture]);
 
 
-    //language stufff
+
+    //language switch description
   let langDescription;
     useEffect(() => {
       // Assuming your voiture object and its description are properly fetched
@@ -47,18 +49,13 @@ function Voiture() {
       // This effect should re-run not only when voiture changes but also when the language context changes
     }, [voiture, context.language]);
 
-
-  
-
-
-
     //description lang toggle
     if (Array.isArray(voiture.description)) {
         document.documentElement.lang == "en" ? langDescription = voiture.description[0] : langDescription = voiture.description[1];
       }
       
 
-console.log(langDescription);
+
 
   return (
     
