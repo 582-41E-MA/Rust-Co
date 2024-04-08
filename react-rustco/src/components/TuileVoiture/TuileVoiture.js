@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+import { t } from "i18next";
 
 import './TuileVoiture.css';
 
@@ -13,9 +15,9 @@ function TuileVoiture(props) {
       <article className="tuile-voiture">
         <img src={`img/${props.data.image}`} alt={props.data.modele} />
         <div className='info text-xs'>
-          <p>Annee : {props.data.annee}</p>
-          <p className='whitespace-nowrap'>Marque : {props.data.marque}</p>
-          <p>Prix : {prixVente} $</p>
+          <p>{t('annee')} : {props.data.annee}</p>
+          <p className='whitespace-nowrap'>{t('marque')} : {props.data.marque}</p>
+          <p>{t('prix')} : {prixVente} $</p>
         </div>
       </article>
   );

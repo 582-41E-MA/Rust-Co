@@ -54,7 +54,7 @@ function ListeVoitures() {
     e.preventDefault();
 
     const valeurFiltre = e.target.value;
-    const [champ, ordre] = valeurFiltre.split("-");
+  
 
     const urlAvecFiltre = `https://rustandco.onrender.com/api/voitures`;
 
@@ -87,7 +87,7 @@ function ListeVoitures() {
 
   return (
 
-    <div>
+    <div className="liste-voitures">
       {/* <button onClick={() => setEtat(!etat)}>change etat</button>
       <p>{JSON.stringify(etat)}</p>
 
