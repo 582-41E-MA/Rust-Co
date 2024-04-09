@@ -112,12 +112,17 @@ C.3: En tant qu'admin je veux que le site utilise un framework react moderne(nex
 FrontEnd 
 		Maquette CSS des pages principal,
 		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
+		Implémenter i18next (Internationalization)
+		Login et connection avec Backend
+
 BackEnd
-		Finition DB Relationnelle - Gabriel (<1h)
+		Finition DB - Gabriel (<1h)
 		Création mockVehicule.JSON/mockUser.JSON 
 		Création de la structure de l'API - Gabriel (<2h)
 		Création de la db sur Firebase - Gabriel (2h)
+			sous-issues
 		Implémenter sur Render - (<1h)
+		Validation Login et connection avec React
 Design: 
 		Moodboard
 		Maquette Graphique
@@ -147,6 +152,8 @@ Github
 FrontEnd 
 		Animation
 		Special Effects
+		Modal Login, Panier, create account
+		Carousel liens fitres
 		Unit Testing (Fabien)
 		Stripe Checkout(Fabien)
 
