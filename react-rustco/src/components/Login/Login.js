@@ -22,7 +22,7 @@ function Login(props) {
       <form onSubmit={props.handleLogin} className="form-login">
         <input type="text" name="courriel" placeholder="Usager"></input>
         <input type="password" name="mdp" placeholder="mot de passe"></input>
-        <button>Connexion</button>
+        <button className="custom-button">Connexion</button>
       </form>
       <p>
         Vous n'avez pas encore de compte? créez en un <a className="text-blue-500 font-bold" href="/create-user">ICI</a>.

@@ -18,13 +18,13 @@ import APropos from "../APropos/APropos";
 import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
 import CreateUser from "../CreateUser/CreateUser";
+import CreateVoiture from "../CreateVoiture/CreateVoiture";
 import './App.css';
 
 import { useTranslation} from 'react-i18next';
 import { jwtDecode } from "jwt-decode";
 
 export const AppContext = React.createContext();
-
 
 
 
@@ -112,7 +112,7 @@ function App() {
               <Route path="/politique" element={<Politique />} />
               <Route path="/Voiture/:id" element={<Voiture />} />
               <Route path="/create-user" element={<CreateUser />} />
-            
+              <Route path="/create-voiture" element={<CreateVoiture />} />
             </Routes>
           </Router>
         </main>
