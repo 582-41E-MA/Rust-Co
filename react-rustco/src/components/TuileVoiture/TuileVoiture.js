@@ -16,6 +16,7 @@ function TuileVoiture(props) {
         <img src={`img/${props.data.image}`} alt={props.data.modele} />
         <div className='info text-xs'>
           <p>{t('annee')} : {props.data.annee}</p>
+          <p>{t('modele')} : {props.data.modele}</p>
           <p className='whitespace-nowrap'>{t('marque')} : {props.data.marque}</p>
           <p>{t('prix')} : {prixVente} $</p>
         </div>

@@ -36,3 +36,17 @@
 
 }
 
+.submit-btn{
+    position: relative;
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0px 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #223C66;
+    color: white;
+}
+.submit-btn:hover{
+    background-color: #225C66;
+}

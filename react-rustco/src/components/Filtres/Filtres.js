@@ -31,17 +31,20 @@ function Filtres(props) {
   };
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the form from causing a page reload
-    // Call the handleFiltres function passed via props with the selected value
-    props.handleFiltres(event.target.elements.filtreConstructeur.value);
-  };
+
    
   return (  
     
-      <form method='get' className='flex text-sm form-filtres'>
+      <form method='get' className='flex text-sm form-filtres' onSubmit={(e) =>{
+        e.preventDefault(); 
+        const marque = e.target["filtre-marque"].value;
+        const modele = e.target["filtre-modele"].value;
+        const annee = e.target["filtre-annee"].value;
+        props.handleFiltres(marque, modele, annee);
+        }}>
+
         <div className='select-wrapper'>
-          <select id="filtre-constructeur" defaultValue="" onChange={handleMarqueChange}>
+          <select id="filtre-marque" defaultValue="" onChange={handleMarqueChange}>
             <option disabled value="">-- {t('marque')} --</option>
             <option value="tous">{t('tous')}</option>
             {
@@ -51,6 +54,7 @@ function Filtres(props) {
           }
           </select>
         </div>
+
         <div className='select-wrapper'>
           <select id='filtre-modele' defaultValue="">
             <option disabled value="">-- {t('modele')} --</option>
@@ -60,6 +64,7 @@ function Filtres(props) {
             ))}
           </select>
         </div>
+
         <div className='select-wrapper'>
           <select id='filtre-annee' defaultValue="">
             <option disabled value="">-- {t('annee')} --</option>
@@ -69,6 +74,9 @@ function Filtres(props) {
             ))}
           </select>
         </div>
+
+        <input className='submit-btn' type='Submit' value={t('filtrer')} />
+        
       </form>
     
   );

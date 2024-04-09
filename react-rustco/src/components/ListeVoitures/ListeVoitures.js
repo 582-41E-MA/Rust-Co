@@ -20,57 +20,56 @@ function ListeVoitures() {
   /*motion framer shit pour wait load*/
   const [estCharge, setEstCharge] = useState(false);
 
+  
   const urlListeVoitures = "https://rustandco.onrender.com/api/voitures";
-  const [urlFiltre, setUrlFiltre] = useState([urlListeVoitures]);
   const [listeVoitures, setListeVoitures] = useState([]);
+const [filtres, setFiltres] = useState([]);
 
-  //console.log("rendu");
-  // react eccoute si il y a un changement detat, mais pas etatTest
   useEffect(() => {
     // useEffect est juste quand il y a CHANGEMENT
-    //  console.log("rendu");
-    fetch(urlFiltre)
+    fetch(urlListeVoitures)
       .then((reponse) => reponse.json())
       .then((data) => {
-        setListeVoitures(data);
+
+        let newListeVoitures = data;
+        
+        if (filtres.length > 0) {
+          if (filtres[0]) {
+            newListeVoitures = newListeVoitures.filter(voiture => voiture.marque === filtres[0]);
+          }
+          if (filtres[1]) {
+            newListeVoitures = newListeVoitures.filter(voiture => voiture.modele === filtres[1]);
+          }
+          if (filtres[2]) {
+            newListeVoitures = newListeVoitures.filter(voiture => voiture.annee === filtres[2]);
+          }
+        }
+
+        setListeVoitures(newListeVoitures);
         setEstCharge(true); //pour le wait du animation framer
       });
-  }, [urlFiltre]); //une seule fois lors du premier rendu quand on met un [] ici. sinon la var dans le [] est ce qui est ecoute pour changer
+  }, [filtres]); //une seule fois lors du premier rendu quand on met un [] ici. sinon la var dans le [] est ce qui est ecoute pour changer
   // on peut passer dans ce array les variable pour ecoutee, dans ce cas urlFiltre change
 
+  console.log(listeVoitures);
 
   const tuileVoiture = listeVoitures.map((voiture, index) => {
     return (
       <Link to={`/voiture/${voiture.id}`} key={index}>
-        <TuileVoiture data={voiture} />
-       
+        <TuileVoiture data={voiture} />  
       </Link>
     ); 
   });
 
 
 
-  async function filtre(e) {
-    e.preventDefault();
-
-    const valeurFiltre = e.target.value;
-  
-
-    const urlAvecFiltre = `https://rustandco.onrender.com/api/voitures`;
-
-    try {
-      const response = await fetch(urlAvecFiltre);
-
-      if (!response.ok) {
-        throw new Error(`Erreur: ${response.statusText}`);
-      }
-
-      const voituresFiltres = await response.json();
-
-      setListeVoitures(voituresFiltres);
-    } catch (error) {
-      console.error("Erreur de filtres", error);
-    }
+  /*filtres*/
+  async function filtre(marque,modele, annee) {
+    let newMarque,newModele, newAnnee;
+    marque == 'tous' ? newMarque = '' : newMarque = marque;
+    modele == 'tous' ? newModele = '' : newModele = modele;
+    annee == 'tous' ? newAnnee = '' : newAnnee = annee;
+    setFiltres([newMarque, newModele, newAnnee]);
   }
 
 
@@ -122,7 +121,7 @@ function ListeVoitures() {
       ) : (
         ""
       )}
-      ;
+      
     </div>
 
 

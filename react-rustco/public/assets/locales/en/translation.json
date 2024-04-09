@@ -12,5 +12,7 @@
     "modele": "Model",
     "prix": "Price",
 
-    "tous": "ALL"
+    "tous": "ALL",
+    "filtrer" : "Filter"
+
 }
