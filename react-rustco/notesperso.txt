@@ -1,0 +1,4 @@
+Langue:
+-mon systeme custom traduit les pages apropos, termes, politique. il change le la valeur du local storage de siteLang (en,fr) dynamiquement.
+il traduit dynamiquement la lang de la valeur du <hmtl lang=""> ainsi que change licone dans entete. 
+-le reste sera surement avec i18next.

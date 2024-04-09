@@ -39,11 +39,11 @@ Secrétariat:
 Étape 2: Assigner les responsabilitées
 
 Gestionnaire Git (Merge, Pull request)⤵				   Maquette Graphique
-									   Fabien Turgeon ⤶
+									                    Fabien Turgeon ⤶
 Gestion du projet(Gestion des sprints)⤴
 
 BackEnd API-Node.Js⤵
-				Gabriel Plouffe
+				    Gabriel Plouffe
 Modelisation DB⤴ 
 
 FrontEnd React.Js -> Paul Dawson
@@ -114,7 +114,6 @@ FrontEnd
 		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
 		Implémenter i18next (Internationalization)
 		Login et connection avec Backend
-
 BackEnd
 		Finition DB - Gabriel (<1h)
 		Création mockVehicule.JSON/mockUser.JSON 
