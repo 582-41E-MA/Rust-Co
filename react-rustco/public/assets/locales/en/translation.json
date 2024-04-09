@@ -13,6 +13,7 @@
     "prix": "Price",
 
     "tous": "ALL",
-    "filtrer" : "Filter"
+    "filtrer" : "Filter",
+    "err_filtres": "No cars correspond to your search"
 
 }

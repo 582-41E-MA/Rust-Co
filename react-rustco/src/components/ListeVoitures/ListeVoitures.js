@@ -12,6 +12,7 @@ import './ListeVoitures.css';
 import Entete from "../Entete/Entete";
 import TuileVoiture from "../TuileVoiture/TuileVoiture";
 import Filtres from "../Filtres/Filtres";
+import { t } from 'i18next';
 
 import { motion } from "framer-motion";
 
@@ -49,7 +50,7 @@ const [filtres, setFiltres] = useState([]);
         setEstCharge(true); //pour le wait du animation framer
       });
   }, [filtres]); //une seule fois lors du premier rendu quand on met un [] ici. sinon la var dans le [] est ce qui est ecoute pour changer
-  // on peut passer dans ce array les variable pour ecoutee, dans ce cas urlFiltre change
+  // on peut passer dans ce array les variable pour ecoutee, dans ce cas filtres change
 
   console.log(listeVoitures);
 
@@ -87,11 +88,6 @@ const [filtres, setFiltres] = useState([]);
   return (
 
     <div className="liste-voitures">
-      {/* <button onClick={() => setEtat(!etat)}>change etat</button>
-      <p>{JSON.stringify(etat)}</p>
-
-      <button onClick={() => setEtatTest(!etatTest)}>change etat test</button>
-      <p>{JSON.stringify(etatTest)}</p> */}
       {estCharge ? (
         <motion.div
           key="filtres"
@@ -105,9 +101,9 @@ const [filtres, setFiltres] = useState([]);
       ) : (
         ""
       )}
-      {/* ce conditionnel fait que lanimation load bien */}
+      {/* ce conditionnel fait que l'animation load bien */}
       {estCharge ? (
-        
+        listeVoitures.length > 0 ? (
         <motion.div
           key="liste"
           initial="hidden"
@@ -118,8 +114,11 @@ const [filtres, setFiltres] = useState([]);
         >
           {tuileVoiture}
         </motion.div>
+        ) : (
+          <div>{t('err_filtres')}</div>
+        )
       ) : (
-        ""
+        "Chargement..."
       )}
       
     </div>

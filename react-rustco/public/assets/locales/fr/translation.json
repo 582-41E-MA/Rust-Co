@@ -13,5 +13,6 @@
     "prix": "prix",
 
     "tous": "TOUS",
-    "filtrer" : "Filtrer"
+    "filtrer" : "Filtrer",
+    "err_filtres": "Aucune voiture ne correspond à votre recherche."
 }

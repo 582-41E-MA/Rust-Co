@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import './Filtres.css';
 import modelesParMarque from '../../modelesParMarque.json'
-import i18next from 'i18next';
 import { t } from 'i18next';
 
 function Filtres(props) {
