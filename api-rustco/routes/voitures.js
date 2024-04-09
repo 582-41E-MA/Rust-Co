@@ -83,13 +83,13 @@ router.get("/:id", async (req, res) => {
 router.post("/",
     [
         //TODO: Refait la validation
-        check("marque").escape().trim().notEmpty().isString(),
-        check("annee").escape().trim().notEmpty().isNumeric(),
-        check("modele").escape().trim().notEmpty().isString(),
-        check("prix_achete").escape().trim().notEmpty().isString(),
-        check("description_en").escape().trim().notEmpty().isString(),
-        check("description_fr").escape().trim().notEmpty().isString(),
-        check("image").escape().trim().notEmpty().isString(),
+        // check("marque").escape().trim().notEmpty().isString(),
+        // check("annee").escape().trim().notEmpty().isNumeric(),
+        // check("modele").escape().trim().notEmpty().isString(),
+        // check("prix_achete").escape().trim().notEmpty().isString(),
+        // check("description_en").escape().trim().notEmpty().isString(),
+        // check("description_fr").escape().trim().notEmpty().isString(),
+        // check("image").escape().trim().notEmpty().isString(),
     ],
     
     async (req, res) => {
@@ -98,9 +98,14 @@ router.post("/",
         const donneesConditions = await db.collection("conditions").get();
         const tableauConditions = [];
 
-        donneesConditions.forEach((condition)=>{
-            tableauConditions.push(condition.data());
+        /**
+         * Vérification de la condition 
+         * TODO: Finir la validation
+         */
+        validationConditions.forEach((condition)=>{
+            // tableauConditions.push(condition.data());
         })
+        
 
         if (validation.errors.length > 0) {
             res.statusCode = 400;
@@ -126,21 +131,21 @@ router.post("/",
                 voiture.prix_achete = req.body.prix_achete;
                 voiture.description = [req.body.description_en, req.body.description_fr];
                 voiture.image = req.body.image;
-                voiture.Conditions_id = req.body.Conditions_id;
+                voiture.condition = req.body.condition;
 
                 await db.collection("voitures").doc(docRef.id).update(voiture);
 
-            })
+            })        
             .catch(function(error) {
                 res.statusCode = 500;
-                res.json({message: "error"})
+                return res.json({message: "error"})
             });
-        
+
             res.statusCode = 201;
             res.json({message: "La donnée a été ajoutée"});
         } catch {
             res.statusCode = 500;
-            res.json({message: "error"})
+            res.json({message: "error 2"})
         }
     }
 );
@@ -149,13 +154,13 @@ router.post("/",
 //MODIFICATION
 //TODO:Validation de Conditions_id
 router.put("/:id", [
-    check("marque").escape().trim().notEmpty().isString(),
-    check("annee").escape().trim().notEmpty().isNumeric(),
-    check("modele").escape().trim().notEmpty().isString(),
-    check("prix_achete").escape().trim().notEmpty().isString(),
-    check("description_en").escape().trim().notEmpty().isString(),
-    check("description_fr").escape().trim().notEmpty().isString(),
-    check("image").escape().trim().notEmpty().isString(),
+    // check("marque").escape().trim().notEmpty().isString(),
+    // check("annee").escape().trim().notEmpty().isNumeric(),
+    // check("modele").escape().trim().notEmpty().isString(),
+    // check("prix_achete").escape().trim().notEmpty().isString(),
+    // check("description_en").escape().trim().notEmpty().isString(),
+    // check("description_fr").escape().trim().notEmpty().isString(),
+    // check("image").escape().trim().notEmpty().isString(),
 
 ], async (req, res)=>{
 
@@ -182,7 +187,7 @@ router.put("/:id", [
     voiture.prix_achete = req.body.prix_achete;
     voiture.description = [req.body.description_en, req.body.description_fr];
     voiture.image = req.body.image;
-    voiture.Conditions_id = req.body.Conditions_id;
+    voiture.condition = req.body.condition;
 
     await db.collection("voitures").doc(id).update(voiture);
     
