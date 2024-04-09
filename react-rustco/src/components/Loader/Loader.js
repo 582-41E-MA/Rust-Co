@@ -1,5 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useEffect } from "react";
+import { motion, useAnimate } from 'framer-motion';
+import "./Loader.css";
 
 const Loader = () => {
   const spinTransition = {
@@ -25,3 +27,34 @@ const Loader = () => {
 };
 
 export default Loader;
+
+// export default function Loader() {
+//     const [scope, animate] = useAnimate();
+  
+//     useEffect(() => {
+//       const containerWidth = document.querySelector(".container").offsetWidth;
+//       const animateLoader = async () => {
+//         await animate(
+//           [
+//             [scope.current, { x: 0, width: "100%" }],
+//             [scope.current, { x: containerWidth, width: "0%" }, { delay: 0.6 }]
+//           ],
+//           {
+//             duration: 2,
+//             repeat: Infinity,
+//             repeatDelay: 0.8
+//           }
+//         );
+//       };
+//       animateLoader();
+//     }, []);
+  
+//     return (
+//       <div className="container">
+//         <motion.div ref={scope} className="loader" />
+//         <h1 className="text text-lg">
+//           Loading ...
+//         </h1>
+//       </div>
+//     );
+//   }
