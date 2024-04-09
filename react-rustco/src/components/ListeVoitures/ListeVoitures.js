@@ -12,6 +12,7 @@ import './ListeVoitures.css';
 import Entete from "../Entete/Entete";
 import TuileVoiture from "../TuileVoiture/TuileVoiture";
 import Filtres from "../Filtres/Filtres";
+import Loader from "../Loader/Loader"
 import { t } from 'i18next';
 
 import { motion } from "framer-motion";
@@ -118,7 +119,7 @@ const [filtres, setFiltres] = useState([]);
           <div>{t('err_filtres')}</div>
         )
       ) : (
-        "Chargement..."
+        < Loader />
       )}
       
     </div>

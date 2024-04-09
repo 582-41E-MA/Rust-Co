@@ -17,6 +17,7 @@ import Politique from "../Politique/Politique";
 import APropos from "../APropos/APropos";
 import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
+import CreateUser from "../CreateUser/CreateUser";
 import './App.css';
 
 import { useTranslation} from 'react-i18next';
@@ -73,7 +74,6 @@ function App() {
      // console.log(jetonValide());
     }
     form.reset(); //pour vider le champ
-
   }
 
   function jetonValide() {
@@ -111,6 +111,7 @@ function App() {
               <Route path="/termes-et-conditions" element={<Termes />} />
               <Route path="/politique" element={<Politique />} />
               <Route path="/Voiture/:id" element={<Voiture />} />
+              <Route path="/create-user" element={<CreateUser />} />
             
             </Routes>
           </Router>

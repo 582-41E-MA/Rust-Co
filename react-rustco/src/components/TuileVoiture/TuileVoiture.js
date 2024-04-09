@@ -1,7 +1,9 @@
 import i18next from 'i18next';
 import { t } from "i18next";
 
+
 import './TuileVoiture.css';
+import Loader from '../Loader/Loader';
 
 function TuileVoiture(props) {
   //console.log(props.data);
