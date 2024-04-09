@@ -2,3 +2,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.custom-button {
+  @apply px-4 py-2 bg-blue-500 text-white rounded-lg;
+}

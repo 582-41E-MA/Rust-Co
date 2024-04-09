@@ -12,5 +12,8 @@
     "modele": "Model",
     "prix": "Price",
 
-    "tous": "ALL"
+    "tous": "ALL",
+    "filtrer" : "Filter",
+    "err_filtres": "No cars correspond to your search"
+
 }
