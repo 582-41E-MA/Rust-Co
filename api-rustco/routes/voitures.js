@@ -102,9 +102,9 @@ router.post("/",
          * Vérification de la condition 
          * TODO: Finir la validation
          */
-        validationConditions.forEach((condition)=>{
-            // tableauConditions.push(condition.data());
-        })
+        // validationConditions.forEach((condition)=>{
+        //     // tableauConditions.push(condition.data());
+        // })
         
 
         if (validation.errors.length > 0) {
