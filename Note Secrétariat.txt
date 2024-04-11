@@ -39,11 +39,11 @@ Secrétariat:
 Étape 2: Assigner les responsabilitées
 
 Gestionnaire Git (Merge, Pull request)⤵				   Maquette Graphique
-									                    Fabien Turgeon ⤶
+									    Fabien Turgeon ⤶
 Gestion du projet(Gestion des sprints)⤴
 
 BackEnd API-Node.Js⤵
-				    Gabriel Plouffe
+				Gabriel Plouffe
 Modelisation DB⤴ 
 
 FrontEnd React.Js -> Paul Dawson
@@ -109,25 +109,42 @@ C.3: En tant qu'admin je veux que le site utilise un framework react moderne(nex
 		
 -Sprint 1:
 
-FrontEnd 
-		Maquette CSS des pages principal,
-		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
+FrontEnd - Paul
+			4 avril : 2h
+			6 avril: 7h
+			7 avril : 10h
+			8 avril: 3h
+			9 avril: 4h
+
+		Créer le projet react
+		Création des components: 
+			Entête, 
+			Accueil, 
+			Liste de voitures, 
+			À Propos, 
+			Termes et conditions, 
+			Politique de confidentialité, 
+			Admin,
+			Footer
+		Création des routes
+		Création des formulaires create-voiture et create-user
 		Implémenter i18next (Internationalization)
 		Login et connection avec Backend
-BackEnd
-		Finition DB - Gabriel (<1h)
+			
+BackEnd - Gabriel
+		Finition DB (<1h)
 		Création mockVehicule.JSON/mockUser.JSON (1h)
-		Création de la structure de l'API - Gabriel (<2h)
-		Création de la db sur Firebase - Gabriel (2h)
-			sous-issues
+		Création de la structure de l'API (<2h)
+		Création de la db sur Firebase (2h)
 		Implémenter sur Render - (<1h)
-Design: 
+Design - Fabien
 		Moodboard (3h)
 		Logo (2h)
+		Icon (1h)
 		Typographie (2h)
 		Couleur (2h)
 		Maquette (1h)
-Github
+Github - Fabien
 		Création des tâches (1h)
 		Assignation des sprints (2h)
 		Assignation des tâches (2h)
@@ -139,6 +156,7 @@ FrontEnd
 		Approfondire les components crée(Préparation de l'Authentification)
 		Création des components: À propos de nous, Nous contacter, Politiques de vente, Page de connexion et Compte client.
 		Gestion des messages d'erreur(Validation)
+		Création d'image de produit
 
 BackEnd
 		Finition du CRUD
