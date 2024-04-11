@@ -122,12 +122,15 @@ BackEnd
 			sous-issues
 		Implémenter sur Render - (<1h)
 Design: 
-		Moodboard
-		Maquette Graphique
+		Moodboard (3h)
+		Logo (2h)
+		Typographie (2h)
+		Couleur (2h)
+		Maquette (1h)
 Github
-		Création des tâches
-		Assignation des sprints
-		Assignation des tâches
+		Création des tâches (1h)
+		Assignation des sprints (2h)
+		Assignation des tâches (2h)
 
 -Sprint 2:
 
