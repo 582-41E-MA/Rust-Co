@@ -18,6 +18,7 @@ import APropos from "../APropos/APropos";
 import Login from "../Login/Login";
 import Signup from "../Signup/Signup";
 import CreateUser from "../CreateUser/CreateUser";
+import Admin from "../Admin/Admin";
 import CreateVoiture from "../CreateVoiture/CreateVoiture";
 import './App.css';
 
@@ -113,6 +114,7 @@ function App() {
               <Route path="/Voiture/:id" element={<Voiture />} />
               <Route path="/create-user" element={<CreateUser />} />
               <Route path="/create-voiture" element={<CreateVoiture />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </Router>
         </main>

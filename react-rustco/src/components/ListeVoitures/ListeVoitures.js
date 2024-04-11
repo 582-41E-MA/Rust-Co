@@ -53,7 +53,7 @@ const [filtres, setFiltres] = useState([]);
   }, [filtres]); //une seule fois lors du premier rendu quand on met un [] ici. sinon la var dans le [] est ce qui est ecoute pour changer
   // on peut passer dans ce array les variable pour ecoutee, dans ce cas filtres change
 
-  console.log(listeVoitures);
+  //console.log(listeVoitures);
 
   const tuileVoiture = listeVoitures.map((voiture, index) => {
     return (

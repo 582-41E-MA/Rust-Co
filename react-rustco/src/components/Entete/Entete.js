@@ -40,7 +40,7 @@ function Entete(props) {
         <div className="header-left flex space-x-8">
           <ul className="header-ul-left flex space-x-8">
             <li><a href="/login" className="hover:text-orange-100">{t('connexion_menu')}</a></li>
-            <li><a href="/create-voiture" className="hover:text-orange-100">Create voiture</a></li>
+            <li><a href="/admin" className="hover:text-orange-100">Admin</a></li>
           </ul>
           {/* <LangBtn lang={lang}/> */}
           <div onClick={() => {toggleLang(); i18next.changeLanguage(lang == 'fr' ? 'en' : 'fr')}} className='lang-btn w-6 hover:cursor-pointer'>
