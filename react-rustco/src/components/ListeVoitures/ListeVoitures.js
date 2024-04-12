@@ -57,7 +57,7 @@ const [filtres, setFiltres] = useState([]);
 
   const tuileVoiture = listeVoitures.map((voiture, index) => {
     return (
-      <Link to={`/voiture/${voiture.id}`} key={index}>
+      <Link to={`/voiture/${voiture.id.trim()}`} key={index}>
         <TuileVoiture data={voiture} />  
       </Link>
     ); 
