@@ -6,6 +6,10 @@ function UtilisateursTable(props){
      const urlListeUtilisateurs = "https://rustandco.onrender.com/api/utilisateurs";
      const [listeUtilisateurs, setListeUtilisateurs] = useState([]);
 
+     const estEmploye = props.userType == 'employe';
+
+     
+
     useEffect(() => {
         // useEffect est juste quand il y a CHANGEMENT
         fetch(urlListeUtilisateurs)
@@ -75,10 +79,20 @@ function UtilisateursTable(props){
     ); 
   });
 
+//   if(utilisateur.privilege == "employe"){
+//     return(
+//         <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
+//     )
+//   }
+
 
     return (
         <div>
-            <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
+
+            {estEmploye && (
+                <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
+            )}
+
             <table className="employes-table mt-5">
                 <thead>
                     <tr>
