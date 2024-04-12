@@ -1,33 +1,33 @@
 import { useState, useEffect } from "react";
-import './VoituresTable.css'
+import './UtilisateursTable.css'
 
-function VoituresTable(){
+function UtilisateursTable(props){
 
-    const urlListeVoitures = "https://rustandco.onrender.com/api/voitures";
-    const [listeVoitures, setListeVoitures] = useState([]);
+     const urlListeUtilisateurs = "https://rustandco.onrender.com/api/utilisateurs";
+     const [listeUtilisateurs, setListeUtilisateurs] = useState([]);
 
     useEffect(() => {
         // useEffect est juste quand il y a CHANGEMENT
-        fetch(urlListeVoitures)
+        fetch(urlListeUtilisateurs)
           .then((reponse) => reponse.json())
           .then((data) => {
-            setListeVoitures(data)
+            setListeUtilisateurs(data)
           });
       }, []);
       
 
-    /// DELETE
+//     /// DELETE
 
-    function deleteVoiture(id){
+    function deleteUtilisateur(id){
 
         const bonId = id.trim();
 
-        fetch(`${urlListeVoitures}/${bonId}`, {
+        fetch(`${urlListeUtilisateurs}/${bonId}`, {
             method: 'DELETE',
         })
         .then((reponse) => {
             if (reponse.ok) { 
-                setListeVoitures(listeVoitures.filter(voiture => voiture.id !== id));
+                setListeUtilisateurs(listeUtilisateurs.filter(utilisateur => utilisateur.id !== id));
             } 
         })
         .catch((error) => {
@@ -36,48 +36,50 @@ function VoituresTable(){
     };
 
 
-///////////////////////////////////////////
+// ///////////////////////////////////////////
 
 
-  const liVoiture = listeVoitures.map((voiture, index) => {
+  const liUtilisateur = listeUtilisateurs.map((utilisateur, index) => {
+    if(utilisateur.privilege == props.userType)
     return (
        <tr>
         <td>
-            {voiture.id}
+            {utilisateur.id}
         </td>
         <td>
-            {voiture.marque}
+            {utilisateur.marque}
         </td>
         <td>
-            {voiture.modele}
+            {utilisateur.modele}
         </td>
         <td>
-            {voiture.annee}
+            {utilisateur.annee}
         </td>
         <td>
-            {voiture.condition}
+            {utilisateur.condition}
         </td>
         <td>
-            {voiture.Commandes_id}
+            {utilisateur.Commandes_id}
         </td>
         <td>
-            {voiture.prix_paye}
+            {utilisateur.prix_paye}
         </td>
         <td>
-            {voiture.prix_achete}
+            {utilisateur.prix_achete}
         </td>
         <td className="flex border-none justify-around">
             <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png"></img>
-            <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteVoiture(voiture.id); }}></img>
+            <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteUtilisateur(utilisateur.id); }}></img>
         </td>
       </tr> 
     ); 
   });
 
+
     return (
         <div>
-            <a href="/create-voiture"><button className="custom-button mt-5">+ Créer une Voiture</button></a>
-            <table className="voitures-table mt-5">
+            <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
+            <table className="employes-table mt-5">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -92,13 +94,13 @@ function VoituresTable(){
                     </tr>
                 </thead>
                 <tbody>
-                    {liVoiture}
+                    {liUtilisateur}
                 </tbody>  
-            </table>
+            </table> 
         </div>
         
     )
 
 }
 
-export default VoituresTable;
+export default UtilisateursTable;

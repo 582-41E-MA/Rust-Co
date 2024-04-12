@@ -1,8 +1,8 @@
 import './Admin.css';
 import React, { useState } from 'react';
 import VoituresTable from '../VoituresTable/VoituresTable'
-import EmployesTable from '../EmployesTable/EmployesTable'
-import UsersTable from '../UsersTable/UsersTable'
+import UtilisateursTable from '../UtilisateursTable/UtilisateursTable'
+
 
 
 function Admin(){
@@ -11,15 +11,15 @@ function Admin(){
     const [table, setTable] = useState('');
     const showVoitures = () => setTable('Voitures');
     const showEmployes = () => setTable('Employes');
-    const showUsers = () => setTable('Users');
+    const showClients = () => setTable('Clients');
     const renderTable = () => {
         switch (table) {
             case 'Voitures':
                 return <VoituresTable />;
             case 'Employes':
-                return <EmployesTable />;
-            case 'Users':
-                return <UsersTable />;
+                return <UtilisateursTable userType={"employe"}/>;
+            case 'Clients':
+                return <UtilisateursTable userType={"client"}/>;
             default:
                 return <div></div>; 
         }
@@ -27,15 +27,12 @@ function Admin(){
 /////////////////////////////////////////////////////////////////
 
 
-
-
     return (
         <div>
-            <p>Admin</p>
-
-            <button className='custom-button mr-5' onClick={showVoitures}>Edit Voitures</button>
-            <button className='custom-button mr-5' onClick={showEmployes}>Edit Employes</button>
-            <button className='custom-button mr-5' onClick={showUsers}>Edit Users</button>
+            <h1 className='text-2xl'>Bienvenue sur votre page d'administrateur</h1><br></br>
+            <button className='custom-button mr-5 mb-5' onClick={showVoitures}>Edit Voitures</button>
+            <button className='custom-button mr-5 mb-5' onClick={showEmployes}>Edit Employes</button>
+            <button className='custom-button mr-5 mb-5' onClick={showClients}>Edit Clients</button>
             <div className='tables'>
                 {renderTable()}
             </div>
