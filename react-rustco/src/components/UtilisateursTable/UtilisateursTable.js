@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import './UtilisateursTable.css'
+import CreateUser from "../CreateUser/CreateUser";
 
 function UtilisateursTable(props){
 
@@ -7,6 +8,15 @@ function UtilisateursTable(props){
      const [listeUtilisateurs, setListeUtilisateurs] = useState([]);
 
      const estEmploye = props.userType == 'employe';
+
+
+     const [createUser, setCreateUser] = useState(false);
+
+    // Handler for button click
+    const handleClick = () => {
+        setCreateUser(true);
+    };
+
 
      
 
@@ -46,7 +56,7 @@ function UtilisateursTable(props){
   const liUtilisateur = listeUtilisateurs.map((utilisateur, index) => {
     if(utilisateur.privilege == props.userType)
     return (
-       <tr>
+       <tr key={index}>
         <td>
             {utilisateur.id}
         </td>
@@ -85,36 +95,37 @@ function UtilisateursTable(props){
 //     )
 //   }
 
-
     return (
-        <div>
+        createUser ? (
+            <CreateUser userType="employe" />
+        ) : (
+            <div>
+                {estEmploye && (
+                    <button className="custom-button mt-5" onClick={handleClick}>+ Créer un Employé</button>
+                )}
 
-            {estEmploye && (
-                <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
-            )}
-
-            <table className="employes-table mt-5">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Marque</th>
-                        <th>Modele</th>
-                        <th>Annee</th>
-                        <th>Condition</th>
-                        <th>Commandes_id</th>
-                        <th>prix_paye</th>
-                        <th>prix_achete</th>
-                        <th>Opérations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {liUtilisateur}
-                </tbody>  
-            </table> 
-        </div>
-        
-    )
-
+                <table className="employes-table mt-5">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Marque</th>
+                            <th>Modele</th>
+                            <th>Annee</th>
+                            <th>Condition</th>
+                            <th>Commandes_id</th>
+                            <th>prix_paye</th>
+                            <th>prix_achete</th>
+                            <th>Opérations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* Assuming liUtilisateur is correctly defined elsewhere in your component */}
+                        {liUtilisateur}
+                    </tbody>  
+                </table> 
+            </div>
+        )
+    );
 }
 
 export default UtilisateursTable;

@@ -25,7 +25,7 @@ function Login(props) {
         <button className="custom-button">Connexion</button>
       </form>
       <p>
-        Vous n'avez pas encore de compte? créez en un <a className="text-blue-500 font-bold" href="/create-user">ICI</a>.
+        Vous n'avez pas encore de compte? créez en un <a className="text-blue-500 font-bold text-xl" href="/create-user">ICI</a>.
       </p>
     </div>
   );

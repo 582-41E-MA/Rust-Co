@@ -41,7 +41,7 @@ function VoituresTable(){
 
   const liVoiture = listeVoitures.map((voiture, index) => {
     return (
-       <tr>
+       <tr key={index}>
         <td>
             {voiture.id}
         </td>
