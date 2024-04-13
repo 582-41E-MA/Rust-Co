@@ -1,10 +1,24 @@
 import { useState, useEffect } from "react";
 import './UtilisateursTable.css'
+import CreateUser from "../CreateUser/CreateUser";
 
 function UtilisateursTable(props){
 
      const urlListeUtilisateurs = "https://rustandco.onrender.com/api/utilisateurs";
      const [listeUtilisateurs, setListeUtilisateurs] = useState([]);
+
+     const estEmploye = props.userType == 'employe';
+
+
+     const [createUser, setCreateUser] = useState(false);
+
+    // Handler for button click
+    const handleClick = () => {
+        setCreateUser(true);
+    };
+
+
+     
 
     useEffect(() => {
         // useEffect est juste quand il y a CHANGEMENT
@@ -42,7 +56,7 @@ function UtilisateursTable(props){
   const liUtilisateur = listeUtilisateurs.map((utilisateur, index) => {
     if(utilisateur.privilege == props.userType)
     return (
-       <tr>
+       <tr key={index}>
         <td>
             {utilisateur.id}
         </td>
@@ -75,32 +89,43 @@ function UtilisateursTable(props){
     ); 
   });
 
+//   if(utilisateur.privilege == "employe"){
+//     return(
+//         <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
+//     )
+//   }
 
     return (
-        <div>
-            <a href="#"><button className="custom-button mt-5">+ Créer une Employe</button></a>
-            <table className="employes-table mt-5">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Marque</th>
-                        <th>Modele</th>
-                        <th>Annee</th>
-                        <th>Condition</th>
-                        <th>Commandes_id</th>
-                        <th>prix_paye</th>
-                        <th>prix_achete</th>
-                        <th>Opérations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {liUtilisateur}
-                </tbody>  
-            </table> 
-        </div>
-        
-    )
+        createUser ? (
+            <CreateUser userType="employe" />
+        ) : (
+            <div>
+                {estEmploye && (
+                    <button className="custom-button mt-5" onClick={handleClick}>+ Créer un Employé</button>
+                )}
 
+                <table className="employes-table mt-5">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Marque</th>
+                            <th>Modele</th>
+                            <th>Annee</th>
+                            <th>Condition</th>
+                            <th>Commandes_id</th>
+                            <th>prix_paye</th>
+                            <th>prix_achete</th>
+                            <th>Opérations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {/* Assuming liUtilisateur is correctly defined elsewhere in your component */}
+                        {liUtilisateur}
+                    </tbody>  
+                </table> 
+            </div>
+        )
+    );
 }
 
 export default UtilisateursTable;
