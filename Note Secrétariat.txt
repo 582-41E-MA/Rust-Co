@@ -150,16 +150,18 @@ Github - Fabien
 -Sprint 2:
 
 FrontEnd - Paul
-		Admin CRM: Employé(e)s, Voitures et clients(Show, Edit, Delete)
+		Admin CRM: Employé(e)s, Voitures et clients(Create, Show, Edit, Delete)
 		Employé(e)s CRM: Voitures et clients(Show, Edit, Delete)
 		Intégration du Design
 		Gestion des messages d'erreur(Validation)
 		Authentification des routes
 		Login
+		Systeme d'ajout image
 		Création Panier 
 		Création Facturation
 
 BackEnd - Gabriel
+		Ajout Employés et Clients dans la DB
 		Assigner les privileges
 		Authentification(JWT)
 		Gestion des routes(Authentification)
@@ -171,6 +173,8 @@ Design - Fabien
 		Maquette Graphique détaillée 
 		Présentation Sprint 2
 		Création d'image de produit
+		Custom burger
+		Dossier logo compagnie
 
 -Sprint 3:
 
@@ -183,7 +187,7 @@ FrontEnd
 		Stripe Checkout(Fabien)
 
 BackEnd
-		Adaptaion finale avec FrontEnd
+		
 
 Design - Fabien
 		Présentation Sprint 3
