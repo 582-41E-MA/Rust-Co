@@ -129,9 +129,11 @@ router.post("/",
                 voiture.annee = req.body.annee;
                 voiture.modele = req.body.modele;
                 voiture.prix_achete = req.body.prix_achete;
+                voiture.profit = req.body.profit;
                 voiture.description = [req.body.description_en, req.body.description_fr];
                 voiture.image = req.body.image;
                 voiture.condition = req.body.condition;
+                voiture.reserve = "false";
 
                 await db.collection("voitures").doc(docRef.id).update(voiture);
 
@@ -185,6 +187,7 @@ router.put("/:id", [
     voiture.annee = req.body.annee;
     voiture.modele = req.body.modele;
     voiture.prix_achete = req.body.prix_achete;
+    voiture.profit = req.body.profit;
     voiture.description = [req.body.description_en, req.body.description_fr];
     voiture.image = req.body.image;
     voiture.condition = req.body.condition;
