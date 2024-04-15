@@ -138,16 +138,12 @@ router.post("/",
                 await db.collection("voitures").doc(docRef.id).update(voiture);
 
             })        
-            .catch(function(error) {
-                res.statusCode = 500;
-                return res.json({message: "error"})
-            });
 
             res.statusCode = 201;
             res.json({message: "La donnée a été ajoutée"});
         } catch {
             res.statusCode = 500;
-            res.json({message: "error 2"})
+            res.json({message: "error"})
         }
     }
 );
