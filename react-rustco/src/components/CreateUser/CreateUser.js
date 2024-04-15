@@ -67,6 +67,7 @@ console.log(props);
                 <div>
                     <label htmlFor="province">Province:</label>
                     <select id="province" name="province">
+                        <option value='' disabled selected>Select a province</option>
                         <option value="alberta">Alberta</option>
                         <option value="colombie-britannique">Colombie-Britannique</option>
                         <option value="manitoba">Manitoba</option>
