@@ -129,8 +129,6 @@ FrontEnd - Paul
 		Création des routes
 		Création des formulaires create-voiture et create-user
 		Implémenter i18next (Internationalization)
-		Login et connection avec Backend
-			
 BackEnd - Gabriel
 		Finition DB (<1h)
 		Création mockVehicule.JSON/mockUser.JSON (1h)
@@ -151,21 +149,32 @@ Github - Fabien
 
 -Sprint 2:
 
-FrontEnd 
+FrontEnd - Paul
+		Admin CRM: Employé(e)s, Voitures et clients(Create, Show, Edit, Delete)
+		Employé(e)s CRM: Voitures et clients(Show, Edit, Delete)
 		Intégration du Design
-		Approfondire les components crée(Préparation de l'Authentification)
-		Création des components: À propos de nous, Nous contacter, Politiques de vente, Page de connexion et Compte client.
 		Gestion des messages d'erreur(Validation)
-		Création d'image de produit
+		Authentification des routes
+		Login
+		Systeme d'ajout image
+		Création Panier 
+		Création Checkout
 
-BackEnd
-		Finition du CRUD
+BackEnd - Gabriel
+		Ajout Employés et Clients dans la DB
+		Assigner les privileges
 		Authentification(JWT)
 		Gestion des routes(Authentification)
+		Middleware Auth
 		Validation Login et connection avec React
+		Création des tables Commande, Facturation et Reservation
 
-Github 
-	  	Testing		
+Design - Fabien
+		Maquette Graphique détaillée 
+		Présentation Sprint 2
+		Création d'image de produit
+		Custom burger
+		Dossier logo compagnie
 
 -Sprint 3:
 
@@ -178,11 +187,10 @@ FrontEnd
 		Stripe Checkout(Fabien)
 
 BackEnd
-		Validation des forms
-		Adaptaion finale avec FrontEnd
+		
 
-Framework
-		Intégration Next.JS (Maybe)
+Design - Fabien
+		Présentation Sprint 3
 
 
 ------------------------------------------------

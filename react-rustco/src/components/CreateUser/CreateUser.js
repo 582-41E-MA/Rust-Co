@@ -1,10 +1,32 @@
 import './CreateUser.css'
 
-function CreateUser(){
+function CreateUser(props){
+console.log(props);
+
+    function test(e){
+        e.preventDefault();
+        const formData = new FormData(e.target)
+        const data = {};
+        for (let key of formData.keys()) {
+            data[key] = formData.get(key);
+        }
+        console.log(data);
+    }
+
+    function titreCreate(){
+        if(props.userType == "employe"){
+            return(<h1 className='text-4xl font-bold'>Créer Employé</h1>)
+        }else{
+            return(<h1 className='text-4xl font-bold'>Créer Compte Client</h1>)
+        }
+    }
+
+    
+    
     return(
         <div>
-            <h1 className='text-4xl font-bold'>Create Client</h1>
-            <form className='form-create-user'>
+            {titreCreate()}
+            <form className='form-create-user' onSubmit={test}>
                 <div className='mt-5'>
                     <label htmlFor="username">Username:</label>
                     <input type="text" id="username" name="username" />
@@ -61,9 +83,9 @@ function CreateUser(){
                     </select> 
                 </div>
                 <br></br>
-                <div>
+                <div className='hidden'>
                     <label htmlFor="privilege">Privilege:</label>
-                    <select id="privilege" name="privilege">
+                    <select id="privilege" name="privilege" value={props.userType ? props.userType : 'client'}>
                         <option value="employe">Employe</option>
                         <option value="client">Client</option>
                     </select>
