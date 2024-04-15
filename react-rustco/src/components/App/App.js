@@ -20,6 +20,7 @@ import Signup from "../Signup/Signup";
 import CreateUser from "../CreateUser/CreateUser";
 import Admin from "../Admin/Admin";
 import CreateVoiture from "../CreateVoiture/CreateVoiture";
+import Panier from "../Panier/Panier";
 import './App.css';
 
 import { useTranslation} from 'react-i18next';
@@ -115,6 +116,7 @@ function App() {
               <Route path="/create-user" element={<CreateUser />} />
               <Route path="/create-voiture" element={<CreateVoiture />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/panier" element={<Panier />} />
             </Routes>
           </Router>
         </main>
