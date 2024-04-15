@@ -35,20 +35,20 @@ function CreateVoiture(props){
     };
 
     async function handleSubmit(event){
-        event.preventDefault();
-        const formDataToSend = new FormData();
-        for (const key in formData) {
-            formDataToSend.append(key, formData[key]);
-            console.log(key, formData[key]);
-        }
+        event.preventDefault(); 
+
         try {
-            console.log(formDataToSend);
+      
             const reponse = await fetch('https://rustandco.onrender.com/api/voitures', {
                 method: 'POST',
-                body: formDataToSend
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
             });
+            console.log(reponse);
             if (!reponse.ok) throw new Error('Network response was not ok.');
-            // Handle response here
+          
             console.log('Data successfully sent to the server');
         } catch (error) {
             console.error('Error:', error);
@@ -155,7 +155,7 @@ function CreateVoiture(props){
 
                 <div>
                     <label for="image">Image : </label>
-                    <input type='file' id="image" name="image" value={formData.image} onChange={handleInputChange}/>
+                    <input type='file' id="image" name="image" filename={formData.image} onChange={handleInputChange}/>
                 </div>
 
                 <br></br>
