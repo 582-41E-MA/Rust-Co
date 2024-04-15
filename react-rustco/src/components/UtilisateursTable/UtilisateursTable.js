@@ -17,6 +17,13 @@ function UtilisateursTable(props){
         setCreateUser(true);
     };
 
+    // pour reset les butons de nav admin quand sur form create employe
+    const navBtns= document.querySelectorAll('.admin-edit');
+    for(let i = 0; i < navBtns.length; i++){
+        navBtns[i].addEventListener('click', function(){
+            setCreateUser(false)
+        })
+    }
 
      
 
@@ -25,7 +32,8 @@ function UtilisateursTable(props){
         fetch(urlListeUtilisateurs)
           .then((reponse) => reponse.json())
           .then((data) => {
-            setListeUtilisateurs(data)
+            setListeUtilisateurs(data);
+            setCreateUser(false);
           });
       }, []);
       

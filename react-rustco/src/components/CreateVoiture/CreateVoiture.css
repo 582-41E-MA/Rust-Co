@@ -1,0 +1,7 @@
+.textarea{
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 400px;
+    height: 200px
+}
