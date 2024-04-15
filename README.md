@@ -158,7 +158,7 @@ FrontEnd - Paul
 		Login
 		Systeme d'ajout image
 		Création Panier 
-		Création Facturation
+		Création Checkout
 
 BackEnd - Gabriel
 		Ajout Employés et Clients dans la DB
