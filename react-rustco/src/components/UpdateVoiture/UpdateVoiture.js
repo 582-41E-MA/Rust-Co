@@ -93,9 +93,6 @@ function UpdateVoiture(){
 
     async function handleSubmit(e){
         e.preventDefault(); 
-
-     
-
         console.log(formData);
         // try {
         //     const reponse = await fetch(`https://rustandco.onrender.com/api/voitures/${id}`, {
@@ -137,7 +134,6 @@ function UpdateVoiture(){
             const capitalizeFirst = (string) => {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             };
-
             ///////////////////////////////////////////////////////////////////////////////////////////
 
 
