@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db.js");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const auth = require("../middlewares/auth.js");
 const { check, validationResult } = require("express-validator");
 
 
@@ -98,11 +100,11 @@ router.post("/",
         // }
 
         //Récupe info du body
-        const {username, password} = req.body;
+        const {courriel, password} = req.body;
 
         //Vérifie si courriel existe 
         //Met le username en minuscule car les nom d'utilisateurs sont en minuscule dans la db. C'est fait comme ça car sinon, il croit que "volf" n'est pas égale à "Volf"
-        const docRef = await db.collection("utilisateurs").where("username", "==", username.toLowerCase()).get();
+        const docRef = await db.collection("utilisateurs").where("courriel", "==", courriel).get();
         const utilisateurs = [];
 
         docRef.forEach((doc)=>{
@@ -112,7 +114,7 @@ router.post("/",
         //Si oui, erreur
         if (utilisateurs.length > 0) {
             res.statusCode = 400;
-            return res.json({message: "Le nom d'utilisateur est déjà utilisé"});
+            return res.json({message: "Le courriel est déjà utilisé"});
         }
 
         //Encrypte le mot de passe
@@ -186,14 +188,14 @@ router.put("/:id",
         const idUtilisateur = req.params.id;
 
         //Récupe info du body
-        const {username, password} = req.body;
+        const {courriel, password} = req.body;
 
         
         const oldUserData = await db.collection("utilisateurs").doc(idUtilisateur).get();
 
         //Vérifie si courriel existe 
         //Met le username en minuscule car les nom d'utilisateurs sont en minuscule dans la db. C'est fait comme ça car sinon, il croit que "volf" n'est pas égale à "Volf"
-        const docRef = await db.collection("utilisateurs").where("username", "==", username.toLowerCase()).get();
+        const docRef = await db.collection("utilisateurs").where("courriel", "==", courriel).get();
         const utilisateurs = [];
 
         docRef.forEach((doc)=>{
@@ -202,7 +204,7 @@ router.put("/:id",
 
         //Check si le nom d'utilisateur n'est pas identique à un autre utilisateur et qu'il n'est pas le même que celui avant la modification
         //Si oui, erreur
-        if (utilisateurs.length > 0 && username.toLowerCase() !== oldUserData.data().username) {
+        if (utilisateurs.length > 0 && courriel !== oldUserData.data().courriel) {
             res.statusCode = 400;
             return res.json({message: "Le nom d'utilisateur est déjà utilisé"});
         }
@@ -247,6 +249,61 @@ router.delete("/:id", async (req, res)=>{
     const resultat = await db.collection("utilisateurs").doc(idUtilisateur).delete();
 
     res.json("La donnée a été supprimé");
+});
+
+//-------------------------------------------------------------------------------------
+
+//CONNEXION
+router.post("/connexion", async (req, res)=>{
+
+    //Récupe info du body
+    const {courriel, password} = req.body;
+
+    //Vérifie si courriel existe
+    const docRef = await db.collection("utilisateurs").where("courriel", "==", courriel).get();
+    const utilisateurs = [];
+    docRef.forEach((utilisateur)=>{
+        utilisateurs.push({ id: utilisateur.id, ...utilisateur.data()});
+    })
+
+    //Si il n'y en a aucun, erreur
+    if (utilisateurs.length == 0) {
+        res.statusCode = 400;
+        return res.json({message: "Le courriel n'existe pas"});
+    }
+
+    const utilisateurAValider = utilisateurs[0];
+    const estValide = await bcrypt.compare(password, utilisateurAValider.password)
+
+    //compare
+    if (estValide === false){
+        res.statusCode = 400;
+        return res.json({message: "Mot de passe incorrecte"});
+    }
+
+    //Retourne les infos de l'utilisateur sans le mot de passe
+    delete utilisateurs[0].mdp;
+
+    //Données à passer au front-end sur l'utilisateur
+    const donneesJeton = {
+        id: utilisateurs[0].id,
+        courriel: utilisateurs[0].courriel,
+        privilege: utilisateurs[0].privilege
+    }
+
+    //Options d'expirations 1d = 1 day
+    const option = {
+        expiresIn: "1d"
+    }
+
+    console.log(donneesJeton)
+    
+    //Génération du jeton
+    const jeton = jwt.sign( donneesJeton, process.env.JWT_SECRET, option );
+    
+    res.statusCode = 200;
+    res.json(jeton);
+
 });
 
 module.exports = router;
