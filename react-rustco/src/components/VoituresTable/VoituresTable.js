@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import './VoituresTable.css'
 
 function VoituresTable(){
 
     const urlListeVoitures = "https://rustandco.onrender.com/api/voitures";
     const [listeVoitures, setListeVoitures] = useState([]);
+    const [editVoitureToggle, setEditVoitureToggle] = useState(false);
 
     useEffect(() => {
         // useEffect est juste quand il y a CHANGEMENT
@@ -40,6 +42,7 @@ function VoituresTable(){
 
 
   const liVoiture = listeVoitures.map((voiture, index) => {
+   // console.log(voiture);
     return (
        <tr key={index}>
         <td>
@@ -58,16 +61,15 @@ function VoituresTable(){
             {voiture.condition}
         </td>
         <td>
-            {voiture.Commandes_id}
-        </td>
-        <td>
-            {voiture.prix_paye}
-        </td>
-        <td>
             {voiture.prix_achete}
         </td>
+        <td>
+            {voiture.profit}
+        </td>
         <td className="flex border-none justify-around">
-            <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png"></img>
+            {/* <Link to={`/update-voiture/${voiture.id.trim()}`}> */}
+                <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png" onClick={()=>{setEditVoitureToggle(true)}}/>
+                {/* </Link> */}
             <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteVoiture(voiture.id); }}></img>
         </td>
       </tr> 
@@ -77,6 +79,9 @@ function VoituresTable(){
     return (
         <div>
             <a href="/create-voiture"><button className="custom-button mt-5">+ Créer une Voiture</button></a>
+
+
+        {(!editVoitureToggle) ?
             <table className="voitures-table mt-5">
                 <thead>
                     <tr>
@@ -85,9 +90,8 @@ function VoituresTable(){
                         <th>Modele</th>
                         <th>Annee</th>
                         <th>Condition</th>
-                        <th>Commandes_id</th>
-                        <th>prix_paye</th>
-                        <th>prix_achete</th>
+                        <th>Prix à l'achat</th>
+                        <th>Profit (%)</th>
                         <th>Opérations</th>
                     </tr>
                 </thead>
@@ -95,6 +99,12 @@ function VoituresTable(){
                     {liVoiture}
                 </tbody>  
             </table>
+
+            : 
+            <div>hellllo</div>
+            }
+
+
         </div>
         
     )

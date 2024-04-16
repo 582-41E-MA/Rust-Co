@@ -20,6 +20,7 @@ import Signup from "../Signup/Signup";
 import CreateUser from "../CreateUser/CreateUser";
 import Admin from "../Admin/Admin";
 import CreateVoiture from "../CreateVoiture/CreateVoiture";
+import UpdateVoiture from "../UpdateVoiture/UpdateVoiture";
 import Panier from "../Panier/Panier";
 import './App.css';
 
@@ -115,6 +116,7 @@ function App() {
               <Route path="/Voiture/:id" element={<Voiture />} />
               <Route path="/create-user" element={<CreateUser />} />
               <Route path="/create-voiture" element={<CreateVoiture />} />
+              <Route path="/update-voiture/:id" element={<UpdateVoiture />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/panier" element={<Panier />} />
             </Routes>
