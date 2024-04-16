@@ -22,7 +22,7 @@ function Entete(props) {
         <div className="header-logo flex items-center">
           <a href="/" className="flex items-center">
             <img src="/logo/rustcologo-ps.png" alt="Rust&Co Logo" className="logo"/>
-            <span className="text-xl ml-2">Rust&Co</span>
+            <span className="text-2xl ml-2 logo-font">Rust&Co</span>
           </a>
         </div>
 
