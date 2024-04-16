@@ -68,24 +68,30 @@ function Voiture() {
 
   return (
     
-      <div className="voiture-container">
-        <img
+      <div className="voiture-container border p-6">
+        <div className="image">
+          <img
           src={`/img/${voiture?.image}`}
           alt={voiture?.id}
           className="imgSingle"
         />
-        <h1 id="titre-voiture">{voiture?.id}</h1>
-        <p>{voiture?.marque}</p>
-        <p>{voiture?.modele}</p>
-        <p>{voiture?.annee}</p>
-        <p>{voiture?.date_arrive}</p>
-        <p>{voiture?.condition}</p>
-        <p>{prixFinal} $</p>
-        <p>{langDescription}</p>
-
-    
-        {/* {btnDelete} */}
-
+        </div>
+        <div className="voiture-bottom flex justify-around">
+          <div className="descritption border">
+            <h1 id="titre-voiture">{voiture?.id}</h1>
+            <ul>
+              <li>Marque: {voiture?.marque}</li>
+              <li> Modele: {voiture?.modele}</li>
+              <li>Année: {voiture?.annee}</li>
+              <li>Condition: {voiture?.condition}</li>
+              <li>Prix: {prixFinal} $</li>
+              <li>Description: {langDescription}</li>
+            </ul>
+          </div>
+          <div className="actions border">
+            <button className="custom-button">Ajouter au Panier</button>
+          </div>
+        </div>
       </div>
     
 
