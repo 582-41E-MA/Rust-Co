@@ -139,7 +139,7 @@ function CreateVoiture(props){
                 </div>
 
                 <div>
-                    <label for="profit">Marge de profit : </label>
+                    <label for="profit">Marge de profit (%) : </label>
                     <input type='text' id="profit" name="profit" required maxLength={7} onChange={handleInputChange}/>
                 </div>
 
