@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db.js");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 const auth = require("../middlewares/auth.js");
 const { check, validationResult } = require("express-validator");
 
@@ -252,11 +253,57 @@ router.delete("/:id", async (req, res)=>{
 
 //-------------------------------------------------------------------------------------
 
-// //CONNEXION
-// router.post("/connexion", async (req, res)=>{
+//CONNEXION
+router.post("/connexion", async (req, res)=>{
 
-//     //Récupe info du body
-//     const {username, mdp} = req.body;
-// });
+    //Récupe info du body
+    const {courriel, password} = req.body;
+
+    //Vérifie si courriel existe
+    const docRef = await db.collection("utilisateurs").where("courriel", "==", courriel).get();
+    const utilisateurs = [];
+    docRef.forEach((utilisateur)=>{
+        utilisateurs.push({ id: utilisateur.id, ...utilisateur.data()});
+    })
+
+    //Si il n'y en a aucun, erreur
+    if (utilisateurs.length == 0) {
+        res.statusCode = 400;
+        return res.json({message: "Le courriel n'existe pas"});
+    }
+
+    const utilisateurAValider = utilisateurs[0];
+    const estValide = await bcrypt.compare(password, utilisateurAValider.password)
+
+    //compare
+    if (estValide === false){
+        res.statusCode = 400;
+        return res.json({message: "Mot de passe incorrecte"});
+    }
+
+    //Retourne les infos de l'utilisateur sans le mot de passe
+    delete utilisateurs[0].mdp;
+
+    //Données à passer au front-end sur l'utilisateur
+    const donneesJeton = {
+        id: utilisateurs[0].id,
+        courriel: utilisateurs[0].courriel,
+        privilege: utilisateurs[0].privilege
+    }
+
+    //Options d'expirations 1d = 1 day
+    const option = {
+        expiresIn: "1d"
+    }
+
+    console.log(donneesJeton)
+    
+    //Génération du jeton
+    const jeton = jwt.sign( donneesJeton, process.env.JWT_SECRET, option );
+    
+    res.statusCode = 200;
+    res.json(jeton);
+
+});
 
 module.exports = router;
