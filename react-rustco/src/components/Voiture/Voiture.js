@@ -55,6 +55,15 @@ function Voiture() {
       }
       
 
+      //////////AFFICHAGE DU VRAI PRIX///////////////
+      console.log(voiture.prix_achete, voiture.profit);
+      const prix = Number(voiture?.prix_achete);
+      const profit = Number(voiture?.profit);
+
+      const prixFinal = (prix*((100+profit)/100)).toFixed(2)
+      console.log(prixFinal);
+
+
 
 
   return (
@@ -70,8 +79,8 @@ function Voiture() {
         <p>{voiture?.modele}</p>
         <p>{voiture?.annee}</p>
         <p>{voiture?.date_arrive}</p>
-        <p>{voiture?.Conditions_id}</p>
-        <p>{voiture?.prix_paye*1.25}</p>
+        <p>{voiture?.condition}</p>
+        <p>{prixFinal} $</p>
         <p>{langDescription}</p>
 
     
