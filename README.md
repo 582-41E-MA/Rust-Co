@@ -129,12 +129,14 @@ FrontEnd - Paul
 		Création des routes
 		Création des formulaires create-voiture et create-user
 		Implémenter i18next (Internationalization)
+
 BackEnd - Gabriel
 		Finition DB (<1h)
 		Création mockVehicule.JSON/mockUser.JSON (1h)
 		Création de la structure de l'API (<2h)
 		Création de la db sur Firebase (2h)
 		Implémenter sur Render - (<1h)
+
 Design - Fabien
 		Moodboard (3h)
 		Logo (2h)
@@ -142,6 +144,7 @@ Design - Fabien
 		Typographie (2h)
 		Couleur (2h)
 		Maquette (1h)
+
 Github - Fabien
 		Création des tâches (1h)
 		Assignation des sprints (2h)
