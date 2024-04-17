@@ -130,7 +130,8 @@ router.post("/",
                 voiture.modele = req.body.modele;
                 voiture.prix_achete = req.body.prix_achete;
                 voiture.profit = req.body.profit;
-                voiture.description = [req.body.description_en, req.body.description_fr];
+                voiture.description_en = req.body.description_en;
+                voiture.description_fr = req.body.description_fr;
                 voiture.image = req.body.image;
                 voiture.condition = req.body.condition;
                 voiture.reserve = "false";
@@ -184,7 +185,8 @@ router.put("/:id", [
     voiture.modele = req.body.modele;
     voiture.prix_achete = req.body.prix_achete;
     voiture.profit = req.body.profit;
-    voiture.description = [req.body.description_en, req.body.description_fr];
+    voiture.description_en = req.body.description_en;
+    voiture.description_fr = req.body.description_fr;
     voiture.image = req.body.image;
     voiture.condition = req.body.condition;
 
