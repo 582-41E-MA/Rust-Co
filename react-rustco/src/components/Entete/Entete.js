@@ -26,7 +26,7 @@ function Entete(props) {
   return (
     <header className="justify-between">
       <div className="header-right flex items-center">
-        <div className={`header-logo ${menuW ? 'flex' : 'hidden'} items-center`}>
+        <div className={`header-logo ${menuOuvert? 'flex' : 'hidden'} items-center`}>
           <a href="/" className="flex items-center">
             <img src="/logo/rustcologo-ps.png" alt="Rust&Co Logo" className="logo"/>
             <span className="text-2xl ml-2 logo-font">Rust&Co</span>
