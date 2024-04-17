@@ -48,6 +48,7 @@ function Footer(props) {
             </div>
           </div>
         </div> 
+  
        <div className="footer-bend"></div>
       </section>
     </footer>
