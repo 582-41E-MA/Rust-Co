@@ -1,12 +1,15 @@
 import './UpdateVoiture.css';
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import modelesParMarque from '../../modelesParMarque.json';
+import Loader from '../Loader/Loader'
 import { t } from 'i18next';
 
 function UpdateVoiture(){
     const { id } = useParams();
+    const navigate = useNavigate();
     const [error, setError] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [voiture, setVoiture] = useState(null);
     const [marqueSelectionnee, setMarqueSelectionnee] = useState('');
     const [modeles, setModeles] = useState([]);
@@ -31,7 +34,8 @@ function UpdateVoiture(){
         description_fr: '',
         image: 'test.png' 
     });
-    
+
+
 
    // console.log(id);
    //pour fetch le data de la voiture pour preremplir
@@ -43,49 +47,41 @@ function UpdateVoiture(){
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-
         setVoiture(data); 
-        setMarqueSelectionnee(data.marque);
-        setModeles(modelesParMarque[voiture.marque])
-        setFormData({
-            marque: data.marque,
-            modele: data.modele,
-            annee: data.annee,
-            condition: data.condition,
-            prix_achete: data.prix_achete,
-            profit: data.profit,
-            description_en: data.description[0],
-            description_fr: data.description[1],
-            image: 'test.png' 
-        });
-    
+        setIsLoading(false);
       } catch (error) {
         setError("erreur du fetch");
+        setIsLoading(false);
       }
     };
     voitureData();
-}, [urlVoiture]);
+}, [id]);
 
+    useEffect(() => {
+        if (voiture) {
+            setMarqueSelectionnee(voiture.marque);
+            setModeles(modelesParMarque[voiture.marque]);
+            setFormData({
+                marque: voiture.marque,
+                modele: voiture.modele,
+                annee: voiture.annee,
+                condition: voiture.condition,
+                prix_achete: voiture.prix_achete,
+                profit: voiture.profit,
+                description_en: voiture.description[0],
+                description_fr: voiture.description[1],
+                image: voiture.image
+            });
+        }
+    }, [voiture]);
 
-
-// setFormData({
-//     marque: voiture.marque,
-//     modele: voiture.modele,
-//     annee: voiture.annee,
-//     condition: voiture.condition,
-//     prix_achete: voiture.prix_achete,
-//     profit: voiture.profit,
-//     description_en: voiture.description[0],
-//     description_fr: voiture.description[1],
-//     image: 'test.png' 
-// })
 
 
 
    function handleInputChange(e){
         const { name, value, type, files } = e.target;
-        setFormData(prevFormData => ({
-            ...prevFormData,
+        setFormData(formData => ({
+            ...formData,
             [name]: type === 'file' ? files[0] : value
         }));
       console.log(formData);
@@ -94,21 +90,23 @@ function UpdateVoiture(){
     async function handleSubmit(e){
         e.preventDefault(); 
         console.log(formData);
-        // try {
-        //     const reponse = await fetch(`https://rustandco.onrender.com/api/voitures/${id}`, {
-        //         method: 'PUT',
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify(formData)
-        //     });
-        //     console.log(reponse);
-        //     if (!reponse.ok) throw new Error('Network response was not ok.');
+        try {
+            const reponse = await fetch(`https://rustandco.onrender.com/api/voitures/${id}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+            console.log(reponse);
+            if (!reponse.ok) throw new Error('Network response was not ok.');
           
-        //     console.log('Data successfully sent to the server');
-        // } catch (error) {
-        //     console.error('Error:', error);
-        // }
+            console.log('Data successfully sent to the server');
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        navigate('/admin')
     };
 
 
@@ -136,6 +134,12 @@ function UpdateVoiture(){
             };
             ///////////////////////////////////////////////////////////////////////////////////////////
 
+            console.log(formData);
+
+
+            if (isLoading) {
+                return <div><Loader /></div>;  
+            }
 
     return(
         <div>
@@ -146,7 +150,7 @@ function UpdateVoiture(){
                     <select id="filtre-marque"  name='marque' defaultValue={voiture ? voiture.marque : ''} onChange={handleChange}>
                         <option disabled value="">-- {t('marque')} --</option>
                         {Object.keys(modelesParMarque).map((marque) => (
-                            <option key={marque} value={marque}>{capitalizeFirst(marque)}</option>
+                            <option key={marque} value={marque} >{capitalizeFirst(marque)}</option>
                         ))}
                     </select>
                 </div>
@@ -154,9 +158,9 @@ function UpdateVoiture(){
                 <div className='select-wrapper'>
                     <select id='filtre-modele' defaultValue={voiture ? voiture.modele : ''} name="modele" onChange={handleInputChange}>
                         <option disabled value="">-- {t('modele')} --</option>
-                        {/* {modeles.map(modele => (
+                        {modeles.map(modele => (
                             <option key={modele} value={modele}>{modele}</option>
-                        ))} */}
+                        ))}
                     </select>
                 </div>
 
@@ -170,6 +174,7 @@ function UpdateVoiture(){
                 </div>
 
                 <div className='mt-5'>
+                    <label for='condition'> Condition : </label>
                     <select name='condition' defaultValue="{voiture.condition}" required onChange={handleInputChange}>
                     <option disabled value="" selected>-- condition --</option>
                         <option value="detruit">Détruit</option>
