@@ -17,7 +17,7 @@ const auth = async (req, res, next) => {
 
             console.log(utilisateurVerifie.data())
 
-            if (utilisateurVerifie.exists) {
+            if (utilisateurVerifie.exists && utilisateurVerifie.data().privilege == "admin") {
                 //Si l'utilisateur éxiste, on permet la suite de la requête initiale.
                 const utilisateurRecupere = utilisateurVerifie.data();
                 req.utilisateur = utilisateurRecupere;
