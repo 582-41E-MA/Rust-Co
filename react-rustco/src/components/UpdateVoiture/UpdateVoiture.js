@@ -147,7 +147,7 @@ function UpdateVoiture(){
             <form className='form-create-user' method='PUT' onSubmit={handleSubmit}>
                 
                 <div className='select-wrapper'>
-                    <select id="filtre-marque"  name='marque' defaultValue={voiture ? voiture.marque : ''} onChange={handleChange}>
+                    <select id="filtre-marque"  name='marque' defaultValue="{voiture ? voiture.marque : ''}" onChange={handleChange}>
                         <option disabled value="">-- {t('marque')} --</option>
                         {Object.keys(modelesParMarque).map((marque) => (
                             <option key={marque} value={marque} >{capitalizeFirst(marque)}</option>

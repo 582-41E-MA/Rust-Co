@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import './UtilisateursTable.css'
 import CreateUser from "../CreateUser/CreateUser";
 
@@ -69,28 +70,42 @@ function UtilisateursTable(props){
             {utilisateur.id}
         </td>
         <td>
-            {utilisateur.marque}
+            {utilisateur.prenom}
         </td>
         <td>
-            {utilisateur.modele}
+            {utilisateur.nom_de_famille}
         </td>
         <td>
-            {utilisateur.annee}
+            {utilisateur.username}
         </td>
         <td>
-            {utilisateur.condition}
+            {utilisateur.courriel}
         </td>
         <td>
-            {utilisateur.Commandes_id}
+            {utilisateur.password}
         </td>
         <td>
-            {utilisateur.prix_paye}
+            {utilisateur.telephone}
         </td>
         <td>
-            {utilisateur.prix_achete}
+            {utilisateur.adresse}
         </td>
-        <td className="flex border-none justify-around">
-            <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png"></img>
+        <td>
+            {utilisateur.code_postal}
+        </td>
+        <td>
+            {utilisateur.ville}
+        </td>
+        <td>
+            {utilisateur.province}
+        </td>
+        <td>
+            {utilisateur.anniversaire}
+        </td>
+        <td className="flex border-none justify-around min-w-max">
+            <Link to={`/update-user/${utilisateur.id.trim()}`}> 
+                <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png" />
+            </Link> 
             <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteUtilisateur(utilisateur.id); }}></img>
         </td>
       </tr> 
@@ -116,14 +131,18 @@ function UtilisateursTable(props){
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Marque</th>
-                            <th>Modele</th>
-                            <th>Annee</th>
-                            <th>Condition</th>
-                            <th>Commandes_id</th>
-                            <th>prix_paye</th>
-                            <th>prix_achete</th>
-                            <th>Opérations</th>
+                            <th>Prénom</th>
+                            <th>Nom de Famille</th>
+                            <th>username</th>
+                            <th>Courriel</th>
+                            <th>Password</th>
+                            <th>Téléphone</th>
+                            <th>Adresse</th>
+                            <th>Code Postal</th>
+                            <th>Ville</th>
+                            <th>Province</th>
+                            <th>Anniversaire</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

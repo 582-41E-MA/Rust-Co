@@ -16,7 +16,7 @@ function Accueil() {
 
   return (
 
-   <div className="cover absolute top-0 left-0 w-full z-[-1]">
+   <div className="cover absolute top-16 left-0 w-full">
     <img src="/img/cover.jpg"></img>
    </div>
 
