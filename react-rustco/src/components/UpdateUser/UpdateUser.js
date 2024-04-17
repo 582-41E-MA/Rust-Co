@@ -68,7 +68,7 @@ function UpdateUser(){
                 code_postal: user.code_postal,
                 ville: user.ville,
                 province: user.province,
-                anniversaire: user.aniversaire,
+                anniversaire: user.anniversaire,
                 privilege: user.privilege,
             });
         }
@@ -125,7 +125,7 @@ function UpdateUser(){
     return(
         <div>
             <h1 className='text-4xl font-bold mb-5'>Update User</h1>
-            <form className='form-create-user' method='PUT' onSubmit={handleSubmit}>
+            <form className='form-create-user' onSubmit={handleSubmit}>
                
                 <div>
                     <label for="prenom">Prénom : </label>
