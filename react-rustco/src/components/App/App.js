@@ -56,7 +56,7 @@ function App() {
     const form = e.target;
     const body = {
       courriel: form.courriel.value,
-      password: form.password.value,
+      password: form.mdp.value
     };
     const data = {
       method: "POST",
@@ -67,13 +67,13 @@ function App() {
     };
     //                                      METTRE PORT DE NODE ICI!!!!!!!!!!
     const reponse = await fetch(
-      "http://localhost:3301/utilisateurs/connexion",
+      "http://localhost:3301/api/utilisateurs/connexion",
       data
     );
     const token = await reponse.json(); // je recois un reponse, deconstruit (async), ensuit metre dans var reponse
     if (reponse.status == 200) {
       //storer le jeton dans le localstorge
-      localStorage.setItem("API-films", token);
+      localStorage.setItem("logged-user", token);
       setLogging({ estLog: true, usager: body.courriel })
      // console.log(jetonValide());
     }
