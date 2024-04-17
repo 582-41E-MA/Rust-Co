@@ -108,7 +108,7 @@ function VoituresTable(){
         <td className="flex border-none justify-around">
             <Link to={`/update-voiture/${voiture.id.trim()}`}> 
                 <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png" />
-                 </Link> 
+            </Link> 
             <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteVoiture(voiture.id);}}></img>
         </td>
       </tr> 

@@ -21,6 +21,7 @@ import CreateUser from "../CreateUser/CreateUser";
 import Admin from "../Admin/Admin";
 import CreateVoiture from "../CreateVoiture/CreateVoiture";
 import UpdateVoiture from "../UpdateVoiture/UpdateVoiture";
+import UpdateUser from "../UpdateUser/UpdateUser";
 import Panier from "../Panier/Panier";
 import './App.css';
 
@@ -55,7 +56,7 @@ function App() {
     const form = e.target;
     const body = {
       courriel: form.courriel.value,
-      mdp: form.mdp.value,
+      password: form.password.value,
     };
     const data = {
       method: "POST",
@@ -117,6 +118,7 @@ function App() {
               <Route path="/create-user" element={<CreateUser />} />
               <Route path="/create-voiture" element={<CreateVoiture />} />
               <Route path="/update-voiture/:id" element={<UpdateVoiture />} />
+              <Route path="/update-user/:id" element={<UpdateUser />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/panier" element={<Panier />} />
             </Routes>
