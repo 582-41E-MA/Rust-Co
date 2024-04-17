@@ -35,7 +35,7 @@ function UpdateUser(){
 
 
    // console.log(id);
-   //pour fetch le data de la voiture pour preremplir
+   //pour fetch le data du user pour preremplir
    useEffect(() => {
     async function userData(){
       try {
@@ -115,12 +115,12 @@ function UpdateUser(){
             };
             ///////////////////////////////////////////////////////////////////////////////////////////
 
-            console.log(formData);
+    console.log(formData);
 
 
-            if (isLoading) {
-                return <div><Loader /></div>;  
-            }
+    if (isLoading) {
+        return <div><Loader /></div>;  
+    }
 
     return(
         <div>

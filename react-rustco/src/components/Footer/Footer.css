@@ -1,7 +1,7 @@
 
  
  .footer {
-    background-image: url('../../../public/img/footertire.jpg'); 
+    background-image: url('../../assets/footertire.jpg'); 
     background-size: cover;
     text-align: center; 
     padding: 0px 0; 
@@ -14,8 +14,8 @@
     
     width: 0;
     height: 0;
-    border-top: 200px solid white; /* Taille et couleur du triangle */
-    border-left: 200px solid transparent; /* Taille du triangle */
+    border-top: 200px solid white; 
+    border-left: 200px solid transparent; 
     position: absolute;
     top: 0;
     right: 0;
