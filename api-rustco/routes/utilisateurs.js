@@ -255,7 +255,7 @@ router.delete("/:id", async (req, res)=>{
 router.post("/connexion", async (req, res)=>{
 
     // Website you wish to allow to connect
-    res.set('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     //Récupe info du body
     const {courriel, password} = req.body;
