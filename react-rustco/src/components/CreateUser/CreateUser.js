@@ -1,7 +1,13 @@
 import './CreateUser.css'
+import React, { useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import i18next from 'i18next';
+import { t } from "i18next";
 
 function CreateUser(props){
-console.log(props);
+
+    const navigate = useNavigate();
 
     function test(e){
         e.preventDefault();
@@ -12,6 +18,53 @@ console.log(props);
         }
         console.log(data);
     }
+
+    
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        prenom: '',
+        nom_de_famille: '',
+        email: '',
+        telephone: '',
+        adresse: '',
+        ville: '',
+        code_postal: '',
+        province: '',
+    });
+
+
+   function handleInputChange(event){
+        const { name, value, type, files } = event.target;
+       setFormData({
+            ...formData,
+            [name]: value
+        });
+       console.log(formData);
+    };
+
+    async function handleSubmit(event){
+        event.preventDefault(); 
+
+        try {
+      
+            const reponse = await fetch('https://rustandco.onrender.com/api/utilisateurs', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+            console.log(reponse);
+            if (!reponse.ok) throw new Error('Network response was not ok.');
+          
+            console.log('Data successfully sent to the server');
+            navigate('/admin')
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
 
     function titreCreate(){
         if(props.userType == "employe"){
@@ -26,47 +79,47 @@ console.log(props);
     return(
         <div>
             {titreCreate()}
-            <form className='form-create-user' onSubmit={test}>
+            <form className='form-create-user' onSubmit={handleSubmit}>
                 <div className='mt-5'>
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" />
+                    <input type="text" id="username" name="username" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" />
+                    <input type="password" id="password" name="password" onChange={handleInputChange}/>
                 </div>
                 <div className='mt-5'>
                     <label htmlFor="nom">Prénom:</label>
-                    <input type="text" id="nom" name="nom" />
+                    <input type="text" id="nom" name="nom" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="nom">Nom de Famille:</label>
-                    <input type="text" id="nom" name="nom" />
+                    <input type="text" id="nom" name="nom" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" />
+                    <input type="email" id="email" name="email" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="telephone">Telephone:</label>
-                    <input type="tel" id="telephone" name="telephone" />
+                    <input type="tel" id="telephone" name="telephone" onChange={handleInputChange} />
                 </div>
                 <br></br>
                 <div>
                     <label htmlFor="adresse">Adresse + app:</label>
-                    <input type="text" id="adresse" name="adresse" />
+                    <input type="text" id="adresse" name="adresse" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="ville">Ville:</label>
-                    <input type="text" id="ville" name="ville" />
+                    <input type="text" id="ville" name="ville" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="codepostal">Code Postal:</label>
-                    <input type="text" id="codepostal" name="codepostal" />
+                    <input type="text" id="codepostal" name="codepostal" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="province">Province:</label>
-                    <select id="province" name="province">
+                    <select id="province" name="province" onChange={handleInputChange}>
                         <option value='' disabled selected>Select a province</option>
                         <option value="alberta">Alberta</option>
                         <option value="colombie-britannique">Colombie-Britannique</option>
@@ -86,7 +139,7 @@ console.log(props);
                 <br></br>
                 <div className='hidden'>
                     <label htmlFor="privilege">Privilege:</label>
-                    <select id="privilege" name="privilege" value={props.userType ? props.userType : 'client'}>
+                    <select id="privilege" name="privilege" value={props.userType ? props.userType : 'client'} onChange={handleInputChange}>
                         <option value="employe">Employe</option>
                         <option value="client">Client</option>
                     </select>
