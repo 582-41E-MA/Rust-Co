@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require("express-validator");
 
-
 router.get("/initialize", async (req, res) => {
     const donneesTest = require("../data/mockUtilisateurs.js");
     donneesTest.forEach(async (utilisateur) => {
@@ -13,7 +12,7 @@ router.get("/initialize", async (req, res) => {
         await db.collection("utilisateurs").add(utilisateur);
     });
 
-   res.statusCode = 200;
+    res.statusCode = 200;
     res.json({ message: "Données initialisées" });
 });
 
@@ -254,6 +253,9 @@ router.delete("/:id", async (req, res)=>{
 
 //CONNEXION
 router.post("/connexion", async (req, res)=>{
+
+    // Website you wish to allow to connect
+    res.set('Access-Control-Allow-Origin', '*');
 
     //Récupe info du body
     const {courriel, password} = req.body;
