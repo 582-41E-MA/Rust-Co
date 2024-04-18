@@ -37,8 +37,8 @@ function Entete(props) {
           </svg>
         </button>
 
-        <div className={`header-main-menu ml-40 md:flex space-x-8 ${menuOuvert ? 'flex' : 'hidden'}`}>
-          <ul className="header-ul-main flex flex-col md:flex-row">
+        <div className={`header-main-menu ml-20 md:flex ${menuOuvert ? 'flex' : 'hidden'}`}>
+          <ul className="header-ul-main flex flex-col md:flex-row space-x-8">
             <li><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
             <li><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
           </ul>

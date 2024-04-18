@@ -66,43 +66,40 @@ function UtilisateursTable(props){
     if(utilisateur.privilege == props.userType)
     return (
        <tr key={index}>
-        <td>
+        <td data-label="Id">
             {utilisateur.id}
         </td>
-        <td>
+        <td data-label="Prénom">
             {utilisateur.prenom}
         </td>
-        <td>
+        <td data-label="Nom de Famille">
             {utilisateur.nom_de_famille}
         </td>
-        <td>
+        <td data-label="Username">
             {utilisateur.username}
         </td>
-        <td>
+        <td data-label="Courriel">
             {utilisateur.courriel}
         </td>
-        <td>
-            {utilisateur.password}
-        </td>
-        <td>
+        <td data-label="Téléphone">
             {utilisateur.telephone}
         </td>
-        <td>
+        <td data-label="Adresse">
             {utilisateur.adresse}
         </td>
-        <td>
+        <td data-label="Code Postal">
             {utilisateur.code_postal}
         </td>
-        <td>
+        <td data-label="Ville">
             {utilisateur.ville}
         </td>
-        <td>
+        <td data-label="Province">
             {utilisateur.province}
         </td>
-        <td>
+        <td data-label="Date de Naissance">
             {utilisateur.anniversaire}
         </td>
-        <td className="flex border-none justify-around min-w-max">
+        <td data-label="Actions" className="flex border-none justify-around min-w-max">
             <Link to={`/update-user/${utilisateur.id.trim()}`}> 
                 <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png" />
             </Link> 
@@ -128,6 +125,7 @@ function UtilisateursTable(props){
                 )}
 
                 <table className="employes-table mt-5">
+    
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -135,7 +133,6 @@ function UtilisateursTable(props){
                             <th>Nom de Famille</th>
                             <th>username</th>
                             <th>Courriel</th>
-                            <th>Password</th>
                             <th>Téléphone</th>
                             <th>Adresse</th>
                             <th>Code Postal</th>
@@ -146,7 +143,6 @@ function UtilisateursTable(props){
                         </tr>
                     </thead>
                     <tbody>
-                        {/* Assuming liUtilisateur is correctly defined elsewhere in your component */}
                         {liUtilisateur}
                     </tbody>  
                 </table> 

@@ -18,3 +18,10 @@ body{
   font-weight: 400;
   font-style: normal;
 }
+
+.apropos, .termes, .politique{
+  background-color: #fce4b4;
+  border: 1px solid black;
+  border-radius:20px;
+  padding:20px
+}

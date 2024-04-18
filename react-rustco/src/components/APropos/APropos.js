@@ -1,12 +1,16 @@
 import { useContext } from 'react';
 import { AppContext } from '../App/App';
 import './APropos.css';
-
+import Signature from '../Signature/Signature'
 
 
 function APropos() {
 
+
+
    let context = useContext(AppContext);
+
+
 
    if(context.lang == 'fr'){
 
@@ -31,6 +35,7 @@ function APropos() {
       <p>
         Située au cœur de la ville, notre boutique propose une large sélection de véhicules de toutes marques et modèles, chacun avec son caractère et son histoire uniques. De la consultation initiale à la livraison finale, nous nous engageons à offrir une expérience transparente et satisfaisante, garantissant que chaque client reparte avec le sentiment d'avoir fait un choix éclairé et respectueux de l'environnement.
       </p><br></br>
+     <Signature />
     </div>
     );
 
@@ -57,6 +62,7 @@ function APropos() {
       <p>
         Located in the heart of the city, our shop offers a wide selection of vehicles of all brands and models, each with its unique character and history. From the initial consultation to the final delivery, we commit to providing a transparent and satisfying experience, ensuring that every customer leaves with the feeling of having made an informed and environmentally respectful choice.
       </p><br></br>
+      <Signature />
     </div>
     );
     

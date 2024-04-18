@@ -45,10 +45,7 @@ function VoituresTable(){
 
 
 
-
-
     //------------------------------------------------------------------//
-
 
 
     const handleChange = (e) => {
@@ -74,8 +71,6 @@ function VoituresTable(){
 
 
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -84,28 +79,28 @@ function VoituresTable(){
    // console.log(voiture);
     return (
        <tr key={index}>
-        <td>
+        <td data-label="Id">
             {voiture.id}
         </td>
-        <td>
+        <td  data-label="Marque">
             {voiture.marque}
         </td>
-        <td>
+        <td data-label="Modèle">
             {voiture.modele}
         </td>
-        <td>
+        <td data-label="Année">
             {voiture.annee}
         </td>
-        <td>
+        <td data-label="Condition">
             {voiture.condition}
         </td>
-        <td>
+        <td data-label="Prix Acheté">
             {voiture.prix_achete}
         </td>
-        <td>
+        <td data-label="Profit">
             {voiture.profit}
         </td>
-        <td className="flex border-none justify-around">
+        <td  data-label="Actions" className="flex border-none justify-around">
             <Link to={`/update-voiture/${voiture.id.trim()}`}> 
                 <img className="w-8 mx-2 cursor-pointer" src="/icons/edit.png" />
             </Link> 
