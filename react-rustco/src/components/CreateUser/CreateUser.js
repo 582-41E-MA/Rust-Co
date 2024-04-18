@@ -25,12 +25,14 @@ function CreateUser(props){
         password: '',
         prenom: '',
         nom_de_famille: '',
+        anniversaire: '',
         email: '',
         telephone: '',
         adresse: '',
         ville: '',
         code_postal: '',
         province: '',
+        privilege: '',
     });
 
 
@@ -89,33 +91,37 @@ function CreateUser(props){
                     <input type="password" id="password" name="password" onChange={handleInputChange}/>
                 </div>
                 <div className='mt-5'>
-                    <label htmlFor="nom">Prénom:</label>
-                    <input type="text" id="nom" name="nom" onChange={handleInputChange} />
+                    <label htmlFor="prenom">Prénom:</label>
+                    <input type="text" id="prenom" name="prenom" onChange={handleInputChange} />
                 </div>
                 <div>
-                    <label htmlFor="nom">Nom de Famille:</label>
-                    <input type="text" id="nom" name="nom" onChange={handleInputChange} />
+                    <label htmlFor="nom_de_famille">Nom de Famille:</label>
+                    <input type="text" id="nom_de_famille" name="nom_de_famille" onChange={handleInputChange} />
                 </div>
                 <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" onChange={handleInputChange} />
+                    <label htmlFor="courriel">Courriel:</label>
+                    <input type="courriel" id="courriel" name="courriel" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="telephone">Telephone:</label>
                     <input type="tel" id="telephone" name="telephone" onChange={handleInputChange} />
                 </div>
+                <div>
+                    <label htmlFor="anniversaire">Anniversaire:</label>
+                    <input type="tel" id="anniversaire" name="anniversaire" onChange={handleInputChange} />
+                </div>
                 <br></br>
                 <div>
-                    <label htmlFor="adresse">Adresse + app:</label>
+                    <label htmlFor="adresse">Adresse :</label>
                     <input type="text" id="adresse" name="adresse" onChange={handleInputChange} />
                 </div>
                 <div>
-                    <label htmlFor="ville">Ville:</label>
+                    <label htmlFor="ville">Ville :</label>
                     <input type="text" id="ville" name="ville" onChange={handleInputChange} />
                 </div>
                 <div>
-                    <label htmlFor="codepostal">Code Postal:</label>
-                    <input type="text" id="codepostal" name="codepostal" onChange={handleInputChange} />
+                    <label htmlFor="code_postal">Code Postal:</label>
+                    <input type="text" id="code_postal" name="codepostal" onChange={handleInputChange} />
                 </div>
                 <div>
                     <label htmlFor="province">Province:</label>
