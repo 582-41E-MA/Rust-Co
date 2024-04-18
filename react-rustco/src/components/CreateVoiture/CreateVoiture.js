@@ -1,5 +1,6 @@
 import './CreateVoiture.css';
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import modelesParMarque from '../../modelesParMarque.json';
 import { t } from 'i18next';
 
@@ -36,9 +37,7 @@ function CreateVoiture(props){
 
     async function handleSubmit(event){
         event.preventDefault(); 
-
         try {
-      
             const reponse = await fetch('https://rustandco.onrender.com/api/voitures', {
                 method: 'POST',
                 headers: {
