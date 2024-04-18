@@ -14,5 +14,8 @@
 
     "tous": "TOUS",
     "filtrer" : "Filtrer",
-    "err_filtres": "Aucune voiture ne correspond à votre recherche."
+    "err_filtres": "Aucune voiture ne correspond à votre recherche.",
+    
+    "bienvenue_admin": "Bienvenue sur votre page d'administrateur"
+
 }

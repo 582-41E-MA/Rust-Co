@@ -45,10 +45,7 @@ function VoituresTable(){
 
 
 
-
-
     //------------------------------------------------------------------//
-
 
 
     const handleChange = (e) => {
@@ -71,8 +68,6 @@ function VoituresTable(){
                     return string.charAt(0).toUpperCase() + string.slice(1);
                 };
                 ///////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
 

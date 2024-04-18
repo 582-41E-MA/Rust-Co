@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import VoituresTable from '../VoituresTable/VoituresTable'
 import CommandesTable from '../CommandesTable/CommandesTable'
 import UtilisateursTable from '../UtilisateursTable/UtilisateursTable'
+import { t } from "i18next";
 
 
 
@@ -34,7 +35,7 @@ function Admin(){
 
     return (
         <div>
-            <h1 className='text-2xl'>Bienvenue sur votre page d'administrateur</h1><br></br>
+            <h1 className='text-2xl'>{t('bienvenue_admin')}</h1><br></br>
             <button className='custom-button mr-5 mb-5 admin-edit' onClick={showVoitures}>Voitures</button>
             <button className='custom-button mr-5 mb-5 admin-edit' onClick={showEmployes}>Employes</button>
             <button className='custom-button mr-5 mb-5 admin-edit' onClick={showClients}>Clients</button>

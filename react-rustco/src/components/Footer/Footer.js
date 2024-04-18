@@ -14,14 +14,14 @@ function Footer(props) {
         <section className="relative pt-20 pb-8 overflow-hidden text-white w-full">
         
         <div className="relative container px-4 mx-auto w-full flex-col">
-          <div className="max-w-3xl mb-24 sm:mb-52 pr-8 sm:pr-0 w-full">
+          <div className="mb-24 sm:mb-52 pr-8 sm:pr-0 w-full">
             <div className="flex items-center m-10 ">
-            <img src="/logo/rustcologotest.png" className="footer-logo w-28 sm:w-40 sm:block mr-4" />
-            <h1 className="font-heading text-4xl  sm:text-6xl font-semibold text-white mb-20">
-              <span className="logo-font">Rust&Co</span>
-            </h1>
+              <img src="/logo/rustcologotest.png" className="footer-logo w-28 sm:w-40 sm:block mr-4" />
+              <h1 className="font-heading text-4xl  sm:text-6xl font-semibold text-white mb-20">
+                <span className="logo-font">Rust&Co</span>
+              </h1>
             </div>
-            <div className="sm:flex items-center">
+            <div className="sm:flex items-center ml-12">
               <div className="flex mb-12 sm:mb-0 sm:mr-12 items-center">
                 <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white rounded-full">
                   <img src="/icons/placeholder.png" alt="" className="w-8"/>
