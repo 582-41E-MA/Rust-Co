@@ -16,7 +16,7 @@ function APropos() {
 
     return (  
       <div className="apropos max-w-4xl">
-      <h2 className='text-2xl font-bold'>Bienvenue chez Rust&Co</h2><br></br>
+      <h2 className='text-3xl font-bold my-6'>Bienvenue chez Rust&Co</h2><br></br>
       <p>
         Le leader incontesté dans la vente de voitures pour la ferraille. Fondée sur la passion de redonner vie aux trésors oubliés, notre entreprise s'est rapidement imposée comme une référence dans le domaine de la revalorisation automobile. Chez Rust&Co, nous croyons que chaque véhicule a une histoire à raconter et un potentiel à explorer, même au-delà de son apparence rouillée.
       </p><br></br>
