@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../App/App';
+import Signature from '../Signature/Signature';
 import './Politique.css';
 
 function Politique() {
@@ -10,7 +11,7 @@ function Politique() {
 
         return (  
             <div className='termes text-center max-w-4xl'>
-                <p className='mt-16 mb-16 text-4xl'>
+                <p className='mt-12 mb-16 text-4xl'>
                 <h1>Politique de Confidentialité</h1>
                 </p>
                 <p>Chez Rust&Co, l'une de nos principales priorités est la vie privée de nos visiteurs. Cette Politique de Confidentialité contient des types d'informations qui sont collectées et enregistrées par Rust&Co et comment nous les utilisons.<br></br>
@@ -41,7 +42,7 @@ function Politique() {
                     Rust&Co n'est pas responsable des dommages, pertes ou blessures résultant de l'utilisation des véhicules vendus sur notre site. Les acheteurs assument l'entière responsabilité pour toute utilisation des véhicules achetés.
                 </p>
                 <p className='mb-6'>
-                    <b>5. Modifications des Termes et Conditions</b>
+                    <b>5. Modifications des Termes et Conditions</b><br></br>
                     Rust&Co se réserve le droit de modifier ces termes et conditions à tout moment. Les modifications entreront en vigueur dès leur publication sur le site. Il est de votre responsabilité de vérifier régulièrement les termes et conditions pour vous assurer que vous êtes informé de toute modification.
                 </p>
                 <p className='mb-6'>
@@ -52,13 +53,14 @@ function Politique() {
                     <b>Contactez-Nous</b><br></br>
                 Pour toute question ou préoccupation concernant ces termes et conditions, veuillez nous contacter à rustco@yourdomain.com.
                 </p>
+                <Signature />
             </div>
         );
 
     }else{
         return (  
             <div className='termes text-center max-w-4xl'>
-                <p className='mt-16 mb-16 text-4xl'>
+                <p className='mt-12 mb-16 text-4xl'>
                 <h1>Privacy Policy</h1>
                 </p>
                 <p>At Rust&Co, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that are collected and recorded by Rust&Co and how we use it.<br></br>
@@ -89,7 +91,7 @@ function Politique() {
                     Rust&Co is not responsible for any damages, losses, or injuries resulting from the use of vehicles sold on our site. Buyers assume full responsibility for any use of the vehicles purchased.
                 </p>
                 <p className='mb-6'>
-                    <b>5. Modifications to Terms and Conditions</b>
+                    <b>5. Modifications to Terms and Conditions</b><br></br>
                     Rust&Co reserves the right to modify these terms and conditions at any time. Changes will take effect immediately upon their posting on the site. It is your responsibility to regularly check the terms and conditions to ensure you are aware of any changes.
                 </p>
                 <p className='mb-6'>
@@ -100,6 +102,7 @@ function Politique() {
                     <b>Contact Us</b><br></br>
                 For any questions or concerns regarding these terms and conditions, please contact us at rustco@yourdomain.com.
                 </p>
+                <Signature />
             </div>
         );
           

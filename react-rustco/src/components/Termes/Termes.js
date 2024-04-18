@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../App/App';
+import Signature from '../Signature/Signature'
 import './Termes.css';
 
 function Termes() {
@@ -10,7 +11,7 @@ function Termes() {
 
         return (  
             <div className='termes text-center max-w-4xl'>
-                <p className='mt-16 mb-16 text-4xl'>
+                <p className='mt-12 mb-16 text-4xl'>
                 <h1>Termes et Conditions</h1>
                 </p>
                 <p className='mb-6'>
@@ -47,12 +48,13 @@ function Termes() {
                     <b>Contactez-Nous</b><br></br>
                 Pour toute question ou préoccupation concernant ces termes et conditions, veuillez nous contacter à rustco@yourdomain.com.
                 </p>
+                <Signature />
             </div>
         );
     }else{
         return (  
             <div className='termes text-center max-w-4xl'>
-                <p className='mt-16 mb-16 text-4xl'>
+                <p className='mt-12 mb-16 text-4xl'>
                 <h1>Terms and Conditions</h1>
                 </p>
                 <p className='mb-6'>
@@ -89,6 +91,7 @@ function Termes() {
                     <b>Contact Us</b><br></br>
                 For any questions or concerns regarding these terms and conditions, please contact us at rustco@yourdomain.com.
                 </p>
+                <Signature />
             </div>
         );
     }
