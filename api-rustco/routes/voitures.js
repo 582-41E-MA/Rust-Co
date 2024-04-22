@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db.js");
+const authEmploye = require("../middlewares/authEmploye.js");
 const { check, validationResult } = require("express-validator");
 
 //TODO: Authentification
@@ -80,7 +81,7 @@ router.get("/:id", async (req, res) => {
  * @route POST /films
  */
 //TODO:Validation de Conditions_id
-router.post("/",
+router.post("/", authEmploye,
     [
         //TODO: Refait la validation
         // check("marque").escape().trim().notEmpty().isString(),
@@ -152,7 +153,7 @@ router.post("/",
 
 //MODIFICATION
 //TODO:Validation de Conditions_id
-router.put("/:id", [
+router.put("/:id", authEmploye, [
     // check("marque").escape().trim().notEmpty().isString(),
     // check("annee").escape().trim().notEmpty().isNumeric(),
     // check("modele").escape().trim().notEmpty().isString(),
@@ -198,7 +199,7 @@ router.put("/:id", [
 
 
 //SUPPRIMER
-router.delete("/:id", async (req, res)=>{
+router.delete("/:id", authEmploye, async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const id = req.params.id;
     const resultat = await db.collection("voitures").doc(id).delete();
