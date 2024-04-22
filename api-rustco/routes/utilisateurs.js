@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require("../config/db.js");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
+const authAdmin = require("../middlewares/authAdmin.js");
+const authEmploye = require("../middlewares/authEmploye.js");
 const { check, validationResult } = require("express-validator");
 
 router.get("/initialize", async (req, res) => {
@@ -168,7 +170,7 @@ router.post("/",
  * Cette route permet de modifier un utilisateur
  * @route POST 
  */
-router.put("/:id",
+router.put("/:id", authEmploye,
     [
         //TODO: Fait la validation
     ],
@@ -241,7 +243,7 @@ router.put("/:id",
 //-------------------------------------------------------------------------------------
 
 //SUPPRIMER
-router.delete("/:id", async (req, res)=>{
+router.delete("/:id", authEmploye, async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const idUtilisateur = req.params.id;
     const resultat = await db.collection("utilisateurs").doc(idUtilisateur).delete();
