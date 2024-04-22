@@ -15,22 +15,22 @@ Rust & Co is a website for selling used vehicles. The team uses an iterative dev
 ## Étape 1: Établir les tâches
 
 ### Backend:
-Modélisation de la DB
-Création de l'API
-Intégration Firebase(JSON)
-Publication Render
+- Modélisation de la DB
+- Création de l'API
+- Intégration Firebase(JSON)
+- Publication Render
 
 ### Front-end:
-Création de l'app React.Js
-Organisation des composants
-Intégration du design
+- Création de l'app React.Js
+- Organisation des composants
+- Intégration du design
 
 ### Design:
-Création de la Maquette Graphique
+- Création de la Maquette Graphique
 
 ### Secrétariat:
-Gestion du Git
-Préparation et suivi des sprints
+- Gestion du Git
+- Préparation et suivi des sprints
 
 ---
 
@@ -110,81 +110,81 @@ Préparation et suivi des sprints
 - 8 avril: 3h
 - 9 avril: 4h
 
-Créer le projet react
-Création des composants:
-Entête
-Accueil
-Liste de voitures
-À Propos
-Termes et conditions
-Politique de confidentialité
-Admin
-Footer
-Création des routes
-Création des formulaires create-voiture et create-user
-Implémenter i18next (Internationalization)
+- Créer le projet react
+- Création des composants:
+- Entête
+- Accueil
+- Liste de voitures
+- À Propos
+- Termes et conditions
+- Politique de confidentialité
+- Admin
+- Footer
+- Création des routes
+- Création des formulaires create-voiture et create-user
+- Implémenter i18next (Internationalization)
 
 #### BackEnd - Gabriel
-Finition DB (<1h)
-Création mockVehicule.JSON/mockUser.JSON (1h)
-Création de la structure de l'API (<2h)
-Création de la DB sur Firebase (2h)
-Implémenter sur Render - (<1h)
+- Finition DB (<1h)
+- Création mockVehicule.JSON/mockUser.JSON (1h)
+- Création de la structure de l'API (<2h)
+- Création de la DB sur Firebase (2h)
+- Implémenter sur Render - (<1h)
 
 #### Design - Fabien
-Moodboard (3h)
-Logo (2h)
-Icon (1h)
-Typographie (2h)
-Couleur (2h)
-Maquette (1h)
+- Moodboard (3h)
+- Logo (2h)
+- Icon (1h)
+- Typographie (2h)
+- Couleur (2h)
+- Maquette (1h)
 
 #### GitHub - Fabien
-Création des tâches (1h)
-Assignation des sprints (2h)
-Assignation des tâches (2h)
+- Création des tâches (1h)
+- Assignation des sprints (2h)
+- Assignation des tâches (2h)
 
 ### Sprint 2:
 
 #### FrontEnd - Paul
-Admin CRM: Employé(e)s, Voitures et clients(Create, Show, Edit, Delete)
-Employé(e)s CRM: Voitures et clients(Show, Edit, Delete)
-Intégration du Design
-Gestion des messages d'erreur(Validation)
-Authentification des routes
-Login
-Logout
-Système d'ajout image
-Création Panier
-Création Checkout
+- Admin CRM: Employé(e)s, Voitures et clients(Create, Show, Edit, Delete)
+- Employé(e)s CRM: Voitures et clients(Show, Edit, Delete)
+- Intégration du Design
+- Gestion des messages d'erreur(Validation)
+- Authentification des routes
+- Login
+- Logout
+- Système d'ajout image
+- Création Panier
+- Création Checkout
 
 #### BackEnd - Gabriel
-Ajout Employés et Clients dans la DB
-Assigner les privilèges
-Authentification(JWT)
-Gestion des routes(Authentification)
-Middleware Auth
-Validation Login et connection avec React
-Création des tables Commande, Facturation et Réservation
+- Ajout Employés et Clients dans la DB
+- Assigner les privilèges
+- Authentification(JWT)
+- Gestion des routes(Authentification)
+- Middleware Auth
+- Validation Login et connection avec React
+- Création des tables Commande, Facturation et Réservation
 
 #### Design - Fabien
-Maquette Graphique détaillée
-Présentation Sprint 2
-Création d'image de produit
-Custom burger
+- Maquette Graphique détaillée
+- Présentation Sprint 2
+- Création d'image de produit
+- Custom burger
 
 ### Sprint 3:
 
 #### FrontEnd 
-Animation
-Special Effects
-Modal Login, Panier, create account
-Carousel liens fitres
-Unit Testing (Fabien)
-Stripe Checkout(Fabien)
+- Animation
+- Special Effects
+- Modal Login, Panier, create account
+- Carousel liens fitres
+- Unit Testing (Fabien)
+- Stripe Checkout(Fabien)
 
 #### Design - Fabien
-Présentation Sprint 3
+- Présentation Sprint 3
 
 ---
 
