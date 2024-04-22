@@ -20,7 +20,7 @@ function Voiture() {
 
   // Get the userId param from the URL.
   let { id } = useParams();
-  //console.log(id);
+
 
   const urlVoiture = `https://rustandco.onrender.com/api/voitures/${id}`
   const [voiture, setVoiture] = useState([]);
@@ -49,14 +49,19 @@ function Voiture() {
       
 
       //////////AFFICHAGE DU VRAI PRIX///////////////
-      console.log(voiture.prix_achete, voiture.profit);
       const prix = Number(voiture?.prix_achete);
       const profit = Number(voiture?.profit);
-
       const prixFinal = (prix*((100+profit)/100)).toFixed(2)
-      console.log(prixFinal);
+    
 
 
+  /////// AJOUTER AU PANIER ////////////
+function ajouter(){
+  console.log('ajout')
+}
+
+
+console.log(context.logging.privilege)
 
 
   return (
@@ -74,17 +79,24 @@ function Voiture() {
             <h1 id="titre-voiture">{voiture?.id}</h1>
             <ul>
               <li>Marque: {voiture?.marque}</li>
-              <li> Modele: {voiture?.modele}</li>
+              <li>Modele: {voiture?.modele}</li>
               <li>Année: {voiture?.annee}</li>
               <li>Condition: {voiture?.condition}</li>
               <li>Prix: {prixFinal} $</li>
               <li>Description: {langDescription}</li>
             </ul>
           </div>
-          <div className="actions border flex-col p-2">
-            <button className="custom-button block mb-2">Ajouter au Panier</button>
-            <button className="custom-button block">Reserver</button>
-          </div>
+
+          {
+            context.logging.privilege == 'client' ?
+              <div className="actions border flex-col p-2">
+                <button onClick={ajouter} className="custom-button block mb-2">Ajouter au Panier</button>
+                <button className="custom-button block">Reserver</button>
+              </div>
+            :
+            <></>
+          }
+          
         </div>
       </div>
     

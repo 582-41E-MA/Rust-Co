@@ -14,8 +14,6 @@ function Entete(props) {
   const [menuOuvert, setMenuOuvert] = useState(false);
 
   const context = useContext(AppContext)
-
-  console.log(context.logging)
   
     const toggleMenu = () => {
       setMenuOpen(!menuOuvert);
@@ -53,7 +51,7 @@ function Entete(props) {
           <ul className="header-ul-left flex space-x-8">
             
            {localStorage.getItem('logged-user') ?
-            <li onClick={props.handleLogout} className="hover:text-orange-100">logout</li>
+            <li onClick={props.handleLogout} className="hover:text-orange-100 hover:cursor-pointer">logout</li>
            :
             <li><a href="/login" className="hover:text-orange-100">{t('connexion_menu')}</a></li>
             }
@@ -63,7 +61,7 @@ function Entete(props) {
               <li><a href="/admin" className="hover:text-orange-100">Admin</a></li>
               :
               context.logging.privilege == 'client' ?
-              <div>
+              <div className="flex space-x-8">
                 <li><a href="/client" className="hover:text-orange-100">Ma Page Client</a></li>
                 <div className="cursor-pointer">
                   <a href='/panier' className="cursor-pointer">

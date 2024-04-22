@@ -98,7 +98,8 @@ function UpdateVoiture(){
             const reponse = await fetch(`https://rustandco.onrender.com/api/voitures/${id}`, {
                 method: 'PUT',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem('logged-user')}`
                 },
                 body: JSON.stringify(formData)
             });
