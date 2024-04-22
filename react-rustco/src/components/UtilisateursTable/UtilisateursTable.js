@@ -47,6 +47,9 @@ function UtilisateursTable(props){
 
         fetch(`${urlListeUtilisateurs}/${bonId}`, {
             method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('logged-user')}`
+            }
         })
         .then((reponse) => {
             if (reponse.ok) { 

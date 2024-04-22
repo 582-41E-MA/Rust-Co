@@ -32,6 +32,9 @@ function VoituresTable(){
         const bonId = id.trim();
         fetch(`${urlListeVoitures}/${bonId}`, {
             method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('logged-user')}`
+            },
         })
         .then((reponse) => {
             if (reponse.ok) { 

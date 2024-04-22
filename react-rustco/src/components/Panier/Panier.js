@@ -1,7 +1,7 @@
 import './Panier.css';
 
 
-function Panier(){
+function Panier(props){
 
     return(
         <div>

@@ -45,13 +45,16 @@ function App() {
 
   /*de code jwt */
   function parseJwt (token) {
-    var base64Url = token.split('.')[1];
+    if(localStorage.getItem('logged-user')){
+        var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
 
     return JSON.parse(jsonPayload);
+    }
+    console.log('fuck you')
 }
 
   const { t } = useTranslation();
@@ -106,8 +109,8 @@ useEffect(() =>{
    
     const token = await reponse.json(); // je recois un reponse, deconstruit (async), ensuit metre dans var reponse
     
-    const privilegeTest = parseJwt(token).privilege;
-    console.log(privilegeTest)
+    const privilegeTest = localStorage.getItem('logged-user') ? parseJwt(token).privilege : '';
+    
 
     if (reponse.status == 200) {
       //storer le jeton dans le localstorge
@@ -147,6 +150,7 @@ useEffect(() =>{
     
   }
 
+  console.log(logging)
 
   return (
     <AppContext.Provider value={{ lang, toggleLang, logging }}>
