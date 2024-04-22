@@ -7,6 +7,9 @@
     "termes_footer": "Termes et Conditions",
     "politique_footer": "Politique de Confidentialité",
 
+    "offre_connexion" : "Vous n'avez pas encore de compte? créez en un",
+    "signature": "L'Équipe Rust&Co",
+    
     "annee": "Année",
     "marque": "Marque",
     "modele": "Modèle",
@@ -15,7 +18,58 @@
     "tous": "TOUS",
     "filtrer" : "Filtrer",
     "err_filtres": "Aucune voiture ne correspond à votre recherche.",
+
+    "connexion": "Connexion",
+    "deconnexion": "Déconnexion",
+    "inscription": "Inscription",
+
+    "voiture": "Voiture",
+    "administrateur": "Administrateur",
+    "employé": "Employé(e)",
+    "client": "Client(e)",
+    "commande": "Commande" ,
+    "panier": "Pannier",
+    "privilège": "Privilège",
+    "compte": "Compte",
+    "nom": "Nom",
+
+    "utilisateur": "Utilisateur",
+    "mdp": "Mot de Passe",
+    "prenom": "Prénom",
+    "nom_de_famille": "Nom de Famille",
+    "courriel": "Courriel",
+    "telephone": "Téléphone",
+    "anniversaire": "Anniversaire",
+    "adresse": "Adresse",
+    "ville": "Ville",
+    "code_postal": "Code Postal",
+
+    "condition": "Condition",
+    "detruit": "Détruit" ,
+    "EndommagE": "Endommagé",
+    "Moyenne": "Moyenne",
+    "presque_parfaite": "Prèsque Parfaite",
+    "parfaite": "Parfaite",
+
+    "prix_achete": "Prix Acheté",
+    "marge_de_profit": "Marge de profit",
     
-    "bienvenue_admin": "Bienvenue sur votre page d'administrateur"
+    "cree": "Crée",
+    "selectione": "Selectioné",
+    "modifie": "Modifié",
+    "supprime": "Supprimé",
+    "mis_a_jour": "Mettre à Jours",
+    "soumettre": "Soumettre",
+    
+    "bienvenue_admin": "Bienvenue sur votre page d'administrateur",
+    "cree_employe": "Création d'Employé(e)",
+    "cree_client": "Création de Client(e)",
+    "ajout_voiture": "Ajoutez une Voiture",
+
+    "colombie_britannique": "Colombie-Britannique",
+    "nouveau_brunswick": "Nouveau-Brunswick,",
+    "terre_neuve_et_labrador": "Terre-Neuve-et-Labrador",
+    "ile_du_prince_edouard": "Île-du-Prince-Édouard"
+
 
 }

@@ -1,21 +1,73 @@
 {
-    "autos_menu": "Our Cars",
-    "aPropos_menu": "About Us",
+    "autos_menu": "Car Listings",
+    "aPropos_menu": "About",
     "connexion_menu": "Login",
 
     "droits_footer": "All Rights Reserved",
     "termes_footer": "Terms and Conditions",
     "politique_footer": "Privacy Policy",
 
+    "offre_connexion" : "Don't have an account yet? Create one",
+    "signature": "The Rust&Co Team",
+    
     "annee": "Year",
-    "marque": "Make",
+    "marque": "Brand",
     "modele": "Model",
     "prix": "Price",
 
     "tous": "ALL",
     "filtrer" : "Filter",
-    "err_filtres": "No cars correspond to your search",
+    "err_filtres": "No cars match your search criteria.",
 
-    "bienvenue_admin": "Welcome to your admin page"
+    "connexion": "Login",
+    "deconnexion": "Logout",
+    "inscription": "Sign Up",
 
+    "voiture": "Car",
+    "administrateur": "Administrator",
+    "employé": "Employee",
+    "client": "Client",
+    "commande": "Order",
+    "panier": "Cart",
+    "privilège": "Privilege",
+    "compte": "Account",
+    "nom": "Name",
+
+    "utilisateur": "Username",
+    "mdp": "Password",
+    "prenom": "First Name",
+    "nom_de_famille": "Last Name",
+    "courriel": "Email",
+    "telephone": "Phone",
+    "anniversaire": "Birthday",
+    "adresse": "Address",
+    "ville": "City",
+    "code_postal": "Postal Code",
+
+    "condition": "Condition",
+    "detruit": "Destroyed",
+    "endommage": "Damaged",
+    "moyenne": "Average",
+    "presque_parfaite": "Almost Perfect",
+    "parfaite": "Perfect",
+
+    "prix_achete": "Purchase Price",
+    "marge_de_profit": "Profit Margin",
+    
+    "cree": "Created",
+    "selectione": "Selected",
+    "modifie": "Modified",
+    "supprime": "Deleted",
+    "mis_a_jour": "Updated",
+    "soumettre": "Submit",
+    
+    "bienvenue_admin": "Welcome to your admin page",
+    "cree_employe": "Create Employee",
+    "cree_client": "Create Client",
+    "ajout_voiture": "Add a Car",
+
+    "british_columbia": "British Columbia",
+    "new_brunswick": "New Brunswick",
+    "newfoundland_and_labrador": "Newfoundland and Labrador",
+    "prince_edward_island": "Prince Edward Island"
 }
