@@ -254,9 +254,6 @@ router.delete("/:id", async (req, res)=>{
 //CONNEXION
 router.post("/connexion", async (req, res)=>{
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
     //Récupe info du body
     const {courriel, password} = req.body;
 
@@ -296,8 +293,6 @@ router.post("/connexion", async (req, res)=>{
     const option = {
         expiresIn: "1d"
     }
-
-    console.log(donneesJeton)
     
     //Génération du jeton
     const jeton = jwt.sign( donneesJeton, process.env.JWT_SECRET, option );
