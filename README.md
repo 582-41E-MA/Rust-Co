@@ -16,18 +16,24 @@ Fabien Turgeon
 Ètape 1: Établir les taches
 
 Backend: 
+	```
 	Modelisation de la DB
 	Création de l'API
 	Intégration Firebase(JSON)
 	Publication Render
+	```
 
 Front-end:
+	```
 	Crétion de l'app React.Js 
 	Organisation des components
 	Intégration du Design
+	```
 
 Design:
+	```
 	Création de la Maquette Graphique
+	```
 
 Secrétariat:
 		Gestion du Git 
@@ -38,15 +44,20 @@ Secrétariat:
 
 Étape 2: Assigner les responsabilitées
 
-Gestionnaire Git (Merge, Pull request)⤵				   Maquette Graphique
-									    Fabien Turgeon ⤶
-Gestion du projet(Gestion des sprints)⤴
+Fabien Turgeon 
 
-BackEnd API-Node.Js⤵
-				Gabriel Plouffe
-Modelisation DB⤴ 
+Gestionnaire Git (Merge, Pull request)			  
+Maquette Graphique						    
+Gestion du projet(Gestion des sprints)
 
-FrontEnd React.Js -> Paul Dawson
+Gabriel Plouffe 
+
+BackEnd API-Node.Js			
+Modelisation DB
+
+Paul Dawson
+
+FrontEnd React.Js
 
 
 ------------------------------------------------
@@ -62,7 +73,7 @@ Design: Figma
 
 Communication: Discord
 
-Organisation/Sprint: Github, Figma
+Organisation/Sprint: Github, Markdown
 
 
 ------------------------------------------------
@@ -71,27 +82,31 @@ Organisation/Sprint: Github, Figma
 Étape 4: Définir les users story
 
 Priorité (A)
-A.1: En tant qu'utilisateur je veux consulter des vehicules
-A.2: En tant qu'utilisateur je veux acheter des vehicules
-A.3: En tant qu'utilisateur je veux reserver des vehicules
-A.4: En tant qu'utilisateur je veux avoir un compte d'utilisateur
+En tant qu'utilisateur je veux consulter des vehicules
+En tant qu'utilisateur je veux acheter des vehicules
+En tant qu'utilisateur je veux reserver des vehicules
+En tant qu'utilisateur je veux avoir un compte d'utilisateur
 
 Priorité (B)
-B.1: En tant qu'admin je veux publier des vehicules
-B.2: En tant qu'admin je veux modifier des vehicules
-B.3: En tant qu'admin je veux supprimer des vehicules
-B.4: En tant qu'admin je veux supprimer des utilisateurs
-B.5: En tant qu'utilisateur Je veux pouvoir choisir parmi une variété de méthodes de paiement.
-B.5: En tant qu'utilisateur Je veux pouvoir choisir parmi une variété de méthodes de livraison.
-B.6: En tant qu'utilisateur je veux une interface resposive
-B.7: En tant qu'utilisateur et admin je veux un historique des achats
-B.8: En tant qu'utilisateur et admin, je souhaite une interface intéractive et esthétique.
-B.9: En tant qu'utilisateur et admin, je souhaite un site sécuritaire.
+En tant qu'admin je veux publier des vehicules
+En tant qu'admin je veux modifier des vehicules
+En tant qu'admin je veux supprimer des vehicules
+En tant qu'admin je veux modifier des utilisateurs
+En tant qu'admin je veux supprimer des utilisateurs
+En tant qu'employe je veux publier des vehicules
+En tant qu'employe je veux modifier des vehicules
+En tant qu'employe je veux supprimer des vehicules
+En tant qu'utilisateur Je veux pouvoir choisir parmi une variété de méthodes de paiement.
+En tant qu'utilisateur Je veux pouvoir choisir parmi une variété de méthodes de livraison.
+En tant qu'utilisateur je veux une interface resposive
+En tant qu'utilisateur et admin je veux un historique des achats
+En tant qu'utilisateur et admin, je souhaite une interface intéractive et esthétique.
+En tant qu'utilisateur et admin, je souhaite un site sécuritaire.
 
 Priorité (C)
-C.1: En tant qu'utilisateur je veux pouvoir demander un nouveau mot de passe
-C.2: En tant qu'utilisateur je veux pouvoir sauvegarder des vehicules dans mon compte(wishlist)
-C.3: En tant qu'admin je veux que le site utilise un framework react moderne(next.js)
+En tant qu'utilisateur je veux pouvoir demander un nouveau mot de passe
+En tant qu'utilisateur je veux pouvoir sauvegarder des vehicules dans mon compte(wishlist)
+En tant qu'admin je veux que le site utilise un framework react moderne(next.js)
 
 
 ------------------------------------------------
@@ -159,6 +174,7 @@ FrontEnd - Paul
 		Gestion des messages d'erreur(Validation)
 		Authentification des routes
 		Login
+		Logout
 		Systeme d'ajout image
 		Création Panier 
 		Création Checkout
