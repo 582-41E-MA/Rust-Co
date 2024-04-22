@@ -57,6 +57,7 @@ function App() {
     const body = {
       courriel: form.courriel.value,
       password: form.mdp.value,
+
     };
     const data = {
       method: "POST",
@@ -68,6 +69,7 @@ function App() {
     //                                      METTRE PORT DE NODE ICI!!!!!!!!!!
     const reponse = await fetch(
       "https://rustandco.onrender.com/api/utilisateurs/connexion",
+
       data
     );
     const token = await reponse.json(); // je recois un reponse, deconstruit (async), ensuit metre dans var reponse
@@ -75,6 +77,7 @@ function App() {
       //storer le jeton dans le localstorge
       localStorage.setItem("logged-user", token);
       setLogging({ estLog: true, utilisateur: body.courriel })
+
      // console.log(jetonValide());
     }
     form.reset(); //pour vider le champ

@@ -39,7 +39,7 @@ Secrétariat:
 Étape 2: Assigner les responsabilitées
 
 Gestionnaire Git (Merge, Pull request)⤵				   Maquette Graphique
-									   Fabien Turgeon ⤶
+									    Fabien Turgeon ⤶
 Gestion du projet(Gestion des sprints)⤴
 
 BackEnd API-Node.Js⤵
@@ -109,54 +109,91 @@ C.3: En tant qu'admin je veux que le site utilise un framework react moderne(nex
 		
 -Sprint 1:
 
-FrontEnd 
-		Maquette CSS des pages principal,
-		Création des components: Entête, Accueil, Liste de vehicules, Checkout, Admin et Footer
-		langues
-BackEnd
-		Finition DB Relationnelle - Gabriel (<1h)
-		Création mockVehicule.JSON/mockUser.JSON 
-		Création de la structure de l'API - Gabriel (<2h)
-		Création de la db sur Firebase - Gabriel (2h)
+FrontEnd - Paul
+			4 avril : 2h
+			6 avril: 7h
+			7 avril : 10h
+			8 avril: 3h
+			9 avril: 4h
+
+		Créer le projet react
+		Création des components: 
+			Entête, 
+			Accueil, 
+			Liste de voitures, 
+			À Propos, 
+			Termes et conditions, 
+			Politique de confidentialité, 
+			Admin,
+			Footer
+		Création des routes
+		Création des formulaires create-voiture et create-user
+		Implémenter i18next (Internationalization)
+
+BackEnd - Gabriel
+		Finition DB (<1h)
+		Création mockVehicule.JSON/mockUser.JSON (1h)
+		Création de la structure de l'API (<2h)
+		Création de la db sur Firebase (2h)
 		Implémenter sur Render - (<1h)
-Design: 
-		Moodboard
-		Maquette Graphique
-Github
-		Création des tâches
-		Assignation des sprints
-		Assignation des tâches
+
+Design - Fabien
+		Moodboard (3h)
+		Logo (2h)
+		Icon (1h)
+		Typographie (2h)
+		Couleur (2h)
+		Maquette (1h)
+
+Github - Fabien
+		Création des tâches (1h)
+		Assignation des sprints (2h)
+		Assignation des tâches (2h)
 
 -Sprint 2:
 
-FrontEnd 
+FrontEnd - Paul
+		Admin CRM: Employé(e)s, Voitures et clients(Create, Show, Edit, Delete)
+		Employé(e)s CRM: Voitures et clients(Show, Edit, Delete)
 		Intégration du Design
-		Approfondire les components crée(Préparation de l'Authentification)
-		Création des components: À propos de nous, Nous contacter, Politiques de vente, Page de connexion et Compte client.
 		Gestion des messages d'erreur(Validation)
+		Authentification des routes
+		Login
+		Systeme d'ajout image
+		Création Panier 
+		Création Checkout
 
-BackEnd
-		Finition du CRUD
+BackEnd - Gabriel
+		Ajout Employés et Clients dans la DB
+		Assigner les privileges
 		Authentification(JWT)
 		Gestion des routes(Authentification)
+		Middleware Auth
+		Validation Login et connection avec React
+		Création des tables Commande, Facturation et Reservation
 
-Github 
-	  	Testing		
+Design - Fabien
+		Maquette Graphique détaillée 
+		Présentation Sprint 2
+		Création d'image de produit
+		Custom burger
+		Dossier logo compagnie
 
 -Sprint 3:
 
 FrontEnd 
 		Animation
 		Special Effects
+		Modal Login, Panier, create account
+		Carousel liens fitres
 		Unit Testing (Fabien)
 		Stripe Checkout(Fabien)
 
 BackEnd
-		Validation des forms
-		Adaptaion finale avec FrontEnd
+		
 
-Framework
-		Intégration Next.JS (Maybe)
+Design - Fabien
+		Présentation Sprint 3
 
 
 ------------------------------------------------
