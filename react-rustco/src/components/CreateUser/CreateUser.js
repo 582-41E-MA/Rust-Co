@@ -84,15 +84,19 @@ function CreateUser(props){
         <div>
             {titreCreate()}
             <form className='form-create-user' onSubmit={handleSubmit}>
-                <div className='mt-5'>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" onChange={handleInputChange} required/>
+                <div className='mt-6'>
+                    <label htmlFor="courriel">Courriel:</label>
+                    <input type="courriel" id="courriel" name="courriel" onChange={handleInputChange} required/>
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name="password" onChange={handleInputChange} required/>
                 </div>
-                <div className='mt-5'>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" id="username" name="username" onChange={handleInputChange} required/>
+                </div>
+                <div className='mt-6'>
                     <label htmlFor="prenom">Prénom:</label>
                     <input type="text" id="prenom" name="prenom" onChange={handleInputChange} required/>
                 </div>
@@ -101,16 +105,12 @@ function CreateUser(props){
                     <input type="text" id="nom_de_famille" name="nom_de_famille" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="courriel">Courriel:</label>
-                    <input type="courriel" id="courriel" name="courriel" onChange={handleInputChange} required/>
-                </div>
-                <div>
                     <label htmlFor="telephone">Telephone:</label>
                     <input type="tel" id="telephone" name="telephone" onChange={handleInputChange} required/>
                 </div>
                 <div>
                     <label htmlFor="anniversaire">Anniversaire:</label>
-                    <input type="tel" id="anniversaire" name="anniversaire" onChange={handleInputChange} required/>
+                    <input type="date" id="anniversaire" name="anniversaire" onChange={handleInputChange} required/>
                 </div>
                 <br></br>
                 <div>
@@ -124,10 +124,6 @@ function CreateUser(props){
                 <div>
                     <label htmlFor="ville">Ville :</label>
                     <input type="text" id="ville" name="ville" onChange={handleInputChange} required/>
-                </div>
-                <div>
-                    <label htmlFor="code_postal">Code Postal:</label>
-                    <input type="text" id="code_postal" name="codepostal" onChange={handleInputChange} required/>
                 </div>
                 <div>
                     <label htmlFor="province">Province:</label>

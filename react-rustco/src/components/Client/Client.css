@@ -1,0 +1,13 @@
+.tout-container{
+    display: flex;
+    align-items: center;
+    border: 1px solid blue;
+    min-width: 80vw;
+}
+
+.info-user, .info-commandes{
+    padding: 6px;
+    min-height: 500px;
+    width: 50%;
+    border: 1px solid grey;
+}

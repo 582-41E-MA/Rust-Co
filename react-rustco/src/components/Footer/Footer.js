@@ -54,7 +54,7 @@ function Footer(props) {
           </div>
           <div className="pt-10 border-t-2 border-orange-400 border-opacity-50 w-full">
             <div className="sm:flex items-center justify-between">
-              <span className="inline-block mb-4 sm:mb-0 text-gray-50">©{t('droits_footer')}</span>
+              <span className="inline-block mb-4 sm:mb-0 text-gray-50">© {t('droits_footer')}</span>
               <div className="sm:flex mb-6 sm:mb-0 items-center">
                 <a className="inline-block mr-6 mb-2 sm:mr-12 text-white hover:text-orange-100" href="/termes-et-conditions">{t('termes_footer')}</a>
                 <a className="inline-block text-white hover:text-orange-100" href="/politique">{t('politique_footer')}</a>

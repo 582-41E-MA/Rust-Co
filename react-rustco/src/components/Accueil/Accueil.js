@@ -14,6 +14,10 @@ import './Accueil.css';
 function Accueil() {
 
 
+  
+  
+
+
   return (
 
    <div className="cover absolute top-16 left-0 w-full">
