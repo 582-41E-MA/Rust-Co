@@ -21,6 +21,9 @@ function Entete(props) {
   //icon
       let langIcon = lang == 'fr' ? 'uk' : 'france';
 
+
+      let userId = context.logging.id;
+
   return (
     <header className="justify-between">
       <div className="header-right flex items-center">
@@ -38,7 +41,7 @@ function Entete(props) {
         </button>
 
         <div className={`header-main-menu ml-20 md:flex ${menuOuvert ? 'flex' : 'hidden'}`}>
-          <ul className="header-ul-main flex flex-col md:flex-row space-x-8">
+          <ul className="header-ul-main flex flex-col md:flex-row space-x-6">
             <li><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
             <li><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
           </ul>
@@ -46,9 +49,9 @@ function Entete(props) {
 
       </div>
 
-      <nav className="header-nav flex justify-between">
-        <div className="header-left flex space-x-8">
-          <ul className="header-ul-left flex space-x-8">
+      <nav className="header-nav flex justify-between text-xs">
+        <div className="header-left flex space-x-6">
+          <ul className="header-ul-left flex space-x-6">
             
            {localStorage.getItem('logged-user') ?
             <li onClick={props.handleLogout} className="hover:text-orange-100 hover:cursor-pointer">logout</li>
@@ -61,8 +64,8 @@ function Entete(props) {
               <li><a href="/admin" className="hover:text-orange-100">Admin</a></li>
               :
               context.logging.privilege == 'client' ?
-              <div className="flex space-x-8">
-                <li><a href="/client" className="hover:text-orange-100">Ma Page Client</a></li>
+              <div className="flex space-x-6">
+                <li><a href={`/client/${userId.trim()}`} className="hover:text-orange-100">Ma Page Client</a></li>
                 <div className="cursor-pointer">
                   <a href='/panier' className="cursor-pointer">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -119,7 +119,9 @@ const [filtres, setFiltres] = useState([]);
           <div>{t('err_filtres')}</div>
         )
       ) : (
-        < Loader />
+        <div className="mt-80">
+          <Loader />
+        </div>
       )}
       
     </div>

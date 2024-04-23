@@ -36,30 +36,26 @@ export const AppContext = React.createContext();
 function App() {
 
     //////// LOGGING STUFF ///////////////
-  
-//const navigate = useNavigate();
-
-  const [logging, setLogging] = useState({ estLog: false, utilisateur: "", privilege : '' });
+  //const navigate = useNavigate();
+  const [logging, setLogging] = useState({ estLog: false, utilisateur: "", privilege : '', id: '' });
+  const [userId, setUserId] = useState(''); 
   
 
 
   /*de code jwt */
   function parseJwt (token) {
     if(localStorage.getItem('logged-user')){
-        var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+      }
     }
-    console.log('fuck you')
-}
 
   const { t } = useTranslation();
   
-
 
   ///// LANGUAGE STUFF Custom/////
   const [lang, setLang] = useState(localStorage.getItem('siteLang') || 'fr'); // Default lang
@@ -74,15 +70,14 @@ function App() {
   ////////////////////////////
 
 
-useEffect(() =>{
-  if(localStorage.getItem('logged-user')){
-  const token = localStorage.getItem('logged-user');
-  const parseTok = parseJwt(token)
-  setLogging({ estLog: true, utilisateur: parseTok.courriel, privilege : parseTok.privilege })
-  }
-}, [])
+  useEffect(() =>{
+    if(localStorage.getItem('logged-user')){
+    const token = localStorage.getItem('logged-user');
+    const parseTok = parseJwt(token)
+    setLogging({ estLog: true, utilisateur: parseTok.courriel, privilege : parseTok.privilege, id: parseTok.id })
+    }
+  }, [])
  
-
 
 
   async function login(e) {
@@ -110,12 +105,13 @@ useEffect(() =>{
     const token = await reponse.json(); // je recois un reponse, deconstruit (async), ensuit metre dans var reponse
     
     const privilegeTest = localStorage.getItem('logged-user') ? parseJwt(token).privilege : '';
-    
+    const idTest = localStorage.getItem('logged-user') ? parseJwt(token).id : '';
+
 
     if (reponse.status == 200) {
       //storer le jeton dans le localstorge
       localStorage.setItem("logged-user", token);
-      setLogging({ estLog: true, utilisateur: body.courriel, privilege: privilegeTest});
+      setLogging({ estLog: true, utilisateur: body.courriel, privilege: privilegeTest, id: idTest});
       document.location.href = '/';
     }
     form.reset(); //pour vider le champ
@@ -131,7 +127,7 @@ useEffect(() =>{
       if (Date.now() < decode.exp * 1000) {
         return true;
       } else {
-        localStorage.removeItem("logged-user")
+        localStorage.removeItem("logged-user");
       }
     } catch (erreur) {}
   }
@@ -139,18 +135,16 @@ useEffect(() =>{
 
   
   function logout() {
-
     setLogging({
       estLog: false,
       utilisateur: "",
-      privilege: ''
+      privilege: '',
+      id: ''
     });
-    
-    localStorage.removeItem("logged-user")
-    
+    localStorage.removeItem("logged-user");
+    //document.location.href = '/';
   }
 
-  console.log(logging)
 
   return (
     <AppContext.Provider value={{ lang, toggleLang, logging }}>
@@ -174,7 +168,7 @@ useEffect(() =>{
               <Route path="/update-voiture/:id" element={<UpdateVoiture />} />
               <Route path="/update-user/:id" element={<UpdateUser />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/client" element={<Client logging={logging}/>} />
+              <Route path="/client/:id" element={<Client logging={logging}/>} />
               <Route path="/panier" element={<Panier />} />
             </Routes>
           </Router>
