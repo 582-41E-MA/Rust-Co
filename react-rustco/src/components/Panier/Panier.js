@@ -8,6 +8,7 @@ function Panier(){
 
     let context = useContext(AppContext);
     let items = JSON.parse(localStorage.getItem('panier')) || [];
+    console.log(items)
 
     const afficherItems = function() {
         return items.map((item, index) => (
@@ -24,6 +25,15 @@ function Panier(){
             </li>
         ));
     }
+
+
+
+
+
+    const checkout = function(){
+        console.log('checkout')
+    }
+
 
 
     const shippingInfo = function(){
@@ -126,6 +136,7 @@ return(
                     gdsg Loregdfsssssssssssss fdsgfds gapfdsgdsgdsgd gapfdsgdsgds
                     gdsg fds
                     gfds gapfdsgdsg</p>
+                    <buton className='custom-button cursor-pointer' onClick={checkout} >PAYER</buton>
             </div>
         </div>
 
