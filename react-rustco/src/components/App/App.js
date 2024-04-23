@@ -142,6 +142,7 @@ function App() {
       id: ''
     });
     localStorage.removeItem("logged-user");
+    localStorage.removeItem("panier");
     //document.location.href = '/';
   }
 

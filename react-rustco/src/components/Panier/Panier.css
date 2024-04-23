@@ -1,0 +1,12 @@
+.panier-tout-container{
+    align-items: center;
+    border: 1px solid blue;
+    min-width: 80vw;
+}
+
+.info-panier, .info-paiement{
+    padding: 6px;
+    min-height: 500px;
+    border: 1px solid grey;
+}
+

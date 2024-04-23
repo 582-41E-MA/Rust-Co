@@ -1,50 +1,41 @@
 import './Client.css';
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useContext } from "react";
 import { AppContext } from "../App/App";
-import { t } from "i18next";
+import { t } from 'i18next';
 
 function Client(props){
-   // console.log(props)
-   let { id } = useParams();
-    //const id = props.logging.id
+    let { id } = useParams();
     const [error, setError] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({});
 
     const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`;
-    const [urlUser, setUrlUser] = useState(urlUserInitial);
 
-
-   //pour fetch le data du user pour preremplir
-   useEffect(() => {
-    async function userData(){
-      try {
-        const response = await fetch(urlUserInitial);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setUser(data); 
-        setIsLoading(false);
-      } catch (error) {
-        setError("erreur du fetch");
-        setIsLoading(false);
-      }
-    };
-    userData();
-}, [id]);
-
-
-
-
+    useEffect(() => {
+        async function userData(){
+            try {
+                const response = await fetch(urlUserInitial);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setUser(data);
+                setIsLoading(false);
+            } catch (error) {
+                setError("erreur du fetch");
+                setIsLoading(false);
+            }
+        };
+        userData();
+    }, [id]);
 
     return(
         <div className='tout-tout-container'>
-            <h1 className='text-3xl font-bold'>Ma Page Client</h1>
-            <div className='tout-container mt-6'>
-                <div className='info-user'>
+            <h1 className='text-3xl font-bold mb-6'>Ma Page Client</h1>
+            <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-4 min-w-[80vw]'>
+                <div className='info-user col-span-1 border border-blue-300 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>Information Personnelle</h2>
                     <ul className="user-details mb-6">
                         <li><strong>Adresse :</strong> {user.adresse}</li>
@@ -61,31 +52,26 @@ function Client(props){
                         <li><strong>Ville :</strong> {user.ville}</li>
                     </ul>
                     <div className='edit-btn-container'>
-                    <Link to={`/update-user/${user.id}`}> 
-                        <button className='custom-button'>Edit Info</button>
-                    </Link> 
+                        <Link to={`/update-user/${user.id}`}>
+                            <button className='custom-button'>Edit Info</button>
+                        </Link>
                     </div>
                 </div>
-                <div className='info-commandes'>
-                    <div>
-                        <h2 className='text-2xl font-bold mb-6'>Mes Commandes</h2>
-                        <div className='info-commandes-container'>
-
-                        </div>
-
-                    </div>
-                    <div>
-                        <h2 className='text-2xl font-bold mb-6'>Mes Factures</h2>
-                        <div className='info-commandes-container'>
-
-                        </div>
-
-                    </div>
+                <div className='info-commandes col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                    <h2 className='text-2xl font-bold mb-6'>Mes Commandes Passés</h2>
+                    {/* Orders details here */}
+                </div>
+                <div className='info-commandes col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                    <h2 className='text-2xl font-bold mb-6'>Mes Factures</h2>
+                    {/* Invoices details here */}
+                </div>
+                <div className='info-commandes col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                    <h2 className='text-2xl font-bold mb-6'>Mes Réservations</h2>
+                    {/* Reservations details here */}
                 </div>
             </div>
         </div>
-        
     )
 }
 
-export default Client
+export default Client;

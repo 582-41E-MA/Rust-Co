@@ -55,13 +55,40 @@ function Voiture() {
     
 
 
+
+
   /////// AJOUTER AU PANIER ////////////
-function ajouter(){
-  console.log('ajout')
-}
+  function ajouter() {
+    // Retrieve the cart from local storage or initialize an empty array if none exists
+    const panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+    // Add the current car's information to the cart
+    const autoInfo = {
+        id: voiture.id,
+        marque: voiture.marque,
+        modele: voiture.modele,
+        annee: voiture.annee,
+        condition: voiture.condition,
+        prix: prixFinal,
+        image: voiture.image
+    };
+
+    // Check if the car is already in the cart
+    const isCarInCart = panier.some(item => item.id === autoInfo.id);
+
+    // Only add the car if it's not already in the cart
+    if (!isCarInCart) {
+        panier.push(autoInfo);
+        // Save the updated cart back to local storage
+        localStorage.setItem('panier', JSON.stringify(panier));
+        console.log('auto ajouté au panier');
+    } else {
+        console.log('deja dans le panier');
+    }
+  }
 
 
-console.log(context.logging.privilege)
+
 
 
   return (
