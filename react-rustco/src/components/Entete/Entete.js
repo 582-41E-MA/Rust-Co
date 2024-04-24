@@ -25,7 +25,7 @@ function Entete(props) {
       let userId = context.logging.id;
 
   return (
-    <header className="justify-between bg-black_1 text-white_1">
+    <header className="justify-between bg-black text-white_1">
       <div className="header-right flex items-center">
         <div className={`header-logo items-center hidden md:block`}>
           <a href="/" className="flex items-center">
