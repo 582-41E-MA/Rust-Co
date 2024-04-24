@@ -16,13 +16,14 @@ function Entete(props) {
   const context = useContext(AppContext)
   
     const toggleMenu = () => {
-      setMenuOpen(!menuOuvert);
+      setMenuOuvert(!menuOuvert);
     };
-  //icon
+  //icon lang
       let langIcon = lang == 'fr' ? 'uk' : 'france';
-
-
       let userId = context.logging.id;
+
+
+      console.log(menuOuvert)
 
   return (
     <header className="justify-between bg-black text-white_1">
@@ -35,19 +36,31 @@ function Entete(props) {
         </div>
 
         <button onClick={toggleMenu} className="md:hidden">
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
+          <img className='w-8' src="/icons/burger.png"></img>
         </button>
 
-        <div className={`header-main-menu ml-20 md:flex ${menuOuvert ? 'flex' : 'hidden'}`}>
+        <div className='header-main-menu ml-20 md:flex hidden'>
           <ul className="header-ul-main flex flex-col md:flex-row space-x-6">
             <li><a href="/liste-voitures" className="hover:text-aged_4">{t('autos_menu')}</a></li>
             <li><a href="/a-propos" className="hover:text-aged_4">{t('aPropos_menu')}</a></li>
           </ul>
         </div>
 
+    { menuOuvert ? 
+      <div className='header-main-menu-drop mt-40 bg-black z-30 p-8'>
+        <ul className="header-ul-main flex flex-col md:flex-row">
+          <li className="py-8"><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
+          <li className="py-6"><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
+        </ul>
       </div>
+        :
+      <div></div>
+    }
+      
+
+      </div>
+
+      
 
       <nav className="header-nav flex justify-between text-xs">
         <div className="header-left flex space-x-6">
