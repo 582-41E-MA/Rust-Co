@@ -1,7 +1,5 @@
 header{
     display: flex;
-    background-color: rgb(0, 0, 0);
-    color: white;
     margin-bottom: 20px;
     padding: 7px 20px;
     border-bottom: 1px solid black;
@@ -12,11 +10,9 @@ header{
 
 a{
     text-decoration: none;
-    color: white;
 } 
 
 a{
-    color: white;
     text-decoration: none;
 }
 

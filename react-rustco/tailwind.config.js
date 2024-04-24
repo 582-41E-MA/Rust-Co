@@ -31,9 +31,9 @@ module.exports = {
         // Success
         'succes': '#1866F9',
         // Black
-        'black': '#383838',
+        'black_1': '#383838',
         // White
-        'white': '#ECEEF1',
+        'white_1': '#ECEEF1',
       },
     },
   },
