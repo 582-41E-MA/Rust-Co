@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const db = require("./config/db.js");
 
 //Configuration
 require("dotenv").config();
@@ -27,6 +28,86 @@ app.use("/api/voitures", require("./routes/voitures.js"));
 app.use("/api/utilisateurs", require("./routes/utilisateurs.js"));
 app.use("/api/commandes", require("./routes/commandes.js"));
 
+
+
+// ===== STRIPE
+// This is a public sample test API key.
+// Don’t submit any personally identifiable information in requests made with this key.
+// Sign in to see your own test API key embedded in code samples.
+const stripe = require('stripe')('sk_test_51P9BJJHYV1SpE1i8Uxmh0mWK8UdrCo8paENPHP01oUEEvar1dcKA2a3n0GN8HJ7c0XS0xZkgEw60ntxBlz8zP8Ip00cYH9223B');
+app.use(express.static('public'));
+
+// const YOUR_DOMAIN = 'https://rustandco.onrender.com';
+const YOUR_DOMAIN = 'http://localhost:3301';
+
+/**
+ * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
+ */
+const calculateOrderAmount = async (items) => {
+    let prixTotal = 0
+    const orderId = Date.now();
+
+    for (let i = 0, l = items.length; i < l; i++) {
+        const donneeRef = await db.collection("voitures").doc(items[i].id).get();
+        prixTotal = prixTotal + parseInt(donneeRef.data().prix_achete);
+        // prices.push(donneeRef.data().prix_achete)
+    }
+
+
+    const prixTotalUnit = (prixTotal * 100);
+
+    const prixFinal = await stripe.prices.create({
+        currency: 'cad',
+        unit_amount: prixTotalUnit,
+        product_data: {
+            name: orderId
+        },
+    });
+    
+    return prixFinal.id;
+  };
+
+//Route pour checkout
+app.post('/create-checkout-session', async (req, res) => {
+
+    const voitures = [] 
+
+    for (let i = 0, l = req.body.voitures.length; i < l; i++) {
+        voitures.push(req.body.voitures[i])
+    }
+
+    const order = await calculateOrderAmount(voitures)
+
+  const session = await stripe.checkout.sessions.create({
+    ui_mode: 'embedded',
+    // amount: calculateOrderAmount(voitures),
+    line_items: [
+      {
+        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        price: order,
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+  });
+
+  res.send({clientSecret: session.client_secret});
+});
+
+app.get('/session-status', async (req, res) => {
+  const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+
+  res.send({
+    status: session.status,
+    customer_email: session.customer_details.email
+  });
+});
+
+app.listen(4242, () => console.log('Running on port 4242'));
+
+
+
 // ===== PAGE 404
 // Si aucune route n'est trouvée, alors on retourne une erreur 404
 app.use((req, res) => {
@@ -39,43 +120,3 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
-
-
-// This is a public sample test API key.
-// Don’t submit any personally identifiable information in requests made with this key.
-// Sign in to see your own test API key embedded in code samples.
-// const stripe = require('stripe')('sk_test_Hrs6SAopgFPF0bZXSN3f6ELN');
-// const express = require('express');
-// const app = express();
-// app.use(express.static('public'));
-
-// const YOUR_DOMAIN = 'http://localhost:3000';
-
-// app.post('/create-checkout-session', async (req, res) => {
-//   const session = await stripe.checkout.sessions.create({
-//     ui_mode: 'embedded',
-//     line_items: [
-//       {
-//         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-//         price: '{{PRICE_ID}}',
-//         quantity: 1,
-//       },
-//     ],
-//     mode: 'payment',
-//     return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
-//   });
-
-//   res.send({clientSecret: session.client_secret});
-// });
-
-// app.get('/session-status', async (req, res) => {
-//   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
-
-//   res.send({
-//     status: session.status,
-//     customer_email: session.customer_details.email
-//   });
-// });
-
-// app.listen(4242, () => console.log('Running on port 4242'));
