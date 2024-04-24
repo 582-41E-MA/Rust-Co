@@ -10,20 +10,20 @@ function Footer(props) {
   //const context = useContext(AppContext);
 
   return (
-    <footer className="footer relative">
-        <section className="relative pt-20 pb-8 overflow-hidden text-white w-full">
+    <footer className="footer relative ">
+        <section className="relative pt-20 pb-8 overflow-hidden text-white_1 w-full ">
         
-        <div className="relative container px-4 mx-auto w-full flex-col">
+        <div className="relative container px-4 mx-auto w-full flex-col ">
           <div className="mb-24 sm:mb-52 pr-8 sm:pr-0 w-full">
-            <div className="flex items-center m-10 ">
+            <div className="flex items-center m-10">
               <img src="/logo/rustcologotest.png" className="footer-logo w-28 sm:w-40 sm:block mr-4" />
-              <h1 className="font-heading text-4xl  sm:text-6xl font-semibold text-white mb-20">
+              <h1 className="font-heading text-4xl  sm:text-6xl font-semibold text-white_1 mb-20">
                 <span className="logo-font">Rust&Co</span>
               </h1>
             </div>
             <div className="sm:flex items-center ml-12">
               <div className="flex mb-12 sm:mb-0 sm:mr-12 items-center">
-                <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white rounded-full">
+                <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white_1 rounded-full">
                   <img src="/icons/placeholder.png" alt="" className="w-8"/>
                 </div>
                 <div>
@@ -39,25 +39,25 @@ function Footer(props) {
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white rounded-full">
+                <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white_1 rounded-full">
                   <img src="/icons/envelope.png" alt="" className="w-8"/>
                 </div>
                 <div>
                   <span className="block">
-                    <a href="mailto:rustco@yourdomain.com" className="inline-block text-white hover:text-orange-100">
-                      rustco@yourdomain.com
+                    <a href="mailto:rustco@urmum.org" className="inline-block text-white_1 hover:text-rust_2">
+                      rustco@urmum.org
                     </a>
                   </span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="pt-10 border-t-2 border-orange-400 border-opacity-50 w-full">
+          <div className="pt-10 border-t-2 border-rust_2 w-full">
             <div className="sm:flex items-center justify-between">
-              <span className="inline-block mb-4 sm:mb-0 text-gray-50">© {t('droits_footer')}</span>
+              <span className="inline-block mb-4 sm:mb-0 text-white_1">© {t('droits_footer')}</span>
               <div className="sm:flex mb-6 sm:mb-0 items-center">
-                <a className="inline-block mr-6 mb-2 sm:mr-12 text-white hover:text-orange-100" href="/termes-et-conditions">{t('termes_footer')}</a>
-                <a className="inline-block text-white hover:text-orange-100" href="/politique">{t('politique_footer')}</a>
+                <a className="inline-block mr-6 mb-2 sm:mr-12 text-white_1 hover:text-rust_2" href="/termes-et-conditions">{t('termes_footer')}</a>
+                <a className="inline-block text-white_1 hover:text-rust_2" href="/politique">{t('politique_footer')}</a>
               </div>
             </div>
           </div>
