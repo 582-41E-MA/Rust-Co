@@ -52,7 +52,7 @@ Rust & Co is a website for selling used vehicles. The team uses an iterative dev
 
 ## Étape 3: Sélection des technologies utilisées
 
-- **Frontend:** React.Js, HTML, CSS (Tailwind), et Possible Intégration Next.JS
+- **Frontend:** React.Js, HTML, CSS (Tailwind) et Possible Intégration Next.JS
 - **Backend:** Node.Js, Firebase, Render
 - **Design:** Figma
 - **Communication:** Discord
@@ -168,24 +168,63 @@ Rust & Co is a website for selling used vehicles. The team uses an iterative dev
 - Création des tables Commande, Facturation et Réservation
 
 #### Design - Fabien
-- Maquette Graphique détaillée
-- Présentation Sprint 2
-- Création d'image de produit
-- Custom burger
+- Maquette Graphique détaillée (10h)
+- Création d'image de produit (1h)
+- Custom burger (1h)
+- Scrum (2h)
 
 ### Sprint 3:
 
-#### FrontEnd 
-- Animation
-- Special Effects
-- Modal Login, Panier, create account
-- Carousel liens fitres
-- Unit Testing (Fabien)
-- Stripe Checkout(Fabien)
+#### Paul
+- Commande/Reservation/Panier
+- Forms
+- Modal Login, Panier
+- Intégration CSS Final
+- Responsive Final
+- Animation/Special effect
 
-#### Design - Fabien
-- Présentation Sprint 3
+#### Gabriel
+- Commande/Facture/Panier
+- Création des produits finaux
+- Validation des champs form
+- Upload Image
+- Type Voitures
+
+#### Fabien
+- Carousel (liens fitres?) 
+- Unit Testing(?)
+- Stripe Checkout
+- Traduction
+- Upload icons
+- Format Media
 
 ---
 
 ## Étape 6: Présentation
+
+- Fabien
+    - Présentation de l'équipe
+    - Technologie utilisé
+    - Maquette Graphique et concept
+    - Observation Global
+
+- Paul
+    - Présentation des pages
+    - Traduction
+    - Login
+    - Cool btn bro
+    - CRM
+
+- Gabriel
+    - Fonction accomplie
+    - Technologie (NoSQL, NodeJs)
+    - Défis
+    - Commentaire
+
+- Paul
+    - Défis 
+    - commentaire
+
+- Fabien 
+    - Wrap-up
+    - Période questions
