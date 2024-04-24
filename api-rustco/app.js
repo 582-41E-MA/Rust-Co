@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Toutes les routes non statiques doivent être définies après les middlewares
 app.use("/api/voitures", require("./routes/voitures.js"));
 app.use("/api/utilisateurs", require("./routes/utilisateurs.js"));
+app.use("/api/commandes", require("./routes/commandes.js"));
 
 // ===== PAGE 404
 // Si aucune route n'est trouvée, alors on retourne une erreur 404
