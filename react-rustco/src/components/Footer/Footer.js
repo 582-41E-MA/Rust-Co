@@ -40,7 +40,7 @@ function Footer(props) {
               </div>
               <div className="flex items-center">
                 <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white_1 rounded-full">
-                  <img src="/icons/envelope.png" alt="" className="w-8"/>
+                  <img src="/icons/mail-line.svg" alt="" className="w-8"/>
                 </div>
                 <div>
                   <span className="block">
