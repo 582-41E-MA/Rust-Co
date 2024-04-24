@@ -7,13 +7,26 @@ import { AppContext } from "../App/App";
 function Panier(){
 
     let context = useContext(AppContext);
-    let items = JSON.parse(localStorage.getItem('panier')) || [];
-    console.log(items)
+    let [items, setItems] = useState(JSON.parse(localStorage.getItem('panier')) || []);
+    useEffect(() => {
+        console.log(items);
+    }, [items]);
+
+
+
+const deleteItem = function(itemId){
+    const itemsRestants = items.filter(item => item.id !== itemId);
+    setItems(itemsRestants);
+    localStorage.setItem('panier', JSON.stringify(itemsRestants));
+    
+}
+
+
 
     const afficherItems = function() {
         return items.map((item, index) => (
             <li key={index} className="mb-4 border border-green-500">
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 justify-between px-6">
                     <img src={`/img/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover"/>
                     <div>
                         <h3 className="text-lg font-bold">{item.marque} {item.modele}</h3>
@@ -21,6 +34,7 @@ function Panier(){
                         <p>Condition: {item.condition}</p>
                         <p>Prix: ${item.prix}</p>
                     </div>
+                <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteItem(item.id); }}></img>
                 </div>
             </li>
         ));
