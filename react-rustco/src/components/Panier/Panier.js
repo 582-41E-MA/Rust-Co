@@ -4,13 +4,25 @@ import { useContext } from 'react';
 import { AppContext } from "../App/App";
 
 
+import {loadStripe} from '@stripe/stripe-js';
+import { useStripe, useElements, CardElement, Elements } from "@stripe/react-stripe-js";
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout
+} from '@stripe/react-stripe-js';
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
+
+const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCaaVMAPUlHjeJ8Z2QN01j7vRVjLnaMVVVQr21kziWi8xGE63CapNq00KhJnyjFr");
+
+
 function Panier(){
+
 
     let context = useContext(AppContext);
     let [items, setItems] = useState(JSON.parse(localStorage.getItem('panier')) || []);
-    useEffect(() => {
-        console.log(items);
-    }, [items]);
+    // useEffect(() => {
+    //     console.log(items);
+    // }, [items]);
 
 
 
@@ -21,6 +33,44 @@ const deleteItem = function(itemId){
     
 }
 
+
+
+    // stripe ////////////////////////////////////////
+
+    const [clientSecret, setClientSecret] = useState("");
+
+    console.log(items)
+
+    let arrItems = []
+
+    for(let i =0; i<items.length; i++){
+        arrItems.push({id: items[i].id})
+        
+    }
+      
+        console.log(arrItems)
+
+
+    
+    useEffect(() => {
+      // Create PaymentIntent as soon as the page loads
+      fetch("http://localhost:5000/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ voitures: arrItems }),
+      })
+        .then((res) => res.json())
+        .then((data) => setClientSecret(data.clientSecret));
+    }, []);
+    
+    const appearance = {
+      theme: 'stripe',
+    };
+    const options = {
+      clientSecret,
+      appearance,
+     };
+    //////////////////////////////////
 
 
     const afficherItems = function() {
@@ -41,12 +91,6 @@ const deleteItem = function(itemId){
     }
 
 
-
-
-
-    const checkout = function(){
-        console.log('checkout')
-    }
 
 
 
@@ -126,7 +170,7 @@ const deleteItem = function(itemId){
 
 }
 }
-
+console.log(clientSecret)
 return(
     <div>
         <h1 className='text-4xl font-bold mb-6'>Mon Panier</h1>
@@ -139,18 +183,15 @@ return(
             </div>
             <div className='info-paiement flex-1'>
                 <h2 className='text-2xl font-bold mb-6'>Paiement</h2>
-                {/* Simulated long content */}
-                <p>Loregdfsssssssssssss fdsgfds gapfdg fdsgfd
-                    sdsf gapfdsgdsg descriptiongdsg descriptiongdsgfd
-                    s gapfdsgdsgdsg descripti
-                    ongdsgfdsg fdsgfdssg 
-                    gapfdsgdsg
-                    dsgd gapfdsgdsgdsgdsg 
-                    screengfs gapfdsgdsgdsf gapfdsgdsgfds gapfds
-                    gdsg Loregdfsssssssssssss fdsgfds gapfdsgdsgdsgd gapfdsgdsgds
-                    gdsg fds
-                    gfds gapfdsgdsg</p>
-                    <buton className='custom-button cursor-pointer' onClick={checkout} >PAYER</buton>
+
+                
+                {clientSecret && (
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
+      )}
+            
+   
             </div>
         </div>
 

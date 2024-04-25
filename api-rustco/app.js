@@ -38,45 +38,47 @@ const stripe = require('stripe')('sk_test_51P9BJJHYV1SpE1i8Uxmh0mWK8UdrCo8paENPH
 app.use(express.static('public'));
 
 // const YOUR_DOMAIN = 'https://rustandco.onrender.com';
-const YOUR_DOMAIN = 'http://localhost:3301';
+const YOUR_DOMAIN = 'http://localhost:5000';
 
 /**
  * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
  */
-const calculateOrderAmount = async (items) => {
-    let prixTotal = 0
-    const orderId = Date.now();
+// const calculateOrderAmount = async (items) => {
+//     let prixTotal = 0
+//     const orderId = Date.now();
 
-    for (let i = 0, l = items.length; i < l; i++) {
-        const donneeRef = await db.collection("voitures").doc(items[i].id).get();
-        prixTotal = prixTotal + parseInt(donneeRef.data().prix_achete);
-        // prices.push(donneeRef.data().prix_achete)
-    }
+//     for (let i = 0, l = items.length; i < l; i++) {
+//         const donneeRef = await db.collection("voitures").doc(items[i].id).get();
+//         prixTotal = prixTotal + parseInt(donneeRef.data().prix_achete);
+//         // prices.push(donneeRef.data().prix_achete)
+//     }
 
 
-    const prixTotalUnit = (prixTotal * 100);
+//     const prixTotalUnit = (prixTotal * 100);
 
-    const prixFinal = await stripe.prices.create({
-        currency: 'cad',
-        unit_amount: prixTotalUnit,
-        product_data: {
-            name: orderId
-        },
-    });
+//     const prixFinal = await stripe.prices.create({
+//         currency: 'cad',
+//         unit_amount: prixTotalUnit,
+//         product_data: {
+//             name: orderId
+//         },
+//     });
     
-    return prixFinal.id;
-  };
+//     return prixFinal.id;
+//   };
 
 //Route pour checkout
 app.post('/create-checkout-session', async (req, res) => {
 
-    const voitures = [] 
+    // const voitures = [] 
 
-    for (let i = 0, l = req.body.voitures.length; i < l; i++) {
-        voitures.push(req.body.voitures[i])
-    }
+    // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
+    //     voitures.push(req.body.voitures[i])
+    // }
 
-    const order = await calculateOrderAmount(voitures)
+    // const order = await calculateOrderAmount(voitures)
+
+    const price = await stripe.prices.retrieve('price_1P9CZ9HYV1SpE1i8sSIB26WR');
 
   const session = await stripe.checkout.sessions.create({
     ui_mode: 'embedded',
@@ -84,7 +86,7 @@ app.post('/create-checkout-session', async (req, res) => {
     line_items: [
       {
         // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: order,
+        price: price,
         quantity: 1,
       },
     ],
