@@ -23,7 +23,6 @@ function Entete(props) {
       let userId = context.logging.id;
 
 
-      console.log(menuOuvert)
 
   return (
     <header className="justify-between bg-black text-white_1">
