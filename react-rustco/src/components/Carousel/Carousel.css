@@ -1,0 +1,27 @@
+.carousel-container {
+    display: flex;
+    position: absolute; 
+    overflow: hidden; 
+    width: 100%;
+    top: 65px;
+    right: 0;
+}
+
+.carousel-wrapper {
+    display: flex; 
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 100%; 
+}
+
+.carousel-image {
+    width: 100%; 
+    height: auto; 
+}
