@@ -182,7 +182,7 @@ function App() {
   return (
     <AppContext.Provider value={{ lang, toggleLang, logging }}>
    
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-white_1">
         <Entete handleLogout={logout} logging={logging} />
         <main className="flex-grow min-h-screen main max-w-6xl mx-auto p-4"> 
   
