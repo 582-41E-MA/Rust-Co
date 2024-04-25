@@ -34,7 +34,7 @@ function Filtres(props) {
    
   return (  
     
-      <form method='get' className='flex flex-wrap text-sm form-filtres border border-black_1 rounded-2xl justify-center items-center mb-8 bg-aged_2 py-2' onSubmit={(e) =>{
+      <form method='get' className='flex flex-wrap text-sm form-filtres rounded-2xl justify-center items-center mb-8 bg-aged_2 py-2' onSubmit={(e) =>{
         e.preventDefault(); 
         const marque = e.target["filtre-marque"].value;
         const modele = e.target["filtre-modele"].value;

@@ -89,37 +89,47 @@ function Voiture() {
 
 
   return (
-    
-    <div className="grid grid-cols-2 gap-4 rounded-2xl overflow-hidden border p-6 bg-aged_4">
-      <BreadcrumbC breadVoiture={voiture}/>
-      <div className="relative col-span-2">
-        <img
+    <div>
+      <div className="flex flex-col rounded-2xl overflow-hidden border p-6 bg-aged_2">
+        <BreadcrumbC breadVoiture={voiture}/>
 
-          src={`/voitures/${voiture?.image}`}
-          alt={voiture?.id}
-          className=" object-cover w-full h-full rounded-2xl"
-        />
-      </div>
-      <div className="border p-2 bg-sand_4">
-        
-        <ul>
-          <li>Marque: {voiture?.marque}</li>
-          <li>Modele: {voiture?.modele}</li>
-          <li>Année: {voiture?.annee}</li>
-          <li>Condition: {voiture?.condition}</li>
-        </ul>
-      </div>
+        <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 my-8">
+          <div className="flex-1 rouded-2xl">
+            <img
 
-      <div className="border p-2">
-        <div className="mb-2">
-          <span className="font-bold">Description: {langDescription}</span>
+              src={`/voitures/${voiture?.image}`}
+              alt={voiture?.id}
+              className=" object-cover rounded-2xl"
+            />
+          </div>
+          
+          <div className="border border-black_1 rounded-2xl p-2 flex-1">
+            <div className="mb-2">
+              <span className="font-bold">Description: {langDescription}</span>
+            </div>
+          </div>
         </div>
-      </div>
-    
-      <div className="border p-2 flex flex-col items-center justify-center">
-        <div className="font-bold text-lg mb-2">{prixFinal} $</div>
-        <button className="custom-button mb-2">Reserver</button>
-        <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>
+
+        <div className="flex space-x-8 ">
+          <div className="flex-1 border border-black_1 rounded-2xl p-2 bg-sand_4">
+            
+            <ul>
+              <li>Marque: {voiture?.marque}</li>
+              <li>Modele: {voiture?.modele}</li>
+              <li>Année: {voiture?.annee}</li>
+              <li>Condition: {voiture?.condition}</li>
+            </ul>
+          </div>
+
+          
+        
+          <div className="flex-1 border border-black_1 rounded-2xl  p-2 flex flex-col items-center justify-center">
+            <div className="font-bold text-lg mb-2">{prixFinal} $</div>
+            <button className="custom-button mb-2">Reserver</button>
+            <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>
+          </div>
+        </div>
+
       </div>
     </div>
   );

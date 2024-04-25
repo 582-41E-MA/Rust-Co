@@ -111,7 +111,7 @@ const [filtres, setFiltres] = useState([]);
           animate="visible"
           exit="exit"
           variants={variants}
-          className="tuiles-container bg-sand_1 rounded-2xl border border-black_1"
+          className="tuiles-container bg-sand_1 rounded-2xl "
         >
           {tuileVoiture}
         </motion.div>
