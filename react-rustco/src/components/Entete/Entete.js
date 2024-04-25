@@ -39,7 +39,8 @@ function Entete(props) {
 
 
   return (
-    <header className="justify-between bg-black text-white_1">
+    <header>
+      <div className="header justify-between bg-black text-white_1 relative z-20">
       <div className="header-right flex items-center">
         <div className={`header-logo items-center hidden md:block`}>
           <a href="/" className="flex items-center">
@@ -52,43 +53,34 @@ function Entete(props) {
           <img className='w-8' src="/icons/burger.png"></img>
         </button>
 
-        <div className='header-main-menu ml-20 md:flex hidden'>
+        <div className={`header-main-menu ${menuOuvert ? 'open' : '' }ml-20 md:flex hidden`}>
           <ul className="header-ul-main flex flex-col md:flex-row space-x-6">
             <li><a href="/liste-voitures" className="hover:text-aged_4">{t('autos_menu')}</a></li>
             <li><a href="/a-propos" className="hover:text-aged_4">{t('aPropos_menu')}</a></li>
           </ul>
         </div>
 
-      { menuOuvert ? 
-        <div className='header-main-menu-drop bg-black_1 z-30 px-8 absolute top-16 left-0 w-screen'>
-          <ul className="header-ul-main flex flex-col">
-            <li className="pt-8"><a href="/" className="hover:text-orange-100">{t('accueil')}</a></li>
-            <li className="pt-8"><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
-            <li className="py-8"><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
-          </ul>
-        </div>
-          :
-        <div></div>
-      }  
+     
       </div>
 
-      <nav className="header-nav flex justify-between text-xs">
-        <div className="header-left flex space-x-6">
+      <nav className="header-nav flex justify-between text-s">
+        <div className="header-left flex space-x-6 items-center">
           <ul className="header-ul-left flex space-x-6">
             
            {localStorage.getItem('logged-user') ?
-            <li onClick={props.handleLogout} className="hover:text-aged_4 hover:cursor-pointer">logout</li>
+            <li onClick={props.handleLogout} className="hover:cursor-pointer"><img className='w-7 filter invert' src='/icons/logout.png'></img></li>
            :
-            <li><a href="/login" className="hover:text-aged_4">{t('connexion_menu')}</a></li>
+            <li><a href="/login" className="hover:text-orange-100"><img className='w-8 filter invert' src='/icons/login.png'></img></a></li>
             }
 
             {
             context.logging.privilege == 'admin' || context.logging.privilege == 'employe' ?
-              <li><a href="/admin" className="hover:text-aged_4">Admin</a></li>
+
+              <li><a href="/admin"><img className='w-6 filter invert' src='/icons/user.png'></img></a></li>
               :
               context.logging.privilege == 'client' ?
               <div className="flex space-x-6">
-                <li><a href={`/client/${userId.trim()}`} className="hover:text-aged_4">Ma Page Client</a></li>
+                <li><a href={`/client/${userId.trim()}`}><img className='w-6 filter invert' src='/icons/user.png'></img></a></li>
                 <div className="cursor-pointer">
                   <a href='/panier' className="cursor-pointer">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +90,7 @@ function Entete(props) {
                 </div>
               </div>
               : 
-              <div></div>
+              <></>
             }
             
           </ul>
@@ -108,6 +100,19 @@ function Entete(props) {
           </div>
         </div>
       </nav>
+      </div>
+      { menuOuvert ? 
+        <div className={`header-main-menu-drop ${menuOuvert ? 'open' : '' } z-10 bg-black_1 text-white px-8 absolute top-16 left-0 w-screen opacity-95`}>
+          <ul className="header-ul-main flex flex-col py-6">
+            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/">{t('accueil')}</a></li>
+            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/liste-voitures">{t('autos_menu')}</a></li>
+            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/a-propos">{t('aPropos_menu')}</a></li>
+          </ul>
+        </div>
+          :
+        <></>
+      }  
+      
     </header>
 
   );
