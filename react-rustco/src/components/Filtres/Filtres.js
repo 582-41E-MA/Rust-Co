@@ -34,7 +34,7 @@ function Filtres(props) {
    
   return (  
     
-      <form method='get' className='flex text-sm form-filtres' onSubmit={(e) =>{
+      <form method='get' className='flex flex-wrap text-sm form-filtres border border-black_1 rounded-2xl justify-center items-center mb-8 bg-aged_2 py-2' onSubmit={(e) =>{
         e.preventDefault(); 
         const marque = e.target["filtre-marque"].value;
         const modele = e.target["filtre-modele"].value;
@@ -74,7 +74,7 @@ function Filtres(props) {
           </select>
         </div>
 
-        <input className='submit-btn' type='Submit' value={t('filtrer')} />
+        <input className='submit-btn rounded py-1 px-12 w-200 bg-blue_1 text-white hover:bg-blue_3 hover:cursor-pointer' type='Submit' value={t('filtrer')} />
         
       </form>
     

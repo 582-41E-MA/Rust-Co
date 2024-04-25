@@ -18,7 +18,7 @@ function Footer(props) {
             <div className="flex items-center m-10">
               <img src="/logo/rustcologotest.png" className="footer-logo w-28 sm:w-40 sm:block mr-4" />
               <h1 className="font-heading text-4xl  sm:text-6xl font-semibold text-white_1 mb-20">
-                <span className="logo-font">Rust&Co</span>
+                <span className="logo-font">Rust<span className="text-rust_2">&</span>Co</span>
               </h1>
             </div>
             <div className="sm:flex items-center ml-12">

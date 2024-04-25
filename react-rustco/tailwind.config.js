@@ -36,6 +36,9 @@ module.exports = {
         // White
         'white_1': '#ECEEF1',
       },
+      width:{
+        '200':'200px'
+      }
     },
   },
   plugins: [

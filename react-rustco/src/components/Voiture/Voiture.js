@@ -96,14 +96,13 @@ function Voiture() {
       <div className="voiture-container border p-6">
         <div className="image">
           <img
-          src={`/img/${voiture?.image}`}
+          src={`/voitures/${voiture?.image}`}
           alt={voiture?.id}
           className="imgSingle"
         />
         </div>
         <div className="voiture-bottom flex justify-around">
           <div className="descritption border p-2">
-            <h1 id="titre-voiture">{voiture?.id}</h1>
             <ul>
               <li>Marque: {voiture?.marque}</li>
               <li>Modele: {voiture?.modele}</li>
