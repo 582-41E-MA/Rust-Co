@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import "./Entete.css";
 import { AppContext } from "../App/App";
@@ -18,9 +18,23 @@ function Entete(props) {
     const toggleMenu = () => {
       setMenuOuvert(!menuOuvert);
     };
+   
   //icon lang
       let langIcon = lang == 'fr' ? 'uk' : 'france';
       let userId = context.logging.id;
+
+
+    /*dropdown stuff*/
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+      useEffect(() => {
+        // Function to update and log screen width
+        const handleResize = () => {
+          setScreenWidth(window.innerWidth);
+          if(screenWidth>768){setMenuOuvert(false);} 
+        };
+        window.addEventListener('resize', handleResize);
+      }, []);
+
 
 
 
@@ -45,21 +59,18 @@ function Entete(props) {
           </ul>
         </div>
 
-    { menuOuvert ? 
-      <div className='header-main-menu-drop mt-40 bg-black z-30 p-8'>
-        <ul className="header-ul-main flex flex-col md:flex-row">
-          <li className="py-8"><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
-          <li className="py-6"><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
-        </ul>
+      { menuOuvert ? 
+        <div className='header-main-menu-drop bg-black_1 z-30 px-8 absolute top-16 left-0 w-screen'>
+          <ul className="header-ul-main flex flex-col">
+            <li className="pt-8"><a href="/" className="hover:text-orange-100">{t('accueil')}</a></li>
+            <li className="pt-8"><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
+            <li className="py-8"><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
+          </ul>
+        </div>
+          :
+        <div></div>
+      }  
       </div>
-        :
-      <div></div>
-    }
-      
-
-      </div>
-
-      
 
       <nav className="header-nav flex justify-between text-xs">
         <div className="header-left flex space-x-6">
