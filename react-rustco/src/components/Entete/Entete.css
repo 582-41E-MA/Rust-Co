@@ -1,4 +1,4 @@
-header{
+.header{
     display: flex;
     margin-bottom: 20px;
     padding: 7px 20px;
@@ -6,6 +6,7 @@ header{
     align-items: center;
     height:65px;
 }
+
 
 a{
     text-decoration: none;
@@ -22,3 +23,27 @@ button{
 .logo{
     width: 50px;
 }
+
+
+
+/* DropdownMenu.css */
+@keyframes drop {
+    from {
+
+      transform: translateY(-100%);
+    }
+    to {
+
+      transform: translateY(0);
+    }
+  }
+  
+  .header-main-menu-drop {
+    display: none; 
+    transform: translateY(-100%);
+  }
+  
+  .header-main-menu-drop.open {
+    display: block; 
+    animation: drop 0.2s ease forwards; 
+  }

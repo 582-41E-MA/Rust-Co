@@ -39,7 +39,8 @@ function Entete(props) {
 
 
   return (
-    <header className="justify-between bg-black text-white_1">
+    <header>
+      <div className="header justify-between bg-black text-white_1 relative z-20">
       <div className="header-right flex items-center">
         <div className={`header-logo items-center hidden md:block`}>
           <a href="/" className="flex items-center">
@@ -52,24 +53,14 @@ function Entete(props) {
           <img className='w-8' src="/icons/burger.png"></img>
         </button>
 
-        <div className='header-main-menu ml-20 md:flex hidden'>
+        <div className={`header-main-menu ${menuOuvert ? 'open' : '' }ml-20 md:flex hidden`}>
           <ul className="header-ul-main flex flex-col md:flex-row space-x-6">
             <li><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
             <li><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
           </ul>
         </div>
 
-      { menuOuvert ? 
-        <div className='header-main-menu-drop bg-black_1 z-30 px-8 absolute top-16 left-0 w-screen opacity-95'>
-          <ul className="header-ul-main flex flex-col py-6">
-            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/" className="hover:text-orange-100">{t('accueil')}</a></li>
-            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
-            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
-          </ul>
-        </div>
-          :
-        <div></div>
-      }  
+     
       </div>
 
       <nav className="header-nav flex justify-between text-s">
@@ -108,6 +99,19 @@ function Entete(props) {
           </div>
         </div>
       </nav>
+      </div>
+      { menuOuvert ? 
+        <div className={`header-main-menu-drop ${menuOuvert ? 'open' : '' } z-10 bg-black_1 text-white px-8 absolute top-16 left-0 w-screen opacity-95`}>
+          <ul className="header-ul-main flex flex-col py-6">
+            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/">{t('accueil')}</a></li>
+            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/liste-voitures">{t('autos_menu')}</a></li>
+            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/a-propos">{t('aPropos_menu')}</a></li>
+          </ul>
+        </div>
+          :
+        <></>
+      }  
+      
     </header>
 
   );
