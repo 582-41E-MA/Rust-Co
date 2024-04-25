@@ -88,7 +88,7 @@ const [filtres, setFiltres] = useState([]);
 
   return (
 
-    <div className="liste-voitures">
+    <div className="liste-voitures flex flex-col">
       {estCharge ? (
         <motion.div
           key="filtres"
@@ -111,7 +111,7 @@ const [filtres, setFiltres] = useState([]);
           animate="visible"
           exit="exit"
           variants={variants}
-          className="tuiles-container"
+          className="tuiles-container bg-sand_1 rounded-2xl border border-black_1"
         >
           {tuileVoiture}
         </motion.div>

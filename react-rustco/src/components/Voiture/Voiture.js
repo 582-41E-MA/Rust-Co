@@ -94,6 +94,7 @@ function Voiture() {
       <BreadcrumbC breadVoiture={voiture}/>
       <div className="relative col-span-2">
         <img
+
           src={`/voitures/${voiture?.image}`}
           alt={voiture?.id}
           className=" object-cover w-full h-full rounded-2xl"

@@ -22,7 +22,7 @@ function CreateVoiture(props){
         profit: '',
         description_en: '',
         description_fr: '',
-        image: 'test.png'
+        image: ''
     });
 
 
@@ -30,7 +30,7 @@ function CreateVoiture(props){
         const { name, value, type, files } = event.target;
        setFormData({
             ...formData,
-            [name]: type === 'file' ? files[0] : value
+            [name]: type === 'file' ? files[0]: value
         });
        console.log(formData);
     };
@@ -89,6 +89,7 @@ function CreateVoiture(props){
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////
 
+                console.log(formData.image.name)
 
     return(
         <div>
@@ -155,7 +156,7 @@ function CreateVoiture(props){
 
                 <div>
                     <label for="image">Image : </label>
-                    <input type='file' id="image" name="image" filename={formData.image} onChange={handleInputChange}/>
+                    <input type='file' id="image" name="image" filename={formData.image} onChange={handleInputChange} required/>
                 </div>
 
                 <br></br>

@@ -1,9 +1,9 @@
-.liste-voitures {
+/* .liste-voitures {
     display: flex;
     flex-direction: column;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  }
+  } */
 
   .tuiles-container a{
     align-items: center;
@@ -13,9 +13,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1vw;
-    border-radius: 5px;
     padding: 2vw;
-    background-color: #FDBE84;
 
  
     @media screen and (min-width: 480px) {
