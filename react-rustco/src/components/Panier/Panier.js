@@ -17,7 +17,6 @@ const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCa
 
 function Panier(){
 
-
     let context = useContext(AppContext);
     let [items, setItems] = useState(JSON.parse(localStorage.getItem('panier')) || []);
     // useEffect(() => {
@@ -25,12 +24,10 @@ function Panier(){
     // }, [items]);
 
 
-
 const deleteItem = function(itemId){
     const itemsRestants = items.filter(item => item.id !== itemId);
     setItems(itemsRestants);
     localStorage.setItem('panier', JSON.stringify(itemsRestants));
-    
 }
 
 
@@ -38,16 +35,11 @@ const deleteItem = function(itemId){
     // stripe ////////////////////////////////////////
 
     const [clientSecret, setClientSecret] = useState("");
-
     console.log(items)
-
     let arrItems = []
-
     for(let i =0; i<items.length; i++){
         arrItems.push({id: items[i].id})
-        
     }
-      
         console.log(arrItems)
 
 
