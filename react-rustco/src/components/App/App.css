@@ -13,7 +13,12 @@
     height: 100vh;
     width: 100vw;
   } */
-  
+
+
+  /************ STRIPE CSS ***********************************************/
+
+
+/*   
   form {
     width: 30vw;
     min-width: 500px;
@@ -38,6 +43,7 @@
   }
   
   /* Buttons and links */
+  /*
   button {
     background: #5469d4;
     font-family: Arial, sans-serif;
@@ -64,6 +70,7 @@
   }
   
   /* spinner/processing state, errors */
+  /*
   .spinner,
   .spinner:before,
   .spinner:after {
@@ -132,4 +139,5 @@
       width: 80vw;
       min-width: initial;
     }
-}
+} */
+

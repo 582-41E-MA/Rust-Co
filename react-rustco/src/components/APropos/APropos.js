@@ -36,6 +36,7 @@ function APropos() {
         Située au cœur de la ville, notre boutique propose une large sélection de véhicules de toutes marques et modèles, chacun avec son caractère et son histoire uniques. De la consultation initiale à la livraison finale, nous nous engageons à offrir une expérience transparente et satisfaisante, garantissant que chaque client reparte avec le sentiment d'avoir fait un choix éclairé et respectueux de l'environnement.
       </p><br></br>
      <Signature />
+
     </div>
     );
 
