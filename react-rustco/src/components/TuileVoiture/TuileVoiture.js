@@ -15,7 +15,7 @@ function TuileVoiture(props) {
    
   return (  
       <article className="tuile-voiture">
-        <img src={`img/${props.data.image}`} alt={props.data.modele} />
+        <img src={`/voitures/${props.data.image}`} alt={props.data.modele} />
         <div className='info text-xs'>
           <p>{t('annee')} : {props.data.annee}</p>
           <p>{t('modele')} : {props.data.modele}</p>

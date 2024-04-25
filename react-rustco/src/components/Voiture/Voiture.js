@@ -7,6 +7,7 @@ import * as React from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import i18next from "react-i18next";
+import BreadcrumbC from "../BreadcrumbC/BreadcrumbC"
 
 
 export const VoitureContext = React.createContext();
@@ -76,7 +77,6 @@ function Voiture() {
     // Check if the car is already in the cart
     const isCarInCart = panier.some(item => item.id === autoInfo.id);
 
-    // Only add the car if it's not already in the cart
     if (!isCarInCart) {
         panier.push(autoInfo);
         // Save the updated cart back to local storage
@@ -88,46 +88,39 @@ function Voiture() {
   }
 
 
-
-
-
   return (
     
-      <div className="voiture-container border p-6">
-        <div className="image">
-          <img
-          src={`/img/${voiture?.image}`}
+    <div className="grid grid-cols-2 gap-4 rounded-2xl overflow-hidden border p-6 bg-aged_4">
+      <BreadcrumbC breadVoiture={voiture}/>
+      <div className="relative col-span-2">
+        <img
+          src={`/voitures/${voiture?.image}`}
           alt={voiture?.id}
-          className="imgSingle"
+          className=" object-cover w-full h-full rounded-2xl"
         />
-        </div>
-        <div className="voiture-bottom flex justify-around">
-          <div className="descritption border p-2">
-            <h1 id="titre-voiture">{voiture?.id}</h1>
-            <ul>
-              <li>Marque: {voiture?.marque}</li>
-              <li>Modele: {voiture?.modele}</li>
-              <li>Année: {voiture?.annee}</li>
-              <li>Condition: {voiture?.condition}</li>
-              <li>Prix: {prixFinal} $</li>
-              <li>Description: {langDescription}</li>
-            </ul>
-          </div>
+      </div>
+      <div className="border p-2 bg-sand_4">
+        
+        <ul>
+          <li>Marque: {voiture?.marque}</li>
+          <li>Modele: {voiture?.modele}</li>
+          <li>Année: {voiture?.annee}</li>
+          <li>Condition: {voiture?.condition}</li>
+        </ul>
+      </div>
 
-          {
-            context.logging.privilege == 'client' ?
-              <div className="actions border flex-col p-2">
-                <button onClick={ajouter} className="custom-button block mb-2">Ajouter au Panier</button>
-                <button className="custom-button block">Reserver</button>
-              </div>
-            :
-            <></>
-          }
-          
+      <div className="border p-2">
+        <div className="mb-2">
+          <span className="font-bold">Description: {langDescription}</span>
         </div>
       </div>
     
-
+      <div className="border p-2 flex flex-col items-center justify-center">
+        <div className="font-bold text-lg mb-2">{prixFinal} $</div>
+        <button className="custom-button mb-2">Reserver</button>
+        <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>
+      </div>
+    </div>
   );
 }
 
