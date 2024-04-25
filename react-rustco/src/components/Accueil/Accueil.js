@@ -11,12 +11,11 @@ import Entete from "../Entete/Entete";
 import './Accueil.css';
 
 
+import CarouselC from "../CarouselC/CarouselC";
 
 function Accueil() {
   return (
-    <div className="cover absolute top-16 left-0 w-full">
-
-    </div>
+    <CarouselC/>
   );
 }
 

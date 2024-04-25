@@ -54,8 +54,8 @@ function Entete(props) {
 
         <div className='header-main-menu ml-20 md:flex hidden'>
           <ul className="header-ul-main flex flex-col md:flex-row space-x-6">
-            <li><a href="/liste-voitures" className="hover:text-orange-100">{t('autos_menu')}</a></li>
-            <li><a href="/a-propos" className="hover:text-orange-100">{t('aPropos_menu')}</a></li>
+            <li><a href="/liste-voitures" className="hover:text-aged_4">{t('autos_menu')}</a></li>
+            <li><a href="/a-propos" className="hover:text-aged_4">{t('aPropos_menu')}</a></li>
           </ul>
         </div>
 
@@ -77,18 +77,18 @@ function Entete(props) {
           <ul className="header-ul-left flex space-x-6">
             
            {localStorage.getItem('logged-user') ?
-            <li onClick={props.handleLogout} className="hover:text-orange-100 hover:cursor-pointer">logout</li>
+            <li onClick={props.handleLogout} className="hover:text-aged_4 hover:cursor-pointer">logout</li>
            :
-            <li><a href="/login" className="hover:text-orange-100">{t('connexion_menu')}</a></li>
+            <li><a href="/login" className="hover:text-aged_4">{t('connexion_menu')}</a></li>
             }
 
             {
             context.logging.privilege == 'admin' || context.logging.privilege == 'employe' ?
-              <li><a href="/admin" className="hover:text-orange-100">Admin</a></li>
+              <li><a href="/admin" className="hover:text-aged_4">Admin</a></li>
               :
               context.logging.privilege == 'client' ?
               <div className="flex space-x-6">
-                <li><a href={`/client/${userId.trim()}`} className="hover:text-orange-100">Ma Page Client</a></li>
+                <li><a href={`/client/${userId.trim()}`} className="hover:text-aged_4">Ma Page Client</a></li>
                 <div className="cursor-pointer">
                   <a href='/panier' className="cursor-pointer">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
