@@ -11,7 +11,7 @@ import Entete from "../Entete/Entete";
 import './Accueil.css';
 
 
-import CarouselC from "../CarouselC/CarouselC";
+import CarouselC from "../Carousel/Carousel";
 
 function Accueil() {
   return (
