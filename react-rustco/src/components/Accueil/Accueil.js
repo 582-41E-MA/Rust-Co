@@ -10,6 +10,7 @@ import {
 import Entete from "../Entete/Entete";
 import './Accueil.css';
 
+
 import CarouselC from "../CarouselC/CarouselC";
 
 function Accueil() {
