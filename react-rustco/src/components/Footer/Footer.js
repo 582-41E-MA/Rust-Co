@@ -24,7 +24,7 @@ function Footer(props) {
             <div className="sm:flex items-center ml-12">
               <div className="flex mb-12 sm:mb-0 sm:mr-12 items-center">
                 <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white_1 rounded-full">
-                  <img src="/icons/placeholder.png" alt="" className="w-8"/>
+                  <img className="w-8" src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23000000'%3E%3Cdefs%3E%3Cstyle%3E.cls-6374f8d9b67f094e4896c649-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3Btransition: stroke 0.3s ease-out%3B%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-6374f8d9b67f094e4896c649-1' d='M19.64,9.14C19.64,15.82,12,22.5,12,22.5S4.36,15.82,4.36,9.14a7.64,7.64,0,0,1,15.28,0Z'%3E%3C/path%3E%3Ccircle class='cls-6374f8d9b67f094e4896c649-1' cx='12' cy='9.14' r='2.86'%3E%3C/circle%3E%3C/svg%3E" alt="Location"/>
                 </div>
                 <div>
                   <iframe
@@ -40,7 +40,7 @@ function Footer(props) {
               </div>
               <div className="flex items-center">
                 <div className="flex mb-3 mb-0 mr-3 items-center justify-center w-12 h-12 bg-white_1 rounded-full">
-                  <img src="/icons/mail-line.svg" alt="" className="w-8"/>
+                  <img className="w-8" src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23000000'%3E%3Cdefs%3E%3Cstyle%3E.cls-6374f8d9b67f094e4896c64c-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3Btransition: stroke 0.3s ease-out%3B%7D%3C/style%3E%3C/defs%3E%3Crect class='cls-6374f8d9b67f094e4896c64c-1' x='1.5' y='4.36' width='21' height='15.27'%3E%3C/rect%3E%3Cpolyline class='cls-6374f8d9b67f094e4896c64c-1' points='1.5 4.36 12 14.86 22.5 4.36'%3E%3C/polyline%3E%3C/svg%3E" alt="Email"/>
                 </div>
                 <div>
                   <span className="block">
