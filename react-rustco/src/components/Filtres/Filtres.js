@@ -34,7 +34,7 @@ function Filtres(props) {
    
   return (  
     
-      <form method='get' className='flex flex-wrap text-sm form-filtres rounded-2xl justify-center items-center mb-8 bg-aged_2 py-2' onSubmit={(e) =>{
+      <form method='get' className='flex flex-wrap text-sm form-filtres rounded-2xl justify-around items-center mb-8 bg-aged_2 py-4 md:py-2 md:px-20' onSubmit={(e) =>{
         e.preventDefault(); 
         const marque = e.target["filtre-marque"].value;
         const modele = e.target["filtre-modele"].value;
@@ -42,8 +42,8 @@ function Filtres(props) {
         props.handleFiltres(marque, modele, annee);
         }}>
 
-        <div className='select-wrapper'>
-          <select id="filtre-marque" defaultValue="" onChange={handleMarqueChange}>
+        <div className=''>
+          <select id="filtre-marque" defaultValue="" className="custom-select"  onChange={handleMarqueChange}>
             <option disabled value="">-- {t('marque')} --</option>
             <option value="tous">{t('tous')}</option>
             {
@@ -54,8 +54,8 @@ function Filtres(props) {
           </select>
         </div>
 
-        <div className='select-wrapper'>
-          <select id='filtre-modele' defaultValue="">
+        <div className=''>
+          <select id='filtre-modele' defaultValue="" className="custom-select" >
             <option disabled value="">-- {t('modele')} --</option>
             <option value="tous">{t('tous')}</option>
             {modeles.map(modele => (
@@ -64,8 +64,8 @@ function Filtres(props) {
           </select>
         </div>
 
-        <div className='select-wrapper'>
-          <select id='filtre-annee' defaultValue="">
+        <div className=''>
+          <select id='filtre-annee' defaultValue="" className='custom-select'>
             <option disabled value="">-- {t('annee')} --</option>
             <option value="tous">{t('tous')}</option>
             {annees.map(annee => (
@@ -73,8 +73,9 @@ function Filtres(props) {
             ))}
           </select>
         </div>
+        
+          <input className='filtres-submit submit-btn custom-button hover:bg-blue_3 hover:cursor-pointer' type='Submit' value={t('filtrer')} />
 
-        <input className='submit-btn rounded py-1 px-12 w-200 bg-blue_1 text-white hover:bg-blue_3 hover:cursor-pointer' type='Submit' value={t('filtrer')} />
         
       </form>
     

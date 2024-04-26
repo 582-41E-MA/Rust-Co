@@ -10,8 +10,8 @@ function Politique() {
     if(context.lang == 'fr'){
 
         return (  
-            <div className='termes text-center max-w-4xl'>
-                <p className='mt-12 mb-16 text-4xl'>
+            <div className='termes max-w-4xl'>
+                <p className='mt-12 mb-12 text-4xl font-bold'>
                 <h1>Politique de Confidentialité</h1>
                 </p>
                 <p>Chez Rust&Co, l'une de nos principales priorités est la vie privée de nos visiteurs. Cette Politique de Confidentialité contient des types d'informations qui sont collectées et enregistrées par Rust&Co et comment nous les utilisons.<br></br>
@@ -49,7 +49,7 @@ function Politique() {
                     <b>6. Loi Applicable</b><br></br>
                     Ces termes et conditions sont régis et interprétés conformément aux lois du pays ou de la région où opère Rust&Co. Tout litige découlant de ou en relation avec ces termes et conditions sera soumis à la juridiction exclusive des tribunaux de cette juridiction.
                 </p>
-                <p className='mb-6'>
+                <p className='mb-8'>
                     <b>Contactez-Nous</b><br></br>
                 Pour toute question ou préoccupation concernant ces termes et conditions, veuillez nous contacter à rustco@yourdomain.com.
                 </p>
@@ -59,8 +59,8 @@ function Politique() {
 
     }else{
         return (  
-            <div className='termes text-center max-w-4xl'>
-                <p className='mt-12 mb-16 text-4xl'>
+            <div className='termes max-w-4xl font-bold'>
+                <p className='mt-12 mb-12 text-4xl'>
                 <h1>Privacy Policy</h1>
                 </p>
                 <p>At Rust&Co, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that are collected and recorded by Rust&Co and how we use it.<br></br>
@@ -98,7 +98,7 @@ function Politique() {
                     <b>6. Applicable Law</b><br></br>
                     These terms and conditions are governed and interpreted in accordance with the laws of the country or region where Rust&Co operates. Any dispute arising out of or related to these terms and conditions will be subject to the exclusive jurisdiction of the courts of that jurisdiction.
                 </p>
-                <p className='mb-6'>
+                <p className='mb-8'>
                     <b>Contact Us</b><br></br>
                 For any questions or concerns regarding these terms and conditions, please contact us at rustco@yourdomain.com.
                 </p>
