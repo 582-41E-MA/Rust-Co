@@ -126,7 +126,7 @@ function Voiture() {
               <img
                 src={`/voitures/${voiture.image}`}
                 alt={voiture.id}
-                className="object-cover w-6/12 rounded-2xl"
+                className="object-cover w-11/12 rounded-2xl md:w-9/12 lg:w-6/12"
               />
               <h5>{voiture.subtitle}</h5>
               <h2>{voiture.title}</h2>
