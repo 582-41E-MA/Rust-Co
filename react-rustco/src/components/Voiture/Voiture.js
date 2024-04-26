@@ -90,7 +90,7 @@ function Voiture() {
 
   return (
     <div>
-      <div className="flex flex-col rounded-2xl overflow-hidden border p-6 bg-aged_2">
+      <div className="flex flex-col rounded-2xl overflow-hidden p-6 custom-shadow bg-sand_1">
         <BreadcrumbC breadVoiture={voiture}/>
 
         <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 my-8">
@@ -103,15 +103,15 @@ function Voiture() {
             />
           </div>
           
-          <div className="border border-black_1 rounded-2xl p-2 flex-1">
-            <div className="mb-2">
-              <span className="font-bold">Description: {langDescription}</span>
+          <div className="rounded-2xl p-2 flex-1 bg-aged_2">
+            <div className="mb-2 p-2">
+              <span c>{langDescription}</span>
             </div>
           </div>
         </div>
 
         <div className="flex space-x-8 ">
-          <div className="flex-1 border border-black_1 rounded-2xl p-2 bg-aged_2">
+          <div className="flex-1  rounded-2xl p-2 bg-aged_2">
           <ul className="grid grid-cols-2 grid-rows-2 gap-4 p-2 rounded-2xl">
             <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Marque : {voiture?.marque}</li>
             <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Modele : {voiture?.modele}</li>
@@ -123,7 +123,7 @@ function Voiture() {
 
           
         
-          <div className="flex-1 border border-black_1 rounded-2xl  p-2 flex flex-col items-center justify-center">
+          <div className="flex-1 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
             <button className="custom-button mb-2">Reserver</button>
             <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>

@@ -11,6 +11,11 @@
   @apply block w-200 px-4 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-white_1 rounded-xl transition ease-in-out m-2 focus:text-gray-700 focus:bg-white focus:border-blue_2 focus:outline-none;
 }
 
+.custom-shadow{
+  box-shadow:8px 14px 17px rgba(0, 0, 0, 0.15)
+;
+}
+
 body{
   font-family: "Kiwi Maru", serif;
   font-weight: 400;
