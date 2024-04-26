@@ -1,6 +1,4 @@
-.select-wrapper > *{
-    width: 200px;
-}
+
  /* .select-wrapper {
     position: relative;
 
@@ -35,4 +33,12 @@
 }
  
  */
+
+ /*filter adjust margins on wrap*/
+ @media  screen and (min-width: 649px) {
+    .filtres-submit{
+        margin-top: 8px;
+    }
+ }
+
 

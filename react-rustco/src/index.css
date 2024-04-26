@@ -4,7 +4,11 @@
 @import 'tailwindcss/utilities';
 
 .custom-button {
-  @apply px-4 py-2 bg-blue-500 text-white rounded-lg;
+  @apply px-4 py-2 bg-blue_2 w-200 text-white rounded-xl m-2;
+}
+
+.custom-select{
+  @apply block w-200 px-4 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-white rounded-xl transition ease-in-out m-2 focus:text-gray-700 focus:bg-white focus:border-blue_2 focus:outline-none;
 }
 
 body{
@@ -20,7 +24,7 @@ body{
 }
 
 .apropos, .termes, .politique{
-  background-color: #fce4b4;
+  background-color: theme('colors.aged_3');
   border: 1px solid black;
   border-radius:20px;
   padding:20px
