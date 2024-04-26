@@ -149,6 +149,22 @@ router.post("/",
     }
     //---------------------------------------------------------------------------------------------------
 
+    //PRIVILÈGES
+    //---------------------------------------------------------------------------------------------------
+    const docRefPrivilege = await db.collection("privileges").where("privilege", "==", req.body.privilege).get();
+    const privileges = [];
+
+    docRefPrivilege.forEach((doc)=>{
+        privileges.push(doc.data());
+    })
+
+    //Si oui, erreur
+    if (privileges.length == 0) {
+        res.statusCode = 400;
+        return res.json({message: "Le privilège n'éxiste pas"});
+    }
+    //---------------------------------------------------------------------------------------------------
+
     //COURRIEL  +   Création de l'utilisateur
     //---------------------------------------------------------------------------------------------------
 
