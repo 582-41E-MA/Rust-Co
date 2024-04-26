@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader'
 import { t } from 'i18next';
 
-function UpdateUser(){
+function UpdateUser(props){
     const { id } = useParams();
     const navigate = useNavigate();
     const [error, setError] = useState([]);
@@ -13,8 +13,6 @@ function UpdateUser(){
 
     const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`
     const [urlUser, setUrlUser] = useState(urlUserInitial)
-
-   
   
 
     const [formData, setFormData] = useState({
@@ -76,7 +74,6 @@ function UpdateUser(){
 
 
 
-
    function handleInputChange(e){
         const { name, value, type, files } = e.target;
         setFormData(formData => ({
@@ -106,9 +103,13 @@ function UpdateUser(){
         } catch (error) {
             console.error('Error:', error);
         }
-        navigate('/admin')
+        if(props.logging.privilege == 'client'){
+            navigate(`/client/${props.logging.id}`)
+        }else{
+            navigate('/admin')
+        }
+        
     };
-
 
 
             const capitalizeFirst = (string) => {
@@ -116,7 +117,6 @@ function UpdateUser(){
             };
             ///////////////////////////////////////////////////////////////////////////////////////////
 
-    console.log(formData);
 
 
     if (isLoading) {
@@ -174,14 +174,19 @@ function UpdateUser(){
                     <label for="anniversaire">Date de Naissance : </label>
                     <input type='text' id="anniversaire" name="anniversaire" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.anniversaire : ''}/>
                 </div>
+                {
+                    props.logging.privilege == 'admin' ? 
+                    <div>
+                        <label for="privilege">Privilège : </label>
+                        <select name='privilege' defaultValue={user ? user.privilege : ''} required onChange={handleInputChange}>
+                            <option value="employe">Employé</option>
+                            <option value="client">Client</option>
+                        </select>
+                    </div>
+                    :
+                    <></>
+                }
                 
-                <div>
-                    <label for="privilege">Privilège : </label>
-                    <select name='privilege' defaultValue={user ? user.privilege : ''} required onChange={handleInputChange}>
-                        <option value="employe">Employé</option>
-                        <option value="client">Client</option>
-                    </select>
-                </div>
 
                 <br></br>
                 <button type="submit" className='custom-button'>Submit</button>

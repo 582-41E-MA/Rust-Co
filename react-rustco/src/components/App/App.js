@@ -199,7 +199,7 @@ function App() {
               <Route path="/create-user" element={<CreateUser />} />
               <Route path="/create-voiture" element={<CreateVoiture />} />
               <Route path="/update-voiture/:id" element={<UpdateVoiture />} />
-              <Route path="/update-user/:id" element={<UpdateUser />} />
+              <Route path="/update-user/:id" element={<UpdateUser logging={logging}/>} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/client/:id" element={<Client logging={logging}/>} />
               <Route path="/panier" element={<Panier />} />

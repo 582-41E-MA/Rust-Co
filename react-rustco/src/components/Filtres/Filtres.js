@@ -74,7 +74,7 @@ function Filtres(props) {
           </select>
         </div>
         
-          <input className='filtres-submit submit-btn custom-button hover:bg-blue_3 hover:cursor-pointer' type='Submit' value={t('filtrer')} />
+          <input className='filtres-submit submit-btn custom-button  hover:bg-blue_3 hover:cursor-pointer active:custom-shadow_2' type='Submit' value={t('filtrer')} />
 
         
       </form>
