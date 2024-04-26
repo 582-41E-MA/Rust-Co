@@ -12,7 +12,7 @@
 }
 
 .custom-shadow{
-  box-shadow:8px 10px 10px rgba(0, 0, 0, 0.15)
+  box-shadow:6px 8px 8px rgba(0, 0, 0, 0.15)
 ;
 }
 .custom-shadow_2{
@@ -34,7 +34,7 @@ body{
 
 .apropos, .termes, .politique{
   background-color: theme('colors.aged_3');
-  box-shadow:8px 10px 10px rgba(0, 0, 0, 0.15);
+  box-shadow:6px 8px 8px rgba(0, 0, 0, 0.15);
   border-radius:20px;
   padding:20px
 }
