@@ -111,14 +111,14 @@ function Voiture() {
         </div>
 
         <div className="flex space-x-8 ">
-          <div className="flex-1 border border-black_1 rounded-2xl p-2 bg-sand_4">
-            
-            <ul>
-              <li>Marque: {voiture?.marque}</li>
-              <li>Modele: {voiture?.modele}</li>
-              <li>Année: {voiture?.annee}</li>
-              <li>Condition: {voiture?.condition}</li>
-            </ul>
+          <div className="flex-1 border border-black_1 rounded-2xl p-2 bg-aged_2">
+          <ul className="grid grid-cols-2 grid-rows-2 gap-4 p-2 rounded-2xl">
+            <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Marque : {voiture?.marque}</li>
+            <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Modele : {voiture?.modele}</li>
+            <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Année : {voiture?.annee}</li>
+            <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Condition : {voiture?.condition}</li>
+          </ul>
+
           </div>
 
           
