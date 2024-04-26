@@ -3,6 +3,16 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import modelesParMarque from '../../modelesParMarque.json';
 import { t } from 'i18next';
+import {
+    Checkbox,
+    FileInput,
+    Label,
+    RangeSlider,
+    Select,
+    Textarea,
+    TextInput,
+  } from "flowbite-react";
+
 
 function CreateVoiture(props){
     const [filtres, setFiltres] = useState([]);
@@ -93,7 +103,7 @@ function CreateVoiture(props){
 
     return(
         <div>
-            <h1 className='text-4xl font-bold'>Create Voiture</h1>
+            <h1 className='text-4xl font-bold mb-8'>Create Voiture</h1>
             <form className='form-create-user' method='POST' onSubmit={handleSubmit}>
                 
                 <div className='select-wrapper'>

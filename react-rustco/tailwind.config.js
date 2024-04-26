@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+ /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -38,8 +39,11 @@ module.exports = {
       },
       width:{
         '200':'200px'
+      },
+      fontFamily: {
+        'kiwi': ['Kiwi Maru', 'serif'],
       }
-    },
+    }
   },
   plugins: [
     require('flowbite/plugin'),

@@ -173,9 +173,9 @@ function Entete(props) {
       { menuOuvert ? 
         <div className={`header-main-menu-drop ${menuOuvert ? 'open' : '' } z-10 bg-black_1 text-white px-8 absolute top-16 left-0 w-screen opacity-95`}>
           <ul className="header-ul-main flex flex-col py-6">
-            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/">{t('accueil')}</a></li>
-            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/liste-voitures">{t('autos_menu')}</a></li>
-            <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl"><a href="/a-propos">{t('aPropos_menu')}</a></li>
+           <a href="/"> <li className="p-6 flex justify-center items-center hover:bg-black rounded-xl">{t('accueil')}</li></a>
+            <a href="/liste-voitures"><li className="p-6 flex justify-center items-center hover:bg-black rounded-xl">{t('autos_menu')}</li></a>
+            <a href="/a-propos"><li className="p-6 flex justify-center items-center hover:bg-black rounded-xl">{t('aPropos_menu')}</li></a>
           </ul>
         </div>
           :
