@@ -13,6 +13,9 @@ function Entete(props) {
   const { lang, toggleLang } = useContext(AppContext);
   const [menuOuvert, setMenuOuvert] = useState(false);
 
+  const [hoverIcon, setHoverIcon] = useState(false);
+  const hoverColor = ""
+
   const context = useContext(AppContext)
   
     const toggleMenu = () => {
@@ -55,8 +58,8 @@ function Entete(props) {
 
         <div className={`header-main-menu ${menuOuvert ? 'open' : '' }ml-20 md:flex hidden`}>
           <ul className="header-ul-main flex flex-col md:flex-row space-x-6">
-            <li><a href="/liste-voitures" className="hover:text-aged_4">{t('autos_menu')}</a></li>
-            <li><a href="/a-propos" className="hover:text-aged_4">{t('aPropos_menu')}</a></li>
+            <li><a href="/liste-voitures" className="hover:text-rust_2">{t('autos_menu')}</a></li>
+            <li><a href="/a-propos" className="hover:text-rust_2">{t('aPropos_menu')}</a></li>
           </ul>
         </div>
 
@@ -68,24 +71,36 @@ function Entete(props) {
           <ul className="header-ul-left flex space-x-6">
             
            {localStorage.getItem('logged-user') ?
-            <li onClick={props.handleLogout} className="hover:cursor-pointer"><img className='w-7 filter invert' src='/icons/logout.png'></img></li>
+            <li onClick={props.handleLogout} className="hover:cursor-pointer">
+              <img className='logout_img'src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23ECEEF1'%3E%3Cdefs%3E%3Cstyle%3E.cls-63ce7424ea57ea6c8380055a-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3B%7D%3C/style%3E%3C/defs%3E%3Cpolyline class='cls-63ce7424ea57ea6c8380055a-1' points='13.89 15.82 13.89 22.5 1.48 22.5 1.48 1.5 13.89 1.5 13.89 8.18'%3E%3C/polyline%3E%3Cline class='cls-63ce7424ea57ea6c8380055a-1' x1='8.16' y1='12' x2='21.52' y2='12'%3E%3C/line%3E%3Cpolyline class='cls-63ce7424ea57ea6c8380055a-1' points='16.75 16.77 21.52 12 16.75 7.23'%3E%3C/polyline%3E%3C/svg%3E"alt="logout" />
+            </li>
            :
-            <li><a href="/login" className="hover:text-orange-100"><img className='w-8 filter invert' src='/icons/login.png'></img></a></li>
+          <li className="logout_img">
+            <a href="/login" className="hover:cursor-pointer">
+            <img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23ECEEF1'%3E%3Cdefs%3E%3Cstyle%3E.cls-63ce7424ea57ea6c8380055a-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3Btransition: stroke 0.3s ease-out%3B%7D%3C/style%3E%3C/defs%3E%3Cpolyline class='cls-63ce7424ea57ea6c8380055a-1' points='13.89 15.82 13.89 22.5 1.48 22.5 1.48 1.5 13.89 1.5 13.89 8.18'%3E%3C/polyline%3E%3Cline class='cls-63ce7424ea57ea6c8380055a-1' x1='8.16' y1='12' x2='21.52' y2='12'%3E%3C/line%3E%3Cpolyline class='cls-63ce7424ea57ea6c8380055a-1' points='16.75 16.77 21.52 12 16.75 7.23'%3E%3C/polyline%3E%3C/svg%3E" alt="logout" />
+            </a>
+          </li>
             }
 
             {
             context.logging.privilege == 'admin' || context.logging.privilege == 'employe' ?
 
-              <li><a href="/admin"><img className='w-6 filter invert' src='/icons/user.png'></img></a></li>
+              <li>
+                <a href="/admin" className="hover:cursor-pointer">
+                  <img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23ECEEF1'%3E%3Cdefs%3E%3Cstyle%3E.cls-6374f8d9b67f094e4896c670-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3B%7D%3C/style%3E%3C/defs%3E%3Ccircle class='cls-6374f8d9b67f094e4896c670-1' cx='12' cy='7.25' r='5.73'%3E%3C/circle%3E%3Cpath class='cls-6374f8d9b67f094e4896c670-1' d='M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05'%3E%3C/path%3E%3C/svg%3E" alt="Admin"/>
+                </a>
+              </li>
               :
               context.logging.privilege == 'client' ?
               <div className="flex space-x-6">
-                <li><a href={`/client/${userId.trim()}`}><img className='w-6 filter invert' src='/icons/user.png'></img></a></li>
-                <div className="cursor-pointer">
-                  <a href='/panier' className="cursor-pointer">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V15H18.4433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z" fill="white"/>
-                    </svg>
+                <li>
+                  <a href={`/client/${userId.trim()}`} className="hover:cursor-pointer">
+                    <img src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23ECEEF1'%3E%3Cdefs%3E%3Cstyle%3E.cls-6374f8d9b67f094e4896c670-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3B%7D%3C/style%3E%3C/defs%3E%3Ccircle class='cls-6374f8d9b67f094e4896c670-1' cx='12' cy='7.25' r='5.73'%3E%3C/circle%3E%3Cpath class='cls-6374f8d9b67f094e4896c670-1' d='M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05'%3E%3C/path%3E%3C/svg%3E" alt="Client"/>
+                  </a>
+                </li>
+                <div className="">
+                  <a href='/panier' className="hover:cursor-pointer">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23ECEEF1'%3E%3Cdefs%3E%3Cstyle%3E.cls-6375f1aeb67f094e4896ca2a-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3B%7D%3C/style%3E%3C/defs%3E%3Cg id='cart'%3E%3Ccircle class='cls-6375f1aeb67f094e4896ca2a-1' cx='10.07' cy='20.59' r='1.91'%3E%3C/circle%3E%3Ccircle class='cls-6375f1aeb67f094e4896ca2a-1' cx='18.66' cy='20.59' r='1.91'%3E%3C/circle%3E%3Cpath class='cls-6375f1aeb67f094e4896ca2a-1' d='M.52,1.5H3.18a2.87,2.87,0,0,1,2.74,2L9.11,13.91H8.64A2.39,2.39,0,0,0,6.25,16.3h0a2.39,2.39,0,0,0,2.39,2.38h10'%3E%3C/path%3E%3Cpolyline class='cls-6375f1aeb67f094e4896ca2a-1' points='7.21 5.32 22.48 5.32 22.48 7.23 20.57 13.91 9.11 13.91'%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E"alt="Pannier"/>
                   </a>
                 </div>
               </div>

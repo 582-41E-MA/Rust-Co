@@ -47,3 +47,11 @@ button{
     display: block; 
     animation: drop 0.2s ease forwards; 
   }
+
+
+  .logout_img:hover{
+    color: aqua;
+
+  }
+  
+  
