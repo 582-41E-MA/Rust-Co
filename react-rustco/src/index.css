@@ -4,7 +4,7 @@
 @import 'tailwindcss/utilities';
 
 .custom-button {
-  @apply px-4 py-2 bg-blue_2 w-200 text-white rounded-xl m-2;
+  @apply px-4 py-2 bg-blue_2 w-200 text-white rounded-xl m-2 custom-shadow_2 active:shadow-none;
 }
 
 .custom-select{
@@ -12,7 +12,11 @@
 }
 
 .custom-shadow{
-  box-shadow:8px 14px 17px rgba(0, 0, 0, 0.15)
+  box-shadow:8px 10px 10px rgba(0, 0, 0, 0.15)
+;
+}
+.custom-shadow_2{
+  box-shadow:2px 3px 4px rgba(0, 0, 0, 0.3)
 ;
 }
 
@@ -30,7 +34,7 @@ body{
 
 .apropos, .termes, .politique{
   background-color: theme('colors.aged_3');
-  border: 1px solid black;
+  box-shadow:8px 10px 10px rgba(0, 0, 0, 0.15);
   border-radius:20px;
   padding:20px
 }

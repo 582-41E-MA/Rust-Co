@@ -35,7 +35,7 @@ function Client(props){
         <div className='tout-tout-container'>
             <h1 className='text-3xl font-bold mb-6'>Ma Page Client</h1>
             <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-4 min-w-[80vw]'>
-                <div className='info-user col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                <div className='info-user col-span-1 border rounded-2xl p-6 min-h-[500px] bg-sand_2'>
                     <h2 className='text-2xl font-bold mb-6'>Information Personnelle</h2>
                     <ul className="user-details mb-6">
                         <li><strong>Adresse :</strong> {user.adresse}</li>
@@ -57,15 +57,15 @@ function Client(props){
                         </Link>
                     </div>
                 </div>
-                <div className='info-commandes col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                <div className='info-commandes col-span-1 border rounded-2xl bg-sand_2 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>Mes Commandes Passés</h2>
                     {/* Orders details here */}
                 </div>
-                <div className='info-commandes col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                <div className='info-commandes col-span-1 border rounded-2xl bg-sand_2 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>Mes Factures</h2>
                     {/* Invoices details here */}
                 </div>
-                <div className='info-commandes col-span-1 border border-blue-300 p-6 min-h-[500px]'>
+                <div className='info-commandes col-span-1 border rounded-2xl bg-sand_2 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>Mes Réservations</h2>
                     {/* Reservations details here */}
                 </div>

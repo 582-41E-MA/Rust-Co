@@ -14,7 +14,7 @@ function TuileVoiture(props) {
 
    
   return (  
-      <article className="tuile-voiture flex flex-col justify-between rounded-2xl bg-aged_2">
+      <article className="tuile-voiture flex flex-col justify-between rounded-2xl custom-shadow_2 bg-aged_2">
         <img src={`voitures/${props.data.image}`} alt={props.data.modele} className='m-2 rounded-2xl'/>
 
         <div className='info text-xs'>
