@@ -251,7 +251,8 @@ const [check, setCheck] = useState();
     //document.location.href = '/';
   }
 
-
+  const panier = localStorage.getItem('panier');
+console.log(panier)
   return (
     <AppContext.Provider value={{ lang, toggleLang, logging }}>
    
@@ -276,7 +277,7 @@ const [check, setCheck] = useState();
               <Route path="/admin" element={<Admin />} />
               <Route path="/client/:id" element={<Client logging={logging}/>} />
               <Route path="/panier" element={<Panier />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout" element={<Checkout items={panier}/>} />
               <Route path="/return" element={<Return />} />
             </Routes>
           </Router>
