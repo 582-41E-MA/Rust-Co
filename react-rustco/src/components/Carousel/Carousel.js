@@ -8,10 +8,18 @@ function CarouselC() {
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prevSlide) => (prevSlide + 1) % images.length);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const nextSlide = () => {
+    setSlide((slide + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setSlide((slide - 1 + images.length) % images.length);
+  };
 
   return (
     <div className="carousel-container">
@@ -23,6 +31,12 @@ function CarouselC() {
             </div>
           ))}
         </div>
+        <button onClick={prevSlide} className="carousel-button carousel-button-prev custom-shadow_2 bg-black_1 opacity-90 ">
+          Prev
+        </button>
+        <button onClick={nextSlide} className="carousel-button carousel-button-next custom-shadow_2 bg-black_1 opacity-90 ">
+          Next
+        </button>
       </div>
     </div>
   );
