@@ -259,7 +259,6 @@ console.log(panier)
       <div className="background flex flex-col min-h-screen">
         <Entete handleLogout={logout} logging={logging} />
         <main className="flex-grow min-h-screen main max-w-6xl mx-auto p-4"> 
-  
           <Router>
             <Routes >
               <Route path="/" element={<Accueil />} />

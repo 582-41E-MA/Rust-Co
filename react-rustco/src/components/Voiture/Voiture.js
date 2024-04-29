@@ -76,20 +76,23 @@ function Voiture() {
       <div className="flex flex-col rounded-2xl overflow-hidden p-6 custom-shadow bg-sand_1">
         <BreadcrumbC breadVoiture={voiture}/>
         <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 my-8 ">
-          <div className="flex-1 custom-shadow_2 rounded-2xl bg-aged_2 p-4">
+          
             <motion.div
+            className="flex-1 custom-shadow_2 rounded-2xl bg-aged_2 p-4"
               layoutId={voiture.id}
               onClick={() => setSelectedId(voiture.id)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
             >
+              <div>
               <img
                 src={`/voitures/${voiture.image}`}
                 alt={voiture.id}
                 className="object-cover rounded-2xl"
-              />
+              /> 
+              </div>
             </motion.div>
-          </div>
+         
           <div className="custom-shadow_2 rounded-2xl p-2 flex-1 bg-aged_2">
             <div className="mb-2 p-2">
               <span>{langDescription}</span>

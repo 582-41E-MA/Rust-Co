@@ -35,9 +35,9 @@ const deleteItem = function(itemId){
     const afficherItems = function() {
 
         return items.map((item, index) => (
-            <li key={index} className="mb-4 p-2 border border-black_1 rounded-2xl">
+            <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
                 <div className="flex items-center space-x-4 justify-between px-6">
-                    <img src={`/voitures/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover"/>
+                    <img src={`/voitures/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover rounded-2xl"/>
                     <div>
                         <h3 className="text-lg font-bold">{item.marque} {item.modele}</h3>
                         <p>Année: {item.annee}</p>
@@ -56,9 +56,9 @@ const deleteItem = function(itemId){
         if(context.lang == 'fr'){
 
             return(
-                <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto my-8 border border-black">
-                    <h1 className="text-3xl font-bold text-center mb-6">Informations sur l'Expédition et le Retrait</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white_1 p-6 rounded-2xl max-w-full mx-auto my-8 custom-shadow">
+                    <h1 className="text-3xl font-bold text-center mb-6 p-4">Informations sur l'Expédition et le Retrait</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-2">
                         <div>
                             <h2 className="text-xl font-semibold mb-2">Détails de l'Expédition</h2>
                             <p className="mb-2">Nous offrons une expédition nationale à des tarifs compétitifs. Toutes les voitures subissent une inspection approfondie avant d'être expédiées pour garantir leur qualité et sécurité.</p>
@@ -78,7 +78,7 @@ const deleteItem = function(itemId){
                             </ul>
                         </div>
                     </div>
-                    <div className="mt-6">
+                    <div className="mt-6 p-2">
                         <h2 className="text-xl font-semibold">Services Supplémentaires</h2>
                         <p>Nous offrons également les services suivants pour améliorer votre expérience d'achat :</p>
                         <ul className="list-disc pl-5 mb-4">
@@ -91,9 +91,9 @@ const deleteItem = function(itemId){
             )
         }else{
             return(
-                <div className="bg-white p-6 rounded-2xl shadow-lg max-w-4xl mx-auto my-8 ">
-                <h1 className="text-3xl font-bold text-center mb-6">Shipping & Pickup Information</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white_1 p-6 rounded-2xl custom-shadow max-w-full mx-auto my-8 ">
+                <h1 className="text-3xl font-bold text-center mb-6 p-4">Shipping & Pickup Information</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-2">
                     <div>
                         <h2 className="text-xl font-semibold mb-2">Shipping Details</h2>
                         <p className="mb-2">We offer nationwide shipping at competitive rates. All cars undergo a thorough inspection before being shipped to ensure quality and safety.</p>
@@ -113,7 +113,7 @@ const deleteItem = function(itemId){
                         </ul>
                     </div>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 p-2">
                     <h2 className="text-xl font-semibold">Additional Services</h2>
                     <p>We also offer the following services to enhance your buying experience:</p>
                     <ul className="list-disc pl-5 mb-4">
@@ -135,18 +135,23 @@ return(
     <div>
         <h1 className='text-4xl font-bold mb-6'>Mon Panier</h1>
         <div className='flex flex-col mb-6 md:flex-row md:items-start gap-4'>
-            <div className='info-panier flex-1 bg-white'>
+            <div className='info-panier flex-1 p-4 bg-sand_1 rounded-2xl custom-shadow'>
                 <h2 className='text-2xl font-bold mb-6'>Mes Items</h2>
                 <ul>
                     {afficherItems()}
                 </ul>
             </div>
-            <div className='info-paiement flex-1 bg-white'>
-                <h2 className='text-2xl font-bold mb-6'>Paiement</h2> 
-                <p>
-                    Procédez ici vers le lien du checkout pour payer votre panier!
-                </p> 
-                <Link to="/checkout" className="custom-button float-right" role="button">
+            <div className='info-paiement flex-1 p-4 bg-sand_1 rounded-2xl custom-shadow flex flex-col h-full justify-between'>
+                <div>
+                    <h2 className='text-2xl font-bold mb-6'>Paiement</h2> 
+                    <p>
+                        Procédez ici vers le lien du checkout pour payer votre panier!
+                    </p> 
+                    <div>
+                        Apercu de votre facture
+                    </div>
+                </div>
+                <Link to="/checkout" className="custom-button self-end text-center" role="button">
                     PAYER
                 </Link>
             </div>
