@@ -15,14 +15,12 @@ import CarouselC from "../Carousel/Carousel";
 
 function Accueil() {
   return (
-    <div className="flex ">
+    <div>
       <div>
         <CarouselC/>
       </div>
-      <div className="flex absolute left-0 bottom-0 bg-white_1 w-full">
-        <div className="justify-center">
-          Je suis une publiciter
-        </div>
+      <div className="pub_container">
+        PUB
       </div>
     </div>
 

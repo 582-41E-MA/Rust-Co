@@ -1,0 +1,36 @@
+.pub_container{
+    display: flex;
+    background-color: aqua;
+}
+.pub
+
+Media Queries
+@media screen and (min-width: 640px) {
+    /* Adjust styles for small-sized screens (640px and up) */
+    
+  }
+  
+  @media screen and (min-width: 768px) {
+    /* Adjust styles for medium-sized screens (768px and up) */
+    
+  }
+  
+  @media screen and (min-width: 1024px) {
+    /* Adjust styles for large screens (1024px and up) */
+    
+  }
+  
+  @media screen and (min-width: 1280px) {
+    /* Adjust styles for extra-large screens (1280px and up) */
+    
+  }
+  
+  @media screen and (min-width: 1536px) {
+    /* Adjust styles for 2xl screens (1536px and up) */
+  
+  }
+  
+  @media screen and (min-width: 1800px) {
+   
+  }
+  
