@@ -76,7 +76,7 @@ function Voiture() {
       <div className="flex flex-col rounded-2xl overflow-hidden p-6 custom-shadow bg-sand_1">
         <BreadcrumbC breadVoiture={voiture}/>
         <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row md:space-x-8 my-8 ">
-          <div className="flex-1 rouded-2xl rounded-2xl bg-aged_2 p-4">
+          <div className="flex-1 custom-shadow_2 rounded-2xl bg-aged_2 p-4">
             <motion.div
               layoutId={voiture.id}
               onClick={() => setSelectedId(voiture.id)}
@@ -90,14 +90,14 @@ function Voiture() {
               />
             </motion.div>
           </div>
-          <div className="rounded-2xl p-2 flex-1 bg-aged_2">
+          <div className="custom-shadow_2 rounded-2xl p-2 flex-1 bg-aged_2">
             <div className="mb-2 p-2">
               <span>{langDescription}</span>
             </div>
           </div>
         </div>
         <div className="flex space-x-8 ">
-          <div className="flex-1  rounded-2xl p-2 bg-aged_2">
+          <div className="flex-1 custom-shadow_2 rounded-2xl p-2 bg-aged_2">
             <ul className="grid grid-cols-2 grid-rows-2 gap-4 p-2 rounded-2xl">
               <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Marque : {voiture?.marque}</li>
               <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Modele : {voiture?.modele}</li>
@@ -105,7 +105,7 @@ function Voiture() {
               <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Condition : {voiture?.condition}</li>
             </ul>
           </div>
-          <div className="flex-1 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
+          <div className="flex-1 custom-shadow_2 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
             <button className="custom-button mb-2">Reserver</button>
             <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>
