@@ -49,7 +49,7 @@ function Voiture() {
     const panier = JSON.parse(localStorage.getItem('panier')) || [];
     // Add the current car's information to the cart
     const autoInfo = {
-        id: voiture.id,
+        id: voiture.id.trim(),
         marque: voiture.marque,
         modele: voiture.modele,
         annee: voiture.annee,
