@@ -31,45 +31,6 @@ const deleteItem = function(itemId){
 
 
 
-    // stripe ////////////////////////////////////////
-
-    // const [clientSecret, setClientSecret] = useState("");
-    // console.log(items)
-    // let arrItems = []
-    // for(let i =0; i<items.length; i++){
-    //     arrItems.push({id: items[i].id})
-    // }
-    //     console.log(arrItems)
-
-
-    
-    // useEffect(() => {
-    //   // Create PaymentIntent as soon as the page loads
-    //   fetch("http://localhost:3000/create-checkout-session", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ voitures: arrItems }),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => setClientSecret(data.clientSecret));
-    // }, []);
-    
-    // const appearance = {
-    //   theme: 'stripe',
-    // };
-    // const options = {
-    //   clientSecret,
-    //   appearance,
-    //  };
-    //////////////////////////////////
-    const checkout = function(){
-        
-    }
-
-
-
-
-
 
     const afficherItems = function() {
 
@@ -185,7 +146,7 @@ return(
                 <p>
                     Procédez ici vers le lien du checkout pour payer votre panier!
                 </p> 
-                <Link to="/checkout" className="custom-button float-right" onClick={checkout} role="button">
+                <Link to="/checkout" className="custom-button float-right" role="button">
                     PAYER
                 </Link>
             </div>

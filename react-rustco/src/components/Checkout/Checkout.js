@@ -15,12 +15,16 @@ import {
 const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCaaVMAPUlHjeJ8Z2QN01j7vRVgLnaMVVVQr21kziWi8xGE63CapNq00KhJnyjFr");
 
 
-const Checkout = () => {
+const Checkout = (props) => {
+
+  const panier = props.items;
+  console.log(panier)
 
     const fetchClientSecret = useCallback(() => {
       // Create a Checkout Session
       return fetch("http://localhost:5000/create-checkout-session", {
         method: "POST",
+        body: panier
       })
         .then((res) => res.json())
         .then((data) => data.clientSecret);
