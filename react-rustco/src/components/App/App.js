@@ -257,7 +257,7 @@ const [check, setCheck] = useState();
    
       <div className="background flex flex-col min-h-screen">
         <Entete handleLogout={logout} logging={logging} />
-        <main className="flex-grow min-h-screen main max-w-6xl mx-auto p-4"> 
+        <main className="flex-grow min-h-screen main max-w-6xl mx-auto"> 
   
           <Router>
             <Routes >
