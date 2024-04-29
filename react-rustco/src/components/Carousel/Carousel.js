@@ -43,16 +43,18 @@ function CarouselC() {
         <div className="carousel-slides" style={{ transform: `translateX(-${slide * 100}%)` }}>
           {images.map((image, index) => (
             <div key={index} className="carousel-slide">
-              <img className="carousel-image" src={image} alt={`Slide ${index + 1}`} />
+              <a href="/liste-voitures"><img className="carousel-image object-contain" src={image} alt={`Slide ${index + 1}`} /></a>
             </div>
           ))}
         </div>
-        <button onClick={prevSlide} className="carousel-button carousel-button-prev">
-          <FlecheGauche />
-        </button>
-        <button onClick={nextSlide} className="carousel-button carousel-button-next">
-          <FlecheDroite />
-        </button>
+        <div>
+          <button onClick={prevSlide} className="carousel-button carousel-button-prev">
+            <FlecheGauche />
+          </button>
+          <button onClick={nextSlide} className="carousel-button carousel-button-next">
+            <FlecheDroite />
+          </button>
+        </div>
       </div>
     </div>
   );
