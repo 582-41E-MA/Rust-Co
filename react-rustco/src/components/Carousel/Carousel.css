@@ -1,41 +1,114 @@
 .carousel-container {
-    display: flex;
-    position: absolute; 
-    overflow: hidden; 
-    width: 100%;
-    top: 65px;
-    right: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden; 
+  width: 100%;
+  padding: 0;
 }
 
 .carousel-wrapper {
-    display: flex; 
+  display: flex; 
 }
 
 .carousel-slides {
-    display: flex;
-    transition: transform 0.3s ease;
+  display: flex;
+  transition: transform 0.3s ease;
 }
 
 .carousel-slide {
-    flex-shrink: 0;
-    width: 100%; 
+  flex-shrink: 0;
+  width: 100%; 
+  min-height: 65%;
+  
 }
 
 .carousel-button {
-    position: absolute;
-    top: 30%;
-    transform: translateY(-50%);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-  
-  .carousel-button-prev {
-    left: 1vw;
-  }
-  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.carousel-button-prev {
+  left: 1vw;
+}
+
+.carousel-button-next {
+  right: 1vw;
+}
+
+.carousel-button-link {
+  position: absolute;
+  top: 65%; /* Adjusted top position */
+  right: 50%;
+  transform: translateX(50%); /* Center horizontally */
+  color: black;
+  padding: 8px 24px;
+}
+
+/* Media Queries */
+@media screen and (min-width: 640px) {
+  /* Adjust styles for small-sized screens (640px and up) */
+  .carousel-button-prev,
   .carousel-button-next {
-    right: 1vw;
+      display: block; 
   }
-  
+  .carousel-button-link {
+    top: 85%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Adjust styles for medium-sized screens (768px and up) */
+  .carousel-button-link {
+    top: 85%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /* Adjust styles for large screens (1024px and up) */
+  .carousel-button-link {
+    top: 85%; 
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* Adjust styles for extra-large screens (1280px and up) */
+  .carousel-button-link {
+      
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  /* Adjust styles for 2xl screens (1536px and up) */
+
+  .carousel-wrapper {
+      
+  }
+
+  .carousel-container {
+    min-width: 80vw;
+    right: 12%;
+    
+  }
+
+  .carousel-slide {
+      
+  }
+
+  .carousel-slide img {
+     min-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .carousel-container {
+    max-height: 45vw;
+    right:20%;
+
+  }
+}
+

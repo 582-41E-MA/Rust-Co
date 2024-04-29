@@ -38,12 +38,12 @@ function CarouselC() {
   };
 
   return (
-    <div className="carousel-container">
+    <div className="carousel-container rounded-3xl custom_shadow">
       <div className="carousel-wrapper">
         <div className="carousel-slides" style={{ transform: `translateX(-${slide * 100}%)` }}>
           {images.map((image, index) => (
             <div key={index} className="carousel-slide">
-              <a href="/liste-voitures"><img className="carousel-image object-contain" src={image} alt={`Slide ${index + 1}`} /></a>
+              <img className="carousel-image object-contain" src={image} alt={`Slide ${index + 1}`} />
             </div>
           ))}
         </div>
@@ -53,6 +53,9 @@ function CarouselC() {
           </button>
           <button onClick={nextSlide} className="carousel-button carousel-button-next">
             <FlecheDroite />
+          </button>
+          <button className='carousel-button carousel-button-link bg-white_1 rounded-2xl opacity-85'>
+            <a className='link' href="/liste-voitures"><h1>Voire Nos Véhicule</h1></a>
           </button>
         </div>
       </div>
