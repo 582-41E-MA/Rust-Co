@@ -20,7 +20,7 @@ function Accueil() {
       <div>
         <CarouselC/>
       </div>
-      <div className="pub_container">
+      <div className="pub_container bg-white_2">
         PUB
       </div>
     </div>
