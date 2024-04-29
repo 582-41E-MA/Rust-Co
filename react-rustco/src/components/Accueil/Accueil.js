@@ -15,6 +15,7 @@ import CarouselC from "../Carousel/Carousel";
 
 function Accueil() {
   return (
+
     <div>
       <div>
         <CarouselC/>
