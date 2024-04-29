@@ -23,5 +23,25 @@
 
 .carousel-image {
     width: 100%; 
+    max-height: 65%;
     height: auto; 
 }
+
+.carousel-button {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .carousel-button-prev {
+    left: 1vw;
+  }
+  
+  .carousel-button-next {
+    right: 1vw;
+  }
+  

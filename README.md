@@ -5,7 +5,7 @@
 Rust & Co is a website for selling used vehicles. The team uses an iterative development method.
 
 ### Team Members:
-cd..
+
 - Paul Dawson
 - Gabriel Plouffe
 - Fabien Turgeon
