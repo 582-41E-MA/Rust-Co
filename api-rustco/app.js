@@ -44,11 +44,13 @@ const YOUR_DOMAIN = 'http://localhost:5000';
  * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
  */
 const calculateOrderAmount = async (items) => {
+  console.log(items);
     let prixAvecProfit = 0
     let prixTotal = 0
     const orderId = Date.now();
 
     for (let i = 0, l = items.length; i < l; i++) {
+      
         const donneeRef = await db.collection("voitures").doc(items[i].id).get();
 
         let prix = Number(donneeRef.data().prix_achete)
@@ -56,8 +58,9 @@ const calculateOrderAmount = async (items) => {
         let profit = Number(donneeRef.data().profit)
 
         prixAvecProfit = (prix*((100+profit)/100))
-
-        prixTotal = prixTotal + prixAvecProfit;
+ 
+        //On doit le refaire en Number car le code le remet en string ce qui va briser le prix
+        prixTotal = Number(prixTotal + prixAvecProfit.toFixed(2));
         
         // prices.push(donneeRef.data().prix_achete)
     }
