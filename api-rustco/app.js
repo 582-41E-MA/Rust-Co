@@ -44,15 +44,21 @@ const YOUR_DOMAIN = 'http://localhost:5000';
  * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
  */
 const calculateOrderAmount = async (items) => {
+    let prixAvecProfit = 0
     let prixTotal = 0
     const orderId = Date.now();
 
     for (let i = 0, l = items.length; i < l; i++) {
         const donneeRef = await db.collection("voitures").doc(items[i].id).get();
 
-        let prixAvecProfit = parseInt((donneeRef.data().prix_achete/100) * donneeRef.data().profit + donneeRef.data().prix_achete)
+        let prix = Number(donneeRef.data().prix_achete)
+
+        let profit = Number(donneeRef.data().profit)
+
+        prixAvecProfit = (prix*((100+profit)/100))
 
         prixTotal = prixTotal + prixAvecProfit;
+        
         // prices.push(donneeRef.data().prix_achete)
     }
 
@@ -67,10 +73,9 @@ const calculateOrderAmount = async (items) => {
         },
     });
 
-    console.log(prixFinal)
     
     // return prixFinal.id;
-    return prixFinal.product;
+    return prixFinal.id;
   };
 
 //Route pour checkout
@@ -79,7 +84,7 @@ app.post('/create-checkout-session', async (req, res) => {
     const voitures = [] 
 
     for (let i = 0, l = req.body.length; i < l; i++) {
-        voitures.push(req.body.voitures[i])
+        voitures.push(req.body[i])
     }
 
     const order = await calculateOrderAmount(voitures)
