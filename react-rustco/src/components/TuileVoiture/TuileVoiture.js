@@ -6,11 +6,13 @@ import './TuileVoiture.css';
 import Loader from '../Loader/Loader';
 
 function TuileVoiture(props) {
-  //console.log(props.data);
 
-  const prix = props.data.prix_achete;
-  let nombreNettoye = prix.replace(/[^0-9.]/g, "");
-  let prixVente = (nombreNettoye*1.25).toFixed(2);
+
+  let nombreNettoye = props.data.prix_achete.replace(/[^0-9.]/g, "");
+  const prix = Number(nombreNettoye);
+  const profit = Number(props.data.profit);
+  const prixFinal = (prix*((100+profit)/100)).toFixed(2)
+  
 
    
   return (  
@@ -21,7 +23,7 @@ function TuileVoiture(props) {
           <p>{t('annee')} : {props.data.annee}</p>
           <p>{t('modele')} : {props.data.modele}</p>
           <p className='whitespace-nowrap'>{t('marque')} : {props.data.marque}</p>
-          <p>{t('prix')} : {prixVente} $</p>
+          <p>{t('prix')} : {prixFinal} $</p>
         </div>
       </article>
   );
