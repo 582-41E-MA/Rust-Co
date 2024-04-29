@@ -18,13 +18,16 @@ const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCa
 const Checkout = (props) => {
 
   const panier = props.items;
-  console.log(panier)
+  console.log(JSON.stringify(panier))
 
     const fetchClientSecret = useCallback(() => {
       // Create a Checkout Session
       return fetch("http://localhost:5000/create-checkout-session", {
         method: "POST",
-        body: panier
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(panier)
       })
         .then((res) => res.json())
         .then((data) => data.clientSecret);
