@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { AppContext } from "../App/App";
 import { Link } from 'react-router-dom';
 import {loadStripe} from '@stripe/stripe-js';
+import { t } from 'i18next';
 import { useStripe, useElements, CardElement, Elements } from "@stripe/react-stripe-js";
 import {
   EmbeddedCheckoutProvider,
@@ -40,9 +41,9 @@ const deleteItem = function(itemId){
                     <img src={`/voitures/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover rounded-2xl"/>
                     <div>
                         <h3 className="text-lg font-bold">{item.marque} {item.modele}</h3>
-                        <p>Année: {item.annee}</p>
-                        <p>Condition: {item.condition}</p>
-                        <p>Prix: ${item.prix}</p>
+                        <p>{t('annee')}: {item.annee}</p>
+                        <p>{t('condition')}: {item.condition}</p>
+                        <p>{t('prix')}: ${item.prix}</p>
                     </div>
                 <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteItem(item.id); }}></img>
                 </div>
@@ -133,17 +134,17 @@ const deleteItem = function(itemId){
 
 return(
     <div>
-        <h1 className='text-4xl font-bold mb-6'>Mon Panier</h1>
+        <h1 className='text-4xl font-bold mb-6'>{t('mon_panier')}</h1>
         <div className='flex flex-col mb-6 md:flex-row md:items-start gap-4'>
             <div className='info-panier flex-1 p-4 bg-sand_1 rounded-2xl custom-shadow'>
-                <h2 className='text-2xl font-bold mb-6'>Mes Items</h2>
+                <h2 className='text-2xl font-bold mb-6'>{t('mes_items')}</h2>
                 <ul>
                     {afficherItems()}
                 </ul>
             </div>
             <div className='info-paiement flex-1 p-4 bg-sand_1 rounded-2xl custom-shadow flex flex-col h-full justify-between'>
                 <div>
-                    <h2 className='text-2xl font-bold mb-6'>Paiement</h2> 
+                    <h2 className='text-2xl font-bold mb-6'>{t('paiement')}</h2> 
                     <p>
                         Procédez ici vers le lien du checkout pour payer votre panier!
                     </p> 
@@ -152,7 +153,7 @@ return(
                     </div>
                 </div>
                 <Link to="/checkout" className="custom-button self-end text-center" role="button">
-                    PAYER
+                    {t('checkout')}
                 </Link>
             </div>
         </div>
