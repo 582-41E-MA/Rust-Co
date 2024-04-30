@@ -246,6 +246,8 @@ router.put("/:id", authEmploye,
     
     async (req, res) => {
 
+        console.log(req.body);
+
         //const validation = validationResult(req);       
 
         // if (validation.errors.length > 0) {
@@ -278,8 +280,8 @@ router.put("/:id", authEmploye,
             return res.json({message: "Le nom d'utilisateur est déjà utilisé"});
         }
 
-        //Encrypte le mot de passe
-        const hash = await bcrypt.hash(password, 10);
+        // //Encrypte le mot de passe
+        // const hash = await bcrypt.hash(password, 10);
 
         try{
 
@@ -293,7 +295,7 @@ router.put("/:id", authEmploye,
             utilisateur.telephone = req.body.telephone;
             utilisateur.courriel = req.body.courriel;
             utilisateur.username = req.body.username.toLowerCase();
-            utilisateur.password = hash;
+            // utilisateur.password = hash;
             utilisateur.province = req.body.province;
             utilisateur.ville = req.body.ville;
             utilisateur.privilege = req.body.privilege;
