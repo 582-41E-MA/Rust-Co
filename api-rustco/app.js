@@ -60,7 +60,7 @@ const calculateOrderAmount = async (items) => {
         prixAvecProfit = (Number(prix)*((100+Number(profit))/100))
  
         //On doit le refaire en Number car le code le remet en string ce qui va briser le prix
-        prixTotal = Number(prixTotal + prixAvecProfit.toFixed(2));
+        prixTotal = Number(prixTotal) + Number(prixAvecProfit.toFixed(2));
         
         // prices.push(donneeRef.data().prix_achete)
     }
