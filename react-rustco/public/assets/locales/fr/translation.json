@@ -70,7 +70,18 @@
     "colombie_britannique": "Colombie-Britannique",
     "nouveau_brunswick": "Nouveau-Brunswick,",
     "terre_neuve_et_labrador": "Terre-Neuve-et-Labrador",
-    "ile_du_prince_edouard": "Île-du-Prince-Édouard"
+    "ile_du_prince_edouard": "Île-du-Prince-Édouard",
 
+    "mes_items": "Mes Items",
+    "paiement": "Paiement",
+    "checkout": "Checkout",
+    "mon_panier": "Mon Panier",
+
+    "infos_perso": "Informations Personnelles",
+    "mes_commandes": "Mes Commandes Passées",
+    "mes_factures": "Mes Factures",
+    "mes_reservations": "Mes Réservations"
+
+    
 
 }
