@@ -60,7 +60,7 @@ function UpdateUser(props){
                 nom_de_famille: user.nom_de_famille,
                 username: user.username,
                 courriel: user.courriel,
-                password: user.password,
+                password: '',
                 telephone: user.telephone,
                 adresse: user.adresse,
                 code_postal: user.code_postal,
@@ -130,7 +130,7 @@ function UpdateUser(props){
                
                 <div>
                     <label for="prenom">Prénom : </label>
-                    <input type='text' id="prenom" name="prenom" required maxLength={60} onChange={handleInputChange} defaultValue={user ? user.prenom : ""}/>
+                    <input type='text' id="prenom" name="prenom" required maxLength={60} onChange={handleInputChange} defaultValue={user ? user.prenom : ""} />
                 </div>
 
                 <div>
@@ -148,7 +148,7 @@ function UpdateUser(props){
                 </div>
                 <div>
                     <label for="password">Password : </label>
-                    <input type='password' id="password" name="password" required maxLength={20} onChange={handleInputChange} defaultValue={user ? user.password : ''}/>
+                    <input type='password' id="password" name="password" required maxLength={20} onChange={handleInputChange} />
                 </div>
                 <div>
                     <label for="telephone">Telephone : </label>
