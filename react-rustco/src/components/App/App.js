@@ -43,103 +43,15 @@ import { jwtDecode } from "jwt-decode";
 
 export const AppContext = React.createContext();
 
-
 const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCaaVMAPUlHjeJ8Z2QN01j7vRVjLnaMVVVQr21kziWi8xGE63CapNq00KhJnyjFr");
+
+
+
 function App() {
 
-// // stripe /////
-// const [clientSecret, setClientSecret] = useState("");
-
 const [checkEmbed, setCheckEmbed] = useState(0);
-
-// useEffect(() => {
-  // // Create PaymentIntent as soon as the page loads
-  // fetch("/create-payment-intent", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => setClientSecret(data.clientSecret));
-
-// }, []);
-
-
-// const appearance = {
-//   theme: 'stripe',
-// };
-// const options = {
-//   clientSecret,
-//   appearance,
-// };
-
 const [check, setCheck] = useState();
-
-
-    // stripe ////////////////////////////////////////
-
-    // const CheckoutForm = () => {
-
-    //   const fetchClientSecret = useCallback(() => {
-    //     // Create a Checkout Session
-    //     return fetch("http://localhost:5000/create-checkout-session", {
-    //       method: "POST",
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => data.clientSecret);
-    //   }, []);
-    
-    //   const options = {fetchClientSecret};
-    //   console.log(stripePromise);
-    //   return (
-    //     <div id="checkout">
-    //       <EmbeddedCheckoutProvider
-    //         stripe={stripePromise}
-    //         options={options}
-    //       >
-    //         <EmbeddedCheckout />
-    //       </EmbeddedCheckoutProvider>
-    //     </div>
-    //   )
-    // }
-
-  //   const Return = () => {
-  //     const [status, setStatus] = useState(null);
-  //     const [customerEmail, setCustomerEmail] = useState('');
-    
-  //     useEffect(() => {
-  //       const queryString = window.location.search;
-  //       const urlParams = new URLSearchParams(queryString);
-  //       const sessionId = urlParams.get('session_id');
-    
-  //       fetch(`http://localhost:5000/session-status?session_id=${sessionId}`)
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setStatus(data.status);
-  //           setCustomerEmail(data.customer_email);
-  //         });
-  //     }, []);
-    
-  //     if (status === 'open') {
-  //       return (
-  //         <Navigate to="/checkout" />
-  //       )
-  //     }
-    
-  //     if (status === 'complete') {
-  //       return (
-  //         <section id="success">
-  //           <p>
-  //             We appreciate your business! A confirmation email will be sent to {customerEmail}.
-    
-  //             If you have any questions, please email <a href="mailto:orders@example.com">orders@example.com</a>.
-  //           </p>
-  //         </section>
-  //       )
-  //     }
-  //     return null;
-  // }
-
+ const { t } = useTranslation();
 
     //////// LOGGING STUFF ///////////////
   //const navigate = useNavigate();
@@ -160,7 +72,7 @@ const [check, setCheck] = useState();
       }
     }
 
-  const { t } = useTranslation();
+ 
   
 
   ///// LANGUAGE STUFF Custom/////
@@ -187,8 +99,8 @@ const [check, setCheck] = useState();
 
 
   async function login(e) {
-
     e.preventDefault();
+
     const form = e.target;
     const body = {
       courriel: form.courriel.value,
@@ -219,6 +131,8 @@ const [check, setCheck] = useState();
       localStorage.setItem("logged-user", token);
       setLogging({ estLog: true, utilisateur: body.courriel, privilege: privilegeTest, id: idTest});
       document.location.href = '/';
+    }else{
+      alert(`Vous n'avez pas entré le bon utilisateur ou mot de passe`)
     }
     form.reset(); //pour vider le champ
 
