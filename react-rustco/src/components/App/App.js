@@ -164,7 +164,7 @@ const [check, setCheck] = useState();
   }
 
   const panier = localStorage.getItem('panier');
-console.log(panier)
+
   return (
     <AppContext.Provider value={{ lang, toggleLang, logging }}>
    
@@ -191,7 +191,7 @@ console.log(panier)
               <Route path="/panier" element={<Panier />} />
               <Route path="/checkout" element={<Checkout items={JSON.parse(panier)}/>} />
               <Route path="/return" element={<Return />} />
-              <Route path="/succes" element={<Succes logging={logging}/>} />
+              <Route path="/succes" element={<Succes logging={logging} panier={panier}/>} />
             </Routes>
           </Router>
         </main>
