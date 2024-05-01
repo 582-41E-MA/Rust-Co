@@ -6,16 +6,6 @@ const authAdmin = require("../middlewares/authAdmin.js");
 const authEmploye = require("../middlewares/authEmploye.js");
 const { check, validationResult } = require("express-validator");
 
-// router.get("/initialize", async (req, res) => {
-//     const donneesTest = require("../data/mockUtilisateurs.js");
-//     donneesTest.forEach(async (utilisateur) => {
-//         console.log(utilisateur)
-//         await db.collection("utilisateurs").add(utilisateur);
-//     });
-
-//     res.statusCode = 200;
-//     res.json({ message: "Données initialisées" });
-// });
 
 //-------------------------------------------------------------------------------------
 
@@ -50,7 +40,7 @@ router.get("/", async (req, res) => {
 
 /**
  * PREND UNE COMMANDE AVEC SON ID
- * Cette route permet de récupérer une commande
+ * Cette route permet de récupérer une commande avec son id
  * @route GET
  */
 router.get("/:id", async (req, res) => {
@@ -80,10 +70,9 @@ router.get("/:id", async (req, res) => {
 
 /**
  * CRÉATION
- * Cette route permet de créer un film
- * @route POST /films
+ * Cette route permet de créer une commande
+ * @route POST
  */
-//TODO:Validation de Conditions_id
 router.post("/",
     [
         //TODO: Refait la validation
@@ -172,25 +161,6 @@ router.post("/",
         }
         //---------------------------------------------------------------------------------------------------
 
-        // const voitures = [];
-
-        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
-        //     voitures.push(req.body.voitures[i]);
-        // }
-
-        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
-
-        //     const donneeRef = await db.collection("voitures").doc(req.body.voitures[i].id).get();
-
-        //     console.log(req.body.voitures[i].id)
-
-        //     donneeRef.forEach((doc)=>{
-        //         voitures.push(doc.data());
-        //     })
-
-        // }
-
-
 
         //Génère date d'aujourd'hui
         const dateMilisecondes = Date.now()
@@ -242,8 +212,8 @@ router.post("/",
 
 /**
  * MODIFICATION
- * Cette route permet de modifier un utilisateur
- * @route POST 
+ * Cette route permet de modifier une commande
+ * @route PUT
  */
 router.put("/:id", authEmploye,
     [
@@ -358,7 +328,11 @@ router.put("/:id", authEmploye,
 
 //-------------------------------------------------------------------------------------
 
-//SUPPRIMER
+/**
+ * SUPPRIMER
+ * Cette route permet de supprimer une commande
+ * @route DEL
+ */
 router.delete("/:id", async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const idCommande = req.params.id;
