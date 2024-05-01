@@ -150,7 +150,7 @@ const [check, setCheck] = useState();
     } catch (erreur) {}
   }
 
-
+// pour enlever le max-width de la pge daccueil
   function isAccueil(){
     return window.location.pathname === '/';
   }
@@ -196,7 +196,7 @@ const [check, setCheck] = useState();
               <Route path="/admin" element={<Admin />} />
               <Route path="/client/:id" element={<Client logging={logging}/>} />
               <Route path="/panier" element={<Panier />} />
-              <Route path="/checkout" element={<Checkout items={JSON.parse(panier)}/>} />
+              <Route path="/checkout" element={<Checkout items={JSON.parse(panier)} logging={logging}/>} />
               <Route path="/return" element={<Return />} />
               <Route path="/succes" element={<Succes logging={logging} panier={panier}/>} />
             </Routes>

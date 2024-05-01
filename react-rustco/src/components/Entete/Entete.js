@@ -66,6 +66,10 @@ function Entete(props) {
 
 // ec7a56  rust_2
 
+function isAccueil(){
+  return window.location.pathname === '/';
+}
+
   return (
     <header>
       <div className="header justify-between bg-black text-white_1 relative z-20">
