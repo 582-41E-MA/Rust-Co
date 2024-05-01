@@ -34,7 +34,7 @@ function Client(props){
     return(
         <div className='tout-tout-container'>
             <h1 className='text-3xl font-bold mb-6'>Ma Page Client</h1>
-            <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-4 min-w-[80vw]'>
+            <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-4 min-w-[40vw]'>
                 <div className='info-user col-span-1 border rounded-2xl p-6 min-h-[500px] bg-sand_1'>
                     <h2 className='text-2xl font-bold mb-6'>{t('infos_perso')}</h2>
                     <ul className="user-details mb-6">
