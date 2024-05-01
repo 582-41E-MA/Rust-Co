@@ -9,6 +9,7 @@ function Termes() {
 
     if(context.lang == 'fr'){
 
+        
         return (  
             <div className='termes max-w-4xl'>
                 <p className='mt-12 mb-12 text-4xl font-bold'>
