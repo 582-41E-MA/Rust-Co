@@ -93,7 +93,7 @@ router.post("/",
         // check("prix_achete").escape().trim().notEmpty().isString(),
         // check("description_en").escape().trim().notEmpty().isString(),
         // check("description_fr").escape().trim().notEmpty().isString(),
-        // check("image").escape().trim().notEmpty().isString(),
+        // check("image").escape().trim().notEmpty().isString()
     ],
     
     async (req, res) => {
@@ -162,7 +162,7 @@ router.post("/",
                 commande.date = dateToday;
                 commande.expedition = req.body.expedition;
                 commande.methode_de_paiement = req.body.methode_de_paiement;
-                commande.prix = req.body.prix;
+                commande.total = req.body.total;
                 commande.status = req.body.status;
                 commande.taxes = req.body.taxes;
                 commande.voitures = req.body.voitures
