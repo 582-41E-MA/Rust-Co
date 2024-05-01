@@ -142,9 +142,6 @@ router.post("/",
 
         const dateToday = year + "-" + month + "-" + date
 
-
-
-
         try{
 
             //Créer un champ de valeur dans firebase. (Ceci éxiste pour créer un champ avec un ID et récupérer son id pour la vrai valeur)
@@ -203,7 +200,7 @@ router.put("/:id", authEmploye,
         // }
 
         try{
-
+            const idCommande = req.params.id;
             const commande = {};
             commande.id = docRef.id;
             commande.date = req.body.date;
@@ -237,5 +234,6 @@ router.delete("/:id", async (req, res)=>{
 });
 
 //-------------------------------------------------------------------------------------
+
 
 module.exports = router;
