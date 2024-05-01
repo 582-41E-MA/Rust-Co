@@ -100,6 +100,7 @@ router.post("/",
 
         const validation = validationResult(req);
 
+
         /**
          * Vérification de la condition 
          * TODO: Finir la validation
@@ -114,21 +115,23 @@ router.post("/",
             return res.json({message: "Données non comforme"})
         }
 
-        const voitures = [];
+        // const voitures = [];
 
-        for (let i = 0, l = req.body.voitures.length; i < l; i++) {
-            voitures.push(req.body.voitures[i]);
-        }
+        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
+        //     voitures.push(req.body.voitures[i]);
+        // }
 
-        for (let i = 0, l = req.body.voitures.length; i < l; i++) {
+        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
 
-            const donneeRef = await db.collection("voitures").doc(req[i].id).get();
+        //     const donneeRef = await db.collection("voitures").doc(req.body.voitures[i].id).get();
 
-            donneeRef.forEach((doc)=>{
-                voitures.push(doc.data());
-            })
+        //     console.log(req.body.voitures[i].id)
 
-        }
+        //     donneeRef.forEach((doc)=>{
+        //         voitures.push(doc.data());
+        //     })
+
+        // }
 
 
 
@@ -162,7 +165,7 @@ router.post("/",
                 commande.prix = req.body.prix;
                 commande.status = req.body.status;
                 commande.taxes = req.body.taxes;
-                commande.voitures = voitures
+                commande.voitures = req.body.voitures
                 commande.utilisateur = req.body.utilisateur;
 
                 await db.collection("commandes").doc(docRef.id).update(commande);
