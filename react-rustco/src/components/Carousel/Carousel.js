@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import i18next from 'i18next';
+import { t } from "i18next";
 import './Carousel.css';
 
 const FlecheDroite = () => (
@@ -55,7 +57,7 @@ function CarouselC() {
             <FlecheDroite />
           </button>
           <button className='carousel-button carousel-button-link bg-white_1 rounded-2xl opacity-85'>
-            <a className='link' href="/liste-voitures"><h1 className='xl:text-2xl 2xl:text-5xl'>Voir véhicules</h1></a>
+            <a className='link' href="/liste-voitures"><h1 className='xl:text-2xl 2xl:text-5xl'>{t('voir_vehicule')}</h1></a>
           </button>
         </div>
       </div>
