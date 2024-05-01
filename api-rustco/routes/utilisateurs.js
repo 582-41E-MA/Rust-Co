@@ -239,7 +239,7 @@ router.post("/",
  * Cette route permet de modifier un utilisateur
  * @route POST 
  */
-router.put("/:id", authEmploye,
+router.put("/:id",
     [
         //TODO: Fait la validation
     ],
