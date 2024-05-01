@@ -20,6 +20,7 @@ const Checkout = (props) => {
 
   const panier = props.items;
   console.log(JSON.stringify(panier))
+console.log(props)
 
     const fetchClientSecret = useCallback(() => {
       // Create a Checkout Session

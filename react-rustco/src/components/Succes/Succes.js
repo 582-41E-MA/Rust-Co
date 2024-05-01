@@ -6,6 +6,8 @@ function Success(props) {
     const userId = props.logging.id;
     const lien = `/client/${userId}`;
 
+    props.panier
+
     const data = {
         expedition: 'livraison-locale',
         methode_de_paiement: 'credit',
@@ -16,12 +18,13 @@ function Success(props) {
         voitures: JSON.parse(props.panier).length > 0 ? JSON.parse(props.panier) : ['testfailarr']
     };
 
-    console.log(data);
-
     const hasCommandeBeenCreated = useRef(false);  // This ref will track if the command has been sent
 
     useEffect(() => {
-        async function commandeCreate() {
+        if(userId){
+        
+        async function commandeCreate() {   
+            console.log(data)
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
                 const response = await fetch('http://localhost:5000/api/commandes', {
                     method: 'POST',
@@ -32,7 +35,7 @@ function Success(props) {
                     body: JSON.stringify(data)
                 });
 
-                if (response.ok) {
+                if (response.ok) {    
                     navigate('/liste-voitures');
                     console.log('Data successfully sent to the server');
                 } else {
@@ -63,9 +66,11 @@ function Success(props) {
                 hasCommandeBeenCreated.current = true;  // Mark as sent
             }
         }
-        //factureCreate();
-        //commandeCreate();
-    }, []);  // The empty dependency array ensures this effect runs only once after the initial render
+       
+        factureCreate();
+        commandeCreate();
+    }
+    }, [userId]);  // The empty dependency array ensures this effect runs only once after the initial render
 
     return(
         <div className="bg-white max-w-full p-6 rounded-2xl flex flex-col items-center">
