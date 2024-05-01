@@ -44,12 +44,15 @@ const YOUR_DOMAIN = 'http://localhost:5000';
  * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
  */
 const calculateOrderAmount = async (items) => {
-  console.log(items);
+
     let prixAvecProfit = 0
     let prixTotal = 0
     const orderId = Date.now();
 
-    for (let i = 0, l = items.length; i < l; i++) {
+
+    //Si il y a des voitures
+    if (items != "") {
+      for (let i = 0, l = items.length; i < l; i++) {
       
         const donneeRef = await db.collection("voitures").doc(items[i].id).get();
 
@@ -63,22 +66,31 @@ const calculateOrderAmount = async (items) => {
         prixTotal = Number(prixTotal) + Number(prixAvecProfit.toFixed(2));
         
         // prices.push(donneeRef.data().prix_achete)
-    }
+      }
 
 
-    const prixTotalUnit = (prixTotal * 100);
+      const prixTotalUnit = (prixTotal * 100);
 
-    const prixFinal = await stripe.prices.create({
-        currency: 'cad',
-        unit_amount: prixTotalUnit,
-        product_data: {
-            name: orderId
-        },
-    });
+      const prixFinal = await stripe.prices.create({
+          currency: 'cad',
+          unit_amount: prixTotalUnit,
+          product_data: {
+              name: orderId
+          },
+      });
 
     
-    // return prixFinal.id;
-    return prixFinal.id;
+      // return prixFinal.id;
+      return prixFinal.id;
+
+    } else {
+
+      //Sinon, retourne un produit gratuit qui dit qu'il n'y a pas de voitures trouvé dans la demande
+      return "price_1PBjdlHYV1SpE1i8ESq4Yu8H"
+
+    }
+
+    
   };
 
 //Route pour checkout
