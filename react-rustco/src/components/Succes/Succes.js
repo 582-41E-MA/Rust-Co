@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
-function Succes(props){
+function Success(props) {
     const navigate = useNavigate();
-
-    const userId = props.logging.id
+    const userId = props.logging.id;
     const lien = `/client/${userId}`;
-
 
     const data = {
         expedition: 'livraison-locale',
@@ -17,55 +14,78 @@ function Succes(props){
         taxes: 'ontario',
         utilisateur: userId,
         voitures: JSON.parse(props.panier).length > 0 ? JSON.parse(props.panier) : ['testfailarr']
+    };
 
-    }
+    console.log(data);
 
-    console.log(data)
-
-
-   async function commandeCreate(){
-            const reponse = await fetch('https://rustandco.onrender.com/api/commandes', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                    authorization: `Bearer ${localStorage.getItem('logged-user')}`
-                },
-                body: JSON.stringify(data)
-            });
-
-            console.log(reponse);
-            navigate('/liste-voitures')
-            if (!reponse.ok) throw new Error('Network response was not ok.');
-          
-            console.log('Data successfully sent to the server');
-        }
-
-
+    const hasCommandeBeenCreated = useRef(false);  // This ref will track if the command has been sent
 
     useEffect(() => {
-       commandeCreate();
-        
-    }, []);
+        async function commandeCreate() {
+            if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
+                const response = await fetch('http://localhost:5000/api/commandes', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem('logged-user')}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    navigate('/liste-voitures');
+                    console.log('Data successfully sent to the server');
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+                
+                hasCommandeBeenCreated.current = true;  // Mark as sent
+            }
+        }
+        async function factureCreate() {
+            if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
+                const response = await fetch('http://localhost:5000/api/factures', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem('logged-user')}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    navigate('/liste-voitures');
+                    console.log('Data successfully sent to the server');
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+                
+                hasCommandeBeenCreated.current = true;  // Mark as sent
+            }
+        }
+        //factureCreate();
+        //commandeCreate();
+    }, []);  // The empty dependency array ensures this effect runs only once after the initial render
 
     return(
         <div className="bg-white max-w-full p-6 rounded-2xl flex flex-col items-center">
-            <div className=''><h1 className='mb-6 text-2xl'>Achat éffectué avec succes !</h1>
-            <img className='w-8' src='/icons/check.png'></img></div>
-            <img src='/logo/brasbon.png' className='w-60 mb-6'></img>
-            <p className='mb-6'>-- choissez une redirection --</p>
+            <div className=''><h1 className='mb-6 text-2xl'>Achat effectué avec succès !</h1>
+            <img className='w-8' src='/icons/check.png' alt="Check icon"></img></div>
+            <img src='/logo/brasbon.png' className='w-60 mb-6' alt="Brand logo"></img>
+            <p className='mb-6'>-- choisissez une redirection --</p>
             <div>
                 <Link className='custom-button' to={lien}>
                     Votre Compte
                 </Link>
                 <Link className='custom-button' to='/'>
-                    Acceuil
+                    Accueil
                 </Link>
                 <Link className='custom-button' to='/voitures'>
                    Voitures
                 </Link>
             </div>
         </div>
-    )
+    );
 }
 
-export default Succes
+export default Success;
