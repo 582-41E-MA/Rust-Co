@@ -20,7 +20,7 @@ const { check, validationResult } = require("express-validator");
 //-------------------------------------------------------------------------------------
 
 /**
- * PREND TOUTE LES COMMANDES
+ * PREND TOUTE LES FACTURES
  * Cette route permet de récupérer la liste des commandes
  * @route GET 
  */
@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 
     try{
 
-        const donneesCommandes = await db.collection("commandes").get();
+        const donneesCommandes = await db.collection("factures").get();
         const donneesFinale = [];
 
         donneesCommandes.forEach((doc)=>{
@@ -55,9 +55,9 @@ router.get("/", async (req, res) => {
  */
 router.get("/:id", async (req, res) => {
     try{
-        const idCommande = req.params.id;
+        const idFacture = req.params.id;
 
-        const donneeRef = await db.collection("commandes").doc(idCommande).get();
+        const donneeRef = await db.collection("factures").doc(idFacture).get();
 
         const donnee = donneeRef.data();
 
@@ -146,7 +146,7 @@ router.post("/",
 
             //Créer un champ de valeur dans firebase. (Ceci éxiste pour créer un champ avec un ID et récupérer son id pour la vrai valeur)
             let createField = {};
-            await db.collection("commandes").add(createField)
+            await db.collection("factures").add(createField)
 
 
             /**
@@ -154,18 +154,17 @@ router.post("/",
              */
             .then(async function(docRef) {
 
-                const commande = {};
-                commande.id = docRef.id;
-                commande.date = dateToday;
-                commande.expedition = req.body.expedition;
-                commande.methode_de_paiement = req.body.methode_de_paiement;
-                commande.prix = req.body.prix;
-                commande.status = req.body.status;
-                commande.taxes = req.body.taxes;
-                commande.voitures = voitures
-                commande.utilisateur = req.body.utilisateur;
+                const facture = {};
+                facture.id = docRef.id;
+                facture.date = dateToday;
+                facture.expedition = req.body.expedition;
+                facture.methode_de_paiement = req.body.methode_de_paiement;
+                facture.prix = req.body.prix;
+                facture.taxes = req.body.taxes;
+                facture.voitures = voitures
+                facture.utilisateur = req.body.utilisateur;
 
-                await db.collection("commandes").doc(docRef.id).update(commande);
+                await db.collection("factures").doc(docRef.id).update(facture);
 
             })        
 
@@ -200,18 +199,18 @@ router.put("/:id", authEmploye,
         // }
 
         try{
-            const idCommande = req.params.id;
-            const commande = {};
-            commande.id = docRef.id;
-            commande.date = req.body.date;
-            commande.expedition = req.body.expedition;
-            commande.methode_de_paiement = req.body.methode_de_paiement;
-            commande.prix = req.body.prix;
-            commande.status = req.body.status;
-            commande.taxes = req.body.taxes;
-            commande.utilisateur = req.body.utilisateur;
+            const idFacture = req.params.id;
+            const facture = {};
+            facture.id = docRef.id;
+            facture.date = dateToday;
+            facture.expedition = req.body.expedition;
+            facture.methode_de_paiement = req.body.methode_de_paiement;
+            facture.prix = req.body.prix;
+            facture.taxes = req.body.taxes;
+            facture.voitures = voitures
+            facture.utilisateur = req.body.utilisateur;
 
-            await db.collection("commandes").doc(idCommande).update(commande);
+            await db.collection("factures").doc(idFacture).update(facture);
 
             res.statusCode = 201;
             res.json({message: "La donnée a été modifiée"});
@@ -234,6 +233,5 @@ router.delete("/:id", async (req, res)=>{
 });
 
 //-------------------------------------------------------------------------------------
-
 
 module.exports = router;
