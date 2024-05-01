@@ -1,0 +1,16 @@
+{
+    "alberta": ["calgary", "edmonton", "red-deer"],
+    "colombie-britannique": ["kelowna", "vancouver", "victoria"],
+    "manitoba": ["winnipeg"],
+    "nouveau-brunswick": [ "moncton"],
+    "terre-neuve-et-labrador": ["corner-brook", "st.johns"],
+    "territoires-du-nord-ouest": ["yellowknife"],
+    "nouvelle-ecosse": ["halifax", "sydney"],
+    "nunavut": ["Iqaluit"],
+    "ontario": ["hamilton", "kitchener", "windsor", "london", "mississauga", "oshawa", "ottawa", "st.cathrines", "sudbury", "toronto", "thunder-bay"],
+    "ile-du-prince-edouard": ["charlottetown"],
+    "quebec": ["montreal", "quebec", "trois-rivieres"],
+    "saskatchewan": ["moose-jaw", "regina", "saskatoon"],
+    "yukon": ["dawson", "whitehorse"]
+  }
+
