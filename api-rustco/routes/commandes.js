@@ -120,7 +120,7 @@ router.post("/",
         //     voitures.push(req.body.voitures[i]);
         // }
 
-        for (let i = 0, l = req.voitures.length; i < l; i++) {
+        for (let i = 0, l = req.body.voitures.length; i < l; i++) {
 
             const donneeRef = await db.collection("voitures").doc(req[i].id).get();
 
