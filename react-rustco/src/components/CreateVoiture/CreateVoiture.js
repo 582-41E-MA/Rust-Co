@@ -22,6 +22,8 @@ function CreateVoiture(props){
     const anneeCourrante = new Date().getFullYear();
     const annees = Array.from({ length: (anneeCourrante - 1920) + 1 }, (_, index) => anneeCourrante - index);
 
+    const navigate = useNavigate();
+
 
     const [formData, setFormData] = useState({
         marque: '',
@@ -35,15 +37,22 @@ function CreateVoiture(props){
         image: ''
     });
 
+// POUR POGNER JUSTE LE FILENAME POUR LES PHOTOS. SOLUTION TEMPORAIRE
+    function extractFilename(path) {
+        return path.split('\\').pop();
+    }
+
 
    function handleInputChange(event){
         const { name, value, type, files } = event.target;
        setFormData({
             ...formData,
-            [name]: type === 'file' ? files[0]: value
+            [name]: extractFilename(value)
         });
        console.log(formData);
     };
+// [name]: type === 'file' ? IMAGE[0]: value
+
 
     async function handleSubmit(event){
         event.preventDefault(); 
@@ -57,6 +66,7 @@ function CreateVoiture(props){
                 body: JSON.stringify(formData)
             });
             console.log(reponse);
+            navigate('/liste-voitures')
             if (!reponse.ok) throw new Error('Network response was not ok.');
           
             console.log('Data successfully sent to the server');
