@@ -156,6 +156,22 @@ router.post("/",
             return res.json({message: "La/Les taxe n'éxiste pas"});
         }
         //---------------------------------------------------------------------------------------------------
+        
+        //STATUS
+        //---------------------------------------------------------------------------------------------------
+        const docRefStatus = await db.collection("status").where("status", "==", req.body.status).get();
+        const status = [];
+
+        docRefStatus.forEach((doc)=>{
+            status.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "Le status n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
 
         // const voitures = [];
 
@@ -232,7 +248,6 @@ router.post("/",
  */
 router.put("/:id", authEmploye,
     [
-        check("date").escape().trim().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
         check("expedition").escape().trim().notEmpty().isString(),
         check("methode_de_paiement").escape().trim().notEmpty().isString(),
         check("total").escape().trim().notEmpty().isNumeric(),
@@ -299,6 +314,22 @@ router.put("/:id", authEmploye,
         if (methodes.length <= 0) {
             res.statusCode = 400;
             return res.json({message: "La/Les taxe n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //STATUS
+        //---------------------------------------------------------------------------------------------------
+        const docRefStatus = await db.collection("status").where("status", "==", req.body.status).get();
+        const status = [];
+
+        docRefStatus.forEach((doc)=>{
+            status.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "Le status n'éxiste pas"});
         }
         //---------------------------------------------------------------------------------------------------
 
