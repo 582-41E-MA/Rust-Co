@@ -59,7 +59,6 @@ const [check, setCheck] = useState();
   const [userId, setUserId] = useState(''); 
   
 
-
   /*de code jwt */
   function parseJwt (token) {
     if(localStorage.getItem('logged-user')){
@@ -71,8 +70,6 @@ const [check, setCheck] = useState();
         return JSON.parse(jsonPayload);
       }
     }
-
- 
   
 
   ///// LANGUAGE STUFF Custom/////

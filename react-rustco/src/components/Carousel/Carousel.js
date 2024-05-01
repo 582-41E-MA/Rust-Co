@@ -55,7 +55,7 @@ function CarouselC() {
             <FlecheDroite />
           </button>
           <button className='carousel-button carousel-button-link bg-white_1 rounded-2xl opacity-85'>
-            <a className='link' href="/liste-voitures"><h1>Voire Nos Véhicule</h1></a>
+            <a className='link' href="/liste-voitures"><h1>Voir Nos Véhicules</h1></a>
           </button>
         </div>
       </div>

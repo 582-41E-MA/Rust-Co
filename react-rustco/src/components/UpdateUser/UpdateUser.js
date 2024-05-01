@@ -2,6 +2,7 @@ import './UpdateUser.css';
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader'
+import villes from '../../villes.json'
 import { t } from 'i18next';
 
 function UpdateUser(props){
@@ -13,8 +14,6 @@ function UpdateUser(props){
 
     const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`
     const [urlUser, setUrlUser] = useState(urlUserInitial)
-  
-
     const [formData, setFormData] = useState({
         prenom: '',
         nom_de_famille: '',
@@ -29,10 +28,18 @@ function UpdateUser(props){
         anniversaire: '',
         privilege: '',
     });
+    const [cities, setCities] = useState([]);
+    const filterCitiesByProvince = (province) => {
+        const filteredCities = villes[province] || [];
+        setCities(filteredCities);
+    };
+    useEffect(() => {
+        filterCitiesByProvince(formData.province);
+    }, [formData.province]);
 
 
 
-   // console.log(id);
+
    //pour fetch le data du user pour preremplir
    useEffect(() => {
     async function userData(){
@@ -54,7 +61,6 @@ function UpdateUser(props){
 
     useEffect(() => {
         if (user) {
-
             setFormData({
                 prenom: user.prenom,
                 nom_de_famille: user.nom_de_famille,
@@ -112,11 +118,15 @@ function UpdateUser(props){
     };
 
 
-            const capitalizeFirst = (string) => {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            };
-            ///////////////////////////////////////////////////////////////////////////////////////////
+    function capitalizeString(str) {
+        return str.toLowerCase().split(/(?:^|-)\b/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+    }
 
+        const capitalizeFirst = (string) => {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        };
+        ///////////////////////////////////////////////////////////////////////////////////////////
+  // rajouter ville nunavut a la bd
 
 
     if (isLoading) {
@@ -134,45 +144,67 @@ function UpdateUser(props){
                 </div>
 
                 <div>
-                    <label for="nom_de_famille">Nom de Famille : </label>
+                    <label for="nom_de_famille">{t('nom_de_famille')} : </label>
                     <input type='text' id="nom_de_famille" name="nom_de_famille" required maxLength={70} onChange={handleInputChange} defaultValue={user ? user.nom_de_famille : ''}/>
                 </div>
 
                 <div>
-                    <label for="username">UserName : </label>
+                    <label for="username">Username : </label>
                     <input type='text' id="username" name="username" required maxLength={70} onChange={handleInputChange} defaultValue={user ? user.username : ''}/>
                 </div>
                 <div>
-                    <label for="courriel">Courriel : </label>
+                    <label for="courriel">{t('courriel')} : </label>
                     <input type='email' id="courriel" name="courriel" required maxLength={70} onChange={handleInputChange} defaultValue={user ? user.courriel : ''}/>
                 </div>
                 <div>
-                    <label for="password">Password : </label>
+                    <label for="password">{t('mdp')} : </label>
                     <input type='password' id="password" name="password" required maxLength={20} onChange={handleInputChange} />
                 </div>
                 <div>
-                    <label for="telephone">Telephone : </label>
+                    <label for="telephone">{t('telephone')} : </label>
                     <input type='text' id="telephone" name="telephone" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.telephone : ''}/>
                 </div>
                 <div>
-                    <label for="adresse">Adresse : </label>
+                    <label for="adresse">{t('adresse')} : </label>
                     <input type='text' id="adresse" name="adresse" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.adresse : ''}/>
                 </div>
                 <div>
-                    <label for="code_postal">Code Postal : </label>
+                    <label for="code_postal">{t('code_postal')} : </label>
                     <input type='text' id="code_postal" name="code_postal" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.code_postal : ''}/>
                 </div>
                 <div>
-                    <label for="ville">Ville : </label>
-                    <input type='text' id="ville" name="ville" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.ville : ''}/>
+                    <label for="province">Province : </label>  
+                    <select id="province" name="province" onChange={handleInputChange} required defaultValue={user ? user.province : ''} className='custom-select'>
+                        <option value='' disabled selected>Select a province</option>
+                        <option value="alberta">Alberta</option>
+                        <option value="colombie-britannique">Colombie-Britannique</option>
+                        <option value="manitoba">Manitoba</option>
+                        <option value="nouveau-brunswick">Nouveau-Brunswick</option>
+                        <option value="terre-neuve-et-labrador">Terre-Neuve-et-Labrador</option>
+                        <option value="territoires-du-nord-ouest">Territoires du Nord-Ouest</option>
+                        <option value="nouvelle-ecosse">Nouvelle-Écosse</option>
+                        <option value="nunavut">Nunavut</option>
+                        <option value="ontario">Ontario</option>
+                        <option value="ile-du-prince-edouard">Île-du-Prince-Édouard</option>
+                        <option value="quebec">Québec</option>
+                        <option value="saskatchewan">Saskatchewan</option>
+                        <option value="yukon">Yukon</option>
+                    </select> 
                 </div>
                 <div>
-                    <label for="province">Province : </label>
-                    <input type='text' id="province" name="province" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.province : ''}/>
+                    <label for="ville">{t('ville')} : </label>
+                    <select id="ville" name="ville" onChange={handleInputChange} required defaultValue={user ? user.ville : ''} className='custom-select'>
+                        <option value='' disabled selected>Select a city</option>
+                        {cities.map((city, index) => (
+                        <option key={index} value={city}>{capitalizeString(city)}</option>
+                    ))}
+                        
+                    </select> 
                 </div>
                 <div>
-                    <label for="anniversaire">Date de Naissance : </label>
-                    <input type='text' id="anniversaire" name="anniversaire" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.anniversaire : ''}/>
+                    <label for="anniversaire">{t('anniversaire')} : </label>
+                    <input type='select' id="anniversaire" name="anniversaire" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.anniversaire : ''}/>
+                    
                 </div>
                 {
                     props.logging.privilege == 'admin' ? 
