@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 function Success(props) {
+    const location = useLocation();
     const navigate = useNavigate();
     const userId = props.logging.id;
     const lien = `/client/${userId}`;
@@ -14,22 +15,27 @@ function Success(props) {
         prixTotal += Number(voiture.prix)
     })
 
-    console.log(prixTotal)
+    
+
+    const infosString = localStorage.getItem('infosPaiement');
+    const infos = infosString ? JSON.parse(infosString) : {};
     const data = {
-        expedition: 'livraison-locale',
-        methode_de_paiement: 'credit',
+        expedition: infos.expedition || 'default_expedition',  
+        methode_de_paiement: infos.methodeDePaiement || 'default_payment_method',
         total: prixTotal,
         status: 'livre',
-        taxes: 'ontario',
+        taxes: infos.taxes || 'default_tax_rate',
         utilisateur: userId,
         voitures: JSON.parse(props.panier).length > 0 ? JSON.parse(props.panier) : ['testfailarr']
     };
 
-    const hasCommandeBeenCreated = useRef(false);  // This ref will track if the command has been sent
+    const hasCommandeBeenCreated = useRef(false); 
+
+
 
     useEffect(() => {
         if(userId){
-        
+        console.log(data)
         async function commandeCreate() {   
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
                 const response = await fetch('http://localhost:5000/api/commandes', {

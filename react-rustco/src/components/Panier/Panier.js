@@ -2,7 +2,7 @@ import './Panier.css';
 import React, { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { AppContext } from "../App/App";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {loadStripe} from '@stripe/stripe-js';
 import { t } from 'i18next';
 import { useStripe, useElements, CardElement, Elements } from "@stripe/react-stripe-js";
@@ -16,6 +16,9 @@ const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCa
 
 
 function Panier(){
+    const [expedition, setExpedition] = useState('');
+    const [methodeDePaiement, setMethodeDePaiement] = useState('');
+    const navigate = useNavigate();
 
     let context = useContext(AppContext);
     let [items, setItems] = useState(JSON.parse(localStorage.getItem('panier')) || []);
@@ -29,7 +32,6 @@ const deleteItem = function(itemId){
     setItems(itemsRestants);
     localStorage.setItem('panier', JSON.stringify(itemsRestants));
 }
-
 
 
 
@@ -50,6 +52,13 @@ const deleteItem = function(itemId){
             </li>
         ));
     }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        navigate('/checkout', { state: { expedition, methodeDePaiement } });
+      };
 
 
 
@@ -130,8 +139,6 @@ const deleteItem = function(itemId){
 
 
 
-    console.log(items)
-
 return(
     <div>
         <h1 className='text-4xl font-bold mb-6'>{t('mon_panier')}</h1>
@@ -145,22 +152,33 @@ return(
             <div className='info-paiement flex-1 p-4 bg-sand_1 rounded-2xl custom-shadow flex flex-col h-full justify-between'>
                 <div>
                     <h2 className='text-2xl font-bold mb-6'>{t('paiement')}</h2> 
-                    <p>
-                        Procédez ici vers le lien du checkout pour payer votre panier!
-                    </p> 
-                    <div>
-                        Apercu de votre facture
-                    </div>
-                </div>
-                <Link to="/checkout" className="custom-button self-end text-center" role="button">
-                    {t('checkout')}
-                </Link>
+                    <form onSubmit={handleSubmit}>
+              <label htmlFor="expedition">Expédition:</label>
+              <select id="expedition" name="expedition" className='custom-select' required value={expedition} onChange={e => setExpedition(e.target.value)}>
+                <option value="" disabled>-- sélectionner --</option>
+                <option value="livrasion-locale">Livraison Locale</option>
+                <option value="ramasser-en-magasin">Ramasser en Magasin</option>
+              </select>
+
+              <label htmlFor="methode_de_paiement">Méthode de Paiement:</label>
+              <select id="methode_de_paiement" name="methode_de_paiement" className='custom-select' required value={methodeDePaiement} onChange={e => setMethodeDePaiement(e.target.value)}>
+                <option value="" disabled>-- sélectionner --</option>
+                <option value="carte-de-debit">Carte de Débit</option>
+                <option value="carte-de-credit">Carte de Crédit</option>
+                <option value="virement-banquaire">Virement banquaire</option>
+              </select>
+
+              <button type="submit" className="custom-button self-end text-center">
+                {t('checkout')}
+              </button>
+            </form>
+                    
+                </div> 
+    
+               
             </div>
         </div>
-
-
        {shippingInfo()}
-
     </div>
 );
 }
