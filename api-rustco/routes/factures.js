@@ -6,22 +6,11 @@ const authAdmin = require("../middlewares/authAdmin.js");
 const authEmploye = require("../middlewares/authEmploye.js");
 const { check, validationResult } = require("express-validator");
 
-// router.get("/initialize", async (req, res) => {
-//     const donneesTest = require("../data/mockUtilisateurs.js");
-//     donneesTest.forEach(async (utilisateur) => {
-//         console.log(utilisateur)
-//         await db.collection("utilisateurs").add(utilisateur);
-//     });
-
-//     res.statusCode = 200;
-//     res.json({ message: "Données initialisées" });
-// });
-
 //-------------------------------------------------------------------------------------
 
 /**
  * PREND TOUTE LES FACTURES
- * Cette route permet de récupérer la liste des commandes
+ * Cette route permet de récupérer la liste des factures
  * @route GET 
  */
 router.get("/", async (req, res) => {
@@ -49,8 +38,8 @@ router.get("/", async (req, res) => {
 //-------------------------------------------------------------------------------------
 
 /**
- * PREND UNE COMMANDE AVEC SON ID
- * Cette route permet de récupérer une commande
+ * PREND UNE FACTURE AVEC SON ID
+ * Cette route permet de récupérer une facture
  * @route GET
  */
 router.get("/:id", async (req, res) => {
@@ -80,13 +69,11 @@ router.get("/:id", async (req, res) => {
 
 /**
  * CRÉATION
- * Cette route permet de créer un film
- * @route POST /films
+ * Cette route permet de créer une facture
+ * @route POST
  */
-//TODO:Validation de Conditions_id
 router.post("/",
     [
-        //TODO: Refait la validation
         check("expedition").escape().trim().notEmpty().isString(),
         check("methode_de_paiement").escape().trim().notEmpty().isString(),
         check("total").escape().trim().notEmpty().isNumeric(),
@@ -98,15 +85,6 @@ router.post("/",
     async (req, res) => {
 
         const validation = validationResult(req);
-
-        /**
-         * Vérification de la condition 
-         * TODO: Finir la validation
-         */
-        // validationConditions.forEach((condition)=>{
-        //     // tableauConditions.push(condition.data());
-        // })
-        
 
         if (validation.errors.length > 0) {
             res.statusCode = 400;
@@ -166,22 +144,6 @@ router.post("/",
 
         const voitures = [];
 
-        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
-        //     voitures.push(req.body.voitures[i]);
-        // }
-
-        // for (let i = 0, l = req.voitures.length; i < l; i++) {
-
-        //     const donneeRef = await db.collection("voitures").doc(req[i].id).get();
-
-        //     donneeRef.forEach((doc)=>{
-        //         voitures.push(doc.data());
-        //     })
-
-        // }
-
-
-
         //Génère date d'aujourd'hui
         const dateMilisecondes = Date.now()
 
@@ -231,8 +193,8 @@ router.post("/",
 
 /**
  * MODIFICATION
- * Cette route permet de modifier un utilisateur
- * @route POST 
+ * Cette route permet de modifier une facture
+ * @route PUT
  */
 router.put("/:id", authEmploye,
     [
@@ -330,7 +292,11 @@ router.put("/:id", authEmploye,
 
 //-------------------------------------------------------------------------------------
 
-//SUPPRIMER
+/**
+ * SUPPRIMER
+ * Cette route permet de supprimer une facture
+ * @route DEL
+ */
 router.delete("/:id", async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const idCommande = req.params.id;
