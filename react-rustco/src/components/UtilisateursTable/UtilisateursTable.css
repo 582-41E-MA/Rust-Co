@@ -1,6 +1,15 @@
 
+/* sur tout les table crm*/
+table{
+  font-size: 14px;
+}
+td{
+  padding:2px;
+}
+
+
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1080px) {
 
 
     table {
@@ -25,7 +34,7 @@
       }
       
       table th {
-        font-size: .85em;
+        font-size: small;
         letter-spacing: .1em;
         text-transform: uppercase;
       }

@@ -1,25 +1,27 @@
 import './CreateUser.css'
 import React, { useState } from "react";
 import { AppContext } from "../App/App";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import i18next from 'i18next';
 import { t } from "i18next";
+import villes from '../../villes.json'
 
 function CreateUser(props){
 
     const navigate = useNavigate();
-    const context = useContext(AppContext)
+    const context = useContext(AppContext);
 
-    function test(e){
-        e.preventDefault();
-        const formData = new FormData(e.target)
-        const data = {};
-        for (let key of formData.keys()) {
-            data[key] = formData.get(key);
-        }
+
+    // function test(e){
+    //     e.preventDefault();
+    //     const formData = new FormData(e.target)
+    //     const data = {};
+    //     for (let key of formData.keys()) {
+    //         data[key] = formData.get(key);
+    //     }
     
-    }
+    // }
 
     
     const [formData, setFormData] = useState({
@@ -36,6 +38,22 @@ function CreateUser(props){
         province: '',
         privilege: context.logging.privilege == 'admin' ? 'employe' : 'client'
     });
+
+
+
+
+    const [cities, setCities] = useState([]);
+    const filterCitiesByProvince = (province) => {
+        const filteredCities = villes[province] || [];
+        setCities(filteredCities);
+    };
+    
+    useEffect(() => {
+        filterCitiesByProvince(formData.province);
+    }, [formData.province]);
+
+
+
 
 
    function handleInputChange(event){
@@ -122,12 +140,8 @@ function CreateUser(props){
                     <input type="text" id="code_postal" name="code_postal" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="ville">Ville :</label>
-                    <input type="text" id="ville" name="ville" onChange={handleInputChange} required/>
-                </div>
-                <div>
                     <label htmlFor="province">Province:</label>
-                    <select id="province" name="province" onChange={handleInputChange} required>
+                    <select id="province" name="province" className='custom-select' onChange={handleInputChange} required>
                         <option value='' disabled selected>Select a province</option>
                         <option value="alberta">Alberta</option>
                         <option value="colombie-britannique">Colombie-Britannique</option>
@@ -144,6 +158,16 @@ function CreateUser(props){
                         <option value="yukon">Yukon</option>
                     </select> 
                 </div>  
+                <div>
+                    <label for="ville">{t('ville')} : </label>
+                    <select id="ville" name="ville" onChange={handleInputChange} required className='custom-select'>
+                        <option value='' disabled selected>Select a city</option>
+                        {cities.map((city, index) => (
+                        <option key={index} value={city}>{t(city)}</option>
+                    ))}
+                        
+                    </select> 
+                </div>
                 <br></br>
                 <button type="submit" className='custom-button'>Submit</button>
             </form>
