@@ -88,18 +88,18 @@ router.get("/:id", async (req, res) => {
 router.post("/",
     [
         // TODO: Refait la validation
-        // check("username").escape().trim().notEmpty().isString(),
-        // check("password").escape().trim().notEmpty().isString(),
-        // check("prenom").escape().trim().notEmpty().isNumeric(),
-        // check("nom_de_famille").escape().trim().notEmpty().isString(),
-        // check("courriel").escape().trim().notEmpty().isEmail(),
-        // check("telephone").escape().trim().notEmpty().matches(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/),
-        // check("anniversaire").escape().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
-        // check("privilege").escape().trim().notEmpty().isString(),
-        // check("province").escape().trim().notEmpty().isString(),
-        // check("ville").escape().trim().notEmpty().isString(),
-        // check("code_postal").escape().trim().notEmpty().isString(),
-        // check("adresse").escape().trim().notEmpty().isString()
+        check("username").escape().trim().notEmpty().isString(),
+        check("password").escape().trim().notEmpty().isString(),
+        check("prenom").escape().trim().notEmpty().isString(),
+        check("nom_de_famille").escape().trim().notEmpty().isString(),
+        check("courriel").escape().trim().notEmpty().isEmail(),
+        check("telephone").escape().trim().notEmpty().matches(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/),
+        check("anniversaire").escape().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
+        check("privilege").escape().trim().notEmpty().isString(),
+        check("province").escape().trim().notEmpty().isString(),
+        check("ville").escape().trim().notEmpty().isString(),
+        check("code_postal").escape().trim().notEmpty().isString(),
+        check("adresse").escape().trim().notEmpty().isString()
     ],
     
     async (req, res) => {
@@ -241,47 +241,115 @@ router.post("/",
  */
 router.put("/:id",
     [
-        //TODO: Fait la validation
+        check("username").escape().trim().notEmpty().isString(),
+        check("password").escape().trim().notEmpty().isString(),
+        check("prenom").escape().trim().notEmpty().isString(),
+        check("nom_de_famille").escape().trim().notEmpty().isString(),
+        check("courriel").escape().trim().notEmpty().isEmail(),
+        check("telephone").escape().trim().notEmpty().matches(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/),
+        check("anniversaire").escape().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
+        check("privilege").escape().trim().notEmpty().isString(),
+        check("province").escape().trim().notEmpty().isString(),
+        check("ville").escape().trim().notEmpty().isString(),
+        check("code_postal").escape().trim().notEmpty().isString(),
+        check("adresse").escape().trim().notEmpty().isString() 
     ],
     
     async (req, res) => {
 
-        console.log(req.body);
+        const validation = validationResult(req);       
 
-        //const validation = validationResult(req);       
-
-        // if (validation.errors.length > 0) {
-        //     res.statusCode = 400;
-        //     return res.json({message: "Données non comforme"})
-        // }
+        if (validation.errors.length > 0) {
+            res.statusCode = 400;
+            return res.json({message: "Données non comforme"})
+        }
 
 
         const idUtilisateur = req.params.id;
+        const docRefUtilisateurOriginal = await db.collection("utilisateurs").where("id", "==", idUtilisateur).get();
+
+        const utilisateurOriginal = [];
+
+        docRefUtilisateurOriginal.forEach((doc)=>{
+            utilisateurOriginal.push(doc.data());
+        })
+
+    //VALIDATION EXISTENCE DANS LA DB
+
+    //PROVINCES
+    //---------------------------------------------------------------------------------------------------
+        const docRefProvince = await db.collection("provinces").where("province", "==", req.body.province).get();
+        const provinces = [];
+
+        docRefProvince.forEach((doc)=>{
+            provinces.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (provinces.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La province n'éxiste pas"});
+        }
+    //---------------------------------------------------------------------------------------------------
+
+    //VILLE
+    //---------------------------------------------------------------------------------------------------
+        const docRefVille = await db.collection("villes").where("ville", "==", req.body.ville).get();
+        const villes = [];
+
+        docRefVille.forEach((doc)=>{
+            villes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (villes.length == 0) {
+            res.statusCode = 400;
+            return res.json({message: "La ville n'éxiste pas"});
+        }else if (villes[0].province != req.body.province){
+            res.statusCode = 400;
+            return res.json({message: "La ville n'est pas dans cette province"});
+        }
+    //---------------------------------------------------------------------------------------------------
+
+    //PRIVILÈGES
+    //---------------------------------------------------------------------------------------------------
+        const docRefPrivilege = await db.collection("privileges").where("privilege", "==", req.body.privilege).get();
+        const privileges = [];
+
+        docRefPrivilege.forEach((doc)=>{
+            privileges.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (privileges.length == 0) {
+            res.statusCode = 400;
+            return res.json({message: "Le privilège n'éxiste pas"});
+        }
+    //---------------------------------------------------------------------------------------------------
+
+    //COURRIEL  +   Création de l'utilisateur
+    //---------------------------------------------------------------------------------------------------
 
         //Récupe info du body
         const {courriel, password} = req.body;
 
-        
-        const oldUserData = await db.collection("utilisateurs").doc(idUtilisateur).get();
-
-        //Vérifie si courriel existe 
-        //Met le username en minuscule car les nom d'utilisateurs sont en minuscule dans la db. C'est fait comme ça car sinon, il croit que "volf" n'est pas égale à "Volf"
-        const docRef = await db.collection("utilisateurs").where("courriel", "==", courriel).get();
+        // Vérifie si courriel existe 
+        // Met le username en minuscule car les nom d'utilisateurs sont en minuscule dans la db. C'est fait comme ça car sinon, il croit que "volf" n'est pas égale à "Volf"
+        const docRefUtilisateur = await db.collection("utilisateurs").where("courriel", "==", courriel).get();
         const utilisateurs = [];
 
-        docRef.forEach((doc)=>{
+        docRefUtilisateur.forEach((doc)=>{
             utilisateurs.push(doc.data());
         })
 
-        //Check si le nom d'utilisateur n'est pas identique à un autre utilisateur et qu'il n'est pas le même que celui avant la modification
         //Si oui, erreur
-        if (utilisateurs.length > 0 && courriel !== oldUserData.data().courriel) {
+        if (utilisateurs.length > 0 && utilisateurOriginal[0].courriel != courriel) {
             res.statusCode = 400;
-            return res.json({message: "Le nom d'utilisateur est déjà utilisé"});
+            return res.json({message: "Le courriel est déjà utilisé"});
         }
 
-        // //Encrypte le mot de passe
-        // const hash = await bcrypt.hash(password, 10);
+        //Encrypte le mot de passe
+        const hash = await bcrypt.hash(password, 10);
 
         try{
 
@@ -295,7 +363,7 @@ router.put("/:id",
             utilisateur.telephone = req.body.telephone;
             utilisateur.courriel = req.body.courriel;
             utilisateur.username = req.body.username.toLowerCase();
-            // utilisateur.password = hash;
+            utilisateur.password = hash;
             utilisateur.province = req.body.province;
             utilisateur.ville = req.body.ville;
             utilisateur.privilege = req.body.privilege;
