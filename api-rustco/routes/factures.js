@@ -87,13 +87,12 @@ router.get("/:id", async (req, res) => {
 router.post("/",
     [
         //TODO: Refait la validation
-        // check("marque").escape().trim().notEmpty().isString(),
-        // check("annee").escape().trim().notEmpty().isNumeric(),
-        // check("modele").escape().trim().notEmpty().isString(),
-        // check("prix_achete").escape().trim().notEmpty().isString(),
-        // check("description_en").escape().trim().notEmpty().isString(),
-        // check("description_fr").escape().trim().notEmpty().isString(),
-        // check("image").escape().trim().notEmpty().isString(),
+        check("expedition").escape().trim().notEmpty().isString(),
+        check("methode_de_paiement").escape().trim().notEmpty().isString(),
+        check("total").escape().trim().notEmpty().isNumeric(),
+        check("taxes").escape().trim().notEmpty().isString(),
+        check("utilisateur").escape().trim().notEmpty().isString(),
+        check("voitures").escape().trim().notEmpty().isArray()
     ],
     
     async (req, res) => {
@@ -113,6 +112,57 @@ router.post("/",
             res.statusCode = 400;
             return res.json({message: "Données non comforme"})
         }
+
+
+        //VALIDATION EXISTENCE DANS LA DB
+
+        //EXPÉDITIONS
+        //---------------------------------------------------------------------------------------------------
+        const docRefExpedition = await db.collection("expeditions").where("expedition", "==", req.body.expedition).get();
+        const provinces = [];
+
+        docRefExpedition.forEach((doc)=>{
+            expeditions.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (expeditions.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode d'expédition n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //MÉTHODES DE PAIEMENT
+        //---------------------------------------------------------------------------------------------------
+        const docRefMethode = await db.collection("methodes").where("methode", "==", req.body.methode_de_paiement).get();
+        const methodes = [];
+
+        docRefMethode.forEach((doc)=>{
+            methodes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode de paiement n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //TAXES
+        //---------------------------------------------------------------------------------------------------
+        const docRefTaxes = await db.collection("taxes").where("taxe", "==", req.body.taxes).get();
+        const taxes = [];
+
+        docRefTaxes.forEach((doc)=>{
+            taxes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La/Les taxe n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
 
         const voitures = [];
 
@@ -186,17 +236,74 @@ router.post("/",
  */
 router.put("/:id", authEmploye,
     [
-        //TODO: Fait la validation
+        check("date").escape().trim().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
+        check("expedition").escape().trim().notEmpty().isString(),
+        check("methode_de_paiement").escape().trim().notEmpty().isString(),
+        check("total").escape().trim().notEmpty().isNumeric(),
+        check("taxes").escape().trim().notEmpty().isString(),
+        check("utilisateur").escape().trim().notEmpty().isString(),
+        check("voitures").escape().trim().notEmpty().isArray()
     ],
     
     async (req, res) => {
 
-        //const validation = validationResult(req);       
+        const validation = validationResult(req);       
 
-        // if (validation.errors.length > 0) {
-        //     res.statusCode = 400;
-        //     return res.json({message: "Données non comforme"})
-        // }
+        if (validation.errors.length > 0) {
+            res.statusCode = 400;
+            return res.json({message: "Données non comforme"})
+        }
+
+
+        //VALIDATION EXISTENCE DANS LA DB
+
+        //EXPÉDITIONS
+        //---------------------------------------------------------------------------------------------------
+        const docRefExpedition = await db.collection("expeditions").where("expedition", "==", req.body.expedition).get();
+        const provinces = [];
+
+        docRefExpedition.forEach((doc)=>{
+            expeditions.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (expeditions.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode d'expédition n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //MÉTHODES DE PAIEMENT
+        //---------------------------------------------------------------------------------------------------
+        const docRefMethode = await db.collection("methodes").where("methode", "==", req.body.methode_de_paiement).get();
+        const methodes = [];
+
+        docRefMethode.forEach((doc)=>{
+            methodes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode de paiement n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //TAXES
+        //---------------------------------------------------------------------------------------------------
+        const docRefTaxes = await db.collection("taxes").where("taxe", "==", req.body.taxes).get();
+        const taxes = [];
+
+        docRefTaxes.forEach((doc)=>{
+            taxes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La/Les taxe n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
 
         try{
             const idFacture = req.params.id;
