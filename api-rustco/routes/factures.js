@@ -159,7 +159,7 @@ router.post("/",
                 facture.date = dateToday;
                 facture.expedition = req.body.expedition;
                 facture.methode_de_paiement = req.body.methode_de_paiement;
-                facture.prix = req.body.prix;
+                facture.total = req.body.total;
                 facture.taxes = req.body.taxes;
                 facture.voitures = req.body.voitures
                 facture.utilisateur = req.body.utilisateur;
