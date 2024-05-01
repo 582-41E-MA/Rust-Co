@@ -6,12 +6,19 @@ function Success(props) {
     const userId = props.logging.id;
     const lien = `/client/${userId}`;
 
-    props.panier
+    const panier = JSON.parse(props.panier)
 
+    let prixTotal = 0;
+
+    panier.map((voiture)=>{
+        prixTotal += Number(voiture.prix)
+    })
+
+    console.log(prixTotal)
     const data = {
         expedition: 'livraison-locale',
         methode_de_paiement: 'credit',
-        prix: 1004,
+        total: prixTotal,
         status: 'livre',
         taxes: 'ontario',
         utilisateur: userId,
@@ -24,7 +31,6 @@ function Success(props) {
         if(userId){
         
         async function commandeCreate() {   
-            console.log(data)
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
                 const response = await fetch('http://localhost:5000/api/commandes', {
                     method: 'POST',
@@ -36,7 +42,7 @@ function Success(props) {
                 });
 
                 if (response.ok) {    
-                    navigate('/liste-voitures');
+
                     console.log('Data successfully sent to the server');
                 } else {
                     throw new Error('Network response was not ok.');
@@ -57,7 +63,6 @@ function Success(props) {
                 });
 
                 if (response.ok) {
-                    navigate('/liste-voitures');
                     console.log('Data successfully sent to the server');
                 } else {
                     throw new Error('Network response was not ok.');
@@ -74,6 +79,7 @@ function Success(props) {
 
     return(
         <div className="bg-white max-w-full p-6 rounded-2xl flex flex-col items-center">
+       
             <div className=''><h1 className='mb-6 text-2xl'>Achat effectué avec succès !</h1>
             <img className='w-8' src='/icons/check.png' alt="Check icon"></img></div>
             <img src='/logo/brasbon.png' className='w-60 mb-6' alt="Brand logo"></img>

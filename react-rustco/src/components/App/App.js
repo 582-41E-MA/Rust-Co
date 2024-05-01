@@ -57,7 +57,8 @@ const [check, setCheck] = useState();
   //const navigate = useNavigate();
   const [logging, setLogging] = useState({ estLog: false, utilisateur: "", privilege : '', id: '' });
   const [userId, setUserId] = useState(''); 
-  
+  //const [isAccueil, setIsAccueil] = useState(''); 
+
 
   /*de code jwt */
   function parseJwt (token) {
@@ -150,6 +151,11 @@ const [check, setCheck] = useState();
   }
 
 
+  function isAccueil(){
+    return window.location.pathname === '/';
+  }
+
+//
   
   function logout() {
     setLogging({
@@ -170,9 +176,10 @@ const [check, setCheck] = useState();
    
       <div className="background flex flex-col min-h-screen">
         <Entete handleLogout={logout} logging={logging} />
-
-        <main className="flex-grow min-h-screen main max-w-6xl mx-auto p-4"> 
-          <Router>
+    
+        
+            <main className={`flex-grow min-h-screen main ${isAccueil() ? '' : 'max-w-6xl'} mx-auto p-4`}>
+          <Router> 
             <Routes >
               <Route path="/" element={<Accueil />} />
               <Route path="/liste-voitures" element={<ListeVoitures />} />
@@ -194,7 +201,8 @@ const [check, setCheck] = useState();
               <Route path="/succes" element={<Succes logging={logging} panier={panier}/>} />
             </Routes>
           </Router>
-        </main>
+            </main>
+        
         <Footer className="mt-auto" />
         
       </div>
