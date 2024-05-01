@@ -1,0 +1,81 @@
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+.info-wrapper {
+  width: 80vw;
+}
+
+.info-grid {
+  gap: 20vw;
+}
+    
+
+.info-containers{
+    width: 12rem;
+}
+
+.info-containers img{
+}
+.info-containers h1{
+}
+
+.info-containers p{
+}
+}
+  
+  @media screen and (min-width: 1024px) {
+  .info-wrapper {
+    width: 75vw;
+  }
+  
+  .info-grid {
+    gap: 20vw;
+  }
+      
+  .info-containers{
+    width: 14rem;
+  }
+    
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .info-wrapper {
+      width: 60vw;
+    }
+    
+    .info-grid {
+      gap: 10vw;
+    }
+        
+    .info-containers{
+      
+    }
+    
+  }
+  
+  @media screen and (min-width: 1536px) {
+    
+  }
+  
+  @media screen and (min-width: 1800px) {
+    
+  }
+  @media screen and (min-width: 2000px) {
+    
+  }
+  @media screen and (min-width: 2200px) {
+    .info-wrapper {
+      width: 60vw;
+      margin-right: 20vw;
+    }
+    
+    .info-grid {
+      gap: 10vw;
+    }
+        
+    .info-containers{
+      
+    }
+    
+  }
+  
