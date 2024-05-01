@@ -84,16 +84,18 @@ router.get("/:id", async (req, res) => {
 router.post("/", authEmploye,
     [
         //TODO: Refait la validation
-        // check("marque").escape().trim().notEmpty().isString(),
-        // check("annee").escape().trim().notEmpty().isNumeric(),
-        // check("modele").escape().trim().notEmpty().isString(),
-        // check("prix_achete").escape().trim().notEmpty().isString(),
-        // check("description_en").escape().trim().notEmpty().isString(),
-        // check("description_fr").escape().trim().notEmpty().isString(),
-        // check("image").escape().trim().notEmpty().isString(),
+        check("marque").escape().trim().notEmpty().isString(),
+        check("annee").escape().trim().notEmpty().matches(/^\d{4}$/),
+        check("modele").escape().trim().notEmpty().isString(),
+        check("prix_achete").escape().trim().notEmpty().matches(/^\d+(,\d{1,2})?$/),
+        check("description_en").escape().trim().notEmpty().isString(),
+        check("description_fr").escape().trim().notEmpty().isString(),
+        check("image").escape().trim().notEmpty().isString(),
     ],
     
     async (req, res) => {
+
+        console.log("yes")
 
         const validation = validationResult(req);
         const donneesConditions = await db.collection("conditions").get();
@@ -154,13 +156,15 @@ router.post("/", authEmploye,
 //MODIFICATION
 //TODO:Validation de Conditions_id
 router.put("/:id", authEmploye, [
-    // check("marque").escape().trim().notEmpty().isString(),
-    // check("annee").escape().trim().notEmpty().isNumeric(),
-    // check("modele").escape().trim().notEmpty().isString(),
-    // check("prix_achete").escape().trim().notEmpty().isString(),
-    // check("description_en").escape().trim().notEmpty().isString(),
-    // check("description_fr").escape().trim().notEmpty().isString(),
-    // check("image").escape().trim().notEmpty().isString(),
+    
+        //TODO: Refait la validation
+        check("marque").escape().trim().notEmpty().isString(),
+        check("annee").escape().trim().notEmpty().matches(/^\d{4}$/),
+        check("modele").escape().trim().notEmpty().isString(),
+        check("prix_achete").escape().trim().notEmpty().matches(/^\d+(,\d{1,2})?$/),
+        check("description_en").escape().trim().notEmpty().isString(),
+        check("description_fr").escape().trim().notEmpty().isString(),
+        check("image").escape().trim().notEmpty().isString(),
 
 ], async (req, res)=>{
 
