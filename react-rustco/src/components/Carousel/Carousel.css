@@ -42,9 +42,9 @@
 
 .carousel-button-link {
   position: absolute;
-  top: 65%; /* Adjusted top position */
+  top: 65%; 
   right: 50%;
-  transform: translateX(50%); /* Center horizontally */
+  transform: translateX(50%); 
   color: black;
   padding: 8px 24px;
 }
@@ -90,8 +90,7 @@
   }
 
   .carousel-container {
-    min-width: 80vw;
-    right: 12%;
+    
     
   }
 
@@ -106,22 +105,19 @@
 
 @media screen and (min-width: 1800px) {
   .carousel-container {
-    max-height: 45vw;
-    right:20%;
+    
 
   }
 }
 @media screen and (min-width: 2000px) {
   .carousel-container {
-    max-height: 45vw;
-    right:30%;
+    
 
   }
 }
 @media screen and (min-width: 2200px) {
   .carousel-container {
-    max-height: 45vw;
-    right:40%;
+    
 
   }
 }

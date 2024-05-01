@@ -62,12 +62,15 @@ function Entete(props) {
           setHoverColorLogout('#ad593f'); // Set color when clicked
           props.handleLogout();     // Call the logout function passed via props
       };
+      function isAccueil(){
+        return window.location.pathname === '/';
+      }
 
 
 // ec7a56  rust_2
 
   return (
-    <header>
+    <header className={`${isAccueil() ? '' : 'mb-5'}`}>
       <div className="header justify-between bg-black text-white_1 relative z-20">
       <div className="header-right flex items-center">
         <div className={`header-logo items-center hidden md:block`}>
