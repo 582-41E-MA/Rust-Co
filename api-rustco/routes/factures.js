@@ -120,15 +120,15 @@ router.post("/",
         //     voitures.push(req.body.voitures[i]);
         // }
 
-        for (let i = 0, l = req.voitures.length; i < l; i++) {
+        // for (let i = 0, l = req.voitures.length; i < l; i++) {
 
-            const donneeRef = await db.collection("voitures").doc(req[i].id).get();
+        //     const donneeRef = await db.collection("voitures").doc(req[i].id).get();
 
-            donneeRef.forEach((doc)=>{
-                voitures.push(doc.data());
-            })
+        //     donneeRef.forEach((doc)=>{
+        //         voitures.push(doc.data());
+        //     })
 
-        }
+        // }
 
 
 
@@ -161,7 +161,7 @@ router.post("/",
                 facture.methode_de_paiement = req.body.methode_de_paiement;
                 facture.prix = req.body.prix;
                 facture.taxes = req.body.taxes;
-                facture.voitures = voitures
+                facture.voitures = req.body.voitures
                 facture.utilisateur = req.body.utilisateur;
 
                 await db.collection("factures").doc(docRef.id).update(facture);
