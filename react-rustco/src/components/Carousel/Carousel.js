@@ -24,7 +24,7 @@ function CarouselC() {
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((prevSlide) => (prevSlide + 1) % images.length);
-    }, 8000);
+    }, 7000);
 
     return () => clearInterval(interval);
   }, []);
@@ -55,7 +55,7 @@ function CarouselC() {
             <FlecheDroite />
           </button>
           <button className='carousel-button carousel-button-link bg-white_1 rounded-2xl opacity-85'>
-            <a className='link' href="/liste-voitures"><h1 className='xl:text-2xl 2xl:text-5xl'>Voir Nos Véhicules</h1></a>
+            <a className='link' href="/liste-voitures"><h1 className='xl:text-2xl 2xl:text-5xl'>Voir véhicules</h1></a>
           </button>
         </div>
       </div>

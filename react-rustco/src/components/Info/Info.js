@@ -15,7 +15,7 @@ function Info() {
           <div className="info-containers mx-4 w-64 md:w-96 lg:w-56 xl:w-72 2xl:w-80">
             <img src="/icons/car.png" alt="Char" className="object-cover rounded-full" />
             <h1 className="text-3xl mt-4">Nos Voitures</h1>
-            <p className="mt-6">Nos voitures vous couperont le souffle, que ce soit une bonne chose ou non, nous vous laisserons en juger. Aucune vérification de crédit nécessaire, paiement en espèces uniquement.</p>
+            <p className="mt-6">Nos voitures vous couperont le souffle, que ce soit une bonne chose ou non, nous vous laisserons en juger. Aucune vérification de crédit nécessaire! Paiement en espèces uniquement.</p>
           </div>
           <div className="info-containers mx-4 w-64 md:w-96 lg:w-56 xl:w-72 2xl:w-80">
             <img src="/icons/logo.png" alt="Logo" className="object-cover rounded-full" />
@@ -44,7 +44,7 @@ function Info() {
           <div className="info-containers mx-4 w-64 md:w-96 lg:w-56 xl:w-72 2xl:w-80">
             <img src="/icons/car.png" alt="Char" className="object-cover rounded-full" />
             <h1 className="text-3xl mt-4">Our Cars</h1>
-            <p className="mt-6">Our cars will take your breath away, whether that's a good thing or not, we'll let you be the judge of that.<br/>No credit check needed, Cash only.</p>
+            <p className="mt-6">Our cars will take your breath away, whether that's a good thing or not, we'll let you be the judge of that.<br/>No credit check needed! Cash only.</p>
           </div>
           <div className="info-containers mx-4 w-64 md:w-96 lg:w-56 xl:w-72 2xl:w-80">
             <img src="/icons/logo.png" alt="Logo" className="object-cover rounded-full" />
