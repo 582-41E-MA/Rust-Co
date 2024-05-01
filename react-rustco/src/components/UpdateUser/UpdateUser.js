@@ -176,19 +176,19 @@ function UpdateUser(props){
                     <label for="province">Province : </label>  
                     <select id="province" name="province" onChange={handleInputChange} required defaultValue={user ? user.province : ''} className='custom-select'>
                         <option value='' disabled selected>Select a province</option>
-                        <option value="alberta">Alberta</option>
-                        <option value="colombie-britannique">Colombie-Britannique</option>
-                        <option value="manitoba">Manitoba</option>
-                        <option value="nouveau-brunswick">Nouveau-Brunswick</option>
-                        <option value="terre-neuve-et-labrador">Terre-Neuve-et-Labrador</option>
-                        <option value="territoires-du-nord-ouest">Territoires du Nord-Ouest</option>
-                        <option value="nouvelle-ecosse">Nouvelle-Écosse</option>
-                        <option value="nunavut">Nunavut</option>
-                        <option value="ontario">Ontario</option>
-                        <option value="ile-du-prince-edouard">Île-du-Prince-Édouard</option>
-                        <option value="quebec">Québec</option>
-                        <option value="saskatchewan">Saskatchewan</option>
-                        <option value="yukon">Yukon</option>
+                        <option value="alberta">{t('alberta')}</option>
+                        <option value="colombie-britannique">{t('colombie-britannique')}</option>
+                        <option value="manitoba">{t('manitoba')}</option>
+                        <option value="nouveau-brunswick">{t('nouveau-brunswick')}</option>
+                        <option value="terre-neuve-et-labrador">{t('terre-neuve-et-labrador')}</option>
+                        <option value="territoires-du-nord-ouest">{t('territoires-du-nord-ouest')}</option>
+                        <option value="nouvelle-ecosse">{t('nouvelle-ecosse')}</option>
+                        <option value="nunavut">{t('nunavut')}</option>
+                        <option value="ontario">{t('ontario')}</option>
+                        <option value="ile-du-prince-edouard">{t('ile-du-prince-edouard')}</option>
+                        <option value="quebec">{t('quebec')}</option>
+                        <option value="saskatchewan">{t('saskatchewan')}</option>
+                        <option value="yukon">{t('yukon')}</option>
                     </select> 
                 </div>
                 <div>
@@ -196,7 +196,7 @@ function UpdateUser(props){
                     <select id="ville" name="ville" onChange={handleInputChange} required defaultValue={user ? user.ville : ''} className='custom-select'>
                         <option value='' disabled selected>Select a city</option>
                         {cities.map((city, index) => (
-                        <option key={index} value={city}>{capitalizeString(city)}</option>
+                        <option key={index} value={city}>{t(city)}</option>
                     ))}
                         
                     </select> 
