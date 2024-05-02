@@ -66,9 +66,7 @@ useEffect(() => {
     userData();
 }, []); 
 
- console.log(com);
 
-//////////////////////////////////////////////////////////////////////
 const listeCommandes = function() {
 
     return <div className="mt-10 flex flex-col items-center justify-center text-sm">
@@ -87,7 +85,6 @@ const listeCommandes = function() {
                                     <li><strong>Taxes: </strong>{commande.taxes}</li>
                                     <li><strong>Total:</strong> {commande.total} $</li>
                                     <li><strong>{t('autos_menu')}:</strong> 
-
                                         <ul className='ml-6'>
                                             {commande.voitures.map((voiture, vIndex) => (
                                                 <li key={vIndex}><u>{t('voiture')}</u> {vIndex+1}: {voiture.id}</li>
@@ -119,11 +116,11 @@ useEffect(() => {
         }
     };
     userData();
-}, []); // Dependencies array is empty, so this effect runs only once on mount
+}, []);
 
 console.log(factures);
 
-//////////////////////////////////////////////////////////////////////
+
 const listeFactures = function() {
 
    return   <div className="mt-10 flex flex-col items-center justify-center text-sm">
@@ -157,6 +154,18 @@ const listeFactures = function() {
 }
 
 
+// toggle visibility 
+const [commandeVisible, setCommandeVisible] = useState(false);
+const [factureVisible, setFactureVisible] = useState(false);
+
+const toggleCommandes = () => {
+    setCommandeVisible(!commandeVisible);  
+  };  
+  
+const toggleFactures = () => {
+    setFactureVisible(!factureVisible);  
+}
+
 
 
 
@@ -188,13 +197,17 @@ const listeFactures = function() {
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_commandes')}</h2>
-                    {listeCommandes()}
-                    
+                    <h3 onClick={toggleCommandes} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>Voir mes Commandes</h3>
+                    <div className={commandeVisible ? '' : 'hidden'}>
+                        {listeCommandes()}
+                    </div>
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_factures')}</h2>
-                    {/* Invoices details here */}
-                    {listeFactures()}
+                    <h3 onClick={toggleFactures} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>Voir mes Factures</h3>
+                    <div className={factureVisible ? '' : 'hidden'}>
+                        {listeFactures()}
+                    </div>
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_reservations')}</h2>

@@ -190,7 +190,7 @@ return(
                         onChange={handleOptionChange}
                         required
                     />
-                    &nbsp;&nbsp;Resrvation
+                    &nbsp;&nbsp;Reservation
                 </label>
             </div>
             <div className="mb-4">
