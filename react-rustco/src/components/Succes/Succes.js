@@ -32,7 +32,6 @@ function Success(props) {
     const hasCommandeBeenCreated = useRef(false); 
 
 
-
     useEffect(() => {
         if(userId){
         console.log(data)
