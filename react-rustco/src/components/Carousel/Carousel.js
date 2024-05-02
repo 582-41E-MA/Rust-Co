@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
+import { t } from "i18next";
 
 const FlecheDroite = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" width="48" height="48">
@@ -55,7 +56,7 @@ function CarouselC() {
             <FlecheDroite />
           </button>
           <button className='carousel-button carousel-button-link bg-white_1 rounded-2xl opacity-85'>
-            <a className='link' href="/liste-voitures"><h1 className='xl:text-2xl 2xl:text-5xl'>Voir Nos Véhicules</h1></a>
+            <a className='link' href="/liste-voitures"><h1 className='xl:text-2xl 2xl:text-5xl'>{t('autos_menu')}</h1></a>
           </button>
         </div>
       </div>

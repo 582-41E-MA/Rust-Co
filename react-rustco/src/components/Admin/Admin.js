@@ -40,13 +40,13 @@ const privilege = context.logging.privilege
     return (
         <div>
             <h1 className='text-2xl'>{t('bienvenue_admin')}</h1><br></br>
-            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showVoitures}>Voitures</button>
+            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showVoitures}>{t('voiture')}s</button>
             {privilege == 'admin'?
-                <button className='custom-button mr-5 mb-5 admin-edit' onClick={showEmployes}>Employes</button>
+                <button className='custom-button mr-5 mb-5 admin-edit' onClick={showEmployes}>{t('employé')}s</button>
                 : <></>
             }
-            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showClients}>Clients</button>
-            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showCommandes}>Commandes</button>
+            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showClients}>{t('client')}s</button>
+            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showCommandes}>{t('commande')}s</button>
             <div className='tables'>
                 {renderTable()}
             </div>
