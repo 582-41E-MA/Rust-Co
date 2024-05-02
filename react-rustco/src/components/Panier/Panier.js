@@ -15,7 +15,7 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm";
 const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCaaVMAPUlHjeJ8Z2QN01j7vRVjLnaMVVVQr21kziWi8xGE63CapNq00KhJnyjFr");
 
 
-function Panier(){
+function Panier(props){
     const [expedition, setExpedition] = useState('');
     const [methodeDePaiement, setMethodeDePaiement] = useState('');
     const navigate = useNavigate();
@@ -52,6 +52,9 @@ const deleteItem = function(itemId){
             </li>
         ));
     }
+
+
+
 
 
     const handleSubmit = (e) => {
