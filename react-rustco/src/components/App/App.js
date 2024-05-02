@@ -198,7 +198,7 @@ const [check, setCheck] = useState();
               <Route path="/update-user/:id" element={<UpdateUser logging={logging}/>} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/client/:id" element={<Client logging={logging}/>} />
-              <Route path="/panier" element={<Panier />} />
+              <Route path="/panier" element={<Panier logging={logging}/>} />
               <Route path="/checkout" element={<Checkout items={JSON.parse(panier)} logging={logging}/>} />
               <Route path="/return" element={<Return />} />
               <Route path="/succes" element={<Succes logging={logging} panier={panier}/>} />
