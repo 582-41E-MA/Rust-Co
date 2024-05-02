@@ -84,10 +84,10 @@ router.post("/",
                 const journalDeConnexion = {};
                 journalDeConnexion.id = docRef.id;
                 journalDeConnexion.utilisateur = req.body.userId;
-                journalDeConnexion.addressIP = req.body.addressIP;
+                journalDeConnexion.addressIP = req.body.adresseIP;
                 journalDeConnexion.date = dateToday;
 
-                await db.collection("voitures").doc(docRef.id).update(voiture);
+                await db.collection("journal_de_connexion").doc(docRef.id).update(journalDeConnexion);
 
             })        
 
