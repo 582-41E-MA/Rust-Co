@@ -164,57 +164,55 @@ return(
                 <div>
                     <h2 className='text-2xl font-bold mb-6'>{t('paiement')}</h2> 
                     <form onSubmit={handleSubmit}>
-              <label htmlFor="expedition">{t('pannier_expedition')}:</label>
-              <select id="expedition" name="expedition" className='custom-select' required value={expedition} onChange={e => setExpedition(e.target.value)}>
-                <option value="" disabled>-- {t('selectione')} --</option>
-                <option value="livraison-locale">{t('pannier_livraison')}</option>
-                <option value="ramasser-en-magasin">{t('pannier_magasin')}</option>
-              </select>
+                        <label htmlFor="expedition">{t('pannier_expedition')}:</label>
+                        <select id="expedition" name="expedition" className='custom-select' required value={expedition} onChange={e => setExpedition(e.target.value)}>
+                            <option value="" disabled>-- {t('selectione')} --</option>
+                            <option value="livraison-locale">{t('pannier_livraison')}</option>
+                            <option value="ramasser-en-magasin">{t('pannier_magasin')}</option>
+                        </select>
 
-              <label htmlFor="methode_de_paiement">{t('methode_de_paiment')}:</label>
-              <select id="methode_de_paiement" name="methode_de_paiement" className='custom-select' required value={methodeDePaiement} onChange={e => setMethodeDePaiement(e.target.value)}>
-                <option value="" disabled>-- {t('selectione')} --</option>
-                <option value="carte-debit">{t('pannier_debit')}</option>
-                <option value="carte-de-credit">{t('pannier_credit')}</option>
-                <option value="virement-banquaire">{t('pannier_virement')}</option>
-              </select>
+                        <label htmlFor="methode_de_paiement">{t('methode_de_paiment')}:</label>
+                        <select id="methode_de_paiement" name="methode_de_paiement" className='custom-select' required value={methodeDePaiement} onChange={e => setMethodeDePaiement(e.target.value)}>
+                            <option value="" disabled>-- {t('selectione')} --</option>
+                            <option value="carte-debit">{t('pannier_debit')}</option>
+                            <option value="carte-de-credit">{t('pannier_credit')}</option>
+                            <option value="virement-banquaire">{t('pannier_virement')}</option>
+                        </select>
 
-              <div className="mb-4 mt-8">
-            <h4 className='text-lg mb-4'>Choisir une option :</h4>
-                <label>
-                    <input
-                        type="radio"
-                        name="typeCommande"
-                        value="reserver"
-                        checked={typeCommande === 'reserver'}
-                        onChange={handleOptionChange}
-                        required
-                    />
-                    &nbsp;&nbsp;Reservation
-                </label>
-            </div>
-            <div className="mb-4">
-                <label>
-                    <input
-                        type="radio"
-                        name="typeCommande"
-                        value="acheter"
-                        checked={typeCommande === 'acheter'}
-                        onChange={handleOptionChange}
-                        required
-                    />
-                    &nbsp;&nbsp;Acheter maintenant
-                </label>
-            </div>
-
-              <button type="submit" className="custom-button self-end text-center">
-                {t('checkout')}
-              </button>
-            </form>
-                    
+                        <div>
+                            <h4 className='text-lg mb-4 mt-8'>Choisir une option :</h4>
+                            <div className="ml-4">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="typeCommande"
+                                        value="reserver"
+                                        checked={typeCommande === 'reserver'}
+                                        onChange={handleOptionChange}
+                                        required
+                                    />
+                                    &nbsp;&nbsp;Reservation
+                                </label>
+                            </div>
+                            <div className="m-4">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="typeCommande"
+                                        value="acheter"
+                                        checked={typeCommande === 'acheter'}
+                                        onChange={handleOptionChange}
+                                        required
+                                    />
+                                    &nbsp;&nbsp;Acheter maintenant
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" className="custom-button self-end text-center">
+                            {t('checkout')}
+                        </button>
+                    </form>
                 </div> 
-    
-               
             </div>
         </div>
        {shippingInfo()}
