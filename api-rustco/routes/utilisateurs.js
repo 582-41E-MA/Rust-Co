@@ -51,7 +51,7 @@ router.get("/", async (req, res) => {
 
 /**
  * PREND UN UTILISATEUR AVEC SON ID
- * Cette route permet de récupérer un utilisateur avec son id
+ * Cette route permet de récupérer un utilisateur
  * @route GET
  */
 router.get("/:id", async (req, res) => {
@@ -81,11 +81,13 @@ router.get("/:id", async (req, res) => {
 
 /**
  * CRÉATION
- * Cette route permet de créer un utilisateur
- * @route POST
+ * Cette route permet de créer un film
+ * @route POST /films
  */
+//TODO:Validation de Conditions_id
 router.post("/",
     [
+        // TODO: Refait la validation
         check("username").escape().trim().notEmpty().isString(),
         check("password").escape().trim().notEmpty().isString(),
         check("prenom").escape().trim().notEmpty().isString(),
@@ -235,7 +237,7 @@ router.post("/",
 /**
  * MODIFICATION
  * Cette route permet de modifier un utilisateur
- * @route PUT
+ * @route POST 
  */
 router.put("/:id",
     [
@@ -379,11 +381,7 @@ router.put("/:id",
 
 //-------------------------------------------------------------------------------------
 
-/**
- * SUPPRIMER
- * Cette route permet de supprimer un utilisateur
- * @route DEL
- */
+//SUPPRIMER
 router.delete("/:id", authEmploye, async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const idUtilisateur = req.params.id;
@@ -394,11 +392,7 @@ router.delete("/:id", authEmploye, async (req, res)=>{
 
 //-------------------------------------------------------------------------------------
 
-/**
- * CONNEXION
- * Cette route permet à un utilisateur de se connecter
- * @route POST
- */
+//CONNEXION
 router.post("/connexion", async (req, res)=>{
 
     //Récupe info du body
@@ -433,7 +427,7 @@ router.post("/connexion", async (req, res)=>{
     const donneesJeton = {
         id: utilisateurs[0].id,
         courriel: utilisateurs[0].courriel,
-        privilege: utilisateurs[0].privilege
+        privilege: utilisateurs[0].privilege,
     }
 
     //Options d'expirations 1d = 1 day

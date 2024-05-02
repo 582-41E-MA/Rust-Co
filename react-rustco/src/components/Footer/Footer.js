@@ -29,8 +29,8 @@ function Footer(props) {
                 <div>
                   <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.8275559783997!2d-112.28381058716909!3d34.58322967284882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872d21839be3bcc9%3A0x6482407671b215ff!2s10530%20E%20Valley%20Rd%2C%20Prescott%20Valley%2C%20AZ%2086314%2C%20USA!5e0!3m2!1sfr!2sca!4v1713468153951!5m2!1sfr!2sca"
-                  width="400"
-                  height="300"
+                  width="300"
+                  height="200"
                   style={{ border: '0', borderRadius:'10px' }}
                   allowFullScreen
                   loading="lazy"
@@ -43,9 +43,9 @@ function Footer(props) {
                   <img className="w-8" src="data:image/svg+xml,%3Csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke-width='1.5' width='24' height='24' color='%23000000'%3E%3Cdefs%3E%3Cstyle%3E.cls-6374f8d9b67f094e4896c64c-1%7Bfill:none%3Bstroke:currentColor%3Bstroke-miterlimit:10%3Btransition: stroke 0.3s ease-out%3B%7D%3C/style%3E%3C/defs%3E%3Crect class='cls-6374f8d9b67f094e4896c64c-1' x='1.5' y='4.36' width='21' height='15.27'%3E%3C/rect%3E%3Cpolyline class='cls-6374f8d9b67f094e4896c64c-1' points='1.5 4.36 12 14.86 22.5 4.36'%3E%3C/polyline%3E%3C/svg%3E" alt="Email"/>
                 </div>
                 <div>
-                  <span className="block mb-4">
+                  <span className="block">
                     <a href="mailto:rustco@urmum.org" className="inline-block text-white_1 hover:text-rust_2">
-                    <p>rustco@urmum.org</p>
+                      rustco@urmum.org
                     </a>
                   </span>
                 </div>
