@@ -135,11 +135,11 @@ function UpdateUser(props){
 
     return(
         <div>
-            <h1 className='text-4xl font-bold mb-5'>Update User</h1>
+            <h1 className='text-4xl font-bold mb-5'>{t('mis_a_jour')} {t('utilisateur')}</h1>
             <form className='form-create-user' onSubmit={handleSubmit}>
                
                 <div>
-                    <label for="prenom">Prénom : </label>
+                    <label for="prenom">{t('prenom')} : </label>
                     <input type='text' id="prenom" name="prenom" required maxLength={60} onChange={handleInputChange} defaultValue={user ? user.prenom : ""} />
                 </div>
 
@@ -149,7 +149,7 @@ function UpdateUser(props){
                 </div>
 
                 <div>
-                    <label for="username">Username : </label>
+                    <label for="utilisateur">{t('nom_de_famille')} : </label>
                     <input type='text' id="username" name="username" required maxLength={70} onChange={handleInputChange} defaultValue={user ? user.username : ''}/>
                 </div>
                 <div>
@@ -175,7 +175,7 @@ function UpdateUser(props){
                 <div>
                     <label for="province">Province : </label>  
                     <select id="province" name="province" onChange={handleInputChange} required defaultValue={user ? user.province : ''} className='custom-select'>
-                        <option value='' disabled selected>Select a province</option>
+                        <option value='' disabled selected>{t('selectione')} province</option>
                         <option value="alberta">{t('alberta')}</option>
                         <option value="colombie-britannique">{t('colombie-britannique')}</option>
                         <option value="manitoba">{t('manitoba')}</option>
@@ -194,7 +194,7 @@ function UpdateUser(props){
                 <div>
                     <label for="ville">{t('ville')} : </label>
                     <select id="ville" name="ville" onChange={handleInputChange} required defaultValue={user ? user.ville : ''} className='custom-select'>
-                        <option value='' disabled selected>Select a city</option>
+                        <option value='' disabled selected>{t('selectione')} {t('ville')}</option>
                         {cities.map((city, index) => (
                         <option key={index} value={city}>{t(city)}</option>
                     ))}
@@ -209,10 +209,10 @@ function UpdateUser(props){
                 {
                     props.logging.privilege == 'admin' ? 
                     <div>
-                        <label for="privilege">Privilège : </label>
+                        <label for="privilege">{t('privilège')} : </label>
                         <select name='privilege' defaultValue={user ? user.privilege : ''} required onChange={handleInputChange}>
-                            <option value="employe">Employé</option>
-                            <option value="client">Client</option>
+                            <option value="employe">{t('employé')}</option>
+                            <option value="client">{t('client')}</option>
                         </select>
                     </div>
                     :
@@ -221,7 +221,7 @@ function UpdateUser(props){
                 
 
                 <br></br>
-                <button type="submit" className='custom-button'>Submit</button>
+                <button type="submit" className='custom-button'>{t('Soumettre')}</button>
             </form>
         </div>
     )

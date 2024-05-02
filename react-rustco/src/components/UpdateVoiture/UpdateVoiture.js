@@ -165,7 +165,7 @@ console.log(modeles);
     // mettre deux premiers select dans fct 
     return(
         <div>
-            <h1 className='text-4xl font-bold mb-5'>Update Voiture</h1>
+            <h1 className='text-4xl font-bold mb-5'>{t('mis_a_jour')} {t('voiture')}</h1>
             <form className='form-create-user' method='PUT' onSubmit={handleSubmit}>
                 
                <div className='select-wrapper'>
@@ -194,24 +194,24 @@ console.log(modeles);
                 </div>
 
                 <div className='mt-5'>
-                    <label for='condition'> Condition : </label>
+                    <label for='condition'> {t('condition')} : </label>
                     <select name='condition' defaultValue="{voiture.condition}" required onChange={handleInputChange}>
-                    <option disabled value="" selected>-- condition --</option>
-                        <option value="detruit">Détruit</option>
-                        <option value="endommage">Endommagé</option>
-                        <option value="moyenne">Moyenne</option>
-                        <option value="presque-parfaite">Prèsque Parfaite</option>
-                        <option value="parfaite">Parfaite</option>
+                    <option disabled value="" selected>-- {t('condition')} --</option>
+                        <option value="detruit">{t('detruit')}</option>
+                        <option value="endommage">{t('EndommagE')}</option>
+                        <option value="moyenne">{t('Moyenne')}</option>
+                        <option value="presque-parfaite">{t('presque_parfaite')}</option>
+                        <option value="parfaite">{t('parfaite')}</option>
                     </select> 
                 </div>
-               
+            
                 <div>
-                    <label for="prix_achete">Prix Achet&eacute; : </label>
+                    <label for="prix_achete">{t('prix_achete')} : </label>
                     <input type='text' id="prix_achete" name="prix_achete" required maxLength={7} onChange={handleInputChange} defaultValue={formData ? formData.prix_achete : ""}/>
                 </div>
 
                 <div>
-                    <label for="profit">Marge de profit (%) : </label>
+                    <label for="profit">{t('marge_de_profit')} (%) : </label>
                     <input type='text' id="profit" name="profit" required maxLength={7} onChange={handleInputChange} defaultValue={formData ? formData.profit : ''}/>
                 </div>
 
@@ -231,7 +231,7 @@ console.log(modeles);
                 </div>
 
                 <br></br>
-                <button type="submit" className='custom-button'>Submit</button>
+                <button type="submit" className='custom-button'>{t('soumettre')}</button>
             </form>
         </div>
     )
