@@ -6,9 +6,6 @@ const authAdmin = require("../middlewares/authAdmin.js");
 const authEmploye = require("../middlewares/authEmploye.js");
 const { check, validationResult } = require("express-validator");
 
-
-//-------------------------------------------------------------------------------------
-
 /**
  * PREND TOUTE LES COMMANDES
  * Cette route permet de récupérer la liste des commandes
@@ -40,7 +37,7 @@ router.get("/", async (req, res) => {
 
 /**
  * PREND UNE COMMANDE AVEC SON ID
- * Cette route permet de récupérer une commande avec son id
+ * Cette route permet de récupérer une commande
  * @route GET
  */
 router.get("/:id", async (req, res) => {
@@ -70,25 +67,25 @@ router.get("/:id", async (req, res) => {
 
 /**
  * CRÉATION
- * Cette route permet de créer une commande
- * @route POST
+ * Cette route permet de créer un film
+ * @route POST /films
  */
+//TODO:Validation de Conditions_id
 router.post("/",
     [
-        //TODO: Refait la validation
         check("expedition").escape().trim().notEmpty().isString(),
         check("methode_de_paiement").escape().trim().notEmpty().isString(),
         check("total").escape().trim().notEmpty().isNumeric(),
         check("status").escape().trim().notEmpty().isString(),
         check("taxes").escape().trim().notEmpty().isString(),
         check("utilisateur").escape().trim().notEmpty().isString(),
-        check("voitures").escape().trim().notEmpty().isArray()
+        check("voitures").notEmpty().isArray()
     ],
     
     async (req, res) => {
 
         const validation = validationResult(req);
-        
+
         if (validation.errors.length > 0) {
             res.statusCode = 400;
             return res.json({message: "Données non comforme"})
@@ -212,8 +209,8 @@ router.post("/",
 
 /**
  * MODIFICATION
- * Cette route permet de modifier une commande
- * @route PUT
+ * Cette route permet de modifier un utilisateur
+ * @route POST 
  */
 router.put("/:id", authEmploye,
     [
@@ -224,7 +221,7 @@ router.put("/:id", authEmploye,
         check("status").escape().trim().notEmpty().isString(),
         check("taxes").escape().trim().notEmpty().isString(),
         check("utilisateur").escape().trim().notEmpty().isString(),
-        check("voitures").escape().trim().notEmpty().isArray()
+        check("voitures").notEmpty().isArray()
     ],
     
     async (req, res) => {
@@ -310,7 +307,7 @@ router.put("/:id", authEmploye,
             commande.date = req.body.date;
             commande.expedition = req.body.expedition;
             commande.methode_de_paiement = req.body.methode_de_paiement;
-            commande.prix = req.body.prix;
+            commande.total = req.body.total;
             commande.status = req.body.status;
             commande.taxes = req.body.taxes;
             commande.utilisateur = req.body.utilisateur;
@@ -328,11 +325,7 @@ router.put("/:id", authEmploye,
 
 //-------------------------------------------------------------------------------------
 
-/**
- * SUPPRIMER
- * Cette route permet de supprimer une commande
- * @route DEL
- */
+//SUPPRIMER
 router.delete("/:id", async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const idCommande = req.params.id;

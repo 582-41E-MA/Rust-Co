@@ -79,7 +79,7 @@ router.post("/",
         check("total").escape().trim().notEmpty().isNumeric(),
         check("taxes").escape().trim().notEmpty().isString(),
         check("utilisateur").escape().trim().notEmpty().isString(),
-        check("voitures").escape().trim().notEmpty().isArray()
+        check("voitures").notEmpty().isArray()
     ],
     
     async (req, res) => {
@@ -204,7 +204,7 @@ router.put("/:id", authEmploye,
         check("total").escape().trim().notEmpty().isNumeric(),
         check("taxes").escape().trim().notEmpty().isString(),
         check("utilisateur").escape().trim().notEmpty().isString(),
-        check("voitures").escape().trim().notEmpty().isArray()
+        check("voitures").notEmpty().isArray()
     ],
     
     async (req, res) => {
