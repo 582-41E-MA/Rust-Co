@@ -72,6 +72,7 @@
     "parfaite": "Parfaite",
 
     "prix_achete": "Prix Acheté",
+    "prix_a_lachat": "Prix à l'achat",
     "marge_de_profit": "Marge de profit",
     
     "cree": "Crée",
@@ -80,11 +81,13 @@
     "supprime": "Supprimé",
     "mis_a_jour": "Mettre à Jours",
     "soumettre": "Soumettre",
+    "reserver": "Réservés",
     
     "bienvenue_admin": "Bienvenue sur votre page d'administrateur",
     "cree_employe": "Création d'Employé(e)",
     "cree_client": "Création de Client(e)",
     "ajout_voiture": "Ajoutez une Voiture",
+    "ajout_panier": "Ajouter au panier",
 
 
     "alberta": "Alberta",

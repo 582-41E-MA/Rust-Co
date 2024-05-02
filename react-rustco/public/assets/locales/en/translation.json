@@ -72,6 +72,7 @@
     "parfaite": "Perfect",
 
     "prix_achete": "Purchase Price",
+    "prix_a_lachat": "Purchase Price",
     "marge_de_profit": "Profit Margin",
     
     "cree": "Created",
@@ -80,11 +81,13 @@
     "supprime": "Deleted",
     "mis_a_jour": "Updated",
     "soumettre": "Submit",
+    "reserver": "Reserve",
     
     "bienvenue_admin": "Welcome to your admin page",
     "cree_employe": "Create Employee",
     "cree_client": "Create Client",
     "ajout_voiture": "Add a Car",
+    "ajout_panier": "Add to Cart",
 
     "alberta": "Alberta",
     "colombie-britannique": "British Columbia",

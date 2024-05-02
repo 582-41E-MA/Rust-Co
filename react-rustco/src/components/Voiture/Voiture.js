@@ -6,6 +6,7 @@ import * as React from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import i18next from "react-i18next";
+import { t } from 'i18next';
 import BreadcrumbC from "../BreadcrumbC/BreadcrumbC";
 import CustomAlert from '../CustomAlert/CustomAlert';
 
@@ -101,16 +102,16 @@ function Voiture() {
         <div className="flex space-x-8 ">
           <div className="flex-1 custom-shadow_2 rounded-2xl p-2 bg-aged_2">
             <ul className="grid grid-cols-2 grid-rows-2 gap-4 p-2 rounded-2xl">
-              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Marque : {voiture?.marque}</li>
-              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Modele : {voiture?.modele}</li>
-              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Année : {voiture?.annee}</li>
-              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">Condition : {voiture?.condition}</li>
+              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">{t('marque')} : {voiture?.marque}</li>
+              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">{t('modele')} : {voiture?.modele}</li>
+              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">{t('annee')} : {voiture?.annee}</li>
+              <li className="col-span-1 row-span-1 p-2 m-1 rounded-2xl ">{t('condition')} : {voiture?.condition}</li>
             </ul>
           </div>
           <div className="flex-1 custom-shadow_2 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
-            <button className="custom-button mb-2">Reserver</button>
-            <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>
+            <button className="custom-button mb-2">{t('reserver')}</button>
+            <button onClick={ajouter} className="custom-button mb-2">{t('ajout_panier')}</button>
             <CustomAlert 
                 message={alertInfo.message}
                 isVisible={alertInfo.isVisible}

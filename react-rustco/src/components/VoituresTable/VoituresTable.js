@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { t } from "i18next"
 import modelesParMarque from '../../modelesParMarque.json';
 import './VoituresTable.css'
+import { t } from 'i18next';
 
 function VoituresTable(){
 
@@ -115,18 +116,18 @@ function VoituresTable(){
 
     return (
         <div>
-            <a href="/create-voiture"><button className="custom-button mt-5">+ Créer une Voiture</button></a>
+            <a href="/create-voiture"><button className="custom-button mt-5">+ {t('ajout_voiture')}</button></a>
 
             <table className="voitures-table mt-5">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Marque</th>
-                        <th>Modele</th>
-                        <th>Annee</th>
-                        <th>Condition</th>
-                        <th>Prix à l'achat</th>
-                        <th>Profit (%)</th>
+                        <th>{t('id')}</th>
+                        <th>{t('marque')}</th>
+                        <th>{t('modele')}</th>
+                        <th>{t('Année')}</th>
+                        <th>{t('condition')}</th>
+                        <th>{t('prix_a_lachat')}</th>
+                        <th>{t('marge_de_profit')}(%)</th>
                         <th>Opérations</th>
                     </tr>
                 </thead>
