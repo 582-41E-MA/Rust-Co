@@ -74,10 +74,10 @@ const listeCommandes = function() {
     return <div className="mt-10 flex flex-col items-center justify-center text-sm">
                 {com.map((commande, index) => ( 
                     <ul>
-                        <h4>{t('commande')} {index+1}</h4>
+                        <h4 className="text-lg font-semibold mb-4">{t('commande')} {index+1}</h4>
                         <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
                             <div className="flex items-center space-x-4 justify-between px-6">
-                                <ul>
+                                <ul className='flex flex-col gap-2'>
                                     <li><strong>{t('utilisateur_id')}:</strong>{commande.utilisateur}</li>
                                     <li><strong>{t('id')}:</strong>{commande.id}</li>
                                     <li><strong>Date: </strong>{commande.date}</li>
@@ -85,8 +85,8 @@ const listeCommandes = function() {
                                     <li><strong>{t('methode_de_paiment')}: </strong>{commande.methode_de_paiement}</li>
                                     <li><strong>{t('status')}: </strong>{commande.status}</li>
                                     <li><strong>Taxes: </strong>{commande.taxes}</li>
-                                    <li><strong>Total:</strong> {commande.total}</li>
-                                    <li><strong>{t('autos_menu')}s:</strong> 
+                                    <li><strong>Total:</strong> {commande.total} $</li>
+                                    <li><strong>{t('autos_menu')}:</strong> 
 
                                         <ul className='ml-6'>
                                             {commande.voitures.map((voiture, vIndex) => (
@@ -128,23 +128,23 @@ const listeFactures = function() {
 
    return   <div className="mt-10 flex flex-col items-center justify-center text-sm">
                 {com.map((facture, index) => ( 
-                    <ul  className="bg-white shadow-lg rounded-lg p-6 mb-4 w-full max-w-4xl">
-                        <h4 className="text-lg font-semibold mb-4">Facture {index+1}</h4>
+                    <ul  className="bg-white shadow-lg  p-6 mb-4 w-full max-w-4xl">
+                        <h4 className="text-lg font-semibold mb-4">{t('facture')} {index+1}</h4>
                         <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
                             <div className="border-t border-gray-200 pt-2">
                                 <ul className='flex flex-col gap-2'>
-                                    <li><strong>user id:</strong>{facture.utilisateur}</li>
-                                    <li><strong>id:</strong>{facture.id}</li>
-                                    <li><strong>date: </strong>{facture.date}</li>
-                                    <li><strong>expedition:</strong> {facture.expedition}</li>
-                                    <li><strong>Methode de paiement: </strong>{facture.methode_de_paiement}</li>
-                                    <li><strong>Status: </strong>{facture.status}</li>
-                                    <li><strong>taxes: </strong>{facture.taxes}</li>
-                                    <li><strong>total:</strong> {facture.total}</li>
-                                    <li><strong>Voitures:</strong> 
+                                    <li><strong>{t('utilisateur_id')}:</strong>{facture.utilisateur}</li>
+                                    <li><strong>{t('id')}:</strong>{facture.id}</li>
+                                    <li><strong>Date: </strong>{facture.date}</li>
+                                    <li><strong>{t('expedition')}:</strong> {facture.expedition}</li>
+                                    <li><strong>{t('methode_de_paiment')}: </strong>{facture.methode_de_paiement}</li>
+                                    <li><strong>{t('status')}: </strong>{facture.status}</li>
+                                    <li><strong>Taxes: </strong>{facture.taxes}</li>
+                                    <li><strong>Total:</strong> {facture.total} $</li>
+                                    <li><strong>{t('autos_menu')}:</strong> 
                                         <ul className='ml-6 list-disc'>
                                             {facture.voitures.map((voiture, vIndex) => (
-                                                <li key={vIndex}><u>Voiture</u> {vIndex+1}: {voiture.id}</li>
+                                                <li key={vIndex}><u>{t('voiture')}</u> {vIndex+1}: {voiture.id}</li>
                                             ))}
                                         </ul>
                                     </li>
