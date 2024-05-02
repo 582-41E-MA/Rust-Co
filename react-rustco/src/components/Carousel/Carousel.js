@@ -20,7 +20,7 @@ const FlecheGauche = () => (
 
 function CarouselC() {
   const [slide, setSlide] = useState(0);
-  const images = ['/img/cover1.png', '/img/cover2.png', '/img/cover3.png'];
+  const images = ['/img/cover2.png', '/img/cover3.png', '/img/cover1.png'];
 
   useEffect(() => {
     const interval = setInterval(() => {
