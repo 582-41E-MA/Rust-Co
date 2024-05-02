@@ -18,6 +18,8 @@ const stripePromise = loadStripe("pk_test_51P9BJJHYV1SpE1i892IVzRPGHRldCT7LrZOCa
 
 const Checkout = (props) => {
 
+
+
   const [user, setUser] = useState({});
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,12 +50,12 @@ const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`;
         userData();
     }, [id]);
 
-
+  console.log(location.state)
 
     const infosPaiement = {
       expedition: location.state.expedition,
-      methodeDePaiement: location.state.methodeDePaiement
-
+      methodeDePaiement: location.state.methodeDePaiement,
+      typeCommande: location.state.typeCommande
     }
 
 
@@ -69,7 +71,7 @@ const infosStorage = localStorage.setItem('infosPaiement', JSON.stringify(infosP
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({voitures: panier, userLogged: id }) 
+        body: JSON.stringify({voitures: panier, userLogged: id, typeCommande: location.state.typeCommande }) 
       })
         .then((res) => res.json())
         .then((data) => data.clientSecret);
