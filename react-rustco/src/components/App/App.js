@@ -83,17 +83,14 @@ const { t } = useTranslation();
         try {
           const response = await axios.get('https://api.ipify.org?format=json');
           setIp(response.data.ip);
-          // Optionally send the IP to your server here
-          //sendIPToServer(response.data.ip);
+         console.log('ip adress: ' + ip)
         } catch (error) {
           console.error('Could not fetch IP', error);
         }
       };
   
       fetchIP();
-    }, []);
-
-    console.log('ip adress: ' + ip)
+    }, [ip]);
 
   
 
@@ -120,8 +117,34 @@ const { t } = useTranslation();
  
 
 
+  useEffect(() =>{
+  async function journalCreate(){
+    const body = {
+     adresseIP: ip,
+     userId: logging.id
+    };
+
+    console.log(body)
+    
+    const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+    
+
+  }
+  journalCreate();
+}, [ip, logging.id])
+
+
+
+
   async function login(e) {
     e.preventDefault();
+    
 
     const form = e.target;
     const body = {
@@ -160,6 +183,7 @@ const { t } = useTranslation();
     form.reset(); //pour vider le champ
 
   }
+
 
 
 
