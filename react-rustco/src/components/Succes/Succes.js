@@ -23,7 +23,7 @@ function Success(props) {
         expedition: infos.expedition || 'default_expedition',  
         methode_de_paiement: infos.methodeDePaiement || 'default_payment_method',
         total: prixTotal,
-        status: 'livre',
+        status: infos.typeCommande,
         taxes: infos.taxes || 'default_tax_rate',
         utilisateur: userId,
         voitures: JSON.parse(props.panier).length > 0 ? JSON.parse(props.panier) : ['testfailarr']
@@ -32,9 +32,39 @@ function Success(props) {
     const hasCommandeBeenCreated = useRef(false); 
 
 
+
+
     useEffect(() => {
+
+
+
+
         if(userId){
-        console.log(data)
+
+        async function reservationCreate() {   
+            if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
+                const response = await fetch(`http://localhost:5000/api/voitures/reservation`, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem('logged-user')}`
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {    
+
+                    console.log('Data successfully sent to the server');
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+                
+                hasCommandeBeenCreated.current = true;  // Mark as sent
+            }
+        }
+
+
+
         async function commandeCreate() {   
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
                 const response = await fetch('http://localhost:5000/api/commandes', {
@@ -76,7 +106,9 @@ function Success(props) {
                 hasCommandeBeenCreated.current = true;  // Mark as sent
             }
         }
-       
+
+        
+       reservationCreate();
         factureCreate();
         commandeCreate();
     }

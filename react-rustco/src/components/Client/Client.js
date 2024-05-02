@@ -141,7 +141,7 @@ const listeFactures = function() {
                                     <li><strong>{t('status')}: </strong>{facture.status}</li>
                                     <li><strong>Taxes: </strong>{facture.taxes}</li>
                                     <li><strong>Total:</strong> {facture.total} $</li>
-                                    <li><strong>{t('autos_menu')}:</strong> 
+                                    <li className='mb-2'><strong>{t('autos_menu')}:</strong> 
                                         <ul className='ml-6 list-disc'>
                                             {facture.voitures.map((voiture, vIndex) => (
                                                 <li key={vIndex}><u>{t('voiture')}</u> {vIndex+1}: {voiture.id}</li>
