@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { t } from "i18next"
 import modelesParMarque from '../../modelesParMarque.json';
 import './VoituresTable.css'
-import { t } from 'i18next';
 
 function VoituresTable(){
 
