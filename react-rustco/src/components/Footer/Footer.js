@@ -29,8 +29,8 @@ function Footer(props) {
                 <div>
                   <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.8275559783997!2d-112.28381058716909!3d34.58322967284882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872d21839be3bcc9%3A0x6482407671b215ff!2s10530%20E%20Valley%20Rd%2C%20Prescott%20Valley%2C%20AZ%2086314%2C%20USA!5e0!3m2!1sfr!2sca!4v1713468153951!5m2!1sfr!2sca"
-                  width="300"
-                  height="200"
+                  width="400"
+                  height="300"
                   style={{ border: '0', borderRadius:'10px' }}
                   allowFullScreen
                   loading="lazy"
