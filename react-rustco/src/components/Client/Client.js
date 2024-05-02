@@ -31,10 +31,55 @@ function Client(props){
         userData();
     }, [id]);
 
+    
+
+const [com, setCom] = useState([]);
+
+
+    
+useEffect(() => {
+    async function userData() {
+        try {
+            const response = await fetch(`http://localhost:5000/api/commandes`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            const userCommands = data.filter(commande => commande.utilisateur === user.id);
+            setCom(userCommands);
+        } catch (error) {
+            console.error('Failed to fetch data:', error);
+        }
+    };
+    userData();
+}, []); // Dependencies array is empty, so this effect runs only once on mount
+
+// Logging here will only show updates after state changes
+console.log(com);
+
+//////////////////////////////////////////////////////////////////////
+const listeCommandes = function() {
+
+    return com.map((item, index) => (
+        <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
+            <div className="flex items-center space-x-4 justify-between px-6">
+                <img src={`/voitures/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover rounded-2xl"/>
+                <div>
+                    <h3 className="text-lg font-bold">{item.marque} {item.modele}</h3>
+                    <p>{t('annee')}: {item.annee}</p>
+                    <p>{t('condition')}: {item.condition}</p>
+                    <p>{t('prix')}: ${item.prix}</p>
+                </div>
+            </div>
+        </li>
+    ));
+}
+
+
     return(
         <div className='tout-tout-container'>
             <h1 className='text-3xl font-bold mb-6'>Ma Page Client</h1>
-            <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-4 min-w-[40vw]'>
+            <div className='grid md:grid-cols-1 lg:grid-cols-2 gap-4 min-w-[80vw]'>
                 <div className='info-user col-span-1 border rounded-2xl p-6 min-h-[500px] bg-sand_1'>
                     <h2 className='text-2xl font-bold mb-6'>{t('infos_perso')}</h2>
                     <ul className="user-details mb-6">
@@ -60,6 +105,7 @@ function Client(props){
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_commandes')}</h2>
                     {/* Orders details here */}
+                    
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_factures')}</h2>

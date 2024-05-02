@@ -49,15 +49,12 @@ const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`;
     }, [id]);
 
 
+
     const infosPaiement = {
-      taxes: user.province,
       expedition: location.state.expedition,
       methodeDePaiement: location.state.methodeDePaiement
 
     }
-
-
-
 
 
 const infosStorage = localStorage.setItem('infosPaiement', JSON.stringify(infosPaiement));
@@ -65,18 +62,18 @@ const infosStorage = localStorage.setItem('infosPaiement', JSON.stringify(infosP
 
 
     const fetchClientSecret = useCallback(() => {
+  
       // Create a Checkout Session
       return fetch("http://localhost:5000/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({voitures: panier, taxes: user.province}) 
+        body: JSON.stringify({voitures: panier, userLogged: id }) 
       })
         .then((res) => res.json())
         .then((data) => data.clientSecret);
-    }, []);
-
+    }, [id]);
 
     const options = {fetchClientSecret};
     console.log(stripePromise);
@@ -87,7 +84,6 @@ const infosStorage = localStorage.setItem('infosPaiement', JSON.stringify(infosP
           stripe={stripePromise}
           options={options}
         >
-    
           <EmbeddedCheckout />
         </EmbeddedCheckoutProvider>
       </div>

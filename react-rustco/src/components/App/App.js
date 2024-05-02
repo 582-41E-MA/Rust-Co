@@ -122,6 +122,7 @@ const [check, setCheck] = useState();
     
     const privilegeTest = localStorage.getItem('logged-user') ? parseJwt(token).privilege : '';
     const idTest = localStorage.getItem('logged-user') ? parseJwt(token).id : '';
+   
 
 
     if (reponse.status == 200) {
@@ -162,10 +163,12 @@ const [check, setCheck] = useState();
       estLog: false,
       utilisateur: "",
       privilege: '',
-      id: ''
+      id: '',
+      province: ''
     });
     localStorage.removeItem("logged-user");
     localStorage.removeItem("panier");
+    localStorage.removeItem("infosPaiement");
     //document.location.href = '/';
   }
 
@@ -178,7 +181,7 @@ const [check, setCheck] = useState();
         <Entete handleLogout={logout} logging={logging} />
     
         
-            <main className={`flex-grow min-h-screen main ${isAccueil() ? '' : 'max-w-6xl p-4'} mx-auto`}>
+            <main className={`flex-grow min-h-screen main ${isAccueil() ? '' : 'max-w-6xl'} mx-auto p-4`}>
           <Router> 
             <Routes >
               <Route path="/" element={<Accueil />} />
