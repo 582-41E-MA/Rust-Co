@@ -71,22 +71,22 @@ const listeCommandes = function() {
     return <div>
                 {com.map((commande, index) => ( 
                     <ul>
-                        <h4>Commande {index+1}</h4>
+                        <h4>{t('commande')} {index+1}</h4>
                         <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
                             <div className="flex items-center space-x-4 justify-between px-6">
                                 <ul>
-                                    <li><strong>user id:</strong>{commande.utilisateur}</li>
-                                    <li><strong>id:</strong>{commande.id}</li>
-                                    <li><strong>date: </strong>{commande.date}</li>
-                                    <li><strong>expedition:</strong> {commande.expedition}</li>
-                                    <li><strong>Methode de paiement: </strong>{commande.methode_de_paiement}</li>
-                                    <li><strong>Status: </strong>{commande.status}</li>
-                                    <li><strong>taxes: </strong>{commande.taxes}</li>
-                                    <li><strong>total:</strong> {commande.total}</li>
-                                    <li><strong>Voitures:</strong> 
+                                    <li><strong>{t('utilisateur_id')}:</strong>{commande.utilisateur}</li>
+                                    <li><strong>{t('id')}:</strong>{commande.id}</li>
+                                    <li><strong>Date: </strong>{commande.date}</li>
+                                    <li><strong>{t('expedition')}:</strong> {commande.expedition}</li>
+                                    <li><strong>{t('methode_de_paiment')}: </strong>{commande.methode_de_paiement}</li>
+                                    <li><strong>{t('status')}: </strong>{commande.status}</li>
+                                    <li><strong>Taxes: </strong>{commande.taxes}</li>
+                                    <li><strong>Total:</strong> {commande.total}</li>
+                                    <li><strong>{t('autos_menu')}s:</strong> 
                                         <ul className='ml-6'>
                                             {commande.voitures.map((voiture, vIndex) => (
-                                                <li key={vIndex}><u>Voiture</u> {vIndex+1}: {voiture.id}</li>
+                                                <li key={vIndex}><u>{t('voiture')}</u> {vIndex+1}: {voiture.id}</li>
                                             ))}
                                         </ul>
                                     </li>
@@ -163,22 +163,22 @@ const listeCommandes = function() {
                 <div className='info-user col-span-1 border rounded-2xl p-6 min-h-[500px] bg-sand_1'>
                     <h2 className='text-2xl font-bold mb-6'>{t('infos_perso')}</h2>
                     <ul className="user-details mb-6">
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Adresse :</strong> {user.adresse}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Anniversaire :</strong> {user.anniversaire}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Code postal :</strong> {user.code_postal}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Courriel :</strong> {user.courriel}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>ID :</strong> {user.id}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Nom de famille :</strong> {user.nom_de_famille}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Prénom :</strong> {user.prenom}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Privilège :</strong> {user.privilege}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('adresse')} :</strong> {user.adresse}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('anniversaire')} :</strong> {user.anniversaire}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('code_postal')} :</strong> {user.code_postal}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('courriel')} :</strong> {user.courriel}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('id')} :</strong> {user.id}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('nom_de_famille')} :</strong> {user.nom_de_famille}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('prenom')} :</strong> {user.prenom}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('privilège')} :</strong> {user.privilege}</li>
                         <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Province :</strong> {user.province}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Téléphone :</strong> {user.telephone}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Nom d'utilisateur :</strong> {user.username}</li>
-                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>Ville :</strong> {user.ville}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('telephone')} :</strong> {user.telephone}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('utilisateur')} :</strong> {user.username}</li>
+                        <li className='bg-white_1 px-2 py-1 rounded-lg mb-1'><strong>{t('ville')} :</strong> {user.ville}</li>
                     </ul>
                     <div className='edit-btn-container'>
                         <Link to={`/update-user/${user.id}`}>
-                            <button className='custom-button'>Edit Info</button>
+                            <button className='custom-button'>{t('modifie')}Information</button>
                         </Link>
                     </div>
                 </div>
