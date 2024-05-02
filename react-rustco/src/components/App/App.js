@@ -32,6 +32,7 @@ import UpdateUser from "../UpdateUser/UpdateUser";
 import Client from "../Client/Client";
 import Panier from "../Panier/Panier";
 import Succes from "../Succes/Succes";
+
 // import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import Return from "../Return/Return";
 import './App.css';
@@ -83,14 +84,13 @@ const { t } = useTranslation();
         try {
           const response = await axios.get('https://api.ipify.org?format=json');
           setIp(response.data.ip);
-         console.log('ip adress: ' + ip)
         } catch (error) {
           console.error('Could not fetch IP', error);
         }
       };
   
       fetchIP();
-    }, [ip]);
+    }, []);
 
   
 
@@ -123,8 +123,6 @@ const { t } = useTranslation();
      adresseIP: ip,
      userId: logging.id
     };
-
-    console.log(body)
     
     const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
       method: "POST",
