@@ -44,7 +44,7 @@ function Footer(props) {
                 </div>
                 <div>
                   <span className="block">
-                    <a href="mailto:rustco@urmum.org" className="inline-block text-white_1 hover:text-rust_2">
+                    <a href="mailto:rustco@urmum.org" className="inline-block text-white_1 hover:text-rust_2 mb-4">
                       rustco@urmum.org
                     </a>
                   </span>
