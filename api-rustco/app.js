@@ -28,6 +28,7 @@ app.use("/api/voitures", require("./routes/voitures.js"));
 app.use("/api/utilisateurs", require("./routes/utilisateurs.js"));
 app.use("/api/commandes", require("./routes/commandes.js"));
 app.use("/api/factures", require("./routes/factures.js"));
+app.use("/api/journalDeConnexion", require("./routes/journalDeConnexion.js"));
 
 
 // ===== STRIPE
