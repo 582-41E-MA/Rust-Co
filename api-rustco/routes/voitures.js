@@ -233,7 +233,7 @@ for (let i = 0, l = req.body.voitures.length; i < l; i++) {
     let voitureRef = await db.collection("voitures").doc(idVoiture).get();
     let reservation = ""
 
-    if (voitureRef.data().reserve == "true") {
+    if (voitureRef.data().reserve == true) {
         reservation = false
     } else {
         reservation = true
