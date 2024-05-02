@@ -16,6 +16,12 @@
     "modele": "Modèle",
     "prix": "prix",
 
+    "utilisateur_id": "Identifiant d'utilisateur",
+    "id": "Identifiant",
+    "expedition": "Méthode d'expédition",
+    "methode_de_paiment": "Méthode de Paiement",
+    "status": "Étas de la commande",
+    
     "tous": "TOUS",
     "filtrer" : "Filtrer",
     "err_filtres": "Aucune voiture ne correspond à votre recherche.",

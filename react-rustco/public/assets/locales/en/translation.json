@@ -16,6 +16,12 @@
     "modele": "Model",
     "prix": "Price",
 
+    "utilisateur_id": "User ID",
+    "id": "Identifier",
+    "expedition": "Shipping Method",
+    "methode_de_paiment": "Payment Method",
+    "status": "Order Status",
+
     "tous": "ALL",
     "filtrer" : "Filter",
     "err_filtres": "No cars match your search criteria.",
