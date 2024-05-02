@@ -99,8 +99,8 @@ router.post("/",
 
         //EXPÉDITIONS
         //---------------------------------------------------------------------------------------------------
-        const docRefExpedition = await db.collection("expeditions").where("expedition", "==", req.body.expedition).get();
-        const provinces = [];
+        const docRefExpedition = await db.collection("expeditions").where("type", "==", req.body.expedition).get();
+        const expeditions = [];
 
         docRefExpedition.forEach((doc)=>{
             expeditions.push(doc.data());

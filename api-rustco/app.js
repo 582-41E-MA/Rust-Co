@@ -43,7 +43,9 @@ const YOUR_DOMAIN = 'http://localhost:5000';
 /**
  * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
  */
-const calculateOrderAmount = async (items) => {
+const calculateOrderAmount = async (voitures, taxes) => {
+
+  console.log(taxes)
 
     let prixAvecProfit = 0
     let prixTotal = 0
@@ -51,10 +53,10 @@ const calculateOrderAmount = async (items) => {
 
 
     //Si il y a des voitures
-    if (items != "") {
-      for (let i = 0, l = items.length; i < l; i++) {
+    if (voitures != "") {
+      for (let i = 0, l = voitures.length; i < l; i++) {
       
-        const donneeRef = await db.collection("voitures").doc(items[i].id).get();
+        const donneeRef = await db.collection("voitures").doc(voitures[i].id).get();
 
         let prix = Number(donneeRef.data().prix_achete)
 
@@ -98,11 +100,13 @@ app.post('/create-checkout-session', async (req, res) => {
 
     const voitures = [] 
 
-    for (let i = 0, l = req.body.length; i < l; i++) {
-        voitures.push(req.body[i])
+    console.log(req.body)
+
+    for (let i = 0, l = req.body.voitures.length; i < l; i++) {
+        voitures.push(req.body.voitures[i])
     }
 
-    const order = await calculateOrderAmount(voitures)
+    const order = await calculateOrderAmount(voitures, req.body.taxes)
 
     // const price = await stripe.prices.retrieve('price_1P9CZ9HYV1SpE1i8sSIB26WR');
 
