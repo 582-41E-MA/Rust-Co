@@ -148,6 +148,8 @@
     "mes_factures": "Bills",
     "mes_reservations": "Resevations",
 
-    "facture": "Bills"
+    "facture": "Bills",
+
+    "adresse_ip": "IP Adress"
 
 }
