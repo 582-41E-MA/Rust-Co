@@ -71,7 +71,7 @@ function isAccueil(){
 }
 
   return (
-    <header>
+    <header className={`${isAccueil() ? '' : 'mb-5'}`}>
       <div className="header justify-between bg-black text-white_1 relative z-20">
       <div className="header-right flex items-center">
         <div className={`header-logo items-center hidden md:block`}>
