@@ -168,7 +168,6 @@ const toggleFactures = () => {
 
 
 
-
     return(
         <div className='tout-tout-container'>
             <h1 className='text-3xl font-bold mb-6'>Ma Page Client</h1>
@@ -197,14 +196,14 @@ const toggleFactures = () => {
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_commandes')}</h2>
-                    <h3 onClick={toggleCommandes} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>Voir mes Commandes</h3>
+                    <h3 onClick={toggleCommandes} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>-> Voir mes Commandes</h3>
                     <div className={commandeVisible ? '' : 'hidden'}>
                         {listeCommandes()}
                     </div>
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_factures')}</h2>
-                    <h3 onClick={toggleFactures} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>Voir mes Factures</h3>
+                    <h3 onClick={toggleFactures} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>-> Voir mes Factures</h3>
                     <div className={factureVisible ? '' : 'hidden'}>
                         {listeFactures()}
                     </div>
