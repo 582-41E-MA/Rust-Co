@@ -5,6 +5,7 @@ import * as React from "react";
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import Voiture from "../Voiture/Voiture";
+import { t } from "i18next";
 
 
 
@@ -16,7 +17,7 @@ function BreadcrumbC(props) {
     <Breadcrumb>
       <Breadcrumb.Item href="/" icon={HiHome}>
       </Breadcrumb.Item>
-      <Breadcrumb.Item href="/liste-voitures">Nos Voitures</Breadcrumb.Item>
+      <Breadcrumb.Item href="/liste-voitures">{t('autos_menu')}</Breadcrumb.Item>
       <Breadcrumb.Item>{props.breadVoiture.marque} {props.breadVoiture.modele} {props.breadVoiture.annee}</Breadcrumb.Item>
     </Breadcrumb>
   );
