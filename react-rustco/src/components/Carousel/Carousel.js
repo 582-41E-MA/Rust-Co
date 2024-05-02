@@ -38,7 +38,7 @@ function CarouselC() {
   };
 
   return (
-    <div className="carousel-container pt-[-2]">
+    <div className="carousel-container">
       <div className="carousel-wrapper">
         <div className="carousel-slides" style={{ transform: `translateX(-${slide * 100}%)` }}>
           {images.map((image, index) => (
