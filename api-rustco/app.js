@@ -126,6 +126,8 @@ const calculateOrderAmount = async (voitures, idUtilisateur) => {
 //Route pour checkout
 app.post('/create-checkout-session', async (req, res) => {
 
+  console.log(req.body)
+
     const voitures = [] 
 
     for (let i = 0, l = req.body.voitures.length; i < l; i++) {
