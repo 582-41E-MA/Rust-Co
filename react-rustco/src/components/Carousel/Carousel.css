@@ -85,19 +85,7 @@
 @media screen and (min-width: 1536px) {
   /* Adjust styles for 2xl screens (1536px and up) */
 
-  .carousel-wrapper {
-      
-  }
-
-  .carousel-container {
-    min-width: 80vw;
-    right: 12%;
-    
-  }
-
-  .carousel-slide {
-      
-  }
+  
 
   .carousel-slide img {
      min-width: 100%;
@@ -105,23 +93,11 @@
 }
 
 @media screen and (min-width: 1800px) {
-  .carousel-container {
-    max-height: 45vw;
-    right:20%;
-
-  }
+  
 }
 @media screen and (min-width: 2000px) {
-  .carousel-container {
-    max-height: 45vw;
-    right:30%;
-
-  }
+  
 }
 @media screen and (min-width: 2200px) {
-  .carousel-container {
-    max-height: 45vw;
-    right:40%;
-
-  }
+  
 }
