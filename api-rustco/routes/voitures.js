@@ -183,6 +183,8 @@ router.put("/:id", authEmploye, [
     }
 
     const id = req.params.id;
+    const resultat = await db.collection("voitures").doc(id).delete();
+
     const voiture = {};
     voiture.id = id;
     voiture.marque = req.body.marque;
@@ -194,6 +196,7 @@ router.put("/:id", authEmploye, [
     voiture.description_fr = req.body.description_fr;
     voiture.image = req.body.image;
     voiture.condition = req.body.condition;
+    voiture.reserve = resultat.reserve;
 
     await db.collection("voitures").doc(id).update(voiture);
     
@@ -209,6 +212,42 @@ router.delete("/:id", authEmploye, async (req, res)=>{
     const resultat = await db.collection("voitures").doc(id).delete();
 
     res.json("La donnée a été supprimé");
+});
+
+
+//TOGGLE RESERVATION
+router.post("/reservation/:id", [
+    check("idVoiture").escape().trim().notEmpty().isString(),
+], async (req, res)=>{
+
+const validation = validationResult(req);
+
+if (validation.errors.length > 0) {
+    res.statusCode = 400;
+    return res.json({message: "Données non comforme"})
+}
+
+
+const id = req.params.id;
+const resultat = await db.collection("voitures").doc(id).delete();
+
+const voiture = {};
+voiture.id = id;
+voiture.marque = resultat.data().marque;
+voiture.annee = resultat.data().annee;
+voiture.modele = resultat.data().modele;
+voiture.prix_achete = resultat.data().prix_achete;
+voiture.profit = resultat.data().profit;
+voiture.description_en = resultat.data().description_en;
+voiture.description_fr = resultat.data().description_fr;
+voiture.image = resultat.data().image;
+voiture.condition = resultat.data().condition;
+voiture.reserve = resultat.reserve = "true" ? "false" : "true"
+
+await db.collection("voitures").doc(id).update(voiture);
+
+res.status = 200;
+res.json({message: "Les données ont été modifiées"})
 });
 
 module.exports = router;
