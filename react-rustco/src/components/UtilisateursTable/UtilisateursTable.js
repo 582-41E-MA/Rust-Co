@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './UtilisateursTable.css'
 import CreateUser from "../CreateUser/CreateUser";
+import { t } from 'i18next';
 
 function UtilisateursTable(props){
 
@@ -124,24 +125,24 @@ function UtilisateursTable(props){
         ) : (
             <div>
                 {estEmploye && (
-                    <button className="custom-button mt-5" onClick={handleClick}>+ Créer un Employé</button>
+                    <button className="custom-button mt-5" onClick={handleClick}>+ {t('cree_employe')}</button>
                 )}
 
                 <table className="employes-table mt-5">
     
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Prénom</th>
-                            <th>Nom de Famille</th>
-                            <th>username</th>
-                            <th>Courriel</th>
-                            <th>Téléphone</th>
-                            <th>Adresse</th>
-                            <th>Code Postal</th>
-                            <th>Ville</th>
+                            <th>{t('id')}</th>
+                            <th>{t('prenom')}</th>
+                            <th>{t('nom_de_famille')}</th>
+                            <th>{t('utilisateur')}</th>
+                            <th>{t('courriel')}</th>
+                            <th>{t('telephone')}</th>
+                            <th>{t('soumettre')}</th>
+                            <th>{t('code_postal')}</th>
+                            <th>{t('soumettre')}</th>
                             <th>Province</th>
-                            <th>Anniversaire</th>
+                            <th>{t('soumettre')}</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
