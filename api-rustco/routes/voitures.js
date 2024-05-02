@@ -216,8 +216,8 @@ router.delete("/:id", authEmploye, async (req, res)=>{
 
 
 //TOGGLE RESERVATION
-router.post("/reservation/:id", [
-    check("idVoiture").escape().trim().notEmpty().isString(),
+router.post("/reservation", [
+    check("voitures").notEmpty().isArray()
 ], async (req, res)=>{
 
 const validation = validationResult(req);
@@ -227,24 +227,35 @@ if (validation.errors.length > 0) {
     return res.json({message: "Données non comforme"})
 }
 
+for (let i = 0, l = req.body.voitures.length; i < l; i++) {
 
-const id = req.params.id;
-const resultat = await db.collection("voitures").doc(id).delete();
+    let idVoiture = req.body.voitures[i].id;
+    let voitureRef = await db.collection("voitures").doc(idVoiture).get();
+    let reservation = ""
 
-const voiture = {};
-voiture.id = id;
-voiture.marque = resultat.data().marque;
-voiture.annee = resultat.data().annee;
-voiture.modele = resultat.data().modele;
-voiture.prix_achete = resultat.data().prix_achete;
-voiture.profit = resultat.data().profit;
-voiture.description_en = resultat.data().description_en;
-voiture.description_fr = resultat.data().description_fr;
-voiture.image = resultat.data().image;
-voiture.condition = resultat.data().condition;
-voiture.reserve = resultat.reserve = "true" ? "false" : "true"
+    if (voitureRef.data().reserve == "true") {
+        reservation = false
+    } else {
+        reservation = true
+    }
 
-await db.collection("voitures").doc(id).update(voiture);
+    console.log(voitureRef.data())
+
+    const voiture = {};
+    voiture.id = idVoiture;
+    voiture.marque = voitureRef.data().marque;
+    voiture.annee = voitureRef.data().annee;
+    voiture.modele = voitureRef.data().modele;
+    voiture.prix_achete = voitureRef.data().prix_achete;
+    voiture.profit = voitureRef.data().profit;
+    voiture.description_en = voitureRef.data().description_en;
+    voiture.description_fr = voitureRef.data().description_fr;
+    voiture.image = voitureRef.data().image;
+    voiture.condition = voitureRef.data().condition;
+    voiture.reserve = reservation
+
+    await db.collection("voitures").doc(idVoiture).update(voiture);
+}
 
 res.status = 200;
 res.json({message: "Les données ont été modifiées"})
