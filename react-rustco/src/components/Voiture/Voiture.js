@@ -7,6 +7,7 @@ import { Routes, Route, useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import i18next from "react-i18next";
 import BreadcrumbC from "../BreadcrumbC/BreadcrumbC";
+import CustomAlert from '../CustomAlert/CustomAlert';
 
 export const VoitureContext = React.createContext();
 
@@ -18,6 +19,9 @@ function Voiture() {
   const urlVoiture = `https://rustandco.onrender.com/api/voitures/${id}`;
   const [voiture, setVoiture] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
+
+
+  const [alertInfo, setAlertInfo] = useState({ message: '', isVisible: false });
 
   useEffect(() => {
     fetch(urlVoiture)
@@ -44,32 +48,27 @@ function Voiture() {
       const prixFinal = (prix*((100+profit)/100)).toFixed(2)
      
  /////// AJOUTER AU PANIER ////////////
-  function ajouter() {
-    // Retrieve the cart from local storage or initialize an empty array if none exists
-    const panier = JSON.parse(localStorage.getItem('panier')) || [];
-    // Add the current car's information to the cart
-    const autoInfo = {
-        id: voiture.id.trim(),
-        marque: voiture.marque,
-        modele: voiture.modele,
-        annee: voiture.annee,
-        condition: voiture.condition,
-        prix: prixFinal,
-        image: voiture.image
-    };
+ const ajouter = () => {
+  const panier = JSON.parse(localStorage.getItem('panier')) || [];
+  const autoInfo = {
+      id: voiture.id.trim(),
+      marque: voiture.marque,
+      modele: voiture.modele,
+      annee: voiture.annee,
+      condition: voiture.condition,
+      prix: prixFinal,
+      image: voiture.image
+  };
+  const isCarInCart = panier.some(item => item.id === autoInfo.id);
 
-    // Check if the car is already in the cart
-    const isCarInCart = panier.some(item => item.id === autoInfo.id);
-
-    if (!isCarInCart) {
-        panier.push(autoInfo);
-        // Save the updated cart back to local storage
-        localStorage.setItem('panier', JSON.stringify(panier));
-        console.log('auto ajouté au panier');
-    } else {
-        console.log('deja dans le panier');
-    }
+  if (!isCarInCart) {
+      panier.push(autoInfo);
+      localStorage.setItem('panier', JSON.stringify(panier));
+      setAlertInfo({ message: 'Auto ajouté au panier', isVisible: true });
+  } else {
+      setAlertInfo({ message: 'Ce véhicule est déjà dans votre panier!', isVisible: true });
   }
+};
 
   return (
     <div>
@@ -112,6 +111,11 @@ function Voiture() {
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
             <button className="custom-button mb-2">Reserver</button>
             <button onClick={ajouter} className="custom-button mb-2">Ajouter au Panier</button>
+            <CustomAlert 
+                message={alertInfo.message}
+                isVisible={alertInfo.isVisible}
+                onClose={() => setAlertInfo({ ...alertInfo, isVisible: false })}
+            />
           </div>
         </div>
       </div>
