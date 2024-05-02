@@ -11,6 +11,9 @@ function Client(props){
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({});
 
+    const [comOpen, setComOpen] = useState(false);
+    const [facOpen, setOpen] = useState(false);
+
     const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`;
 
     useEffect(() => {
@@ -68,13 +71,13 @@ useEffect(() => {
 //////////////////////////////////////////////////////////////////////
 const listeCommandes = function() {
 
-    return <div>
+    return <div className="mt-10 flex flex-col items-center justify-center text-sm">
                 {com.map((commande, index) => ( 
-                    <ul>
-                        <h4>Commande {index+1}</h4>
-                        <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
-                            <div className="flex items-center space-x-4 justify-between px-6">
-                                <ul>
+                    <ul  className="bg-white shadow-lg rounded-lg p-6 mb-4 w-full max-w-4xl">
+                    <h4 className="text-lg font-semibold mb-4">Commande {index+1}</h4>
+                    <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
+                        <div className="border-t border-gray-200 pt-2">
+                                <ul className='flex flex-col gap-2'>
                                     <li><strong>user id:</strong>{commande.utilisateur}</li>
                                     <li><strong>id:</strong>{commande.id}</li>
                                     <li><strong>date: </strong>{commande.date}</li>
@@ -99,58 +102,58 @@ const listeCommandes = function() {
 }
 
 
-// const [factures, setFactures] = useState([]);
-// useEffect(() => {
-//     async function userData() {
-//         try {
-//             const response = await fetch(`http://localhost:5000/api/factures`);
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             const data = await response.json();
-//             const userFactures = data.filter(facture => facture.utilisateur === user.id);
-//             setFactures(userFactures);
-//         } catch (error) {
-//             console.error('Failed to fetch data:', error);
-//         }
-//     };
-//     userData();
-// }, []); // Dependencies array is empty, so this effect runs only once on mount
+const [factures, setFactures] = useState([]);
+useEffect(() => {
+    async function userData() {
+        try {
+            const response = await fetch(`http://localhost:5000/api/factures`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            const userFactures = data.filter(facture => facture.utilisateur === user.id);
+            setFactures(userFactures);
+        } catch (error) {
+            console.error('Failed to fetch data:', error);
+        }
+    };
+    userData();
+}, []); // Dependencies array is empty, so this effect runs only once on mount
 
-// console.log(factures);
+console.log(factures);
 
-// //////////////////////////////////////////////////////////////////////
-// const listeFactures = function() {
+//////////////////////////////////////////////////////////////////////
+const listeFactures = function() {
 
-//    return   <div>
-//                 {com.map((facture, index) => ( 
-//                     <ul>
-//                         <h4>Facture {index+1}</h4>
-//                         <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
-//                             <div className="flex items-center space-x-4 justify-between px-6">
-//                                 <ul>
-//                                     <li><strong>user id:</strong>{facture.utilisateur}</li>
-//                                     <li><strong>id:</strong>{facture.id}</li>
-//                                     <li><strong>date: </strong>{facture.date}</li>
-//                                     <li><strong>expedition:</strong> {facture.expedition}</li>
-//                                     <li><strong>Methode de paiement: </strong>{facture.methode_de_paiement}</li>
-//                                     <li><strong>Status: </strong>{facture.status}</li>
-//                                     <li><strong>taxes: </strong>{facture.taxes}</li>
-//                                     <li><strong>total:</strong> {facture.total}</li>
-//                                     <li><strong>Voitures:</strong> 
-//                                         <ul className='ml-6'>
-//                                             {facture.voitures.map((voiture, vIndex) => (
-//                                                 <li key={vIndex}><u>Voiture</u> {vIndex+1}: {voiture.id}</li>
-//                                             ))}
-//                                         </ul>
-//                                     </li>
-//                                 </ul>
-//                             </div>
-//                         </li> 
-//                     </ul>
-//                 ))}
-//             </div>
-// }
+   return   <div className="mt-10 flex flex-col items-center justify-center text-sm">
+                {com.map((facture, index) => ( 
+                    <ul  className="bg-white shadow-lg rounded-lg p-6 mb-4 w-full max-w-4xl">
+                        <h4 className="text-lg font-semibold mb-4">Facture {index+1}</h4>
+                        <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
+                            <div className="border-t border-gray-200 pt-2">
+                                <ul className='flex flex-col gap-2'>
+                                    <li><strong>user id:</strong>{facture.utilisateur}</li>
+                                    <li><strong>id:</strong>{facture.id}</li>
+                                    <li><strong>date: </strong>{facture.date}</li>
+                                    <li><strong>expedition:</strong> {facture.expedition}</li>
+                                    <li><strong>Methode de paiement: </strong>{facture.methode_de_paiement}</li>
+                                    <li><strong>Status: </strong>{facture.status}</li>
+                                    <li><strong>taxes: </strong>{facture.taxes}</li>
+                                    <li><strong>total:</strong> {facture.total}</li>
+                                    <li><strong>Voitures:</strong> 
+                                        <ul className='ml-6 list-disc'>
+                                            {facture.voitures.map((voiture, vIndex) => (
+                                                <li key={vIndex}><u>Voiture</u> {vIndex+1}: {voiture.id}</li>
+                                            ))}
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> 
+                    </ul>
+                ))}
+            </div>
+}
 
 
 
@@ -190,6 +193,7 @@ const listeCommandes = function() {
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_factures')}</h2>
                     {/* Invoices details here */}
+                    {listeFactures()}
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_reservations')}</h2>
