@@ -90,9 +90,9 @@ function CreateUser(props){
 
     function titreCreate(){
         if(props.userType == "employe"){
-            return(<h1 className='text-4xl font-bold'>Créer Employé</h1>)
+            return(<h1 className='text-4xl font-bold'>{t('cree')} {t('employé')}</h1>)
         }else{
-            return(<h1 className='text-4xl font-bold'>Créer Compte Client</h1>)
+            return(<h1 className='text-4xl font-bold'>{t('cree')} {t('compte')} {t('client')}</h1>)
         }
     }
 
@@ -103,40 +103,40 @@ function CreateUser(props){
             {titreCreate()}
             <form className='form-create-user' onSubmit={handleSubmit}>
                 <div className='mt-6'>
-                    <label htmlFor="courriel">Courriel:</label>
+                    <label htmlFor="courriel">{t('courriel')}:</label>
                     <input type="courriel" id="courriel" name="courriel" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">{t('mdp')}:</label>
                     <input type="password" id="password" name="password" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">{t('utilisateur')}:</label>
                     <input type="text" id="username" name="username" onChange={handleInputChange} required/>
                 </div>
                 <div className='mt-6'>
-                    <label htmlFor="prenom">Prénom:</label>
+                    <label htmlFor="prenom">{t('prenom')}:</label>
                     <input type="text" id="prenom" name="prenom" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="nom_de_famille">Nom de Famille:</label>
+                    <label htmlFor="nom_de_famille">{t('nom_de_famille')}:</label>
                     <input type="text" id="nom_de_famille" name="nom_de_famille" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="telephone">Telephone:</label>
+                    <label htmlFor="telephone">{t('telephone')}:</label>
                     <input type="tel" id="telephone" name="telephone" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="anniversaire">Anniversaire:</label>
+                    <label htmlFor="anniversaire">{t('anniversaire')}:</label>
                     <input type="date" id="anniversaire" name="anniversaire" onChange={handleInputChange} required/>
                 </div>
                 <br></br>
                 <div>
-                    <label htmlFor="adresse">Adresse :</label>
+                    <label htmlFor="adresse">{t('adresse')} :</label>
                     <input type="text" id="adresse" name="adresse" onChange={handleInputChange} required/>
                 </div>
                 <div>
-                    <label htmlFor="code_postal">Code Postal :</label>
+                    <label htmlFor="code_postal">{t('code_postal')} :</label>
                     <input type="text" id="code_postal" name="code_postal" onChange={handleInputChange} required/>
                 </div>
                 <div>
@@ -169,7 +169,7 @@ function CreateUser(props){
                     </select> 
                 </div>
                 <br></br>
-                <button type="submit" className='custom-button'>Submit</button>
+                <button type="submit" className='custom-button'>{t('soumettre')}</button>
             </form>
 
         </div>

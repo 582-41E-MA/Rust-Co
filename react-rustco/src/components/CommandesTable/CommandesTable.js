@@ -1,6 +1,7 @@
 import './CommandesTable.css'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { t } from "i18next";
 
 
 function CommandesTable(props){
@@ -71,8 +72,8 @@ function CommandesTable(props){
                 <table className="commandes-table mt-5">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Voiture</th>
+                            <th>{t('id')}</th>
+                            <th>{t('voiture')}s</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
