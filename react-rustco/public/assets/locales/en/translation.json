@@ -1,8 +1,17 @@
 {
     "autos_menu": "Car Listings",
     "aPropos_menu": "About",
-    "connexion_menu": "Login",
+    "connexion_menu": "Login Page",
+    "login_page": "Don't have an account yet? Create one",
+    "ici": "HERE",
     "accueil": "Home",
+
+    "pannier_expedition": "Shipping",
+    "pannier_livraison": "Local Delivery",
+    "pannier_magasin": "In-Store Pickup",
+    "pannier_debit": "Debit Card",
+    "pannier_credit": "Credit Card",
+    "pannier_virement": "Bank Transfer",
 
     "droits_footer": "All Rights Reserved",
     "termes_footer": "Terms and Conditions",

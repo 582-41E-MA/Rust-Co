@@ -1,8 +1,19 @@
 {
     "autos_menu": "Nos Voitures",
     "aPropos_menu": "À Propos",
-    "connexion_menu": "Connexion",
+    "connexion_menu": "Page de Connexion",
+    "login_page": "Vous n'avez pas encore de compte? Créez-en un",
+    "ici": "ICI",
     "accueil": "Accueil",
+
+    
+
+    "pannier_expedition": "Expédition",
+    "pannier_livraison": "Livraison Locale",
+    "pannier_magasin": "Ramasser en Magasin",
+    "pannier_debit": "Carte de Débit",
+    "pannier_credit": "Carte de Crédit",
+    "pannier_virement": "Virement banquaire",
 
     "droits_footer": "Tous Droits Réservés",
     "termes_footer": "Termes et Conditions",
@@ -62,7 +73,7 @@
     "marge_de_profit": "Marge de profit",
     
     "cree": "Crée",
-    "selectione": "Selectioné",
+    "selectione": "Sélectioné",
     "modifie": "Modifié",
     "supprime": "Supprimé",
     "mis_a_jour": "Mettre à Jours",
