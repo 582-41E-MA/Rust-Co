@@ -65,10 +65,9 @@ const deleteItem = function(itemId){
 
 
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
-console.log(expedition,methodeDePaiement,typeCommande)
+        console.log(expedition,methodeDePaiement,typeCommande)
         navigate('/checkout', { state: { expedition, methodeDePaiement, typeCommande } });
       };
 
