@@ -35,6 +35,7 @@ import Succes from "../Succes/Succes";
 // import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import Return from "../Return/Return";
 import './App.css';
+import axios from 'axios'
 
 import Checkout from "../Checkout/Checkout";
 
@@ -51,7 +52,9 @@ function App() {
 
 const [checkEmbed, setCheckEmbed] = useState(0);
 const [check, setCheck] = useState();
- const { t } = useTranslation();
+const [ip, setIp] = useState('');
+
+const { t } = useTranslation();
 
     //////// LOGGING STUFF ///////////////
   //const navigate = useNavigate();
@@ -71,6 +74,27 @@ const [check, setCheck] = useState();
         return JSON.parse(jsonPayload);
       }
     }
+
+
+
+    //------ loggin ipadress stuff ------//
+    useEffect(() => {
+      const fetchIP = async () => {
+        try {
+          const response = await axios.get('https://api.ipify.org?format=json');
+          setIp(response.data.ip);
+          // Optionally send the IP to your server here
+          //sendIPToServer(response.data.ip);
+        } catch (error) {
+          console.error('Could not fetch IP', error);
+        }
+      };
+  
+      fetchIP();
+    }, []);
+
+    console.log('ip adress: ' + ip)
+
   
 
   ///// LANGUAGE STUFF Custom/////
