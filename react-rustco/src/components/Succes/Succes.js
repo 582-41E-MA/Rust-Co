@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { t } from "i18next";
 
 function Success(props) {
     const location = useLocation();
@@ -116,20 +117,19 @@ function Success(props) {
 
     return(
         <div className="bg-white max-w-full p-6 rounded-2xl flex flex-col items-center">
-       
-            <div className=''><h1 className='mb-6 text-2xl'>Achat effectué avec succès !</h1>
+            <div className=''><h1 className='mb-6 text-2xl'>{t('achat_succes')} !</h1>
             <img className='w-8' src='/icons/check.png' alt="Check icon"></img></div>
             <img src='/logo/brasbon.png' className='w-60 mb-6' alt="Brand logo"></img>
-            <p className='mb-6'>-- choisissez une redirection --</p>
+            <p className='mb-6'>-- {t('redirection')} --</p>
             <div>
                 <Link className='custom-button' to={lien}>
-                    Votre Compte
+                    {t('mon_compte')}
                 </Link>
                 <Link className='custom-button' to='/'>
-                    Accueil
+                    {t('accueil')}
                 </Link>
                 <Link className='custom-button' to='/voitures'>
-                   Voitures
+                    {t('voiture')}
                 </Link>
             </div>
         </div>

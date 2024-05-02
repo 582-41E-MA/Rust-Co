@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { t } from "i18next";
 
 function CustomAlert({ message, isVisible, onClose }) {
     useEffect(() => {
@@ -17,7 +18,7 @@ function CustomAlert({ message, isVisible, onClose }) {
             <div className="bg-sand_2 rounded-lg shadow-xl p-6 flex flex-col text-center items-center justify-center gap-4">
                 <h2 className="text-lg font-bold">{message}</h2>
                 <button onClick={onClose} className="custom-button">
-                    Close
+                    {t('fermer')}
                 </button>
             </div>
         </div>
