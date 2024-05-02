@@ -7,18 +7,15 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
+import { t } from "i18next";
 import Entete from "../Entete/Entete";
 import './Signup.css';
 
 
 function Signup() {
 
-
   return (
-
-   <h1 className="text-xl">This is the Sign Up page</h1>
-
-
+    <h1 className="text-xl">{t('inscription_message')}</h1>
   );
 }
 

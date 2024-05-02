@@ -3,7 +3,11 @@
     "aPropos_menu": "About",
     "connexion_menu": "Login Page",
     "login_page": "Don't have an account yet? Create one",
+    "inscription_message":"This is the Sign Up page",
+    "redirection":"Chose a redirection",
+    "achat_succes": "Achat effectué avec succès",
     "ici": "HERE",
+    "fermer": "Close",
     "accueil": "Home",
 
     "pannier_expedition": "Shipping",
@@ -134,6 +138,7 @@
     "paiement": "Payment",
     "checkout": "Checkout",
     "mon_panier": "Shopping Cart",
+    "mon_compte":"My Account",
 
     "infos_perso": "Personnal Info",
     "mes_commandes": "Past Orders",

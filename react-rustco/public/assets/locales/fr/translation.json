@@ -3,10 +3,14 @@
     "aPropos_menu": "À Propos",
     "connexion_menu": "Page de Connexion",
     "login_page": "Vous n'avez pas encore de compte? Créez-en un",
+    "inscription_message":"Ceci est la page d'inscription",
+    "redirection":"Choisissez une redirection",
+    "achat_succes": "Purchased was succesful",
     "ici": "ICI",
+    "fermer": "Fermer",
     "accueil": "Accueil",
 
-    
+
 
     "pannier_expedition": "Expédition",
     "pannier_livraison": "Livraison Locale",
@@ -138,6 +142,7 @@
     "paiement": "Paiement",
     "checkout": "Checkout",
     "mon_panier": "Mon Panier",
+    "mon_compte":"Mon Compte",
 
     "infos_perso": "Informations Personnelles",
     "mes_commandes": "Mes Commandes Passées",
