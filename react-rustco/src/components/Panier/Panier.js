@@ -56,7 +56,7 @@ const deleteItem = function(itemId){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         navigate('/checkout', { state: { expedition, methodeDePaiement } });
       };
 
@@ -156,14 +156,14 @@ return(
               <label htmlFor="expedition">Expédition:</label>
               <select id="expedition" name="expedition" className='custom-select' required value={expedition} onChange={e => setExpedition(e.target.value)}>
                 <option value="" disabled>-- sélectionner --</option>
-                <option value="livrasion-locale">Livraison Locale</option>
+                <option value="livraison-locale">Livraison Locale</option>
                 <option value="ramasser-en-magasin">Ramasser en Magasin</option>
               </select>
 
               <label htmlFor="methode_de_paiement">Méthode de Paiement:</label>
               <select id="methode_de_paiement" name="methode_de_paiement" className='custom-select' required value={methodeDePaiement} onChange={e => setMethodeDePaiement(e.target.value)}>
                 <option value="" disabled>-- sélectionner --</option>
-                <option value="carte-de-debit">Carte de Débit</option>
+                <option value="carte-debit">Carte de Débit</option>
                 <option value="carte-de-credit">Carte de Crédit</option>
                 <option value="virement-banquaire">Virement banquaire</option>
               </select>
