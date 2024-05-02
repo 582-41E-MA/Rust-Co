@@ -6,16 +6,6 @@ const authAdmin = require("../middlewares/authAdmin.js");
 const authEmploye = require("../middlewares/authEmploye.js");
 const { check, validationResult } = require("express-validator");
 
-// router.get("/initialize", async (req, res) => {
-//     const donneesTest = require("../data/mockUtilisateurs.js");
-//     donneesTest.forEach(async (utilisateur) => {
-//         console.log(utilisateur)
-//         await db.collection("utilisateurs").add(utilisateur);
-//     });
-
-//     res.statusCode = 200;
-//     res.json({ message: "Données initialisées" });
-// });
 
 //-------------------------------------------------------------------------------------
 
@@ -50,7 +40,7 @@ router.get("/", async (req, res) => {
 
 /**
  * PREND UNE COMMANDE AVEC SON ID
- * Cette route permet de récupérer une commande
+ * Cette route permet de récupérer une commande avec son id
  * @route GET
  */
 router.get("/:id", async (req, res) => {
@@ -80,56 +70,96 @@ router.get("/:id", async (req, res) => {
 
 /**
  * CRÉATION
- * Cette route permet de créer un film
- * @route POST /films
+ * Cette route permet de créer une commande
+ * @route POST
  */
-//TODO:Validation de Conditions_id
 router.post("/",
     [
         //TODO: Refait la validation
-        // check("marque").escape().trim().notEmpty().isString(),
-        // check("annee").escape().trim().notEmpty().isNumeric(),
-        // check("modele").escape().trim().notEmpty().isString(),
-        // check("prix_achete").escape().trim().notEmpty().isString(),
-        // check("description_en").escape().trim().notEmpty().isString(),
-        // check("description_fr").escape().trim().notEmpty().isString(),
-        // check("image").escape().trim().notEmpty().isString(),
+        check("expedition").escape().trim().notEmpty().isString(),
+        check("methode_de_paiement").escape().trim().notEmpty().isString(),
+        check("total").escape().trim().notEmpty().isNumeric(),
+        check("status").escape().trim().notEmpty().isString(),
+        check("taxes").escape().trim().notEmpty().isString(),
+        check("utilisateur").escape().trim().notEmpty().isString(),
+        check("voitures").escape().trim().notEmpty().isArray()
     ],
     
     async (req, res) => {
 
         const validation = validationResult(req);
-
-        /**
-         * Vérification de la condition 
-         * TODO: Finir la validation
-         */
-        // validationConditions.forEach((condition)=>{
-        //     // tableauConditions.push(condition.data());
-        // })
         
-
         if (validation.errors.length > 0) {
             res.statusCode = 400;
             return res.json({message: "Données non comforme"})
         }
 
-        // const voitures = [];
 
-        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
-        //     voitures.push(req.body.voitures[i]);
-        // }
+        //VALIDATION EXISTENCE DANS LA DB
 
-        // for (let i = 0, l = req.body.voitures.length; i < l; i++) {
+        //EXPÉDITIONS
+        //---------------------------------------------------------------------------------------------------
+        const docRefExpedition = await db.collection("expeditions").where("type", "==", req.body.expedition).get();
+        const expeditions = [];
 
-        //     const donneeRef = await db.collection("voitures").doc(req[i].id).get();
+        docRefExpedition.forEach((doc)=>{
+            expeditions.push(doc.data());
+        })
 
-        //     donneeRef.forEach((doc)=>{
-        //         voitures.push(doc.data());
-        //     })
+        //Si oui, erreur
+        if (expeditions.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode d'expédition n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
 
-        // }
+        //MÉTHODES DE PAIEMENT
+        //---------------------------------------------------------------------------------------------------
+        const docRefMethode = await db.collection("methodes").where("methode", "==", req.body.methode_de_paiement).get();
+        const methodes = [];
 
+        docRefMethode.forEach((doc)=>{
+            methodes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode de paiement n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //TAXES
+        //---------------------------------------------------------------------------------------------------
+        const docRefTaxes = await db.collection("taxes").where("taxe", "==", req.body.taxes).get();
+        const taxes = [];
+
+        docRefTaxes.forEach((doc)=>{
+            taxes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La/Les taxe n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+        
+        //STATUS
+        //---------------------------------------------------------------------------------------------------
+        const docRefStatus = await db.collection("status").where("status", "==", req.body.status).get();
+        const status = [];
+
+        docRefStatus.forEach((doc)=>{
+            status.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "Le status n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
 
 
         //Génère date d'aujourd'hui
@@ -182,22 +212,96 @@ router.post("/",
 
 /**
  * MODIFICATION
- * Cette route permet de modifier un utilisateur
- * @route POST 
+ * Cette route permet de modifier une commande
+ * @route PUT
  */
 router.put("/:id", authEmploye,
     [
-        //TODO: Fait la validation
+        check("date").escape().trim().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
+        check("expedition").escape().trim().notEmpty().isString(),
+        check("methode_de_paiement").escape().trim().notEmpty().isString(),
+        check("total").escape().trim().notEmpty().isNumeric(),
+        check("status").escape().trim().notEmpty().isString(),
+        check("taxes").escape().trim().notEmpty().isString(),
+        check("utilisateur").escape().trim().notEmpty().isString(),
+        check("voitures").escape().trim().notEmpty().isArray()
     ],
     
     async (req, res) => {
 
-        //const validation = validationResult(req);       
+        const validation = validationResult(req);       
 
-        // if (validation.errors.length > 0) {
-        //     res.statusCode = 400;
-        //     return res.json({message: "Données non comforme"})
-        // }
+        if (validation.errors.length > 0) {
+            res.statusCode = 400;
+            return res.json({message: "Données non comforme"})
+        }
+
+
+        //VALIDATION EXISTENCE DANS LA DB
+
+        //EXPÉDITIONS
+        //---------------------------------------------------------------------------------------------------
+        const docRefExpedition = await db.collection("expeditions").where("expedition", "==", req.body.expedition).get();
+        const provinces = [];
+
+        docRefExpedition.forEach((doc)=>{
+            expeditions.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (expeditions.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode d'expédition n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //MÉTHODES DE PAIEMENT
+        //---------------------------------------------------------------------------------------------------
+        const docRefMethode = await db.collection("methodes").where("methode", "==", req.body.methode_de_paiement).get();
+        const methodes = [];
+
+        docRefMethode.forEach((doc)=>{
+            methodes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La méthode de paiement n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //TAXES
+        //---------------------------------------------------------------------------------------------------
+        const docRefTaxes = await db.collection("taxes").where("taxe", "==", req.body.taxes).get();
+        const taxes = [];
+
+        docRefTaxes.forEach((doc)=>{
+            taxes.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "La/Les taxe n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
+
+        //STATUS
+        //---------------------------------------------------------------------------------------------------
+        const docRefStatus = await db.collection("status").where("status", "==", req.body.status).get();
+        const status = [];
+
+        docRefStatus.forEach((doc)=>{
+            status.push(doc.data());
+        })
+
+        //Si oui, erreur
+        if (methodes.length <= 0) {
+            res.statusCode = 400;
+            return res.json({message: "Le status n'éxiste pas"});
+        }
+        //---------------------------------------------------------------------------------------------------
 
         try{
             const idCommande = req.params.id;
@@ -206,7 +310,7 @@ router.put("/:id", authEmploye,
             commande.date = req.body.date;
             commande.expedition = req.body.expedition;
             commande.methode_de_paiement = req.body.methode_de_paiement;
-            commande.total = req.body.total;
+            commande.prix = req.body.prix;
             commande.status = req.body.status;
             commande.taxes = req.body.taxes;
             commande.utilisateur = req.body.utilisateur;
@@ -224,7 +328,11 @@ router.put("/:id", authEmploye,
 
 //-------------------------------------------------------------------------------------
 
-//SUPPRIMER
+/**
+ * SUPPRIMER
+ * Cette route permet de supprimer une commande
+ * @route DEL
+ */
 router.delete("/:id", async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
     const idCommande = req.params.id;
