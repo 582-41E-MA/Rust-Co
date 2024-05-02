@@ -87,7 +87,7 @@ function Voiture() {
               <img
                 src={`/voitures/${voiture.image}`}
                 alt={voiture.id}
-                className="object-cover rounded-2xl"
+                className="object-cover rounded-2xl cursor-pointer"
               /> 
               </div>
             </motion.div>
