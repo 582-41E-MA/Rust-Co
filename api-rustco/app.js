@@ -43,54 +43,82 @@ const YOUR_DOMAIN = 'http://localhost:5000';
 /**
  * CECI CRÉÉ LE PRODUIT SUR STRIPE EN ACCUMULANT LES DONNÉES DES VOITURES DANS LA DB
  */
-const calculateOrderAmount = async (voitures, taxes) => {
+const calculateOrderAmount = async (voitures, idUtilisateur) => {
 
-  console.log(taxes)
 
+  //Check si le idUtilisateur existe
+  if (idUtilisateur != "") {
+
+    //ALLER CHERCHER LA TAXE SELON LA PROVINCE DE L'UTILISATEUR
+    //------------------------------------------------------------------------------------------------------------------
+    const taxes = []
+
+    const utilisateurRef = await db.collection("utilisateurs").doc(idUtilisateur).get();
+    const utilisateur = utilisateurRef.data()
+
+    const taxesRef = await db.collection("taxes").where("province", "==", utilisateur.province).get();
+
+    taxesRef.forEach((doc)=>{
+      taxes.push(doc.data());
+    })
+    //------------------------------------------------------------------------------------------------------------------
+
+    let taxeTotal = 0
     let prixAvecProfit = 0
+    let prixAvecTaxe = 0
     let prixTotal = 0
     const orderId = Date.now();
 
 
-    //Si il y a des voitures
-    if (voitures != "") {
-      for (let i = 0, l = voitures.length; i < l; i++) {
-      
-        const donneeRef = await db.collection("voitures").doc(voitures[i].id).get();
+      //Si il y a des voitures
+      if (voitures != "") {
 
-        let prix = Number(donneeRef.data().prix_achete)
+        for (let i = 0, l = taxes.length; i < l; i++) {
+          taxeTotal = Number(taxeTotal) + Number(taxes[i].taux.toFixed(2))
+        }
 
-        let profit = Number(donneeRef.data().profit)
-
-        prixAvecProfit = (Number(prix)*((100+Number(profit))/100))
- 
-        //On doit le refaire en Number car le code le remet en string ce qui va briser le prix
-        prixTotal = Number(prixTotal) + Number(prixAvecProfit.toFixed(2));
+        for (let i = 0, l = voitures.length; i < l; i++) {
         
-        // prices.push(donneeRef.data().prix_achete)
+          const donneeRef = await db.collection("voitures").doc(voitures[i].id).get();
+
+          let prix = Number(donneeRef.data().prix_achete)
+
+          let profit = Number(donneeRef.data().profit)
+
+          prixAvecProfit = (Number(prix) * ((100+Number(profit)) / 100))
+          prixAvecTaxe = (Number(prixAvecProfit) + ((Number(prixAvecProfit) / 100) * Number(taxeTotal)))
+
+  
+          //On doit le refaire en Number car le code le remet en string ce qui va briser le prix
+          prixTotal = Number(prixTotal) + Number(prixAvecTaxe.toFixed(2));
+          
+        }
+
+        const prixTotalUnit = (prixTotal * 100);
+
+        const prixFinal = await stripe.prices.create({
+            currency: 'cad',
+            unit_amount: prixTotalUnit,
+            product_data: {
+                name: orderId
+            },
+        });
+
+      
+        // return prixFinal.id;
+        return prixFinal.id;
+
+      } else {
+
+        //Sinon, retourne un produit gratuit qui dit qu'il n'y a pas de voitures trouvé dans la demande
+        return "price_1PBjdlHYV1SpE1i8ESq4Yu8H"
+
       }
-
-
-      const prixTotalUnit = (prixTotal * 100);
-
-      const prixFinal = await stripe.prices.create({
-          currency: 'cad',
-          unit_amount: prixTotalUnit,
-          product_data: {
-              name: orderId
-          },
-      });
-
+  } else {
+    //Sinon, retourne un produit gratuit qui dit qu'il n'y a pas de voitures trouvé dans la demande
+    return "price_1PC5Q7HYV1SpE1i8s6eTrFNG"
+  }
     
-      // return prixFinal.id;
-      return prixFinal.id;
-
-    } else {
-
-      //Sinon, retourne un produit gratuit qui dit qu'il n'y a pas de voitures trouvé dans la demande
-      return "price_1PBjdlHYV1SpE1i8ESq4Yu8H"
-
-    }
 
     
   };
@@ -98,15 +126,15 @@ const calculateOrderAmount = async (voitures, taxes) => {
 //Route pour checkout
 app.post('/create-checkout-session', async (req, res) => {
 
-    const voitures = [] 
+  console.log(req.body)
 
-    console.log(req.body)
+    const voitures = [] 
 
     for (let i = 0, l = req.body.voitures.length; i < l; i++) {
         voitures.push(req.body.voitures[i])
     }
 
-    const order = await calculateOrderAmount(voitures, req.body.taxes)
+    const order = await calculateOrderAmount(voitures, req.body.userLogged)
 
     // const price = await stripe.prices.retrieve('price_1P9CZ9HYV1SpE1i8sSIB26WR');
 

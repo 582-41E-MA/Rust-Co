@@ -138,6 +138,8 @@
     "infos_perso": "Personnal Info",
     "mes_commandes": "Past Orders",
     "mes_factures": "Bills",
-    "mes_reservations": "Resevations"
+    "mes_reservations": "Resevations",
+
+    "facture": "Bills"
 
 }

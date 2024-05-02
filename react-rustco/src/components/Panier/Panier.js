@@ -20,6 +20,15 @@ function Panier(props){
     const [methodeDePaiement, setMethodeDePaiement] = useState('');
     const navigate = useNavigate();
 
+
+    const [typeCommande, setTypeCommande] = useState('');
+    // Handler function to update the state with the new selected option
+    const handleOptionChange = (event) => {
+        setTypeCommande(event.target.value);
+    };
+
+
+
     let context = useContext(AppContext);
     let [items, setItems] = useState(JSON.parse(localStorage.getItem('panier')) || []);
     // useEffect(() => {
@@ -56,11 +65,10 @@ const deleteItem = function(itemId){
 
 
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        navigate('/checkout', { state: { expedition, methodeDePaiement } });
+        console.log(expedition,methodeDePaiement,typeCommande)
+        navigate('/checkout', { state: { expedition, methodeDePaiement, typeCommande } });
       };
 
 
@@ -170,6 +178,34 @@ return(
                 <option value="carte-de-credit">{t('pannier_credit')}</option>
                 <option value="virement-banquaire">{t('pannier_virement')}</option>
               </select>
+
+              <div className="mb-4 mt-8">
+            <h4 className='text-lg mb-4'>Choisir une option :</h4>
+                <label>
+                    <input
+                        type="radio"
+                        name="typeCommande"
+                        value="reserver"
+                        checked={typeCommande === 'reserver'}
+                        onChange={handleOptionChange}
+                        required
+                    />
+                    &nbsp;&nbsp;Resrvation
+                </label>
+            </div>
+            <div className="mb-4">
+                <label>
+                    <input
+                        type="radio"
+                        name="typeCommande"
+                        value="acheter"
+                        checked={typeCommande === 'acheter'}
+                        onChange={handleOptionChange}
+                        required
+                    />
+                    &nbsp;&nbsp;Acheter maintenant
+                </label>
+            </div>
 
               <button type="submit" className="custom-button self-end text-center">
                 {t('checkout')}
