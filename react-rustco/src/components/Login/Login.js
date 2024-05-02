@@ -11,6 +11,7 @@ import {
 import Entete from "../Entete/Entete";
 import './Login.css';
 import { t } from 'i18next'
+import CustomAlert from "../CustomAlert/CustomAlert";
 
 
 function Login(props) {
@@ -19,7 +20,7 @@ function Login(props) {
   return (
     <div className="block">
       <div className="flex flex-col items-center">
-        <div className="rounded-2xl overflow-hidden p-6 custom-shadow bg-sand_2">
+        <div className="rounded-2xl overflow-hidden flex flex-col text-center md:text-left p-6 custom-shadow bg-sand_2">
           <h1 className="text-xl font-bold">LOGIN</h1>
           <form onSubmit={props.handleLogin} className="form-login">
             <input type="text" name="courriel" placeholder="Usager"></input>
