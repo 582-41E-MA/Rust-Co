@@ -16,8 +16,9 @@ function JournalTable(){
         fetch(urlListeJournal)
           .then((reponse) => reponse.json())
           .then((data) => {
-            console.log(data)
-            setListeJournal(data)
+            const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+            console.log(sortedData);
+            setListeJournal(sortedData);
           });
             
       }, []);
