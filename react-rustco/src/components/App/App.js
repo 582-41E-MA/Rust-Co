@@ -118,24 +118,25 @@ const { t } = useTranslation();
 
 
   useEffect(() =>{
-  async function journalCreate(){
-    const body = {
-     adresseIP: ip,
-     userId: logging.id
-    };
-    
-    const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    })
-    
+    async function journalCreate(){
+      const body = {
+      adresseIP: ip,
+      userId: logging.id
+      };
+      
+      const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          
+        },
+        body: JSON.stringify(body),
+      })
+      
 
-  }
-  journalCreate();
-}, [ip, logging.id])
+    }
+    journalCreate();
+  }, [ip, logging.id])
 
 
 

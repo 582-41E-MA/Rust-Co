@@ -12,7 +12,7 @@ function UpdateUser(props){
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
 
-    const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`
+    const urlUserInitial = `http://localhost:5000/api/utilisateurs/${id}`
     const [urlUser, setUrlUser] = useState(urlUserInitial)
     const [formData, setFormData] = useState({
         prenom: '',
@@ -93,7 +93,7 @@ function UpdateUser(props){
         e.preventDefault(); 
         console.log(formData);
         try {
-            const reponse = await fetch(`https://rustandco.onrender.com/api/utilisateurs/${id}`, {
+            const reponse = await fetch(`http://localhost:5000/api/utilisateurs/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -149,7 +149,7 @@ function UpdateUser(props){
                 </div>
 
                 <div>
-                    <label for="utilisateur">{t('nom_de_famille')} : </label>
+                    <label for="utilisateur">{t('utilisateur')} : </label>
                     <input type='text' id="username" name="username" required maxLength={70} onChange={handleInputChange} defaultValue={user ? user.username : ''}/>
                 </div>
                 <div>
@@ -203,7 +203,7 @@ function UpdateUser(props){
                 </div>
                 <div>
                     <label for="anniversaire">{t('anniversaire')} : </label>
-                    <input type='select' id="anniversaire" name="anniversaire" required maxLength={12} onChange={handleInputChange} defaultValue={user ? user.anniversaire : ''}/>
+                    <input type='date' id="anniversaire" name="anniversaire" required onChange={handleInputChange} />
                     
                 </div>
                 {

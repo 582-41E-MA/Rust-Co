@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { t } from "i18next"
 import modelesParMarque from '../../modelesParMarque.json';
-import './VoituresTable.css'
+import './JournalTable.css'
 
 function JournalTable(){
 
@@ -12,16 +12,28 @@ function JournalTable(){
 
 
     useEffect(() => {
-        // useEffect est juste quand il y a CHANGEMENT
+       
         fetch(urlListeJournal)
           .then((reponse) => reponse.json())
           .then((data) => {
+            console.log(data)
             setListeJournal(data)
           });
+
+        // async function showJournal(){
+        //         const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
+        //             method: "GET",
+        //             headers: {
+        //                 "Content-Type": "application/json"
+        //             }
+        //         })
+        // }
+        //showJournal()
+            
       }, []);
     
 
-
+    console.log(listeJournal)
 
     //------------------------------------------------------------------//
 
@@ -34,13 +46,13 @@ function JournalTable(){
     return (
        <tr key={index}>
         <td data-label="Id">
-            {journal.id}
+            {journal.utilisateur}
         </td>
-        <td  data-label="Marque">
-            {journal.marque}
+        <td  data-label="Date">
+            {journal.date}
         </td>
-        <td data-label="Modèle">
-            {journal.modele}
+        <td data-label="adresseIP">
+            {journal.adresseIP}
         </td>
       </tr> 
     ); 
