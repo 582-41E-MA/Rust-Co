@@ -12,7 +12,7 @@ import CustomAlert from '../CustomAlert/CustomAlert';
 
 export const VoitureContext = React.createContext();
 
-function Voiture() {
+function Voiture(props) {
   const navigate = useNavigate();
   let context = useContext(AppContext);
   let { id } = useParams();
@@ -70,6 +70,8 @@ function Voiture() {
       setAlertInfo({ message: 'Ce véhicule est déjà dans votre panier!', isVisible: true });
   }
 };
+const priv = props.logging.privilege;
+console.log(priv)
 
   return (
     <div>
@@ -110,7 +112,13 @@ function Voiture() {
           </div>
           <div className="flex-1 custom-shadow_2 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
-            <button onClick={ajouter} className="custom-button mb-2">{t('ajout_panier')}</button>
+            {priv !== 'admin' ?
+
+            <button onClick={ajouter} className="custom-button mb-2" disabled={priv === 'admin'}>{t('ajout_panier')}</button>
+            :
+            <div></div>
+            }
+            
             <CustomAlert 
                 message={alertInfo.message}
                 isVisible={alertInfo.isVisible}
