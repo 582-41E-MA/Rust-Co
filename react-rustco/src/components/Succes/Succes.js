@@ -44,7 +44,7 @@ function deletePanier(){
 
         async function reservationCreate() {   
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
-                const response = await fetch(`http://localhost:5000/api/voitures/reservation`, {
+                const response = await fetch(`https://rustandco.onrender.com/api/voitures/reservation`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ function deletePanier(){
 
         async function commandeCreate() {   
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
-                const response = await fetch('http://localhost:5000/api/commandes', {
+                const response = await fetch('https://rustandco.onrender.com/api/commandes', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ function deletePanier(){
         }
         async function factureCreate() {
             if (!hasCommandeBeenCreated.current) {  // Check if the command hasn't been sent yet
-                const response = await fetch('http://localhost:5000/api/factures', {
+                const response = await fetch('https://rustandco.onrender.com/api/factures', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
