@@ -61,7 +61,7 @@ function JournalTable(){
     return (
         <div>
 
-            <table className="voitures-table mt-5">
+            <table className="voitures-table mt-5 w-20">
                 <thead>
                     <tr>
                         <th>{t('id')}</th>

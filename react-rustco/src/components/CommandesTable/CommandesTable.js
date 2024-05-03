@@ -69,7 +69,7 @@ function CommandesTable(props){
     return (
       
             <div>
-                <table className="commandes-table mt-5">
+                <table className="commandes-table mt-5 w-20">
                     <thead>
                         <tr>
                             <th>{t('id')}</th>
