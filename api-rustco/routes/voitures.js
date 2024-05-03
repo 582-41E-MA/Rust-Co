@@ -181,7 +181,7 @@ router.put("/:id", [
     }
 
     const id = req.params.id;
-    const resultat = await db.collection("voitures").doc(id).delete();
+    const resultat = await db.collection("voitures").doc(id).get();
 
     const voiture = {};
     voiture.id = id;
@@ -194,7 +194,7 @@ router.put("/:id", [
     voiture.description_fr = req.body.description_fr;
     voiture.image = req.body.image;
     voiture.condition = req.body.condition;
-    voiture.reserve = resultat.reserve;
+    voiture.reserve = resultat.data().reserve;
 
     await db.collection("voitures").doc(id).update(voiture);
     
