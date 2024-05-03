@@ -6,7 +6,7 @@ import './JournalTable.css'
 
 function JournalTable(){
 
-    const urlListeJournal = "http://localhost:5000/api/journalDeConnexion";
+    const urlListeJournal = "https://rustandco.onrender.com/api/journalDeConnexion";
     const [listeJournal, setListeJournal] = useState([]);
     
 
