@@ -6,7 +6,7 @@ import { t } from "i18next";
 
 function FacturesTable(props){
 
-     const urlListeFactures = "http://localhost:5000/api/factures";
+     const urlListeFactures = "https://rustandco.onrender.com/api/factures";
      const [listeFactures, setListeFactures] = useState([]);
      const estEmploye = props.userType == 'employe';
 
@@ -41,7 +41,7 @@ function FacturesTable(props){
         });
     };
 
-
+console.log(listeFactures)
   /*Factures data pour table*/
   
   const liFactures = listeFactures.map((facture, index) => {
@@ -64,9 +64,6 @@ function FacturesTable(props){
         </td>
         <td>
             {facture.methode_de_paiement}
-        </td>
-        <td>
-            {facture.status}
         </td>
         <td>
             {facture.taxes}
@@ -96,7 +93,6 @@ function FacturesTable(props){
                             <th>Date</th>
                             <th>{t('expedition')}</th>
                             <th>{t('methode_de_paiment')}</th>
-                            <th>Status</th>
                             <th>Taxes</th>
                             <th>Total</th>
                             <th>{t('utilisateur_id')}</th>
