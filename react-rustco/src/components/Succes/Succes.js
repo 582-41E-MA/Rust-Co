@@ -10,6 +10,7 @@ function Success(props) {
 
     const panier = JSON.parse(props.panier)
 
+
     let prixTotal = 0;
 
     panier.map((voiture)=>{
@@ -105,8 +106,8 @@ function Success(props) {
             }
         }
 
-        localStorage.removeItem('panier');
-       reservationCreate();
+        // localStorage.removeItem('panier');
+        reservationCreate();
         factureCreate();
         commandeCreate();
     }
