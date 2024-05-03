@@ -6,7 +6,7 @@ import { t } from "i18next";
 
 function FacturesTable(props){
 
-     const urlListeFactures = "http://localhost:5000/api/factures";
+     const urlListeFactures = "https://rustandco.onrender.com/api/factures";
      const [listeFactures, setListeFactures] = useState([]);
      const estEmploye = props.userType == 'employe';
 
