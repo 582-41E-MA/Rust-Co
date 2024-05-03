@@ -54,8 +54,6 @@ function CreateUser(props){
 
 
 
-
-
    function handleInputChange(event){
         const { name, value, type, files } = event.target;
        setFormData({
