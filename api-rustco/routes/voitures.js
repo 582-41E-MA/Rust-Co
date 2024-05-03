@@ -81,7 +81,7 @@ router.get("/:id", async (req, res) => {
  * @route POST /films
  */
 //TODO:Validation de Conditions_id
-router.post("/", authEmploye,
+router.post("/",
     [
         //TODO: Refait la validation
         check("marque").escape().trim().notEmpty().isString(),
@@ -94,8 +94,6 @@ router.post("/", authEmploye,
     ],
     
     async (req, res) => {
-
-        console.log("yes")
 
         const validation = validationResult(req);
         const donneesConditions = await db.collection("conditions").get();
@@ -155,7 +153,7 @@ router.post("/", authEmploye,
 
 //MODIFICATION
 //TODO:Validation de Conditions_id
-router.put("/:id", authEmploye, [
+router.put("/:id", [
     
         //TODO: Refait la validation
         check("marque").escape().trim().notEmpty().isString(),
