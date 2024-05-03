@@ -95,7 +95,7 @@ function UpdateVoiture(){
         e.preventDefault(); 
         console.log(formData);
         try {
-            const reponse = await fetch(`https://rustandco.onrender.com/api/voitures/${id}`, {
+            const reponse = await fetch(`http://localhost:5000/api/voitures/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
