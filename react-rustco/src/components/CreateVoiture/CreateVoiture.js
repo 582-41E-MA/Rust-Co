@@ -57,7 +57,7 @@ function CreateVoiture(props){
     async function handleSubmit(event){
         event.preventDefault(); 
         try {
-            const reponse = await fetch('http://localhost:5000/api/voitures', {
+            const reponse = await fetch('https://rustandco.onrender.com/api/voitures', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

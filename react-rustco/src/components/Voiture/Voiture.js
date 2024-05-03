@@ -70,8 +70,8 @@ function Voiture(props) {
       setAlertInfo({ message: 'Ce véhicule est déjà dans votre panier!', isVisible: true });
   }
 };
-const priv = props.logging.privilege;
-console.log(priv)
+// const priv = props.logging.privilege;
+// console.log(priv)
 
   return (
     <div>
@@ -112,12 +112,9 @@ console.log(priv)
           </div>
           <div className="flex-1 custom-shadow_2 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
-            {priv !== 'admin' ?
 
-            <button onClick={ajouter} className="custom-button mb-2" disabled={priv === 'admin'}>{t('ajout_panier')}</button>
-            :
-            <div></div>
-            }
+            <button onClick={ajouter} className="custom-button mb-2">{t('ajout_panier')}</button>
+            
             
             <CustomAlert 
                 message={alertInfo.message}
