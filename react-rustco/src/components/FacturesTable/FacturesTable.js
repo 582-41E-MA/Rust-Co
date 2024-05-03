@@ -1,40 +1,39 @@
-import './CommandesTable.css'
+import './FacturesTable.css'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { t } from "i18next";
 
 
-function CommandesTable(props){
+function FacturesTable(props){
 
-     const urlListeCommandes = "https://rustandco.onrender.com/api/commandes";
-     const [listeCommandes, setListeCommandes] = useState([]);
+     const urlListeFactures = "http://localhost:5000/api/factures";
+     const [listeFactures, setListeFactures] = useState([]);
      const estEmploye = props.userType == 'employe';
-     const [createUser, setCreateUser] = useState(false);
 
      
 
     useEffect(() => {
         // useEffect est juste quand il y a CHANGEMENT
-        fetch(urlListeCommandes)
+        fetch(urlListeFactures)
           .then((reponse) => reponse.json())
           .then((data) => {
-            setListeCommandes(data);
-            setCreateUser(false);
+            setListeFactures(data);
           });
       }, []);
       
 
      /// DELETE
-    function deleteCommande(id){
+    function deleteFacture(id){
 
         const bonId = id.trim();
+        console.log(bonId)
 
-        fetch(`${urlListeCommandes}/${bonId}`, {
+        fetch(`${urlListeFactures}/${bonId}`, {
             method: 'DELETE',
         })
         .then((reponse) => {
             if (reponse.ok) { 
-                setListeCommandes(listeCommandes.filter(commande => commande.id !== id));
+                setListeFactures(listeFactures.filter(facture => facture.id !== id));
             } 
         })
         .catch((error) => {
@@ -43,45 +42,44 @@ function CommandesTable(props){
     };
 
 
-console.log(listeCommandes)
-
-  /*commandes data pour table*/
-  const liCommandes = listeCommandes.map((commande, index) => {
+  /*Factures data pour table*/
+  
+  const liFactures = listeFactures.map((facture, index) => {
     return (
        <tr key={index}>
         <td>
-            {commande.id}
+            {facture.id}
         </td>
             <ul >
-                {commande.voitures.map((voiture, idx) => (
+                {facture.voitures.map((voiture, idx) => (
                     <li key={idx}> <b>- </b> {voiture.id}</li>
                 ))}
             </ul>
        
         <td>
-            {commande.date}
+            {facture.date}
         </td>
         <td>
-            {commande.expedition}
+            {facture.expedition}
         </td>
         <td>
-            {commande.methode_de_paiement}
+            {facture.methode_de_paiement}
         </td>
         <td>
-            {commande.status}
+            {facture.status}
         </td>
         <td>
-            {commande.taxes}
+            {facture.taxes}
         </td>
         <td>
-            {commande.total}
+            {facture.total}
         </td>
         <td>
-            {commande.utilisateur}
+            {facture.utilisateur}
         </td>
        
         <td className="flex border-none justify-around min-w-max">
-            <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteCommande(commande.id); }}></img>
+            <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteFacture(facture.id); }}></img>
         </td>
       </tr> 
     ); 
@@ -106,7 +104,7 @@ console.log(listeCommandes)
                         </tr>
                     </thead>
                     <tbody>
-                    {liCommandes}
+                    {liFactures}
                     </tbody>  
                 </table> 
             </div>
@@ -114,4 +112,4 @@ console.log(listeCommandes)
     );
 }
 
-export default CommandesTable;
+export default FacturesTable;

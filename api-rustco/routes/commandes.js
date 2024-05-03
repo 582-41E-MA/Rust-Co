@@ -212,7 +212,7 @@ router.post("/",
  * Cette route permet de modifier un utilisateur
  * @route POST 
  */
-router.put("/:id", authEmploye,
+router.put("/:id", 
     [
         check("date").escape().trim().notEmpty().matches(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/),
         check("expedition").escape().trim().notEmpty().isString(),

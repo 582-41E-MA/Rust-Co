@@ -32,11 +32,12 @@ function UpdateVoiture(){
         profit: '',
         description_en: '',
         description_fr: '',
-        image: 'test.png' 
+        image: '' 
     });
 
 
 
+  
    // console.log(id);
    //pour fetch le data de la voiture pour preremplir
    useEffect(() => {
@@ -61,32 +62,36 @@ function UpdateVoiture(){
 
 
 
-    // useEffect(() => {
-    //     if (voiture) {
-    //         setMarqueSelectionnee(voiture.marque);
-    //         setModeles(modelesParMarque[voiture.marque]);
-    //         setFormData({
-    //             marque: voiture.marque,
-    //             modele: voiture.modele,
-    //             annee: voiture.annee,
-    //             condition: voiture.condition,
-    //             prix_achete: voiture.prix_achete,
-    //             profit: voiture.profit,
-    //             description_en: voiture.description[0],
-    //             description_fr: voiture.description[1],
-    //             image: voiture.image
-    //         });
-    //     }
-    // }, [voiture]);
+    useEffect(() => {
+        if (voiture) {
+            setMarqueSelectionnee(voiture.marque);
+            setModeles(modelesParMarque[voiture.marque]);
+            setFormData({
+                marque: voiture.marque,
+                modele: voiture.modele,
+                annee: voiture.annee,
+                condition: voiture.condition,
+                prix_achete: voiture.prix_achete,
+                profit: voiture.profit,
+                description_en: voiture.description[0],
+                description_fr: voiture.description[1],
+                image: voiture.image
+            });
+        }
+  
+    }, [voiture]);
 
 
+  function extractFilename(path) {
+        return path.split('\\').pop();
+    }
 
 
    function handleInputChange(e){
         const { name, value, type, files } = e.target;
         setFormData(formData => ({
             ...formData,
-            [name]: type === 'file' ? files[0] : value
+            [name]: extractFilename(value)
         }));
       console.log(formData);
     };
@@ -95,7 +100,7 @@ function UpdateVoiture(){
         e.preventDefault(); 
         console.log(formData);
         try {
-            const reponse = await fetch(`http://localhost:5000/api/voitures/${id}`, {
+            const reponse = await fetch(`https://rustandco.onrender.com/api/voitures/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",

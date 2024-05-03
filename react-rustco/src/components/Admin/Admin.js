@@ -2,6 +2,7 @@ import './Admin.css';
 import React, { useState } from 'react';
 import VoituresTable from '../VoituresTable/VoituresTable'
 import CommandesTable from '../CommandesTable/CommandesTable'
+import FacturesTable from '../FacturesTable/FacturesTable'
 import UtilisateursTable from '../UtilisateursTable/UtilisateursTable'
 import JournalTable from '../JournalTable/JournalTable'
 import { useContext } from "react";
@@ -22,6 +23,7 @@ function Admin(props){
     const showClients = () => setTable('Clients');
     const showJournal = () => setTable('Journal');
     const showCommandes = () => setTable('Commandes');
+    const showFactures = () => setTable('Factures');
     const renderTable = () => {
         switch (table) {
             case 'Voitures':
@@ -34,6 +36,8 @@ function Admin(props){
                 return <JournalTable />;
             case 'Commandes':
                 return <CommandesTable />;
+            case 'Factures':
+                return <FacturesTable />;
             default:
                 return <div></div>; 
         }
@@ -50,8 +54,9 @@ const privilege = context.logging.privilege
                 : <></>
             }
             <button className='custom-button mr-5 mb-5 admin-edit' onClick={showClients}>{t('client')}s</button>
-            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showJournal}>Journaux</button>
+            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showJournal}>{t('journal')}</button>
             <button className='custom-button mr-5 mb-5 admin-edit' onClick={showCommandes}>{t('commande')}s</button>
+            <button className='custom-button mr-5 mb-5 admin-edit' onClick={showFactures}>{t('factures')}</button>
             <div className='tables'>
                 {renderTable()}
             </div>

@@ -66,7 +66,7 @@ const infosStorage = localStorage.setItem('infosPaiement', JSON.stringify(infosP
     const fetchClientSecret = useCallback(() => {
   
       // Create a Checkout Session
-      return fetch("http://localhost:5000/create-checkout-session", {
+      return fetch("https://rustandco.onrender.com/create-checkout-session", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

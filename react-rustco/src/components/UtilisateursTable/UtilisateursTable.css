@@ -1,13 +1,13 @@
 /* sur tout les table crm*/
 th {
   background-color: #f2f2f2;
-  padding: 16px;
+  padding: 8px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
 td {
-  padding: 8px;
+  padding: 1px;
   border: 1px solid #ddd;
 }
 

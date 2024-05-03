@@ -78,8 +78,9 @@
     "cree": "Crée",
     "selectione": "Sélectioné",
     "modifie": "Modifié",
+    "modifier": "Modifier",
     "supprime": "Supprimé",
-    "mis_a_jour": "Mettre à Jours",
+    "mis_a_jour": "Mettre à Jour",
     "soumettre": "Soumettre",
     "reserver": "Réservés",
     
@@ -151,9 +152,23 @@
     "mes_reservations": "Mes Réservations",
 
     "facture": "Mes Factures",
+    "factures": "Factures",
 
-    "adresse_ip": "Adresse IP "
+    "adresse_ip": "Adresse IP ",
 
-    
+    "journal": "Journaux",
+
+    "update_user": "Mettre à Jour Utilisateur",
+
+    "voir_commandes": "Voir mes Commandes",
+    "voir_factures": "Voir mes Factures",
+    "cacher_commandes": "Cacher mes Commandes",
+    "cacher_factures": "Cacher mes Factures",
+
+    "choisir_option": "choisir une option",
+
+    "pas_item": "Vous n'avez rien dans votre panier",
+
+    "acheter_maintenant": "Acheter maintenant"
 
 }

@@ -37,9 +37,6 @@ function Success(props) {
 
     useEffect(() => {
 
-
-
-
         if(userId){
 
         async function reservationCreate() {   
@@ -108,12 +105,12 @@ function Success(props) {
             }
         }
 
-        
+        localStorage.removeItem('panier');
        reservationCreate();
         factureCreate();
         commandeCreate();
     }
-    }, [userId]);  // The empty dependency array ensures this effect runs only once after the initial render
+    }, [userId]);  
 
     return(
         <div className="bg-white max-w-full p-6 rounded-2xl flex flex-col items-center">

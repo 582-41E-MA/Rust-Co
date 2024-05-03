@@ -95,7 +95,7 @@ const calculateOrderAmount = async (voitures, idUtilisateur) => {
           
         }
 
-        const prixTotalUnit = (prixTotal * 100);
+        const prixTotalUnit = (prixTotal.toFixed(2) * 100);
 
         const prixFinal = await stripe.prices.create({
             currency: 'cad',
