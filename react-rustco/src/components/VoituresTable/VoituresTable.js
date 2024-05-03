@@ -117,7 +117,7 @@ function VoituresTable(){
         <div>
             <a href="/create-voiture"><button className="custom-button mt-5">+ {t('ajout_voiture')}</button></a>
 
-            <table className="voitures-table mt-5 w-20">
+            <table className="voitures-table mt-5">
                 <thead>
                     <tr>
                         <th>{t('id')}</th>

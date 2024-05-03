@@ -19,21 +19,11 @@ function JournalTable(){
             console.log(data)
             setListeJournal(data)
           });
-
-        // async function showJournal(){
-        //         const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
-        //             method: "GET",
-        //             headers: {
-        //                 "Content-Type": "application/json"
-        //             }
-        //         })
-        // }
-        //showJournal()
             
       }, []);
     
 
-    console.log(listeJournal)
+   // console.log(listeJournal)
 
     //------------------------------------------------------------------//
 
@@ -51,8 +41,8 @@ function JournalTable(){
         <td  data-label="Date">
             {journal.date}
         </td>
-        <td data-label="adresseIP">
-            {journal.adresseIP}
+        <td data-label="addressIP">
+            {journal.addressIP}
         </td>
       </tr> 
     ); 
@@ -61,7 +51,7 @@ function JournalTable(){
     return (
         <div>
 
-            <table className="voitures-table mt-5 w-20">
+            <table className="voitures-table mt-5">
                 <thead>
                     <tr>
                         <th>{t('id')}</th>

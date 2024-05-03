@@ -61,23 +61,24 @@ function UpdateVoiture(){
 
 
 
-    // useEffect(() => {
-    //     if (voiture) {
-    //         setMarqueSelectionnee(voiture.marque);
-    //         setModeles(modelesParMarque[voiture.marque]);
-    //         setFormData({
-    //             marque: voiture.marque,
-    //             modele: voiture.modele,
-    //             annee: voiture.annee,
-    //             condition: voiture.condition,
-    //             prix_achete: voiture.prix_achete,
-    //             profit: voiture.profit,
-    //             description_en: voiture.description[0],
-    //             description_fr: voiture.description[1],
-    //             image: voiture.image
-    //         });
-    //     }
-    // }, [voiture]);
+    useEffect(() => {
+        if (voiture) {
+            setMarqueSelectionnee(voiture.marque);
+            setModeles(modelesParMarque[voiture.marque]);
+            setFormData({
+                marque: voiture.marque,
+                modele: voiture.modele,
+                annee: voiture.annee,
+                condition: voiture.condition,
+                prix_achete: voiture.prix_achete,
+                profit: voiture.profit,
+                description_en: voiture.description[0],
+                description_fr: voiture.description[1],
+                image: voiture.image
+            });
+        }
+  
+    }, [voiture]);
 
 
 

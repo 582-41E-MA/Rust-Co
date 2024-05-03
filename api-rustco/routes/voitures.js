@@ -156,13 +156,13 @@ router.post("/",
 router.put("/:id", [
     
         //TODO: Refait la validation
-        check("marque").escape().trim().notEmpty().isString(),
-        check("annee").escape().trim().notEmpty().matches(/^\d{4}$/),
-        check("modele").escape().trim().notEmpty().isString(),
-        check("prix_achete").escape().trim().notEmpty().matches(/^\d+(,\d{1,2})?$/),
-        check("description_en").escape().trim().notEmpty().isString(),
-        check("description_fr").escape().trim().notEmpty().isString(),
-        check("image").escape().trim().notEmpty().isString(),
+        // check("marque").escape().trim().notEmpty().isString(),
+        // check("annee").escape().trim().notEmpty().matches(/^\d{4}$/),
+        // check("modele").escape().trim().notEmpty().isString(),
+        // check("prix_achete").escape().trim().notEmpty().matches(/^\d+(,\d{1,2})?$/),
+        // check("description_en").escape().trim().notEmpty().isString(),
+        // check("description_fr").escape().trim().notEmpty().isString(),
+        // check("image").escape().trim().notEmpty().isString(),
 
 ], async (req, res)=>{
 

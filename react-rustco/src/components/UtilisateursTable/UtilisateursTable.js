@@ -128,7 +128,7 @@ function UtilisateursTable(props){
                     <button className="custom-button mt-5" onClick={handleClick}>+ {t('cree_employe')}</button>
                 )}
 
-                <table className="employes-table mt-5 w-20">
+                <table className="employes-table mt-5">
                     <thead>
                         <tr>
                             <th>{t('id')}</th>

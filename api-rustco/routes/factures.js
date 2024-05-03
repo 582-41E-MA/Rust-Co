@@ -299,8 +299,8 @@ router.put("/:id", authEmploye,
  */
 router.delete("/:id", async (req, res)=>{
     //params est tout les : dans ton url. Par exemple, :id, :user etc
-    const idCommande = req.params.id;
-    const resultat = await db.collection("commandes").doc(idCommande).delete();
+    const idFacture = req.params.id;
+    const resultat = await db.collection("factures").doc(idFacture).delete();
 
     res.json("La donnée a été supprimé");
 });

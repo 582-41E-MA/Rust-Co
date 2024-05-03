@@ -116,27 +116,27 @@ const { t } = useTranslation();
   }, [])
  
 
+//journal create
 
-  useEffect(() =>{
-    async function journalCreate(){
-      const body = {
-      adresseIP: ip,
-      userId: logging.id
-      };
+  // useEffect(() =>{
+  //   async function journalCreate(){
+  //     const body = {
+  //     adresseIP: ip,
+  //     userId: logging.id
+  //     };
       
-      const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+  //     const response = await fetch("http://localhost:5000/api/journalDeConnexion",{
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
           
-        },
-        body: JSON.stringify(body),
-      })
+  //       },
+  //       body: JSON.stringify(body),
+  //     })
       
-
-    }
-    journalCreate();
-  }, [ip, logging.id])
+  //   }
+  //   journalCreate();
+  // }, [ip, logging.id])
 
 
 
@@ -202,6 +202,9 @@ const { t } = useTranslation();
   function isAccueil(){
     return window.location.pathname === '/';
   }
+  function isAdmin(){
+    return window.location.pathname === '/admin';
+  }
 
 //
   
@@ -228,7 +231,7 @@ const { t } = useTranslation();
         <Entete handleLogout={logout} logging={logging} />
     
         
-        <main className={`flex-grow min-h-screen main ${isAccueil() ? '' : 'max-w-6xl p-4'} mx-auto`}>
+        <main className={`flex-grow min-h-screen main ${isAccueil() ? '' : isAdmin() ? 'p-2' : 'max-w-6xl p-4'}  mx-auto`}>
           <Router> 
             <Routes >
               <Route path="/" element={<Accueil />} />

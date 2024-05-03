@@ -11,7 +11,7 @@ const { check, validationResult } = require("express-validator");
  * Cette route permet de récupérer la liste des commandes
  * @route GET 
  */
-router.get("/", authAdmin, async (req, res) => {
+router.get("/", async (req, res) => {
 
     try{
 
@@ -43,7 +43,7 @@ router.get("/", authAdmin, async (req, res) => {
 //TODO:Validation de Conditions_id
 router.post("/",
     [
-        check("adresseIP").escape().trim().notEmpty().isString(),
+        check("addressIP").escape().trim().notEmpty().isString(),
         check("userId").escape().trim().notEmpty().isString()
     ],
     

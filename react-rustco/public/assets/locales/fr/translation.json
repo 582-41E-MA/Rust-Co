@@ -151,8 +151,11 @@
     "mes_reservations": "Mes Réservations",
 
     "facture": "Mes Factures",
+    "factures": "Factures",
 
-    "adresse_ip": "Adresse IP "
+    "adresse_ip": "Adresse IP ",
+
+    "journal": "Journaux"
 
     
 
