@@ -17,7 +17,7 @@ function Success(props) {
         prixTotal += Number(voiture.prix)
     })
 
-    
+
 
     const infosString = localStorage.getItem('infosPaiement');
     const infos = infosString ? JSON.parse(infosString) : {};
@@ -34,7 +34,9 @@ function Success(props) {
     const hasCommandeBeenCreated = useRef(false); 
 
 
-
+function deletePanier(){
+    localStorage.removeItem('panier');
+}
 
     useEffect(() => {
 
@@ -106,7 +108,7 @@ function Success(props) {
             }
         }
 
-        // localStorage.removeItem('panier');
+    
         reservationCreate();
         factureCreate();
         commandeCreate();
@@ -120,13 +122,13 @@ function Success(props) {
             <img src='/logo/brasbon.png' className='w-60 mb-6' alt="Brand logo"></img>
             <p className='mb-6'>-- {t('redirection')} --</p>
             <div>
-                <Link className='custom-button' to={lien}>
+                <Link className='custom-button' to={lien} onClick={deletePanier}>
                     {t('mon_compte')}
                 </Link>
-                <Link className='custom-button' to='/'>
+                <Link className='custom-button' to='/' onClick={deletePanier}>
                     {t('accueil')}
                 </Link>
-                <Link className='custom-button' to='/voitures'>
+                <Link className='custom-button' to='/voitures' onClick={deletePanier}>
                     {t('voiture')}
                 </Link>
             </div>
