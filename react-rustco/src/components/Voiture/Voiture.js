@@ -110,7 +110,6 @@ function Voiture() {
           </div>
           <div className="flex-1 custom-shadow_2 bg-aged_2 rounded-2xl  p-2 flex flex-col items-center justify-center">
             <div className="font-bold text-lg mb-2">{prixFinal} $</div>
-            <button className="custom-button mb-2">{t('reserver')}</button>
             <button onClick={ajouter} className="custom-button mb-2">{t('ajout_panier')}</button>
             <CustomAlert 
                 message={alertInfo.message}

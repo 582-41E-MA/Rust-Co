@@ -46,20 +46,24 @@ const deleteItem = function(itemId){
 
     const afficherItems = function() {
 
-        return items.map((item, index) => (
-            <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
-                <div className="flex items-center space-x-4 justify-between px-6">
-                    <img src={`/voitures/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover rounded-2xl"/>
-                    <div>
-                        <h3 className="text-lg font-bold">{item.marque} {item.modele}</h3>
-                        <p>{t('annee')}: {item.annee}</p>
-                        <p>{t('condition')}: {item.condition}</p>
-                        <p>{t('prix')}: ${item.prix}</p>
+        if(items.length > 0){
+            return items.map((item, index) => (
+                <li key={index} className="mb-4 p-2 bg-white_1 rounded-2xl">
+                    <div className="flex items-center space-x-4 justify-between px-6">
+                        <img src={`/voitures/${item.image}`} alt={item.modele} className="w-24 h-24 object-cover rounded-2xl"/>
+                        <div>
+                            <h3 className="text-lg font-bold">{item.marque} {item.modele}</h3>
+                            <p>{t('annee')}: {item.annee}</p>
+                            <p>{t('condition')}: {item.condition}</p>
+                            <p>{t('prix')}: ${item.prix}</p>
+                        </div>
+                    <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteItem(item.id); }}></img>
                     </div>
-                <img className="w-8 mx-2 cursor-pointer" src="/icons/delete.png" onClick={(e) => { e.preventDefault(); deleteItem(item.id); }}></img>
-                </div>
-            </li>
-        ));
+                </li>
+            ));
+        }else{
+            return <div>{t('pas_item')}</div>
+        }
     }
 
 
@@ -180,7 +184,7 @@ return(
                         </select>
 
                         <div>
-                            <h4 className='text-lg mb-4 mt-8'>Choisir une option :</h4>
+                            <h4 className='text-lg mb-4 mt-8'>{t('choisir_option')} :</h4>
                             <div className="ml-4">
                                 <label>
                                     <input
@@ -204,7 +208,7 @@ return(
                                         onChange={handleOptionChange}
                                         required
                                     />
-                                    &nbsp;&nbsp;Acheter maintenant
+                                    &nbsp;&nbsp;{t('acheter_maintenant')}
                                 </label>
                             </div>
                         </div>

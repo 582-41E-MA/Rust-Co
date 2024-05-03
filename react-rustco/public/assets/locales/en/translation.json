@@ -78,6 +78,7 @@
     "cree": "Created",
     "selectione": "Selected",
     "modifie": "Modified",
+    "modifier": "Edit",
     "supprime": "Deleted",
     "mis_a_jour": "Updated",
     "soumettre": "Submit",
@@ -153,8 +154,20 @@
 
     "adresse_ip": "IP Adress",
 
-    "journal": "Journals"
+    "journal": "Journals",
+
+    "update_user": "Update User",
+
+    "voir_commandes": "Show my Orders",
+    "voir_factures": "Show my Bills",
+    "cacher_commandes": "Hide my Orders",
+    "cacher_factures": "Hide my Bills",
 
 
+    "choisir_option": "chose an option",
+
+    "pas_item": "You have no items in your shopping cart",
+
+    "acheter_maintenant": "Pay now"
 
 }

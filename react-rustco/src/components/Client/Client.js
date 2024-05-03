@@ -34,6 +34,27 @@ function Client(props){
         userData();
     }, [id]);
 
+
+
+
+
+    ///// pour reservation affichage
+    // const urlListeVoitures = "https://rustandco.onrender.com/api/voitures";
+    // const [listeVoitures, setListeVoitures] = useState([]);
+
+  
+    // useEffect(() => {
+    //   // useEffect est juste quand il y a CHANGEMENT
+    //   fetch(urlListeVoitures)
+    //     .then((reponse) => reponse.json())
+    //     .then((data) => {
+    
+    //       setListeVoitures(data);
+        
+    //     });
+    // }, []);
+
+    // console.log(listeVoitures)
     
 
 
@@ -45,7 +66,7 @@ const [comVoitures, setComVoitures] = useState([]);
 useEffect(() => {
     async function userData() {
         try {
-            const response = await fetch(`http://localhost:5000/api/commandes`);
+            const response = await fetch(`https://rustandco.onrender.com/api/commandes`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -104,7 +125,7 @@ const [factures, setFactures] = useState([]);
 useEffect(() => {
     async function userData() {
         try {
-            const response = await fetch(`http://localhost:5000/api/factures`);
+            const response = await fetch(`https://rustandco.onrender.com/api/factures`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -190,20 +211,20 @@ const toggleFactures = () => {
                     </ul>
                     <div className='edit-btn-container'>
                         <Link to={`/update-user/${user.id}`}>
-                            <button className='custom-button'>{t('modifie')}Information</button>
+                            <button className='custom-button'>{t('modifier')}</button>
                         </Link>
                     </div>
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_commandes')}</h2>
-                    <h3 onClick={toggleCommandes} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>- Voir mes Commandes</h3>
+                    <h3 onClick={toggleCommandes} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>- {!commandeVisible ? t('voir_commandes') : t('cacher_commandes') }</h3>
                     <div className={commandeVisible ? '' : 'hidden'}>
                         {listeCommandes()}
                     </div>
                 </div>
                 <div className='info-commandes col-span-1 border rounded-2xl bg-sand_1 p-6 min-h-[500px]'>
                     <h2 className='text-2xl font-bold mb-6'>{t('mes_factures')}</h2>
-                    <h3 onClick={toggleFactures} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>- Voir mes Factures</h3>
+                    <h3 onClick={toggleFactures} style={{ cursor: 'pointer' }} className='text-blue_4 font-bold'>- {!factureVisible ? t('voir_factures') : t('cacher_factures') }</h3>
                     <div className={factureVisible ? '' : 'hidden'}>
                         {listeFactures()}
                     </div>

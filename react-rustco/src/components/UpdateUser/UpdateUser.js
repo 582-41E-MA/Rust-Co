@@ -12,7 +12,7 @@ function UpdateUser(props){
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
 
-    const urlUserInitial = `http://localhost:5000/api/utilisateurs/${id}`
+    const urlUserInitial = `https://rustandco.onrender.com/api/utilisateurs/${id}`
     const [urlUser, setUrlUser] = useState(urlUserInitial)
     const [formData, setFormData] = useState({
         prenom: '',
@@ -93,7 +93,7 @@ function UpdateUser(props){
         e.preventDefault(); 
         console.log(formData);
         try {
-            const reponse = await fetch(`http://localhost:5000/api/utilisateurs/${id}`, {
+            const reponse = await fetch(`https://rustandco.onrender.com/api/utilisateurs/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
@@ -135,7 +135,7 @@ function UpdateUser(props){
 
     return(
         <div>
-            <h1 className='text-4xl font-bold mb-5'>{t('mis_a_jour')} {t('utilisateur')}</h1>
+            <h1 className='text-4xl font-bold mb-5'>{t('update_user')}</h1>
             <form className='form-create-user' onSubmit={handleSubmit}>
                
                 <div>
